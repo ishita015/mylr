@@ -1,0 +1,242 @@
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+                      <div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':display2}">
+                        <div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+                          <div class="modal-content dialog bd-none">
+                            <div class="heading-mes popup1">
+                              <h3>{{templateArray.message}}</h3>
+                            </div>
+                            <div class="modal-footer footer-mes popup2">
+                              <button type="button" [routerLink]="['/pages/login/']" class="btn btn-design btn-default" (click)="hidePopup()">Ok</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+<div class="clearfix">
+        <div class="image-loader" *ngIf="imageLoader===true">
+            <img src="http://keraiz.com/mylr/loader.gif" />
+        </div>
+        <div class="row"> 
+            <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+                <app-left-sidebar></app-left-sidebar>
+            </div>
+            <div class="col-md-10">
+                <div class="card p-30 p-3 relative" style="float: left;">
+            <div class="color-container" style="width:100%">
+              
+            <div class="clearfix" style="background: #f7f7f7;padding-bottom: 1em;">
+                <h4 class="text-center">
+                  <i class="fas fa-paint-brush"></i>
+                  <br />
+                  Choose your Color
+                </h4>
+                <div class="color-scheme text-center">
+                  <ul class="ul-color">
+                    <li (click)="setSchemeColor('#F86A31')"></li>
+                    <li (click)="setSchemeColor('#D22393')"></li>
+                    <li (click)="setSchemeColor('#694ABF')"></li>
+                    <li (click)="setSchemeColor('#305C8D')"></li>
+                    <li (click)="setSchemeColor('#387228')"></li>
+                    <li (click)="setSchemeColor('#4B4B4B')"></li>
+                  </ul>
+                </div>
+              </div>
+              <hr>
+
+               
+                    <div id="print-section" class="clearfix" style="width:100%;float:left">
+              
+                            <div class="clearfix" style="width:100%;float:left">
+                              <div id="partToPrint" style="width:100%;float:left">
+                                        <div class="full-screen" style="width:100%;float:left">
+                                            <div class="w10 fl-left" style="width:10%;float:left">
+                                                <img style="width:135px;float:left" width="135px;" class="img-responsive" id="image" [src]="cookieValue.transport_logo" alt="3d-logo" class="fl-left" />
+                                            </div>
+                                            <div class="w80 fl-left text-center" style="width:80%;text-align:center; float:left">
+                                                <h3>3D LOGISTIC SOLUTIONS</h3>
+                                                <p class="mtb-5 lh-20 " style="line-height:20px;margin-top:5px;margin-bottom:5px">{{cookieValue.address}}</p>
+                                                <p class="mtb-5" style="margin-top:5px;margin-bottom:5px">E-Mail- {{cookieValue.email_id}}</p>
+                                                <p class="mtb-5" style="margin-top:5px;margin-bottom:5px">Contacts: {{cookieValue.contact_no}}								</p>
+                                            </div>
+                                        </div>
+                                        <div class="w100 fl-left" style="width:100%;float:left;border:2px solid"></div>
+                                        <div class="" style="width:60%; float:left;margin-top: 2em;margin-right:10%">
+                                            <div class="" style="width:50%;float:left;">
+                                                <div class="" style="float:left;margin-bottom:5px;margin-top:11px;display: flex;">
+                                                    <div class=" fl-left">
+                                                        <span class="">Vehicle No.</span>
+                                                    </div>
+                                                    <div class="fl-left">
+                                                        <span style="padding-left: 12px;">MP09-20-10</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="" style="width:50%;float:left;">
+                                                <div class="">
+                                                    <h3 [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="text-align: center;
+                                              height: 26px;
+                                              display: block;
+                                              color:#fff;
+                                              margin: 0 auto;
+                                              padding-top: 2px;
+                                              font-size:18px;">Owner Risk/Carrier Risk</h3>
+                                                </div>
+                                            </div>
+                                            <div class="" style="width:100%;float:left;display:flex;margin-top:1em">
+                                                <div class="fl-left">
+                                                    <span class="">Consignor: </span>
+                                                </div>
+                                                <div class="w80 fl-left">
+                                                    <span style="padding-left: 12px;">AMAN SETH</span>
+                                                </div>
+                                            </div>
+                                            <div style="width:100%;float:left;display:flex;margin-top:4em">
+                                                <div class="fl-left">
+                                                    <span class="">Cosignee: </span>
+                                                </div>
+                                                <div class="w80 fl-left">
+                                                    <span style="padding-left: 12px;">SUJIT PANDIT</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="" style="width:30%; float:left">
+                                            <div class="" style="width:100%; float:left;margin-bottom:5px;margin-top:11px;display: flex;">
+                                                <div class=" fl-left">
+                                                    <span class="">LR No. </span>
+                                                </div>
+                                                <div class="w60 fl-left">
+                                                    <span style="padding-left: 12px;">121</span>
+                                                </div>
+                                            </div>
+                                            <div class="" style="width:100%;float: left;margin-top: 5px;margin-top:11px;display: flex;">
+                                                    <div class=" fl-left">
+                                                        <span>Date:</span>
+                                                    </div>
+                                                    <div class=" fl-left">
+                                                        <span style="padding-left: 12px;">12/08/2018</span>
+                                                    </div>
+                                                </div>
+                                            <div class="" style="width:100%; float:left;margin-bottom:5px;margin-top:11px;display: flex;">
+                                                <div class=" fl-left">
+                                                    <span class="">From: </span>
+                                                </div>
+                                                <div class="w60 fl-left">
+                                                    <span style="padding-left: 12px;">INDORE</span>
+                                                </div>
+                                            </div>
+                                            <div class="" style="width:100%; float:left;margin-bottom:5px;margin-top:11px;display: flex;">
+                                                <div class=" fl-left">
+                                                    <span class="">To: </span>
+                                                </div>
+                                                <div class="w60 fl-left">
+                                                    <span style="padding-left: 12px;">BHOPAL</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="width:100%;float:left;margin-top:3em;margin-bottom: 14px;">
+                                            <table style="width:100%;" border="1" cellspacing="0" cellpadding="2">
+                                                <tr style="text-align: center">
+                                                    <td style="border:1px solid #333;border-radius:6%;">
+                                                        <h4 style="margin:2px;">PKG</h4>
+                                                    </td>
+                                                    <td>
+                                                        <h4 style="margin:2px;">Particulars</h4>
+                                                    </td>
+                                                    <td style="border:1px solid #333;" width="55px">
+                                                        <h4 style="margin:2px;">Wt</h4>
+                                                    </td>
+                                                    <td style="border:1px solid #333;">
+                                                        <h4 style="margin:2px;">Rate</h4>
+                                                    </td>
+                                                    <td style="border:1px solid #333;">
+                                                        <h4 style="margin:2px;">Total Freight</h4>
+                                                    </td>
+                                                    <td style="border:1px solid #333;">
+                                                        <h4 style="margin:2px;">Balance Freight</h4>
+                                                    </td>
+                                                </tr>
+                                                <tr >
+                                                    <td style="border:1px solid #333;">
+                                                        <span style="display:block;float:none;text-align:center;">25</span>
+                                                    </td>
+                                                    <td style="border:1px solid #333;">
+                                                        <span style="display:block;float:none;text-align:center;">Dont Know</span>
+                                                    </td>
+                                                    <td style="border:1px solid #333;">
+                                                        <span style="display:block;float:none;text-align:center;">2125 </span>
+                                                    </td>
+                                                    <td style="border:1px solid #333;">
+                                                        <span style="display:block;float:none;text-align:center;">8585</span>
+                                                    </td>
+                                                    <td style="border:1px solid #333;">
+                                                        <span style="display:block;float:none;text-align:center;">5820</span>
+                                                    </td>
+                                                    <td style="border:1px solid #333;text-align: center;">
+                                                        <div style="display: block;">
+                                                            <label style="margin-top:4px;display:inline-block;">
+                                                                <span style="width: 30px;">Rs.</span>
+                                                                <span>1200</span>
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <label style="margin-top:4px;display:inline-block;">
+                                                                <span style="width:100%;">payable at</span>
+                                                                <span style="text-align: center;display: block;float: none;">250</span>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="" style="width:35%;float:left;">
+                                            <div class="fl-left" style="width:100%;">
+                                                <span style="display:inline-block;">Invoice No. </span>
+                                                <span style="padding-left: 12px;">2521</span>
+                                            </div>
+                                            <div class="fl-left" style="width:100%;">
+                                                <span style="display:inline-block;">Invoice Amount:</span>
+                                                <span style="padding-left: 12px;">856858</span>
+                                            </div>
+                                        </div>
+                                        <div class="" style="width:30%;float:left;">
+                                                <div class="fl-left" style="width:100%;">
+                                                        <span align="center" style="height: 26px;
+                                                        display: block;
+                                                        color:#fff;
+                                                        margin: 0 48px;
+                                                        padding-top: 1px;
+                                                        font-size:18px;" [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}">Consignee Copy 
+                                    </span>
+                                                    </div>
+                                        </div>
+                                        <div class="" style="width:35%;float:right;">
+                                            <div class="fl-left">
+                                                <span style="display:inline-block;">Consignor Signature:</span>
+                                                <input type="text" style="width:40%;padding-left: 12px;border:transparent;border-bottom: 1px solid #333;"/>
+                                            </div>
+                                            <div class="fl-left">
+                                                <span style="display:inline-block;">Consignor Address: </span>
+                                                <span style="padding-left: 12px;">Palasia Indore</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="clearfix text-center mtb-30" style="float:left;width:100%">
+                <div class="col-md-3 color-template text-left ">
+                  <button [routerLink] = "['/signup/template']" class="btn btn-success btns"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
+                </div>
+                <div class="col-md-6 text-center" style="cursor: pointer;">
+                  <button class="btn btn-primary btns" (click)="print()"><i class="fa fa-print" aria-hidden="true"></i> Preview</button>
+                </div>
+                <div class="col-md-3 text-right" style="cursor: pointer;">
+                    <button style="background: #119c89;border-color:#119c89" class="btn btn-primary btns" (click)="onSubmit()"> Submit</button>
+                </div>
+              </div>
+  
+</div>
+</div>
+</div>
+

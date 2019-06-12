@@ -1,0 +1,20 @@
+.dashboard-card{border: 1px solid #e8e3e3;
+    box-shadow: 0px 0px 6px #e8dbdb;
+    text-align: center;
+    padding: 25px 10px}
+  .dashboard-card h4{color:#00327A; text-transform: uppercase}
+  .dashboard-card h5{margin-top:30px; font-size: 30px; color:#2ecc71}
+  .chart-lead{color:#00327A; text-transform: uppercase}
+
+  .benifit-list{
+
+  }
+  .benifit-list li{
+    line-height: 25px
+  }
+  .benifit-list li span{
+   color:#ee4f4c; font-size: 17px
+  }
+  .middle-stripe{background-color:#ee4f4c; color:#bbb; padding-top: 10px; padding-bottom: 10px;text-align: center
+  }
+  .middle-stripe h5{margin-top:10px; color:#fff}

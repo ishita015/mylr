@@ -1,0 +1,465 @@
+<div class="image-loader" *ngIf="imageLoader" style="top:14%">
+    <img src="assets/images/loader.gif" />
+</div>
+<div class="row pt-67"> 
+		<div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+			<app-login-leftbar></app-login-leftbar>
+		</div>
+		  
+		<div class="col-md-10 col-sm-10 col-xs-12">
+				<section id="tabs">
+						<div class="container-fluid">
+							<div class="row form-group bd-set">
+								<div class="col-sm-12 ">
+									<div class="col-sm-4 div-st1">
+										<div class="design-field">
+										<img *ngIf="image_url != ''" [src]="image_url" alt="" class="img-responsive center-block" >
+										<img *ngIf="image_url == ''" src="assets/img/user-profile.jpg" alt="user-profile.jpg"  class="img-responsive center-block" >
+										<h3><span class="db">{{profileObj.owner_name}}</span></h3>
+										<label>Email ID</label>
+										<span class="db">{{profileObj.email_id}}</span>
+										<label>Contact Number</label>
+										<span class="db">{{profileObj.contact_number}}</span>
+										</div>
+									</div>
+								<div class="col-sm-8 div-st2">
+					  <div class="well-set">
+						<ul class="nav nav-tabs st">
+							<!-- <li class="active"><a href="#image" data-toggle="tab">Profile Picture</a></li>-->
+						<li class="active"><a class="active" href="#personal" data-toggle="tab">Personal Details</a></li> 
+						<li><a href="#bank" data-toggle="tab">Bank Details</a></li>
+						<li><a href="#password1" data-toggle="tab">Change Password</a></li>
+					</ul>
+							<div id="myTabContent" class="tab-content">
+								<!-- <div class="tab-pane active in" id="image" >
+								
+												<form id="tab">
+																<div>
+																		<img src="assets/img/img1.jpg" alt="" class="img-responsive" style="margin-right: 10px;">
+														</div>
+												</form>
+												</div> -->
+										<div class="tab-pane active in" id="personal">
+						
+								
+											<!-- <form id="tab2" [formGroup] = "addForm"  (ngSubmit) = "onSubmit(addForm)" class="validate-form"> -->
+										<div  *ngIf = "abc1">
+											<div class="form-group row">
+												<div class="col-sm-6">
+											<label>Company Name</label>
+											<span class="db">{{profileObj.company_name}}</span>	
+										</div>
+											<div class="col-sm-6">
+											<label>Owner Name</label>
+											<span class="db">{{profileObj.owner_name}}</span>
+										</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-6">
+														<label>Office Number</label>
+														<span class="db">{{profileObj.office_number}}</span>	
+													</div>
+											<div class="col-sm-6">
+													<label>Contact Number</label>
+													<span class="db">{{profileObj.contact_number}}</span>
+												</div>
+											</div>
+						
+											<div class="form-group row">
+															
+												<div class="col-sm-6">
+														<label>Email Id</label>
+														<span class="db">{{profileObj.email_id}}</span>
+													</div>
+													<div class="col-sm-6">
+															<label>Website</label>
+															<span class="db">{{profileObj.website}}</span>	
+														</div>
+													</div>
+											
+													<div class="form-group row">	
+														<div class="col-sm-6">
+															<label>PAN Number</label>
+															<span class="db">{{profileObj.pan_number}}</span>
+														</div>
+														<div class="col-sm-6">
+															<label>Transporter Reg Number/GST Number</label>
+															<span class="db">{{profileObj.transporter_reg_no}}</span>
+														</div>
+														<!-- <div class="col-sm-6">
+															<label>GST Number</label>
+															<span class="db">{{profileObj.gst_number}}</span>
+														</div> -->
+													</div>
+													<div class="form-group row">	
+														
+														<div class="col-sm-6">
+															<label>Tagline</label>
+															<span class="db">{{profileObj.tagline}}</span>
+														</div>
+													</div>
+				
+											
+										
+											<div>
+												<!-- <button type="submit" class="btn quote_btn btn-desg">
+											Update</button> -->
+											<!-- <button type="button" (click)="edit()" class="btn quote_btn btn-desg">
+											Edit</button> -->
+										</div>
+				
+				
+										
+									</div>
+				
+									
+									<div *ngIf = "abc">
+				
+										
+				
+											<form id="tab2"  [formGroup] = "addForm"  (ngSubmit) = "onSubmit(addForm)" class="validate-form">
+													<div class="form-group row">
+															<div class="col-sm-6">
+														<label>Company Name</label>
+														<input type="text" placeholder="Enter Company Name" required formControlName="company_name"  [(ngModel)]="profileObj.company_name" class="form-control field-set">
+														<div *ngIf="addForm.controls['company_name'].errors && ( !addForm.controls
+								
+														['company_name'].pristine || submitted ||addForm.controls['company_name'].touched )" class="error-msg">
+																						<div [hidden]="!addForm.controls
+														
+														['company_name'].errors.required">Company Name is Required.</div>
+																			</div>	
+													</div>
+														<div class="col-sm-6">
+														<label>Owner Name</label>
+														<input type="text"  formControlName="owner_name" class="form-control field-set input-xlarge" [(ngModel)]="profileObj.owner_name" placeholder="Enter Owner Name" required>
+														<div *ngIf="addForm.controls['owner_name'].errors && ( !addForm.controls
+								
+														['owner_name'].pristine || submitted ||addForm.controls['owner_name'].touched )" class="error-msg">
+																						<div [hidden]="!addForm.controls
+														
+														['owner_name'].errors.required">Owner Name is Required.</div>
+																			</div>	
+													</div>
+														</div>
+														<div class="form-group row">
+																<div class="col-sm-6">
+																		<label>Office Number</label>
+																		<input type="number"  id="txtboxToFilter1" min="0" formControlName="office_number" [(ngModel)]="profileObj.office_number" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " class="form-control field-set input-xlarge" placeholder="Enter Office Number" required>
+																		<div *ngIf="addForm.controls['office_number'].errors && ( !addForm.controls
+								
+																		['office_number'].pristine || submitted ||addForm.controls['office_number'].touched )" class="error-msg">
+																										<div [hidden]="!addForm.controls
+																		
+																		['office_number'].errors.required">Office Number is Required.</div>
+																							</div>	
+																	</div>
+															<div class="col-sm-6">
+																	<label>Contact Number</label>
+																	<input type="number" id="txtboxToFilter2" min="0" formControlName="contact_number" [(ngModel)]="profileObj.contact_number" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " class="form-control field-set input-xlarge" placeholder="Enter Contact Number" required>
+																	<div *ngIf="addForm.controls['contact_number'].errors && ( !addForm.controls
+								
+																	['contact_number'].pristine || submitted ||addForm.controls['contact_number'].touched )" class="error-msg">
+																									<div [hidden]="!addForm.controls
+																	
+																	['contact_number'].errors.required">contact Number  is Required.</div>
+																						</div>
+																</div>
+															</div>
+															<div class="form-group row">
+																	
+																<div class="col-sm-6">
+																		<label>Email ID</label>
+																		<input type="email"  formControlName="email_id" disabled [(ngModel)]="profileObj.email_id" class="form-control field-set input-xlarge" placeholder="Enter Email Id" required>
+																		<!-- <div *ngIf="addForm.controls['email_id'].errors && ( !addForm.controls
+								
+								['email_id'].pristine || submitted ||addForm.controls['email_id'].touched )" class="error-msg">
+																<div [hidden]="!addForm.controls
+								
+								['email_id'].errors.required">Email ID is Required.</div>
+													</div> -->
+																	</div>
+																	<div class="col-sm-6">
+																		<label>Website</label>
+																		<input type="text"  formControlName="website"  [(ngModel)]="profileObj.website" class="form-control field-set input-xlarge" placeholder="Enter Website" required>
+																		<div *ngIf="addForm.controls['website'].errors && ( !addForm.controls
+							
+																		['website'].pristine || submitted ||addForm.controls['website'].touched )" class="error-msg">
+																										<div [hidden]="!addForm.controls
+																		
+																		['website'].errors.required">Website is Required.</div>
+																							</div>	
+																	</div>
+																</div>
+							
+																<div class="form-group row">
+												
+																<div class="col-sm-6">
+																		<label>PAN Number</label>
+																		<input type="text"  formControlName="pan_number"  [(ngModel)]="profileObj.pan_number"  onkeypress="if(this.value.length==10) return false;" class="form-control field-set input-xlarge" placeholder="Enter PAN Number" required>
+																		<div *ngIf="addForm.controls['pan_number'].errors && ( !addForm.controls
+								
+								['pan_number'].pristine || submitted ||addForm.controls['pan_number'].touched )" class="error-msg">
+																<div [hidden]="!addForm.controls
+								
+								['pan_number'].errors.required">PAN Number is Required.</div>
+													</div>
+																	</div>
+																	<div class="col-sm-6">
+																		<label>GST Number</label>
+																		<input type="text"  formControlName="gst_number"  [(ngModel)]="profileObj.gst_number"  onkeypress="if(this.value.length==10) return false;" class="form-control field-set input-xlarge" placeholder="Enter GST Number" required>
+																		<div *ngIf="addForm.controls['gst_number'].errors && ( !addForm.controls
+							
+																		['gst_number'].pristine || submitted ||addForm.controls['gst_number'].touched )" class="error-msg">
+																										<div [hidden]="!addForm.controls
+																		
+																		['gst_number'].errors.required">GST Number is Required.</div>
+																							</div>	
+																	</div>
+																</div>
+				
+																<div class="form-group row">
+																<div class="col-sm-6">
+																<label>Transport Logo</label>
+																<input type="file" class="form-control field-set" (change)="changeListener($event)" formControlName="transport_logo"  #fileInput required style="padding: 8px 12px;">
+																<div *ngIf="addForm.controls['transport_logo'].errors && ( !addForm.controls
+								
+																['transport_logo'].pristine || submitted ||addForm.controls['transport_logo'].touched )" class="error-msg">
+																								<div [hidden]="!addForm.controls
+																
+																['transport_logo'].errors.required">Transport Logo is Required.</div>
+																					</div>		
+															
+															</div>
+																</div>
+														<div>
+															<!-- <button type="submit" class="btn quote_btn btn-desg">
+														Update</button> -->
+														<button type="submit"  class="btn quote_btn btn-desg">
+														Update</button>
+													</div>
+							
+							
+													
+												</form>
+										</div>
+								</div>
+								
+								<div class="tab-pane fade" id="password1">
+				
+											
+										<form id="tab4" [formGroup] = "passwordChange"  (ngSubmit) = "onSubmitPassword(passwordChange)">
+													<div class="form-group row">
+															<div class="col-sm-12">
+												<label>Old Password</label>
+												<input type="password" formControlName="old_password" class="form-control field-set input-xlarge" placeholder="Enter Old Password" required>
+												<div *ngIf="passwordChange.controls['old_password'].errors && ( !passwordChange.controls
+						
+												['old_password'].pristine || submitted ||passwordChange.controls['old_password'].touched )" class="error-msg">
+																				<div [hidden]="!passwordChange.controls
+												
+												['old_password'].errors.required">Old Password is Required.</div>
+																	</div>
+											</div></div>
+						
+											<div class="form-group row">
+													<div class="col-sm-12">
+												<label>New Password</label>
+												<input type="password" formControlName="new_password" class="form-control field-set input-xlarge" placeholder="Enter New Password" required>
+												<div *ngIf="passwordChange.controls['new_password'].errors && ( !passwordChange.controls
+						
+												['new_password'].pristine || submitted ||passwordChange.controls['new_password'].touched )" class="error-msg">
+																				<div [hidden]="!passwordChange.controls
+												
+												['new_password'].errors.required">New Password is Required.</div>
+																	</div>
+											</div></div>
+						
+											<div class="form-group row">
+													<div class="col-sm-12">
+												<label>Confirm Password</label>
+												<input type="password" formControlName="confirm_password" class="form-control field-set input-xlarge" placeholder="Enter Confirm Password" required>
+												<div *ngIf="passwordChange.controls['confirm_password'].errors && ( !passwordChange.controls
+						
+												['confirm_password'].pristine || submitted ||passwordChange.controls['confirm_password'].touched )" class="error-msg">
+																				<div [hidden]="!passwordChange.controls
+												
+												['confirm_password'].errors.required">Confirm Password is Required.</div>
+																	</div>
+											</div></div>	
+											
+												<div>
+														<button class="btn btn-info">Update</button>
+												</div>
+										</form>
+										</div>
+				
+				
+								<div class="tab-pane fade" id="bank">
+										<!-- <form id="tab3"  *ngIf = "abc2" [formGroup] = "addForm"  (ngSubmit) = "onSubmit(addForm)" class="validate_form"> -->
+											<div *ngIf = "abc2" >		
+											<div class="form-group row">
+															<div class="col-sm-12">
+												<label>Bank Name</label>
+												<span class="db">{{bankObj.bank_name}}</span>
+											</div></div>
+						
+											<div class="form-group row">
+													<div class="col-sm-12">
+												<label>Account Number</label>
+												<span class="db">{{bankObj.account_number}}</span>
+											</div></div>
+						
+											<div class="form-group row">
+													<div class="col-sm-12">
+												<label>IFSC Code</label>
+												<span class="db">{{bankObj.ifsc_code}}</span>
+											</div></div>	
+											
+												<div>
+														<button type="button" (click)="edit1()" class="btn btn-info">
+																Edit</button>
+												</div>
+											</div>
+					
+										<div *ngIf = "abcd">
+				
+												<form id="tab3"  [formGroup] = "bankdetail"  (ngSubmit) = "onSubmitbank()" class="validate-form">
+												<div class="form-group row">
+														<div class="col-sm-12">
+											<label>Bank Name</label>
+											<input type="text"  formControlName="bank_name"  [(ngModel)]="bankObj.bank_name" class="form-control field-set input-xlarge" placeholder="Enter Bank Name" required>
+											<div *ngIf="bankdetail.controls['bank_name'].errors && ( !bankdetail.controls
+								
+											['bank_name'].pristine || submitted ||bankdetail.controls['bank_name'].touched )" class="error-msg">
+																			<div [hidden]="!bankdetail.controls
+											
+											['bank_name'].errors.required">Bank Name is Required.</div>
+																</div>
+										</div></div>
+					
+										<div class="form-group row">
+												<div class="col-sm-12">
+											<label>Account Number</label>
+											<input type="number" min="0" formControlName="account_number"  [(ngModel)]="bankObj.account_number" onkeypress="if(this.value.length==16) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " class="form-control field-set input-xlarge" placeholder="Enter Account Number" required>
+											<div *ngIf="bankdetail.controls['account_number'].errors && ( !bankdetail.controls
+								
+											['account_number'].pristine || submitted ||bankdetail.controls['account_number'].touched )" class="error-msg">
+																			<div [hidden]="!bankdetail.controls
+											
+											['account_number'].errors.required">Account Number is Required.</div>
+																</div>
+												</div></div>
+					
+										<div class="form-group row">
+												<div class="col-sm-12">
+											<label>IFSC Code</label>
+											<input type="text"  formControlName="ifsc_code"  [(ngModel)]="bankObj.ifsc_code" class="form-control field-set input-xlarge" placeholder="Enter IFSC Code" required>
+											<div *ngIf="bankdetail.controls['ifsc_code'].errors && ( !bankdetail.controls
+								
+											['ifsc_code'].pristine || submitted ||bankdetail.controls['ifsc_code'].touched )" class="error-msg">
+																			<div [hidden]="!bankdetail.controls
+											
+											['ifsc_code'].errors.required">IFSC Code is Required.</div>
+																</div>
+										</div></div>	
+										
+											<div>
+													<button type="submit" class="btn btn-success">Update</button>
+													<button type="button" (click)="cancelEdit()"  class="btn btn-danger">Cancel</button>
+											</div>
+									</form>
+									</div>
+										</div>
+				
+				
+					
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+				</div>
+				</section>		
+		</div>
+	</div>
+
+	
+
+
+
+							<div class="backdrop" [ngStyle]="{'display':displayadded}"></div>
+							<div class="modal modal_bg_transparent" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':displayadded}">
+								<div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+									<div class="modal-content dialog bd-none">
+									   <div class="heading-mes popup1">
+												<h3>{{message}}</h3>
+										</div>
+										<div class="modal-footer footer-mes popup2">
+											<button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopupadded()" >OK</button>
+										</div>
+									</div>
+								</div>
+							</div> 
+
+
+							<div class="backdrop" [ngStyle]="{'display':displaybankdetails}"></div>
+							<div class="modal modal_bg_transparent" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':displaybankdetails}">
+								<div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+									<div class="modal-content dialog bd-none">
+									   <div class="heading-mes popup1">
+												<h3>{{bankmessage}}</h3>
+										</div>
+										<div class="modal-footer footer-mes popup2">
+											<button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopupbank()" >OK</button>
+										</div>
+									</div>
+								</div>
+							</div> 
+
+							<div class="backdrop" [ngStyle]="{'display':displaypassword}"></div>
+							<div class="modal modal_bg_transparent" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':displaypassword}">
+								<div class="modal-dialog  modal-dialog-centered modal-sm  bd-heading">
+									<div class="modal-content dialog bd-none">
+									   <div class="heading-mes popup1">
+												<h3>New Password And Confirm Password Does Not Match</h3>
+										</div>
+										<div class="modal-footer footer-mes popup2">
+											<button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopuppassword()" >OK</button>
+										</div>
+									</div>
+								</div>
+							</div> 
+
+
+
+							<div class="backdrop" [ngStyle]="{'display':displayconfirmpassword}"></div>
+							<div class="modal modal_bg_transparent" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':displayconfirmpassword}">
+								<div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+									<div class="modal-content dialog bd-none">
+									   <div class="heading-mes popup1">
+												<h3>{{message}}</h3>
+										</div>
+										<div class="modal-footer footer-mes popup2">
+											<button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopupadded()" >OK</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="backdrop" [ngStyle]="{'display':displaypasswordNot}"></div>
+							<div class="modal modal_bg_transparent" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':displaypasswordNot}">
+								<div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+									<div class="modal-content dialog bd-none">
+									   <div class="heading-mes popup1">
+												<h3>{{message}}</h3>
+										</div>
+										<div class="modal-footer footer-mes popup2">
+											<button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopupaddedNot()" >OK</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							

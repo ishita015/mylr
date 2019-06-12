@@ -1,0 +1,324 @@
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal modal_bg_transparent" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+    <div class="modal-content dialog bd-none">
+       <div class="modal-body heading-mes popup1 text-center">
+          <h3 style="font-size: 20px">{{templateArray.message}}</h3>
+      </div>
+      <div class="modal-footer footer-mes popup2 text-center">
+        <button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopup()" >OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix">
+  <div class="image-loader" *ngIf="imageLoader===true">
+      <img src="http://keraiz.com/mylr/loader.gif" />
+  </div>
+  <div class="row pt-117"> 
+      <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+          <app-left-sidebar></app-left-sidebar>
+      </div>
+      <div class="col-md-10">
+          <div class="card p-30 p-3 relative" style="float: left;">
+      <div class="color-container" style="width:100%">
+        
+      <div class="clearfix" style="background: #f7f7f7;padding-bottom: 1em;">
+          <h4 class="text-center">
+            <i class="fas fa-paint-brush"></i>
+            <br />
+            Choose your Color
+          </h4>
+          <div class="color-scheme text-center">
+            <ul class="ul-color">
+              <li (click)="setSchemeColor('#F86A31')"></li>
+              <li (click)="setSchemeColor('#D22393')"></li>
+              <li (click)="setSchemeColor('#694ABF')"></li>
+              <li (click)="setSchemeColor('#305C8D')"></li>
+              <li (click)="setSchemeColor('#387228')"></li>
+              <li (click)="setSchemeColor('#4B4B4B')"></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+    <style>
+      @media print
+    {
+      
+      .bg-gray{background-color: #BEBEBE}
+      .bdr-bottom{border:none; border-bottom: 1px solid #777}
+      .full-screen{width:100%; float:left} .fl-left{float:left}
+      .w10{width:10%} .w20{width:20%} .w30{width:30%} .w40{width:40%} .w50{width:50%}
+      .w60{width:60%} .w70{width:70%} .w80{width:80%} .w90{width:90%} .w100{width:100%}
+    
+      .mt-10{margin-top:10px} .mt-20{margin-top:20px} .mt-30{margin-top:30px} 
+      .mt-40{margin-top:40px} .mt-50{margin-top:50px}
+    
+      .mtb-5{margin-top:5px; margin-bottom:5px} .mtb-10{margin-top:10px; margin-bottom:10px}
+      .mtb-30{margin-top:30px; margin-bottom:30px} .mtb-20{margin-top:20px; margin-bottom:20px}
+      .mtb-40{margin-top:40px; margin-bottom:40px} .mtb-50{margin-top:50px; margin-bottom:50px}
+     
+      .lh-20{line-height:20px}
+    
+      table .bdr-bottom{width:100px};
+      
+    }
+    textarea:focus{border-color: #000 !important}
+    </style>
+    
+          <div id="print-section" class="clearfix" style="width:100%;float:left">
+              
+                  <div class="clearfix" style="width:100%;float:left">
+                    <div id="partToPrint" style="width:100%;float:left">
+                        <div class="full-screen" style="width:100%;float:left">
+                            <div class="w10 fl-left" style="width:15%;float:left">
+                                <img style="width:125px;float:left" width="125px;" class="img-responsive" id="image" src="{{ signupValue.transport_logo }}" alt="{{ signupValue.company_name }}" class="fl-left" />                                  
+                            </div>
+                            <div class="w80 fl-left text-center" style="width:70%;text-align:center; float:left">
+                                <h3>{{ signupValue.company_name }}</h3>
+                                <p class="mtb-5 lh-20 " style="line-height:20px;margin-top:5px;margin-bottom:5px">109, Mini Motor Market, Schm no. 94
+                                  Ring Road, Dewas Naka Indore</p>		
+                                  <p class="mtb-5" style="margin-top:5px;margin-bottom:5px">E-Mail : {{ signupValue.email_id }}</p>
+                                  <p class="mtb-5" style="margin-top:5px;margin-bottom:5px">Contacts : {{ signupValue.email_id }}</p>
+                            </div>
+                            <div class="w10 fl-left" style="width:15%;float:left">
+                                <img style="width:125px;float:left" width="125px;" class="img-responsive" id="image" src="{{ signupValue.transport_logo}}" alt="{{ signupValue.contact_name }}" class="fl-left" style="float:left;" />  
+                            </div>
+                        </div>
+                        <div class="w100 fl-left" style="width:100%;float:left;border:2px solid"></div>
+                        <!-- <div class="w70 fl-left mt-20" style="display:inline-flex">
+                            Consignor<textarea style="width:100%;    border-bottom: 1px solid;    height: 25px;"></textarea>
+                        </div>
+                        <div class="w10 fl-left" style="    color: #fff;">
+                          .
+                        </div>
+                        <div class="w20 fl-left">
+                            <div class="w100 fl-left mtb-5">Date: 25-05-2018</div>
+                            <div class="w100 fl-left mtb-5">LR No. 2055660</div>
+                            <div class="w100 fl-left mtb-5">GST No 25625255</div>
+                            <div class="w100 fl-left mtb-5">PAN No 265581152A2</div>
+                        </div> -->
+                      
+                        <div class="" style="width:60%; float:left;margin-top: 3em;margin-right:10%">
+                          <div class="" style="width:100%;float:left;display:flex">
+                            <span>Consignor</span>
+                            <span style="width: 100%;margin-left: 12px;">
+                              <textarea readonly style="width:100%;border-top:none;border-left:none;border-right:none;border-bottom: 1px solid;    height: 25px;"></textarea></span>
+                          </div>
+                          <div style="width:100%;float:left;display:flex;margin-top:5em">
+                              <span>Cosignee</span>
+                              <span style="width: 100%;margin-left: 12px;">
+                                <textarea readonly  style="width:100%;border-top:none;border-left:none;border-right:none;border-bottom: 1px solid;height: 25px;"></textarea></span>
+                          </div>
+                          <div style="width:100%;float:left;margin-top:3em">
+                            <table style="width:100%;" border="1" cellspacing="0" cellpadding="2">
+                              <tr style="text-align:center">
+                                  <td >Packages</td>
+                                  <td >Goods Details</td>
+                                  <td >Actual WT</td>
+                                  <td >Rate </td>
+                                  <td >Freight</td>
+                              </tr>
+                              <tr>
+                                <td rowspan="5"></td>
+                                <td  rowspan="5"></td>
+                                <td style="padding:10px"></td>
+                                <td  rowspan="2"></td>
+                                <td  rowspan="2"></td>
+                              </tr>
+                              <tr>
+                                <td>Chrg Wt</td>
+                              </tr>
+                              <tr>
+                                <td rowspan="3" ></td>
+                                <td colspan="2" style="padding:10px"></td>
+                              </tr>
+                              <tr>
+                                <td>Advance</td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td>Balance</td>
+                                <td></td>
+                              </tr>
+                            </table>
+                          </div>
+                          <div style="width:100%;float:left;margin-top:5px">
+                            <p>GST Paid By</p>
+                          </div>
+                        </div>
+                        
+                        
+                        <div class="" style="width:30%; float:left">
+                            <div class="" style="width:100%; float:left;margin-bottom:5px;margin-top:11px">
+                              <span>Date :</span><span style="margin-left: 5px;">25-05-2018</span>
+                            </div>
+                            <div class="" style="width:100%; float:left;margin-bottom:5px">                   
+                              <span>LR No. :</span><span style="margin-left: 5px;">125551</span>
+                            </div>
+                            <div class="" style="width:100%; float:left;margin-bottom:5px">
+                              <span>GST No. :</span><span style="margin-left: 5px;">12556699</span>
+                            </div>
+                            <div class="" style="width:100%; float:left">
+                              <span> PAN No. :</span><span style="margin-left: 5px;">2555SA55</span>
+                            </div>
+                            <div class="w100 text-center" style="width:100%;text-align:center;margin-bottom:5px;float: left;margin-top: 1em;">From</div>
+                            <div style="width:100%; float:left;margin-bottom:5px"> <input readonly  type="text" style="border:1px solid;width:100%"></div>
+                            <div class="w100 text-center" style="width:100%;text-align:center;margin-bottom:5px;float: left;margin-top: 5px;">To</div>
+                            <div style="width:100%; float:left;margin-bottom:5px"> <input readonly  type="text" style="border:1px solid;width:100%"></div>
+                            <div style="width:100%; float:left;margin-bottom:5px;margin-top:1em">
+                              <p style="text-align:center">Balance Freight</p>	
+                              <p style="width:100%;display:inline-flex">
+                              <span style="margin-left:-25px; margin-right:5">Rs.</span>
+                              <input readonly  type="text" style="border:1px solid;width:100%"></p>
+                              <p style="padding-top: 1em;">Payable at</p>
+                              <p><input readonly  type="text" style="border:1px solid;width:100%"></p>
+                            </div>
+                        </div>
+                        <div style="width:70%;float:left;margin-top:5px">
+                          <table style="width:100%;" cellspacing="0">
+                            <tr>
+                              <td valign="top">
+                                <table style="width:100%" cellspacing="0">
+                                  <tr>
+                                      <td valign="top">Transporter</td>
+                                      <td valign="top">Consignor</td>
+                                      <td valign="top">Consingnee</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="padding: 16px;"></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  <tr valign="bottom">
+                                    <td colspan="3">Delivery Throuth</td>
+                                  </tr>
+                                  <tr valign="bottom">
+                                    <td colspan="3"><input readonly  type="text" style="border:1px solid;width:100%"></td>
+                                  </tr>
+                                </table>
+                              </td>
+                              <td valign="top">
+                                <table  style="width:100%;border: 1px solid;" cellspacing="0">
+                                  <tr>
+                                    <td valign="top" style="height: 15px;">
+                                      <div style="width:100%;float:left;display:inline-flex;font-size: 12px;">
+                                        <span>Arrival date:</span><span style="margin-left:5px"> 25-02-2018</span>
+                                      </div>
+                                    </td>
+                                    <td valign="top" style="height: 15px;">
+                                      <div style="width:100%;float:left;display:inline-flex;font-size: 12px;">
+                                        <span>Time:</span>
+                                        <span style="margin-left:5px">20:22:01</span>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <div style="width:100%;float:left;display:inline-flex;font-size: 12px;">
+                                        <span>No. Boxes rec:</span><span style="margin-left:5px"> 266</span>
+                                      </div>
+                                    </td>
+                                    <td></td>
+                                  </tr>
+                                  <tr>
+                                    <td valign="top">
+                                      <div style="width:100%;float:left;display:inline-flex;font-size: 12px;">
+                                        <span>Remarks:</span><span style="margin-left:5px"> Lorem Ipsum doleer site amet</span>
+                                      </div>
+                                    </td>
+                                    <td valign="top">
+                                        <div style="width:100%;float:left;text-align: center;">
+                                            <span>Stamp	</span>
+                                        </div>
+                                    </td>
+                                  </tr>                        
+                                  <tr>
+                                    <td></td>
+                                    <td style="text-align:center">Signature</td>
+                                  </tr>
+                                  <tr>
+                                      <td style="height: 20px;"></td>
+                                      <td style="height: 20px;"></td>
+                                    </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table> 
+                                    
+                        </div>
+                        <div style="width:30%;float:left;margin-top:5px">
+          
+                        </div>
+                        <div class="clearfix" style="text-align:center;width:90%;float:left;">
+                          <div [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="padding:10px 0;color:#fff; width: 20%;margin: 0 auto;float: none;background: #ddd;-webkit-print-color-adjust: exact">Consignor Copy </div>
+                        </div>
+                        <div style="width: 60%; margin-right: 5%;float: left;text-align: justify;">
+                          <h5>Terms and conditions</h5>
+                          <p style="color:#555">
+                            We store goods in our godown entirely at the cost and risk of the Consignee or Consignor. 
+                            2. This goods is not issued at owners risk. 
+                            3. we are not responsible for any damage or breakage due to any reason. 
+                            4. The company does not take any responsibility for shortage/breakage/damage/leakage by sun, rain, weather, fire, theft, accident any of the cause which are beyond control.
+                            5. The customer should get insured his goods agaisnt all risks.
+                            6. The goods will be delivered against all due and transit expenses. 
+                            7. Vehicle shall be unloaded and loaded same day else the detaintion will be charged as per market rule.
+                            8. The consignee is absolutely responsible for legal liabilities of any rational controlled or prohibited goods smuggled, black market etc. 						
+                            And that while sending and receiving goods all the formalities have been performed under Transport 						
+                            acts and rules regulations.						
+                        </p>
+                        </div>
+                        <div style="width:30%;float:left">
+                          <div style="width:60%;float:right">
+                            <div style="width:100%;float:left;border: 1px solid;text-align: center;padding:10px">
+                              CAUTION
+                            </div>
+                            <div style="width:100%;float:left;border: 1px solid;padding: 10px;">
+                                <p>The consingment will 	
+                                not be detained	
+                                delivered re-routed	
+                                or rebooked without	
+                                Consingnee Bank's	
+                                Written Permition	
+                                will be delivered at	
+                                destinaiton</p>	
+                            </div>
+                          </div>
+                        </div>
+                        <div style="width:97%;float:left;border:1px solid;padding:10px">
+                          <p style="    font-size: 13px;">Cheque/DD to be issued in favour of "3D LOGISTIC SOUTIONS"			</p>
+                          <p style="    font-size: 13px;">NEFT/RTGS: HDFC BANK LTD A/C NO 50200007661401		</p>
+                          <p style="    font-size: 13px;width:70%;    float: left;">IFSC CODE-HDFC0001772- SHEHNAI-2, INDORE		</p>
+                          <p style="text-align:right;bottom:0;width:30%;    float: left;">For: 3D Logistic Solutions		</p>
+                        </div>
+                     </div>
+                      <div class="clearfix text-center">
+                        <!-- <button class="btn btn-primary" (click)="printDetail('partToPrint')">
+                          Preview
+                          </button> -->
+                        </div>
+                      
+                      
+               
+                  </div>
+                </div>
+          </div>      
+        </div>
+    
+    
+        <div class="clearfix text-center mtb-30" style="float:left;width:100%">
+            <div class="col-md-3 color-template text-left ">
+              <button [routerLink] = "['/signup/template']" class="btn btn-success btns"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
+            </div>
+            <div class="col-md-6 text-center" style="cursor: pointer;">
+              <button class="btn btn-primary btns" (click)="print()"><i class="fa fa-print" aria-hidden="true"></i> Preview</button>
+            </div>
+            <div class="col-md-3 text-right" style="cursor: pointer;">
+                <button style="background: #119c89;border-color:#119c89" class="btn btn-primary btns" (click)="onSubmit()"> Submit</button>
+            </div>
+          </div>
+    
+    </div>
+</div>
+</div>

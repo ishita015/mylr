@@ -1,0 +1,349 @@
+<div class="row">
+  <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+    <app-login-leftbar></app-login-leftbar>
+  </div>
+
+  <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+
+    <div class="card mtb-30 p-30 p-3 relative">
+      <div class="clearfix">
+        <form class="" [formGroup]="lrForm" name="lrForm" (ngSubmit)="submitLr(lrForm)">
+        <section style="width:100%;overflow-x:auto;">
+          <div>
+            <table style="width: 100%;">
+              <tr>
+                <td> <img id="image" style="width: 100px;" [src]="transporter_detail.transport_logo" alt="3d-logo" />
+
+                  <h5 style="color:red;margin: 0px 0px;">Dedicated to Deliver till Destination</h5>
+                </td>
+
+                <td style="text-align: center;">
+                  <h5 style="margin: 0px 15px;">Subject to Indore Jurisdiction</h5>
+                  <h3 style="margin: 0px 15px;">3D LOGISTIC SOLUTIONS</h3>
+                  <h5 style="margin: 0px 15px;">{{transporter_detail.address}}</h5>
+
+                </td>
+                <td style="text-align: right;">
+                  <h4 style="margin:0px 15px;padding: 0 64px">Contacts:</h4>
+                  <h4 style="margin:0px 15px;padding: 0 6px">{{transporter_detail.contact_no}}</h4>
+                  <h4 style="margin: 10px 0px;">E-mail- {{transporter_detail.email_id}}</h4>
+
+                </td>
+              </tr>
+
+            </table>
+          </div>
+<div>
+          <table cellpadding="5px" style="border-collapse: collapse;border: 1px solid #333;border-right: none;border-bottom: none;">
+           
+
+            <tr>
+              <td colspan="3" style="padding: 0px;border-right: 1px solid #333;">
+                <table style="width:100%;border-collapse: collapse;border-right: 0px;border-top: none;">
+
+                  <tr style="border:1px solid white;">
+                    <td style="text-align: right;border:1px solid #333;border-top: none;border-right: none;">No.</td>
+                    <td></td>
+                    <td>DD</td>
+                    <td>MM<span style="float: right;">YY</span></td>
+
+
+                  </tr>
+
+                  <tr>
+                    <td style="border:1px solid #333;border-right: none;width: 50%;">
+                      <h3 style="margin: 0px 15px;">Consignment Note-No.<span style="color:red"> *</span>  
+                        <input style="width: 60px;" placeholder="EB3D" formControlName="consignment_note_number" type="text" class="site_table_input"
+                        [ngClass]="{'feild-error': (lrForm.controls['consignment_note_number'].errors && ( !lrForm.controls['consignment_note_number'].pristine || submitted || lrForm.controls['consignment_note_number'].touched ))}">
+                      </h3>
+                    </td>
+                    <td style="border:1px solid #333;text-align: center;" width="100px">
+                      <h3 style="margin:0px 0px;">Dated <span style="color:red"> *</span> </h3>
+                    </td>
+                    <td style="border:1px solid #333;border-right:none; padding-left: 5px;" colspan="2">
+                        <input type="date" min="0" class="site_table_input w-100" formControlName="consignment_note_number_date"
+                        [ngClass]="{'feild-error': (lrForm.controls['consignment_note_number_date'].errors && ( !lrForm.controls['consignment_note_number_date'].pristine || submitted || lrForm.controls['consignment_note_number_date'].touched ))}">
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td style="text-align: center;">
+                      <h4 style="margin:2px;">Consignor Name & Address <span style="color:red"> *</span></h4>
+                      <input type="text" placeholder="Consignor Name" style="width: 100%;" class="site_table_input w-100" formControlName="consignor_name"
+                      [ngClass]="{'feild-error': (lrForm.controls['consignor_name'].errors && ( !lrForm.controls['consignor_name'].pristine || submitted || lrForm.controls['consignor_name'].touched ))}">
+                      <textarea rows="3" placeholder="Consignor Address" class="site_table_input w-100" formControlName="consignor_address" style="width: 100%;"
+                      [ngClass]="{'feild-error': (lrForm.controls['consignor_address'].errors && ( !lrForm.controls['consignor_address'].pristine || submitted || lrForm.controls['consignor_address'].touched ))}"></textarea>
+                    </td>
+                    <td colspan="3" style="padding-left: 20px;">
+                        <h4 style="margin:2px;">From <span style="color:red"> *</span></h4>
+                        <input type="text" formControlName="from" class="site_table_input w-100"
+                        [ngClass]="{'feild-error': (lrForm.controls['from'].errors && ( !lrForm.controls['from'].pristine || submitted || lrForm.controls['from'].touched ))}">
+                        <h4 style="margin:2px;">To. <span style="color:red"> *</span></h4>
+                        <input type="text" formControlName="to" class="site_table_input w-100"
+                        [ngClass]="{'feild-error': (lrForm.controls['to'].errors && ( !lrForm.controls['to'].pristine || submitted || lrForm.controls['to'].touched ))}">
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td style="padding-top: 20px;" colspan="4"></td>
+                  </tr>
+
+                  <tr>
+                    <td style="padding-top:0px;text-align: center;">
+                      <h4 style="margin:2px;">Consignee Name & Address <span style="color:red"> *</span></h4>
+                      <input type="text" placeholder="Consignee Name" style="width: 100%;" class="site_table_input w-100" formControlName="consignee_name"
+                      [ngClass]="{'feild-error': (lrForm.controls['consignee_name'].errors && ( !lrForm.controls['consignee_name'].pristine || submitted || lrForm.controls['consignee_name'].touched ))}">
+                      <textarea rows="3" placeholder="Consignee Address" class="site_table_input w-100" formControlName="consignee_address" style="width: 100%;"
+                      [ngClass]="{'feild-error': (lrForm.controls['consignee_address'].errors && ( !lrForm.controls['consignee_address'].pristine || submitted || lrForm.controls['consignee_address'].touched ))}"></textarea>
+                    </td>
+                    <td colspan="3" style="padding-left: 20px;">
+                        <h4 style="margin:2px;">Intime <span style="color:red"> *</span></h4>
+                        <input type="time" min="0" formControlName="in_time" class="site_table_input w-100"
+                        [ngClass]="{'feild-error': (lrForm.controls['in_time'].errors && ( !lrForm.controls['in_time'].pristine || submitted || lrForm.controls['in_time'].touched ))}">
+                        <h4 style="margin:2px;">Out time <span style="color:red"> *</span></h4>
+                        <input type="time" min="0" formControlName="out_time" class="site_table_input w-100"
+                        [ngClass]="{'feild-error': (lrForm.controls['out_time'].errors && ( !lrForm.controls['out_time'].pristine || submitted || lrForm.controls['out_time'].touched ))}">
+                        <h4 style="margin:2px;">Date <span style="color:red"> *</span></h4>
+                        <input type="date" min="0" formControlName="consignment_date" class="site_table_input w-100"
+                        [ngClass]="{'feild-error': (lrForm.controls['consignment_date'].errors && ( !lrForm.controls['consignment_date'].pristine || submitted || lrForm.controls['consignment_date'].touched ))}">
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td style="border:1px solid #333;border-top: none;border-right: none;border-left: none;"></td>
+                    <td style="padding-top: 20px;"></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                  <tr style="text-align: center">
+                    <td style="padding-bottom: 5px; border:1px solid #333;">
+                      <h4 style="margin:2px;">Packages <span style="color:red"> *</span></h4>
+                      <input type="text" formControlName="packages" class="site_table_input w-100"
+                      [ngClass]="{'feild-error': (lrForm.controls['packages'].errors && ( !lrForm.controls['packages'].pristine || submitted || lrForm.controls['packages'].touched ))}">
+                    </td>
+                    <td style="border:1px solid #333; padding-bottom: 5px;">
+                      <h4 style="margin:2px;">Description (said to contain) <span style="color:red"> *</span></h4>
+                      <input type="text" formControlName="description" class="site_table_input w-100"
+                      [ngClass]="{'feild-error': (lrForm.controls['description'].errors && ( !lrForm.controls['description'].pristine || submitted || lrForm.controls['description'].touched ))}">
+                    </td>
+                    <td style="border:1px solid #333; padding-bottom: 5px;">
+                      <h4 style="margin:2px;">Actual WT <span style="color:red"> *</span></h4>
+                      <input type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " formControlName="actual_weight"  class="site_table_input w-100"
+                      [ngClass]="{'feild-error': (lrForm.controls['actual_weight'].errors && ( !lrForm.controls['actual_weight'].pristine || submitted || lrForm.controls['actual_weight'].touched ))}">
+                    </td>
+                    <td style="padding-bottom: 5px; border:1px solid #333;border-top-color: #333;border-right:none;">
+                      <h4 style="margin:2px;">Charged WT <span style="color:red"> *</span></h4>
+                      <input type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " formControlName="charged_weight"  class="site_table_input w-100"
+                      [ngClass]="{'feild-error': (lrForm.controls['charged_weight'].errors && ( !lrForm.controls['charged_weight'].pristine || submitted || lrForm.controls['charged_weight'].touched ))}">
+                    </td>
+                  </tr>
+
+       
+
+                  <tr>
+                    <td style="padding-bottom: 15px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border:1px solid #fff;"></td>
+
+
+                  </tr>
+
+                  <tr style="text-align: center;">
+                    <td colspan="4">
+
+                      <table width="100%" cellspacing="0px" cellpadding="0px">
+                        <tr>
+                            <td style="text-align: center;">
+                              <h4 style="margin:2px;">Vehicle no.<span style="color:red"> *</span></h4>
+                              <input type="text" class="site_table_input w-100" formControlName="vehicle_number"
+                              [ngClass]="{'feild-error': (lrForm.controls['vehicle_number'].errors && ( !lrForm.controls['vehicle_number'].pristine || submitted || lrForm.controls['vehicle_number'].touched ))}" />
+                            </td>
+                            <td>
+                              <h4 style="margin:2px;">Driver license<span style="color:red"> *</span></h4>
+                              <input type="text" class="site_table_input w-100" formControlName="driver_license_no"
+                              [ngClass]="{'feild-error': (lrForm.controls['driver_license_no'].errors && ( !lrForm.controls['driver_license_no'].pristine || submitted || lrForm.controls['driver_license_no'].touched ))}" />
+                            </td>
+                            <td style="border-right-color:#333;" width="33.33%">
+                                <h4 style="margin:2px;">Contact no.<span style="color:red"> *</span></h4>
+                                <input class="site_table_input" minlength="10" required onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "
+                                formControlName="driver_contact_no" type="text" [ngClass]="{'feild-error': (lrForm.controls['driver_contact_no'].errors && ( !lrForm.controls['driver_contact_no'].pristine || submitted || lrForm.controls['driver_contact_no'].touched ))}">
+                                <div *ngIf="lrForm.controls['driver_contact_no'].errors && ( !lrForm.controls['driver_contact_no'].pristine || submitted ||lrForm.controls['driver_contact_no'].touched )" class="error-msg">
+                                      <div [hidden]="!lrForm.controls.driver_contact_no.hasError('minlength')">Contact Number must be 10 digits</div>
+                                    </div>
+                                <!-- <input type="text" class="site_table_input w-100" formControlName="driver_contact_no"
+                                [ngClass]="{'feild-error': (lrForm.controls['driver_contact_no'].errors && ( !lrForm.controls['driver_contact_no'].pristine || submitted || lrForm.controls['driver_contact_no'].touched ))}" />
+                             -->
+                              </td>
+                            <td style="border: 1px solid #333;border-left: none;border-bottom: none;"></td>
+                         </tr>
+
+                    </table>
+
+                    </td>
+
+
+
+                  </tr>
+
+                  <tr>
+                    <td style="padding-top: 15px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+                  </tr>
+
+                  <tr style="text-align: center;">
+                    <td colspan="4">
+
+
+                      <table width="100%" cellspacing="0px" cellpadding="0px">
+                        <tr>
+                          <td style="border: 1px solid #333;border-right: none;border-left: none;">
+                            <h4 style="margin:2px;">Financials</h4>
+                          </td>
+                          <td colspan="6">
+                            <table width="100%" cellspacing="0px" cellpadding="0px" formGroupName="charge_details">
+                              <tr>
+                                <td style="padding-bottom: 5px; border:1px solid #333;border-right: none;border-bottom: none;">
+                                  <h4 style="margin:2px;">Freight<span style="color:red"> *</span></h4>
+                                  
+                                 <input type="text" class="site_table_input w-100" formControlName="total_freight"
+                                 [ngClass]="{'feild-error': (lrForm.controls.charge_details.controls.total_freight.errors && ( !lrForm.controls.charge_details.controls.total_freight.pristine || submitted || lrForm.controls.charge_details.controls.total_freight.touched ))}" />
+                                
+                                </td>
+                                <td style="padding-bottom: 5px; border:1px solid #333;border-right: none;border-bottom: none;">
+                                  <h4 style="margin:2px;">Advance<span style="color:red"> *</span></h4>
+                                 
+                                 <input type="text" class="site_table_input w-100" formControlName="advance_freight"
+                                 [ngClass]="{'feild-error': (lrForm.controls.charge_details.controls.advance_freight.errors && ( !lrForm.controls.charge_details.controls.advance_freight.pristine || submitted || lrForm.controls.charge_details.controls.advance_freight.touched ))}" />
+                                
+                                </td>
+                                <td style="padding-bottom: 5px; border:1px solid #333;border-right: none;border-bottom: none;">
+                                  <h4 style="margin:2px;">Balance<span style="color:red"> *</span></h4>
+                                  
+                                 <input type="text" class="site_table_input w-100" formControlName="balance_freight"
+                                 [ngClass]="{'feild-error': (lrForm.controls.charge_details.controls.balance_freight.errors && ( !lrForm.controls.charge_details.controls.balance_freight.pristine || submitted || lrForm.controls.charge_details.controls.balance_freight.touched ))}" />
+                                
+                                </td>
+                                <td style="padding-bottom: 5px; border:1px solid #333;border-right: none;border-bottom: none;">
+                                  <h4 style="margin:2px;">Topay<span style="color:red"> *</span></h4>
+                                 
+                                 <input type="text" class="site_table_input w-100" formControlName="to_pay"
+                                 [ngClass]="{'feild-error': (lrForm.controls.charge_details.controls.to_pay.errors && ( !lrForm.controls.charge_details.controls.to_pay.pristine || submitted || lrForm.controls.charge_details.controls.to_pay.touched ))}" />
+                                
+                                </td>
+                                <td style="padding-bottom: 5px; border:1px solid #333;border-bottom: none;">
+                                  <h4 style="margin:2px;">TTB AT<span style="color:red"> *</span></h4>
+                                  
+                                 <input type="text" class="site_table_input w-100" formControlName="tbb"
+                                 [ngClass]="{'feild-error': (lrForm.controls.charge_details.controls.tbb.errors && ( !lrForm.controls.charge_details.controls.tbb.pristine || submitted || lrForm.controls.charge_details.controls.tbb.touched ))}" />
+                                
+                                </td>
+                                <td width="44px"></td>
+                              </tr>
+
+                              
+
+
+                            </table>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td colspan="4" style="border: 0px; border-bottom:1px solid #333;padding:10px;"></td>
+                        </tr>
+                      </table>
+
+                    </td>
+
+
+
+                  </tr>
+
+
+
+
+                </table>
+              </td>
+              <td style="padding: 0px 2px;vertical-align: top;border:1px solid #333;border-top:none;border-right: none;">
+                <h4 style="margin:2px;">Service tax payable by</h4><br/>
+                
+                  <h4 style="margin:0px;">
+                  
+                    <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    <span style="float: right;">Consignor</span></h4><br/>
+                  <h4 style="margin:0px;">
+                      
+                    <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    <span style="float: right;">Consignee</span></h4><br/>
+                  <h4 style="margin:0px;">
+                    <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    <span style="float: right;">Transport</span></h4><br/>
+                
+                <h4 style="margin: 0px 4px;">Invoice date<span style="color:red"> *</span>: 
+                </h4>
+                <input type="date" formControlName="invoice_date"   class="site_table_input w-100"
+                [ngClass]="{'feild-error': (lrForm.controls['invoice_date'].errors && ( !lrForm.controls['invoice_date'].pristine || submitted || lrForm.controls['invoice_date'].touched ))}">
+                <h4 style="margin:34px 4px;">Invoice no.<span style="color:red"> *</span>
+                </h4>
+                <input type="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " formControlName="invoice_number"  class="site_table_input w-100"
+                [ngClass]="{'feild-error': (lrForm.controls['invoice_number'].errors && ( !lrForm.controls['invoice_number'].pristine || submitted || lrForm.controls['invoice_number'].touched ))}">
+                <h4 style="margin:6px 4px;"> GST no </h4>
+                <input type="text"  formControlName="gst_number" [(ngModel)]="transporter_detail.gst_number" readonly  class="site_table_input w-100"
+                [ngClass]="{'feild-error': (lrForm.controls['gst_number'].errors && ( !lrForm.controls['gst_number'].pristine || submitted || lrForm.controls['gst_number'].touched ))}">
+                <h4 style="margin:6px 4px;"> Way-bill no<span style="color:red"> *</span> </h4>
+                <input type="text" formControlName="eway_bill_number"  class="site_table_input w-100"
+                [ngClass]="{'feild-error': (lrForm.controls['eway_bill_number'].errors && ( !lrForm.controls['eway_bill_number'].pristine || submitted || lrForm.controls['eway_bill_number'].touched ))}">
+                
+              </td>
+            </tr>
+
+
+          </table>
+        </div>
+        </section>
+
+        <div class="clearfix text-center">
+          <button type="submit" class="btn btn-success mt-15">Submit</button>
+        </div>
+        
+      </form>
+  
+    
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<!-- Basic form layout section start -->
+
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':display2}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+
+      <div class="modal-body">
+        <p>{{message}}</p>
+      </div>
+
+      <div class="modal-footer popup2">
+        <button type="button" [routerLink]="['/pages/login/']" class="btn btn-default" (click)="hidePop()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+</div>

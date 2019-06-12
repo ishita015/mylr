@@ -1,0 +1,552 @@
+<style>
+  custom-autocomplete__input[_ngcontent-c4] input[_ngcontent-c4] {
+    height: 34px !important;
+}
+image-cropper div img{
+  width: 75%;
+}
+ol li{
+    list-style-type: inherit !important;
+    padding-top: 10px;
+}
+ol{
+    line-height: 19px;
+    font-size: 12px;
+}
+.term-container
+{
+    overflow-y: scroll;
+    height: 60vh;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+</style>
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="assets/images/loader.gif" />
+</div>
+
+<div class="row pt-50 bdr-right"> 
+    <!-- <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-left-sidebar></app-left-sidebar>
+    </div> -->
+      
+    <div class="col-md-9 col-sm-9 col-xs-12">
+        <div class="card p-20 mtb-30 relative">
+            <h4 class="text-center">Fill The Details*</h4>
+              <form class="container-fluid m-t-30" [formGroup] = "addForm"  (ngSubmit) = "onSubmit(addForm)">
+                <div class="row form-group">
+                    <div class="col-sm-6">
+                        <label class="site_label" for="inputdefault">Company Name<span style="color:red">*</span></label>
+                        <input class="form-control site_input" formControlName="company_name"  type="text" placeholder="company name" required >
+                        <div *ngIf="addForm.controls['company_name'].errors && ( !addForm.controls['company_name'].pristine || submitted ||addForm.controls['company_name'].touched )" class="error-msg">
+                          <div [hidden]="!addForm.controls['company_name'].errors.required">Company Name is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="site_label" for="inputdefault">Owner Name<span style="color:red">*</span></label>
+                      <input class="form-control site_input" formControlName="owner_name"  type="text" placeholder="Owner Name" required>
+                      <div *ngIf="addForm.controls['owner_name'].errors && ( !addForm.controls['owner_name'].pristine || submitted ||addForm.controls['owner_name'].touched )" class="error-msg">
+                          <div [hidden]="!addForm.controls['owner_name'].errors.required">Owner Name is required.</div>
+                      </div>
+                  </div>
+                </div>
+                <div class="row form-group">
+                  <div class="col-sm-6">
+                      <label class="site_label" for="inputdefault">Transporter Reg No/GST Number<span style="color:red">*</span></label>
+                      <input class="form-control site_input" formControlName="transporter_reg_no"  type="text" placeholder="Transporter Reg No" required >
+                      <div *ngIf="addForm.controls['transporter_reg_no'].errors && ( !addForm.controls['transporter_reg_no'].pristine || submitted ||addForm.controls['transporter_reg_no'].touched )" class="error-msg">
+                        <div [hidden]="!addForm.controls['transporter_reg_no'].errors.required">Transporter reg No is required.</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="site_label" for="inputdefault">Tagline</label>
+                    <input class="form-control site_input" formControlName="tagline"  type="text" placeholder="Tagline">
+                </div>
+              </div>
+                
+               
+                 <div class="row form-group">
+                    <div class="col-sm-6">
+                      <label class="site_label" for="inputdefault">Office No.<span style="color:red">*</span></label>
+                      <input class="form-control site_input"  minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250" formControlName="office_number"  type="text" placeholder="Office No." required >
+                      <div *ngIf="addForm.controls['office_number'].errors && ( !addForm.controls['office_number'].pristine || submitted ||addForm.controls['office_number'].touched )" class="error-msg">
+                        <div [hidden]="!addForm.controls['office_number'].errors.required">Contact Number is required.</div>
+                        <div [hidden]="!addForm.controls.office_number.hasError('minlength')">Mobile no. must be 10 digits</div>
+                      </div>
+                </div>
+               
+                <div class="col-sm-6">
+                      <label class="site_label" for="inputdefault">Contact No.<span style="color:red">*</span></label>
+                      <input class="form-control site_input" minlength="10"  formControlName="contact_number" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "  type="text" placeholder="Contact No." required>
+                      <div *ngIf="addForm.controls['contact_number'].errors && ( !addForm.controls['contact_number'].pristine || submitted ||addForm.controls['contact_number'].touched )" class="error-msg">
+                        <div [hidden]="!addForm.controls['contact_number'].errors.required">Contact Number is required.</div>
+                        <div [hidden]="!addForm.controls.contact_number.hasError('minlength')">Mobile no. must be 10 digits</div>
+                      </div>
+                    </div>
+                 </div>
+                  
+                <div class="row form-group">
+                  <div class="col-sm-6">
+                     <label class="site_label" for="inputdefault">Email Id<span style="color:red">*</span></label>
+                     <input id="txtEmail"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  class="form-control site_input" formControlName="email_id" type="email" placeholder="Email Id" required>
+                     <div *ngIf="addForm.controls['email_id'].errors && ( !addForm.controls['email_id'].pristine || submitted || addForm.controls['email_id'].touched )" class="error-msg">
+                        <div [hidden]="!addForm.controls['email_id'].errors.required">Email Is Required.</div>
+                        <div [hidden]="!addForm.controls['email_id'].errors.pattern">Email Pattern is required.</div>
+                  </div>
+                </div>
+          
+                    <div class="col-sm-6">
+                          <label class="site_label" for="inputdefault">Password<span style="color:red">*</span></label>
+                          <input class="form-control site_input" formControlName="password" type="password" placeholder="Password" required>
+                          <div *ngIf="addForm.controls['password'].errors && ( !addForm.controls['password'].pristine || submitted ||addForm.controls['password'].touched )" class="error-msg">
+                            <div [hidden]="!addForm.controls['password'].errors.required">Password Is Required.</div>
+                          </div>
+                      </div>
+                  </div>
+                
+             <div class="row form-group">
+                   
+                    <div class="col-sm-6">
+                         <label class="site_label" for="inputdefault">Main Branch<span style="color:red">*</span></label>
+                         <input class="form-control site_input" formControlName="branch_name"  type="text" placeholder="Branch Name" required>
+                         <div *ngIf="addForm.controls['branch_name'].errors && ( !addForm.controls['branch_name'].pristine || submitted ||addForm.controls['branch_name'].touched )" class="error-msg">
+                           <div [hidden]="!addForm.controls['branch_name'].errors.required">Branch Name Is Required.</div>
+                         </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <label class="site_label" for="inputdefault">Address<span style="color:red">*</span></label>
+                          <input class="form-control site_input" formControlName="address"  type="text" placeholder="address" required>
+                          <div *ngIf="addForm.controls['address'].errors && ( !addForm.controls['address'].pristine || submitted ||addForm.controls['address'].touched )" class="error-msg">
+                           <div [hidden]="!addForm.controls['address'].errors.required">Address Is Required.</div>
+                         </div>
+
+                          <!-- <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete> -->
+                          <!-- <span class="error-msg" [ngStyle]="{'display':displayError}">Address is Required</span> -->
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                   
+                    <div class="col-sm-6">
+                         <label class="site_label" for="inputdefault">State<span style="color:red">*</span></label>{{newState}}
+                         <select  class="form-control site_input" id="select"   formControlName="state" required >
+                          <option *ngFor="let state of Array" value="{{ state }}">
+                                  {{state}}
+                          </option>
+                      </select>
+                      <div *ngIf="addForm.controls['state'].errors && ( !addForm.controls['state'].pristine || submitted ||addForm.controls['state'].touched )" class="error-msg">
+                        <div [hidden]="!addForm.controls['state'].errors.required">State is required.</div>
+                    </div>
+                        
+                        
+                        </div>
+                        <div class="col-sm-6">
+                          <label  class="site_label" for="inputdefault">City<span style="color:red">*</span></label>
+                          <!-- <input disabled class="form-control site_input" id="city" value="{{cityArray.city}}"   formControlName="city" type="text" placeholder="City"> -->
+                          <select  class="form-control site_input" id="select" formControlName="city"  >
+                            <option *ngFor="let city of cities">
+                                    {{city}}
+                            </option>
+                        </select>
+                        <div *ngIf="addForm.controls['city'].errors && ( !addForm.controls['city'].pristine || submitted ||addForm.controls['city'].touched )" class="error-msg">
+                          <div [hidden]="!addForm.controls['city'].errors.required">city is required.</div>
+                      </div>
+                        </div>
+                  </div>
+          <div class="row form-group">
+            <div class="col-sm-6">
+                <label class="site_label" for="inputdefault">Website</label>
+                <input class="form-control site_input" formControlName="website"  type="text" placeholder="Website">
+                <!-- <div *ngIf="addForm.controls['website'].errors && ( !addForm.controls['website'].pristine || submitted ||addForm.controls['website'].touched )" class="error-msg">
+                  <div [hidden]="!addForm.controls['website'].errors.required">Website Is Required.</div>
+                </div> -->
+              </div>
+            
+          <div class="col-sm-6">
+                <label class="site_label" for="inputdefault">Pan Number<span style="color:red">*</span></label>
+                <input class="form-control site_input" formControlName="pan_number"  type="text" placeholder="Pan Number" required>
+                <div *ngIf="addForm.controls['pan_number'].errors && ( !addForm.controls['pan_number'].pristine || submitted ||addForm.controls['pan_number'].touched )" class="error-msg">
+                  <div [hidden]="!addForm.controls['pan_number'].errors.required">Pan No. Is Required.</div>
+                </div>
+              </div>
+          </div>
+          <div class="row form-group">
+            <!-- <div class="col-sm-6">
+                <label class="site_label" for="inputdefault">GST No.</label>
+                <input class="form-control site_input" formControlName="gst_number"  type="text" placeholder="Gst Number">
+               <div *ngIf="addForm.controls['gst_number'].errors && ( !addForm.controls['gst_number'].pristine || submitted ||addForm.controls['gst_number'].touched )" class="error-msg">
+                  <div [hidden]="!addForm.controls['gst_number'].errors.required">Gst No. Is Required.</div>
+                </div> 
+              </div> -->
+              <div class="col-sm-6">
+                  <label class="site_label" for="inputdefault">Transport Logo<span style="color:red">*</span>:</label>
+                  <input type="file" accept="image/*" class="upload_file form-control site_input" (change)="changeListener($event)"  formControlName="transport_logo">
+                   <!-- <img *ngIf="image!=''" class="upload_add_breeds" [src]= "image"> -->
+                   <!-- <input type="file" (change)="changeListener($event)" /> -->
+                  <div *ngIf="isPrev==true" class="col-md-6">
+                      <image-cropper class="col-md-6"
+                      [imageChangedEvent]="imageChangedEvent"
+                      [maintainAspectRatio]="true"
+                      [aspectRatio]="4 / 3"
+                      [resizeToWidth]="128"
+                      format="png"
+                      formControlName="transport_logo"
+                      (imageCroppedBase64)="imageCropped($event)"
+                      (loadImageFailed)="loadImageFailed()"
+                  ></image-cropper> 
+                  </div>
+                  <!-- <div class="col-md-6">
+                     <img *ngIf="croppedImage!=''" class="img-cropped" [src]="croppedImage" />
+                  </div>                -->
+                  <div class="col-md-12" *ngIf="addForm.controls['transport_logo'].errors && ( !addForm.controls['transport_logo'].pristine || submitted ||addForm.controls['transport_logo'].touched )" class="error-msg">
+                    <div [hidden]="!addForm.controls['transport_logo'].errors.required">Transport Logo Is Required.</div>
+                  </div>
+                </div>
+           
+          </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+                  <p class= "condition"><input name="check" type="checkbox" [checked]="checkboxValue" formControlName="checkboxValue" value="false" required><span class="terms-spn" (click)="openTerms()"> I accept term and condition</span></p>
+                  <div *ngIf="addForm.controls['checkboxValue'].errors && ( !addForm.controls['checkboxValue'].pristine || submitted ||addForm.controls['checkboxValue'].touched )" class="error-msg">
+                    <div [hidden]="!addForm.controls['checkboxValue'].errors.required">Terms & Conditions Is Required.</div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- <div *ngIf="isCheck==true" class="error-msg">Accept Terms & Conditions Is Required.</div> -->
+                
+               <div class="container-login100-form-btn">
+                  <button class="login101-form-btn"   type="submit" value="Submit" >
+                    Submit Now
+                  </button>
+                </div>
+              <br>
+          </form>
+          </div>            
+    </div>
+    <div class="col-md-3 right_sidebar bdr-left">
+        <app-right-sidebar></app-right-sidebar>
+    </div>
+</div>
+
+
+<div class="backdrop" [ngStyle]="{'display':termsCondition}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':termsCondition}">
+    <div class="modal-dialog  modal-dialog-centered modal-sm" style="width:500px">
+        <div class="modal-content dialog" style="    border: 1px solid #ee4f4c;">
+            <div class="modal-header popup1 text-center">
+                <label class="site_label" style="font-size: 15px;color:#ee4f4c;margin: 0 !important;">Terms & Conditions</label>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="closeTerms()">
+                        <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <div style="width:100%" class="term-container">
+                    <p style="font-size: 12px;text-align:  justify;">Agreement cum terms and conditions regarding the use of the MyLr.in</p>
+                    
+                    <ol style="width: 90%;
+                    float: none;
+                    margin: 0 auto;
+                    text-align: justify;">
+                        <li>This agreement (hereinafter referred to as the “agreement”) is a mutual
+                            agreement between Transtech commercial services LLP, having its head
+                            office in Pune, (hereinafter referred to as the “Provider” and/or &quot;we&quot; and/or
+                            &quot;our” and/or &quot;us&quot;), and you (hereinafter referred to as “you” and/or “your”
+                            and/or the “user”), for using MyLr.in (as defined below). The Provider and
+                            you are hereinafter also referred to individually as a “Party” and collectively
+                            as the “Parties”. This agreement, the terms and conditions (“terms and
+                            conditions”) of this agreement, also include any replacement and/or
+                            amendment thereof by the Provider.
+                        </li>
+                        <li>
+                            MyLr.in (hereinafter referred to as the “MyLr.in” and/or the “MyLr.in
+                            Software” and/or the “Provider’s Solution” and/or the “Solution” and/or the
+                            “Software” and/or the “Software Product” and/or the “Solution”) is a
+                            software that mainly may allow to the user(s) to create and/or send
+                            different documents, including without limitation Lorry receipts and/or
+                            Load challans and/or Freight challan and/or invoice and/or Loading
+                            slips and/or other documents/reports can be created/ share and send
+                            different documents, any and each of the previous mentioned documents
+                            hereinafter referred to as the “document” and together the “documents”),
+                            as well as to be used for any other purposes expressly allowed by the
+                            Provider, any and all of them mainly using the interfaces and/or the
+                            templates of the documents, accessible from/on the web
+                            site www.mylr.in hereinafter referred to as the „site” or the „website”.
+                        </li>
+                        <li>
+                            You expressly acknowledge and agree to use the website for the purposes
+                            expressly mentioned in this agreement and that you have the right to use
+                            MyLr.in only as end user of the Solution. You do not have the right to use
+                            the Solution for other purposes than the purposes expressly permitted by
+                            the present agreement; the use of the Solution, except for use of the
+                            Solution as permitted in this agreement, is strictly prohibited and may
+                            subject you to civil and criminal penalties, including possible monetary
+                            damages.
+                        </li>
+                        <li>
+                            By using MyLr.in and/or of any update and/or of any parts thereof and/or
+                            by pressing any acceptance and/or agreeing button and/or by creating the
+                            account (the “account”) in order to perform the registration process, you
+                            expressly and unconditionally accept all the terms and conditions of this
+                            agreement, including as they will be replaced or amended from time to
+                            time, and you undertake yourselves to fully and adequately respect them.
+                            If you do not wish to fully and adequately respect the terms and conditions
+                            of this agreement, including as they will be replaced or amended from time
+                            to time, do not use (any longer) the Solution and/or any update, as
+                            applicable.
+                        </li>
+                        <li>
+                            In order to use the Solution you must sign-up on the website, creating the
+                            account in order to perform the registration process. In order to create an
+                            account and use the Solution you must provide valid requested information
+                            in order to complete the signup process.
+                        </li>
+                        <li>
+                            Except otherwise expressly permitted by the Provider, in order to use the
+                            Solution according with the present agreement you must pay a
+                            subscription fee. The subscription fee(s) for using the Solution by you may
+                            be also as (a) subscription(s) fee(s) (each the “subscription fee” and
+                            together the “subscriptions fees”. Different users fee(s) may apply for using
+                            different version(s) of the Solution and/or for using different part(s) of the
+                            Solution and/or for using different functionalities and/or features and/or
+                            specifications (together the “specifications”) of the Solution. We may also
+                            provide you promotional or (free) trial periods for using the Solution, which
+                            might be limited in time, specifications or otherwise.
+                        </li>
+                        <li>
+                            You expressly understand and agree that the (the templates and/or
+                            samples of the) documents available through MyLr.in, are provided on an
+                            “as is” and “as available” basis, and, to the maximum extent permissible by
+                            applicable law, the Provider does not represent, guarantee or warrant that
+                            any (templates and/or samples of the) documents are according with any
+                            applicable laws and/or in any applicable jurisdiction. The Provider makes
+                            no warranty, either express or implied, as to the accuracy, usefulness,
+                            completeness or reliability of the (the templates and/or samples of the)
+                            documents. The (the templates of the) documents, or any feature or part
+                            thereof, may not be available in all languages or in all regions of the
+                            country and the provider makes no representation that the (the templates
+                            and/or samples of the) documents, or any feature or part thereof, are
+                            appropriate or available for use in any particular location and/or for any
+                            (specific) purposes. To the extent you choose to access, use and/or fill in
+                            the documents any content (the” content”) and/or modify the (the templates
+                            and/or samples of the) documents, you do so at your own initiative and you
+                            are exclusively responsible for use and compliance of such documents
+                            (including any content and modifications) with any applicable laws in the
+                            applicable jurisdiction and the consequences of their transmission or
+                            publication. The Provider is not providing any legal, financial, accounting,
+                            tax, health care, real estate or other professional services or advice and he
+                            is not liable for any documents and/or content that you are using,
+                            transmitting and/or publishing.
+                        </li>
+                        <li>
+                            The Provider, at its sole discretion, can provide you with updates. These
+                            updates may include bug fixes, feature enhancements or improvements, or
+                            entirely new versions of the Solution. The updates may include new
+                            specifications, may not include all the previous specifications of the
+                            Solution or the newly launched specifications in other cases. The Provider,
+                            at its sole discretion and without notice, may update from time to time the
+                            Solution, including by introducing new specifications and/or modification
+                            and/or improvement of some existent specifications, which can be
+                            implemented automatically by the Provider. Continued use of the Solution
+                            after any such updates shall constitute your consent to such updates. In
+                            case you don’t agree with such updates you have the right to terminate the
+                            present agreement and your account with immediate effect, this being the
+                            only remedy applicable in such case.
+                        </li>
+                        <li>
+                            The Provider reserves the right to update and change the terms and
+                            conditions from time to time without notice. Any new specifications of the
+                            Solution shall be subject to these terms and conditions. You agree that is
+                            your exclusive responsibility to check the terms and conditions each time
+                            you are using the Solution. Continued use of the Solution after any such
+                            update and change of the terms and conditions shall constitute your
+                            consent to such update and change of the terms and conditions. In case
+                            you don’t agree with such update and change of the terms and conditions                            
+                            you have the right to terminate the present agreement and your account
+                            with immediate effect, this being the only remedy applicable in such case.
+                            The terms and conditions of this agreement, including as they will be
+                            replaced or amended from time to time, will govern and will also be fully
+                            applicable to any update, including together with any separate and/or
+                            specific terms and condition, except when a certain update is accompanied
+                            by a separate agreement in which it will be expressly specified that it is
+                            solely separately applicable for that update, in such case(s) the terms and
+                            conditions of that agreement will govern, including as these will be
+                            replaced or amended from time to time.
+                        </li>
+                        <li>
+                            Use of the Solution may require a valid account and/or compatible
+                            devices and/or internet access and/or certain/different (other) software(s)
+                            and/or periodic updates. You agree that meeting these requirements is
+                            your responsibility.
+                        </li>
+                        <li>
+                            In order to be a registered user of the Solution you must establish
+                            an account. Registrations through any automated methods are not
+                            permitted. Don’t reveal your account information to anyone else. You are
+                            solely responsible for maintaining the confidentiality and security of your
+                            account and for all activities that occur on or through your account, and
+                            you agree to immediately notify the Provider of any security breach of your
+                            account. You further acknowledge and agree that the Solution is designed
+                            and intended for use on an individual basis and you should not share your
+                            account and/or password details with another person. In order to use the
+                            Solution, you must enter an email address and password to authenticate
+                            your account. You agree to provide accurate and complete information
+                            when you register with, and as you use, the Solution and you agree to
+                            update such information to keep it accurate and complete. Failure to
+                            provide accurate, current and complete information may also result in the
+                            suspension and/or termination of your account. You agree that the
+                            Provider may store and use information you provide for use in maintaining
+                            and billing fees to your account. For the sake of clarity the (direct) access
+                            to your account, it is your responsibility and you are responsible for
+                            maintaining the security of your account and password. The Provider shall
+                            not be responsible for any losses arising out of the unauthorized use of                            
+                            your account resulting from you not following these rules or otherwise from
+                            your failure to comply with the security obligations.
+                        </li>
+                        <li>
+                            Without affecting the generality of those mentioned in this
+                            agreement, you expressly acknowledge and agree that: i) you will not
+                            reproduce, copy, duplicate, sell, resell, rent or trade the Solution (or any
+                            part thereof) for any purpose; ii) you are fully and exclusively liable,
+                            including towards your clients (the “clients”) and any competent authorities
+                            (the “authorities”) for any content loaded into the documents and/or for any
+                            documents transmitted by you to the clients and any other persons and/or
+                            for any emails that you send and that contain any documents and/or
+                            content; iii) the Provider may use cookies and may store data and/or
+                            information in the cookies, including enabling an easier interaction with
+                            you; iv) the Provider shall not be liable under any circumstances in case
+                            you cannot use the Solution due to internet access or otherwise; v) in the
+                            use of the Solution may appear short breaks resulting from the periodic
+                            maintenance of the Solution or due to (other) random events.
+                        </li>
+                        <li>
+                            The present agreement is valid for the promotional or the (free) trial
+                            periods or for the period for which you have paid/were charged the license
+                            fee(s), as the case may be, unless otherwise terminated according with the
+                            present agreement and/or with the legal regulations in force. The Provider
+                            shall use reasonable endeavors to send you, before the end of the
+                            period(s) for which you have paid/were charged the subscription fee(s),
+                            reminders for extending/renewing the subscription agreement for the
+                            Solution. If you are not extending /renewing the subscription agreement for
+                            the Solution, at the end of the period for which you have paid/were
+                            charged the license fee(s), the Provider shall use reasonable endeavors to
+                            downgrade your account to the free version/ or can stop access. If no
+                            downgrade was performed to your account to the free version the Provider
+                            shall delete your account and agreement shall be rightfully terminated at
+                            the date of such deletion, without putting in delay, without fulfilling any
+                            other formalities and without any other judiciary or extra-judiciary
+                            procedure, and you will have no right anymore in relation with the Solution.
+                            Except otherwise expressly permitted on the website, for the free version.
+                        </li>
+                        <li>
+                            The Provider retains the full ownership of MyLr.in and reserves all
+                            the rights that are not expressly granted to you. You acknowledge and
+                            agree that the Provider owns all legal right, title and interest in and to (any
+                            part of) the Solution including any and all intellectual property rights that
+                            exist therein, whether registered or not, and wherever in the world they
+                            may exist. You further agree that the Solution may contains proprietary
+                            and confidential information that is protected by applicable intellectual
+                            property and other laws, including but not limited to copyright. You agree
+                            that you will not use such proprietary information or materials in any way
+                            whatsoever except for use of the Solution in compliance with this
+                            agreement. No part of the Solution may be reproduced in any form or by
+                            any means, except as expressly permitted in these terms and conditions.
+                            The Solution is subscribed and not sold to you by the Provider, to be used
+                            in compliance with the terms and conditions of this agreement, including as
+                            they will be replaced or amended from time to time.
+                        </li>
+                        <li>
+                            The Provider reserves the right to take steps the Provider believes
+                            are reasonably necessary or appropriate to enforce and/or verify
+                            compliance with any part of this agreement. You acknowledge and agree
+                            that the Provider may, without liability to you, access, use, preserve and/or
+                            disclose your account information and content to law enforcement
+                            authorities, government officials, and/or a third party, as the Provider
+                            believes is reasonably necessary or appropriate, if legally required to do so
+                            or if the Provider has a good faith belief that such access, use, disclosure,
+                            or preservation is reasonably necessary to: (a) comply with legal process
+                            or request; (b) enforce this agreement, including investigation of any
+                            potential violation thereof; (c) detect, prevent or otherwise address
+                            security, fraud or technical issues; or (d) protect the rights, property or
+                            safety of the Provider, its users, a third party, or the public as required or
+                            permitted by law.
+                        </li>
+                        <li>
+                            You agree to the fact that you are not allowed and you agree not to
+                            undertake and not to allow any third party, in relation to the Solution, to
+                            copy, decompile, restore, recompile, modify, translate, perform reverse-
+                            engineering processes, disassemble, try to derive the source code,
+                            perform any tests with the purpose of discovering the source code,
+                            decrypt, create any derived products based on the Solution or perform                            
+                            other similar operations, in relation to the Solution, in any way and for any
+                            purpose, regardless of its nature, without the prior written consent of the
+                            Provider.
+                        </li>
+                        <li>
+                            To the maximum extent permitted by the legal regulations in force,
+                            you acknowledge and agree expressly with the fact that the use of the
+                            Solution and of any content shall be done on your own responsibility and at
+                            your own risk and you fully assume the risks regarding the performance,
+                            accuracy and quality with regard to the Solution and/or the documents/
+                            and/or the content.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="modal-footer popup2 text-center">
+                <button type="button" style="margin:0" class="btn btn-default" (click)="closeTerms()" >Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+    <div class="modal-dialog  modal-dialog-centered modal-sm">
+        <div class="modal-content dialog">
+        
+            <div class="modal-body text-center">
+                <p>{{message}}</p>
+            </div>
+            
+            <div class="modal-footer popup2 text-center">
+                <button type="button" [routerLink] = "['/pages/login/']" class="btn btn-default" (click)="hidePop()" >Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="backdrop" [ngStyle]="{'display':displayconfirmpassword1}"></div>
+
+  <div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':displayconfirmpassword1}">
+    <div class="modal-dialog  modal-dialog-centered modal-sm">
+        <div class="modal-content dialog">
+        
+            <div class="modal-body text-center">
+                <p>{{message}}</p>
+            </div>
+            
+            <div class="modal-footer popup2 text-center">
+                <button type="button" [routerLink] = "['/pages/login/']" class="btn btn-default" (click)="hidePopupadded1()" >Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

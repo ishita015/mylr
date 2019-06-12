@@ -1,0 +1,453 @@
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal modal_bg_transparent" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+    <div class="modal-content dialog bd-none">
+       <div class="modal-body heading-mes popup1">
+          <h3 style="font-size: 20px;font-weight: 600;">{{templateArray.message}}</h3>
+      </div>
+      <div class="modal-footer footer-mes popup2">
+        <button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopup()" >OK</button>
+      </div>
+    </div>
+  </div>
+</div> 
+<div class="clearfix">
+    <div class="image-loader" *ngIf="imageLoader===true">
+        <img src="http://keraiz.com/mylr/loader.gif" />
+    </div>
+  <div class="row pt-117"> 
+      <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-left-sidebar></app-left-sidebar>
+      </div>
+      <div class="col-md-10">
+      <div class="card p-30 p-3 relative">
+      <div class="color-container" style="width:100%">
+        
+      <div class="clearfix" style="background: #f7f7f7;padding-bottom: 1em;">
+          <h4 class="text-center">
+            <i class="fas fa-paint-brush"></i>
+            <br />
+            Choose your Color
+          </h4>
+          <div class="color-scheme text-center">
+            <ul class="ul-color">
+              <li (click)="setSchemeColor('#F86A31')"></li>
+              <li (click)="setSchemeColor('#D22393')"></li>
+              <li (click)="setSchemeColor('#694ABF')"></li>
+              <li (click)="setSchemeColor('#305C8D')"></li>
+              <li (click)="setSchemeColor('#387228')"></li>
+              <li (click)="setSchemeColor('#4B4B4B')"></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+    <style>
+      @media print
+    {
+      
+      .bg-gray{background-color: #BEBEBE}
+      .bdr-bottom{border:none; border-bottom: 1px solid #777}
+      .full-screen{width:100%; float:left} .fl-left{float:left}
+      .w10{width:10%} .w20{width:20%} .w30{width:30%} .w40{width:40%} .w50{width:50%}
+      .w60{width:60%} .w70{width:70%} .w80{width:80%} .w90{width:90%} .w100{width:100%}
+    
+      .mt-10{margin-top:10px} .mt-20{margin-top:20px} .mt-30{margin-top:30px} 
+      .mt-40{margin-top:40px} .mt-50{margin-top:50px}
+    
+      .mtb-5{margin-top:5px; margin-bottom:5px} .mtb-10{margin-top:10px; margin-bottom:10px}
+      .mtb-30{margin-top:30px; margin-bottom:30px} .mtb-20{margin-top:20px; margin-bottom:20px}
+      .mtb-40{margin-top:40px; margin-bottom:40px} .mtb-50{margin-top:50px; margin-bottom:50px}
+     
+      .lh-20{line-height:20px}
+    
+      table .bdr-bottom{width:100px}
+    }
+    </style>
+    
+          <div id="print-section" class="clearfix">
+              
+                  <div class="clearfix">
+                    <div id="partToPrint">
+                        <section style="width:100%;overflow-x:auto;">
+                            <div>
+                              <table style="width: 100%;">
+                                <tr>
+                        
+                                  <td>
+                                      <!-- <h5 style="margin: 0px 0px;">Subject to indore Juridiction</h5>  -->
+                                      <img id="image" style="width: 100px;" [src]="cookieValue.transport_logo" alt="3d-logo" />
+                              
+                                  </td>
+                  
+                                  <td style="text-align: center;">
+                          
+                                    <h3 style="margin: 0px 15px;">3D LOGISTIC SOLUTIONS</h3>
+                                    <h5 style="margin: 0px 15px;">{{cookieValue.address}}</h5>
+                                    <h5 style="margin: 0px 15px;">E-mail- {{cookieValue.email_id}}</h5> 
+                                       <h5 style="margin: 0px 15px;">Contacts:{{cookieValue.contact_no}}</h5>    
+                                  </td>
+                                  <td style="text-align: right;">
+                                      <img id="image" style="width: 100px;" [src]="cookieValue.transport_logo" alt="3d-logo" />
+                                </td> 
+                                </tr>
+                  
+                              </table>
+                            </div>
+                  <div>
+                      <table>
+                          <tr>
+                            <td width="20%" style="border: 1px solid black;border-right:none;vertical-align: text-top; padding:0px 0px">
+                                <table>  
+                                    <tr>
+                                      <td>    
+                                  <h5 style="margin-left:4px;"> Branch Offices</h5>
+                                        <h4 style="margin-left:4px !important;margin-bottom:90px !important;"> 1</h4>
+                                          <h5 style="margin-left:4px;"> Branch Offices</h5>
+                                          <h4 style="margin-left:4px !important;margin-bottom:90px !important;">2</h4>
+                                       <!-- <textarea rows="4" class="site_table_input w-100" ></textarea> -->
+                                       <h5 style="margin-left:4px;"> Branch Offices</h5>
+                                       <h4 style="margin-left:4px !important;margin-bottom:90px !important;">3</h4>
+                                       <h5 style="margin-left:4px;"> Branch Offices</h5>
+                                       <h4 style="margin-left:4px !important;margin-bottom:90px !important;">4</h4>
+                                       <h5 style="margin-left:4px;"> Branch Offices</h5>
+                                       <h4 style="margin-left:4px !important;margin-bottom:90px !important;">5</h4>
+                                       <h5 style="margin-left:4px;"> Branch Offices</h5>
+                                       <h4 style="margin-left:4px !important;margin-bottom:90px !important;">6</h4>
+                                       <span style="display:inline-block;vertical-align: text-bottom;">
+                                       <h5 style="margin-left:2px;"> For more contact</h5>
+                                      <h4 style="margin-left:2px;"> 0731-4204201</h4>
+                                      </span>
+                                      </td>
+                                    </tr>
+                                     </table> 
+                          </td>
+                          <td width="80%">
+                              <table cellpadding="5px" style="border-collapse: collapse;border: 1px solid #333;border-right: none;border-bottom: none;">
+                                  <tr>
+                                    <td style="border: 1px solid black; vertical-align: text-top; padding:0px 0px" width="30%">
+                                      <h4 style="margin:2px;"> Schedual of Damage Charges.</h4>
+                                      <h5 style="margin:2px;">
+                                        Demarges Chargeable After
+                                          <span style="color: #9b9898">125 </span>
+                      
+                                      </h5>
+                                      <h5 style="margin:2px;"> Per day.</h5>
+                                      <h5 style="margin:2px;">
+                                        From Today @Rs.
+                                        <span style="color: #9b9898">232 </span>
+                      
+                                      </h5><br/>
+                                      <h4 style="margin:2px;text-align: center;border-top: 1px solid black;border-bottom:1px solid black;">
+                                        Delivery Address
+                                      </h4>
+                                      <span style="color: #9b9898">h no.3232</span>
+                                    
+                                    </td>
+                      
+                                    <td style="border: 1px solid black;text-align: center; vertical-align: text-top;" width="30%">
+                                      <h4 style="margin:4px;"><b>CONSIGNEE COPY</b></h4>
+                                      <h4 style="margin:4px;"><b>AT OWNER'S RISK</b></h4>
+                                      <h4 style="margin:4px;"><b>INSURANCE</b></h4><br/>
+                                      <h5 style="margin:4px;text-align: left;"><b>The customer stated that:</b></h5>
+                                      <h5 style="margin:4px;text-align: left;">He has insured the consingment</h5>
+                                      <h5 style="margin:4px;text-align: left;">Company<span style="float:right"> 
+                                        <span style="color: #9b9898"></span>siya</span></h5>
+                                    
+                                      <h5 style="margin:4px;text-align: left;">Policy no.
+                                        <span style="float:right"> 
+                                          <span style="color: #9b9898"></span>212</span></h5>
+                                      <h5 style="margin:4px;text-align: left;">Amount/Risk
+                                        <span style="float:right"> 
+                                        <span style="color: #9b9898"></span>rs100</span></h5> 
+                                    </td>
+                                    <td style="vertical-align: text-top;border-bottom: 1px solid #333;" width="15%">
+                                      <h4 style="margin:2px;text-align: center;">
+                                        <b>CAUTION</b>
+                                      </h4>
+                                      <p style="margin: 0px 2px;font-size: 15px;">
+                                        The Consingment will be not detained delivered re-routed or rebooked without Consignee Bank's Written Permition will be delivered
+                                        at destination.
+                                      </p>
+                                    </td>
+                                    <td style="border: 1px solid black;vertical-align: text-top;text-align: center;" width="25%">
+                                      <!-- <h4 style="margin:2px;">Service tax payable by</h4><br/>
+                      
+                                      <h4 style="margin:0px;">
+                                      
+                                        <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                                        <span style="float: right;">Consignor</span></h4><br/>
+                                      <h4 style="margin:0px;">
+                                          
+                                        <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                                        <span style="float: right;">Consignee</span></h4><br/>
+                                      <h4 style="margin:0px;">
+                                        <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                                        <span style="float: right;">Transport</span></h4><br/> -->
+                         
+                                            <h4 style="margin:34px 4px;">LR No</h4>
+                                            <span style="color: #9b9898">3322232 </span>  
+                                                  <br>
+                                             <h4 style="margin:34px 4px;">HSN No</h4>
+                                             <span style="color: #9b9898">2131212</span>  
+                                             <br>
+                                              <h4 style="margin:34px 4px;">GST No</h4>
+                                              <span style="color: #9b9898">213121dd</span>          
+                                              <br>
+                                      
+                                      </td>
+                                  </tr>
+                      
+                                  <tr>
+                                    <td colspan="3" style="padding: 0px;border-right: 1px solid #333;">
+                                      <table style="width:100%;border-collapse: collapse;border-right: 0px;border-top: none;">
+                      
+                                        <tr style="border:1px solid white;">
+                                          <td style="text-align: right;border:1px solid #333;border-top: none;border-right: none;">No.</td>
+                                          <td></td>
+                                          <td>DD</td>
+                                          <td>MM<span style="float: right;">YY</span></td>
+                      
+                      
+                                        </tr>
+                      
+                                        <tr>
+                                          <td style="border:1px solid #333;border-right: none;width: 50%;">
+                                            <h3 style="margin: 0px 15px;">Consignment Note-No. 
+                                              <span style="color: #9b9898">2123121</span></h3>
+                                          </td>
+                                          <td style="border:1px solid #333;text-align: center;" width="100px">
+                                            <h3 style="margin:0px 0px;">Dated </h3>
+                                          </td>
+                                          <td style="border:1px solid #333;border-right:none; padding-left: 5px;" colspan="2">
+                                            <span style="color: #9b9898">12/02/2016</span>
+                                            </td>
+                                        </tr>
+                      
+                      
+                                        <tr>
+                                          <td style="text-align: center;">
+                                            <h4 style="margin:2px;">Consignor Name </h4>
+                                            <span style="color: #9b9898">siya</span>
+                                            <h4 style="margin:2px;">Consignor Address</h4>
+                                            <span style="color: #9b9898">h no.125</span> </td>
+                                          <td colspan="3">
+                                              <h4 style="margin:2px;">From</h4>
+                                              <span style="color: #9b9898">indore</span> 
+                                              <h4 style="margin:2px;">To.</h4>
+                                              <span style="color: #9b9898">bhopal</span> </td>
+                                        </tr>
+                      
+                      
+                                        <tr>
+                                          <td style="padding-top: 20px;" colspan="4"></td>
+                                        </tr>
+                      
+                                        <tr>
+                                          <td style="padding-top:0px;text-align: center;">
+                                            <h4 style="margin:2px;">Consignee Name</h4>
+                                            <span style="color: #9b9898">venture</span> 
+                                            <h4 style="margin:2px;">Consignee Address</h4>
+                                            <span style="color: #9b9898">h no.152</span></td>
+                                          <td colspan="3" >
+                                              <h4 style="margin:2px;">Intime</h4>
+                                              <span style="color: #9b9898">11:00</span>
+                                              <h4 style="margin:2px;">Out time</h4>
+                                              <span style="color: #9b9898">2:00</span>
+                                              <h4 style="margin:2px;">Date</h4>
+                                              <span style="color: #9b9898">12/02/2018</span>
+                                          </td>
+                                        </tr>
+                      
+                                        <tr>
+                                          <td style="border:1px solid #333;border-top: none;border-right: none;border-left: none;"></td>
+                                          <td style="padding-top: 20px;"></td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+                      
+                                        <tr style="text-align: center">
+                                          <td style="padding-bottom: 5px; border:1px solid #333;">
+                                            <h4 style="margin:2px;">Packages</h4>
+                                            <span style="color: #9b9898">21212</span>
+                                          </td>
+                                          <td style="border:1px solid #333; padding-bottom: 5px;">
+                                            <h4 style="margin:2px;">Description (said to contain)</h4>
+                                            <span style="color: #9b9898">it is the product</span>
+                                          </td>
+                                          <td style="border:1px solid #333; padding-bottom: 5px;">
+                                            <h4 style="margin:2px;">Actual WT</h4>
+                                            <span style="color: #9b9898">12</span>
+                                          </td>
+                                          <td style="padding-bottom: 5px; border:1px solid #333;border-top-color: #333;border-right:none;">
+                                            <h4 style="margin:2px;">Charged WT</h4>
+                                            <span style="color: #9b9898">11</span>
+                                          </td>
+                                        </tr>
+                      
+                             
+                      
+                                        <tr>
+                                          <td style="padding-bottom: 15px;"></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td style="border:1px solid #fff;"></td>
+                      
+                      
+                                        </tr>
+                      
+                                        <tr style="text-align: center;">
+                                          <td colspan="4">
+                      
+                      
+                                            <table width="100%" cellspacing="0px" cellpadding="0px">
+                                              <tr>
+                                            
+                                                  <table width="100%" cellspacing="0px" cellpadding="0px">
+                                                    <tr>
+                                                        <td style="text-align: center;"><h4 style="margin:2px;">Vehicle no.</h4>
+                                                          <span style="color: #9b9898">mp09-2014</span></td>
+                                                       
+                                                     <td ><h4 style="margin:2px;">Driver license</h4>
+                                                      <span style="color: #9b9898">mp09-2123</span></td>
+                                                      
+                                                       <td style="border-right-color:#333;"><h4 style="margin:2px;">Contact no.</h4>
+                                                        <span style="color: #9b9898">9685852552</span></td>
+                      
+                                                 
+                                                    </tr>
+                                                  </table>
+                                            
+                                              </tr>
+                      
+                                            </table>
+                      
+                                          </td>
+                      
+                      
+                      
+                                        </tr>
+                      
+                                        <tr>
+                                          <td style="padding-top: 15px;"></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+                      
+                                        <tr style="text-align: center;">
+                                          <td colspan="4">
+                    
+                                            <table width="100%" cellspacing="0px" cellpadding="0px">
+                                              <tr>
+                                                <td style="border: 1px solid #333;border-right: none;border-left: none;">
+                                                  <h4 style="margin:2px;">Financials</h4>
+                                                </td>
+                                                <td colspan="6" style="border-bottom:1px solid #333;">
+                                                  <table width="100%" cellspacing="0px" cellpadding="0px">
+                                                    <tr>
+                                                      <td style="padding-bottom: 5px; border:1px solid #333;border-right: none;border-bottom: none;">
+                                                        <h4 style="margin:2px;">Freight</h4>
+                                                        <span style="color: #9b9898">2121</span>
+                                                      </td>
+                                                      <td style="padding-bottom: 5px; border:1px solid #333;border-right: none;border-bottom: none;">
+                                                        <h4 style="margin:2px;">Advance</h4>
+                                                        <span style="color: #9b9898">3232</span>
+                                                      </td>
+                                                      <td style="padding-bottom: 5px; border:1px solid #333;border-right: none;border-bottom: none;">
+                                                        <h4 style="margin:2px;">Balance</h4>
+                                                        <span style="color: #9b9898">2121</span>
+                                                      </td>
+                                                      <td style="padding-bottom: 5px; border:1px solid #333;border-right: none;border-bottom: none;">
+                                                        <h4 style="margin:2px;">Topay</h4>
+                                                        <span style="color: #9b9898">3212 </span>
+                                                      </td>
+                                                      <td style="padding-bottom: 5px; border:1px solid #333;border-bottom: none;">
+                                                        <h4 style="margin:2px;">TTB AT</h4>
+                                                        <span style="color: #9b9898">2313</span>
+                                                      </td>
+                                                      <td width="44px"></td>
+                                                    </tr>
+                      
+                                                  </table>
+                                                </td>
+                      
+                                              </tr>
+                                            
+                                            </table>
+                      
+                                          </td>
+                      
+                                        </tr>
+                      
+                                      </table>
+                                    </td>
+                            
+                                    <td style="padding: 0px 2px;vertical-align: top;border:1px solid #333;border-top:none;border-right: none;" width="25%">
+                                       <h4 style="margin:2px;">Service tax payable by</h4><br/>
+                      
+                                      <h4 style="margin:0px;">
+                                      
+                                        <input type="button" [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                                        <span style="float: right;">Consignor</span></h4><br/>
+                                      <h4 style="margin:0px;">
+                                          
+                                        <input type="button" [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                                        <span style="float: right;">Consignee</span></h4><br/>
+                                      <h4 style="margin:0px;">
+                                        <input type="button" [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                                        <span style="float: right;">Transport</span></h4><br/>
+                                      <h4 style="margin: 0px 4px;">Invoice date: 
+                                      </h4>
+                                      <span style="color: #9b9898">28/12/2016</span>
+                                      <h4 style="margin:34px 4px;">Invoice no. 
+                                      </h4>
+                                      <span style="color: #9b9898">3sdf232</span>
+                                      <h4 style="margin:6px 4px;">Consignor GST no </h4>
+                                      <span style="color: #9b9898">3232dsf</span>
+                                      <h4 style="margin:6px 4px;"> Way-bill no </h4>
+                                      <span style="color: #9b9898">1321dfds</span>
+                                            
+                                   </td>
+                                  </tr>
+                      
+                      
+                                </table>
+                            </td>
+                          </tr>
+                          </table>
+                     
+                           
+                          </div>
+                          </section>
+                      <div class="clearfix text-center">
+                        <!-- <button class="btn btn-primary" (click)="printDetail('partToPrint')">
+                          Preview
+                          </button> -->
+                        </div>
+                      
+                      
+               
+                  </div>
+                </div>
+          </div>      
+        </div>
+          <div class="clearfix text-center mtb-30" style="float:left;width:100%">
+              <div class="col-md-3 color-template text-left ">
+                <button [routerLink] = "['/signup/template']" class="btn btn-success btns"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
+              </div>
+              <div class="col-md-6 text-center" style="cursor: pointer;">
+                <button class="btn btn-primary btns" (click)="print()"><i class="fa fa-print" aria-hidden="true"></i> Preview</button>
+              </div>
+              <div class="col-md-3 text-right" style="cursor: pointer;">
+                  <button style="background: #119c89;border-color:#119c89" class="btn btn-primary btns" (click)="onSubmit()"> Submit</button>
+              </div>
+            </div>
+
+         
+    </div>
+</div>
+</div>
+
+
+
+<!-- Basic form layout section start -->

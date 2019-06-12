@@ -1,0 +1,64 @@
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+    <div class="modal-dialog  modal-dialog-centered modal-sm">
+        <div class="modal-content dialog">
+            <div class="modal-header popup1">
+                <button type="button" class="close"><span></span></button>
+                  <p>{{message}}</p>
+            </div>
+            <div class="modal-footer popup2">
+                <button type="button" class="btn btn-default" (click)="hidePopup()" >Ok</button>
+            </div> 
+        </div>
+    </div> 
+ </div> 
+
+ <div class="image-loader" *ngIf="imageLoader" style="top:14%">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+</div>
+<div class="row pt-67"> 
+  <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+      <app-login-leftbar></app-login-leftbar>
+  </div>
+    
+  <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+      <div class="card p-3 relative form">
+         <h4 class="title_add_branch">Add Contact Person</h4>
+          <hr>
+          <form class="" [formGroup] = "addForm" (ngSubmit) = "onSubmit(addForm)" >
+              <div class="row form-group">
+                <div class="col-sm-6">
+                  <label class="site_label" for="inputdefault">Contact Person Name:<span style="color:red"></span></label>
+                  <input class="form-control site_input" formControlName="contact_person_name"   type="text" placeholder="contact person name">
+                  <div *ngIf="addForm.controls['contact_person_name'].errors && ( !addForm.controls['contact_person_name'].pristine || submitted ||addForm.controls['contact_person_name'].touched )" class="error-msg">
+                      <div [hidden]="!addForm.controls['contact_person_name'].errors.required">Contact Person Name is required.</div>
+                    </div>  
+              </div>
+                <div class="col-sm-6">
+                  <label class="site_label" for="inputdefault">Contact Person Mobile:<span style="color:red"></span></label>
+                  <input class="form-control site_input"  minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "   formControlName="contact_person_mobile"   type="text" placeholder="contact person mobile"  required>
+                  <div *ngIf="addForm.controls['contact_person_mobile'].errors && ( !addForm.controls['contact_person_mobile'].pristine || submitted ||addForm.controls['contact_person_mobile'].touched )" class="error-msg">
+                      <div [hidden]="!addForm.controls['contact_person_mobile'].errors.required">Contact Number is required.</div>
+                      <div [hidden]="!addForm.controls.contact_person_mobile.hasError('minlength')">Mobile no. must be 10 digits</div>
+                    </div>
+              </div>
+              </div> 
+              <div class="row form-group">
+                <div class="col-sm-6">
+                  <label class="site_label"  for="inputdefault">Contact Person Email:<span style="color:red"></span></label>
+                  <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="txtEmail" class="form-control site_input" formControlName="contact_person_email"  type="text" placeholder="contact person email" required>
+                  <div *ngIf="addForm.controls['contact_person_email'].errors && ( !addForm.controls['contact_person_email'].pristine || submitted || addForm.controls['contact_person_email'].touched )" class="error-msg">
+                    <div [hidden]="!addForm.controls['contact_person_email'].errors.required">Email Is Required.</div>
+                    <div [hidden]="!addForm.controls['contact_person_email'].errors.pattern">Email Pattern is required.</div>
+                </div>
+              </div>
+              </div>
+             
+              <button type="submit" class="btn btn-default site_btn ">Save</button>
+        
+        </form>
+        
+        </div>
+               
+  </div>
+</div>

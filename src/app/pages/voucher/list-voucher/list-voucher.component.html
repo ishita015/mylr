@@ -1,0 +1,94 @@
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+</div>
+
+<div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+      <app-login-leftbar></app-login-leftbar>
+    </div>
+
+  <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+    <div class="clearfix mtb-30">
+        <div class="card">
+          <div class="clearfix p-t-30">
+            <div class="col-sm-offset-3 col-sm-6">
+              <h5>Enter a LR Id to find Vouchers generated</h5>
+              <div class="search-box">
+                <input (change)="keyPress(lr_id)" type="number" [(ngModel)]="lr_id" required/>
+                <button [ngClass]="{disabled : isValid != true}" type="button" (click)="findVouchers(lr_id)">Search</button>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+                <table class="table" *ngIf="showList">
+                  <thead class="bg-success white">
+                    <tr>
+                      <th>Voucher Id</th>
+                                <th>Vehicle Number</th>
+                                <th>Voucher Reference</th>
+                                <th>Narration</th>
+                                <th>Bill No.</th>
+                                <th>Bill Date</th>
+                                <th class="text-center">Detail</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- <tr>
+                                <td>
+                                  <input class="fl-input" type="text" [(ngModel)]="filtreArg.lr_id" style="width:60px" />
+                                </td>
+                                <td>
+                                  <input class="fl-input" type="text" [(ngModel)]="filtreArg.lr_no"  style="max-width:100px" />
+                                </td>
+                                <td>
+                                  <input class="fl-input" type="text" [(ngModel)]="filtreArg.lr_date" />
+                                </td>
+                                <td>
+                                  <input class="fl-input" type="text" [(ngModel)]="filtreArg.consignor" />
+                                </td>
+                                <td>
+                                  <input class="fl-input" type="text" [(ngModel)]="filtreArg.consignee" />
+                                </td>
+                                <td>
+                                  <input class="fl-input" type="text" [(ngModel)]="filtreArg.invoice_number" style="max-width:100px" />
+                                </td>
+                                <td>
+
+                                </td>
+                              </tr> -->
+                            <tr >
+                              <td *ngIf = "voucherStatus==false" colspan="7" class="text-center">
+                                <b>{{voucherMessage}}</b>
+                              </td>
+                            </tr> 
+                            <ng-container *ngIf = "voucherStatus==true">
+                            <!-- *ngIf = "lrStatus=='true'" -->
+                            <!-- <tr  *ngFor="let lrList of voucherList | lrListFilter:filtreArg |
+                              paginate: {itemsPerPage: 10, currentPage:page, id: '1'}; let i = index" >
+                               -->
+                              <tr  *ngFor="let list of voucherList  |
+                              paginate: {itemsPerPage: 10, currentPage:page, id: '1'}; let i = index" >
+                                <td class="align-middle">{{list.voucher_id}}</td>
+                                <td>{{list.vehicle_number }}</td>
+                                <td>{{list.voucher_reference_no }}</td>
+                                <td>{{list.narration }}</td>
+                                <td>{{list.bill_no }}</td>
+                                <td>{{list.bill_date | date }}</td>
+                                <td class="align-middle text-center">
+                                    <a  [routerLink] = "['/voucher/detail/', list.voucher_id ]" class=" mr-1 mb-1 ">
+                                      <i class="fa fa-eye edit-icon"></i>
+                                    </a>
+                                </td> 
+                              </tr> 
+                            </ng-container>
+                            </tbody>
+                </table>
+                <pagination-controls *ngIf="" (pageChange)="page = $event" id="1"
+              maxSize="5" directionLinks="true" autoHide="true" style="float:right">
+              </pagination-controls>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+

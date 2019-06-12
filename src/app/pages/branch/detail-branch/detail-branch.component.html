@@ -1,0 +1,61 @@
+<div class="image-loader" *ngIf="imageLoader" style="top:14%">
+    <img src="assets/images/loader.gif" />
+</div>
+
+<div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-login-leftbar></app-login-leftbar>
+    </div>
+      
+    <div class="col-md-10 col-sm-10 col-xs-12">
+                    
+<div class="card p-3 mtb-30" >
+        <div class="clearfix card-strip">
+            <aside class="col-sm-6">
+                <h4 class="table_title mt-5">Detail Branch</h4>
+            </aside>
+            <aside class="col-sm-6 text-right">
+                <a routerLink="/branch/add-branch" class="btn btn-info">Add Branch</a>
+            </aside>
+        </div>
+       
+      
+        <div style="padding:25px">
+            <div class="clearfix">
+                <div class="col-md-6 " *ngFor="let br of listbranch.response.branch_details | paginate: {itemsPerPage: 6, currentPage:page, id: '1'}; let i = index">
+                    <div class="card p-3" style="padding-bottom:30px">
+                        <div class="title1">
+                            <h4 class="heading">{{br?.branch_name}}</h4>
+                        </div>
+                        <div class="title">
+                                <label >Branch Contact:</label>
+                                <span  class="sub_title">{{br?.branch_contact}}</span>
+                        </div>
+                        <div class="title">
+                                <label >Branch Mail:</label>
+                                <span >{{br?.branch_mail}}</span>
+                        </div>
+                        <div class="title">
+                                <label>Branch Address:</label>
+                                <span>{{br?.branch_address}}</span>
+                        </div>
+                        <div class="clearfix text-center">
+                        <button [routerLink] = "['/contact-person/list-contactperson/',br.branch_id]" type="button" class="btn btn-default site_btn ">Show Contact Person
+                    
+                        </button>
+                    
+                    </div>
+                    </div>
+                    
+                </div>
+                <pagination-controls (pageChange)="page = $event" id="1"
+                        maxSize="5"
+                        directionLinks="true"
+                        autoHide="true" style="float:right">
+                    </pagination-controls>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

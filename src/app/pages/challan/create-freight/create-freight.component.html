@@ -1,0 +1,510 @@
+<style>
+@media print {
+	.bg-col td{
+		background-color: green !important;
+	}
+}
+.form-heading
+{
+	font-weight: 600;
+	-webkit-print-color-adjust: exact;
+    font-size: 14px;
+    background: #cfcfcf;
+    width: 100%;
+    /* display: block; */
+    margin: 0 auto;
+    padding: 1px 0;
+    font-weight: 600;
+    margin-bottom: 0px;
+    text-align: center;
+    line-height: 17px;
+	letter-spacing: 1px;
+	height: 30px;
+}
+.form-table h3{
+	font-size: 16px;
+}
+.form-table input
+{
+	border-bottom: 1px solid;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+}
+.internal-inputs
+{
+	border-bottom: 1px solid;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+}
+.form-table td
+{
+	padding-bottom: 15px;
+}
+.eng-cha-input
+{
+	border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 2px dotted;
+    width: 80%;
+}
+.form-inputs
+{
+	border-bottom: 1px solid;
+}
+.internal-table td
+{
+	padding-top: 16px;
+}
+.bottom-table td
+{
+	border: 1px solid;
+}
+.error-msg
+{
+  color: red;
+  font-size: 12px;
+}
+.feild-error
+{
+  border-color: red !important;
+}
+sup{
+	color: red;
+}
+
+body{font-size:10pt}
+        .bdr-bottom{border:none; border-bottom: 1px solid #777}
+        .full-screen{width:100%; float:left} .fl-left{float:left}
+     
+   .w10{width:10%} .w20{width:20%} .w30{width:30%} .w40{width:40%} .w50{width:50%}
+        .w60{width:60%} .w70{width:70%} .w80{width:80%} .w90{width:90%} .w100{width:100%}
+
+        .mt-10{margin-top:10px} .mt-20{margin-top:20px} .mt-30{margin-top:30px} 
+        .mt-40{margin-top:40px} .mt-50{margin-top:50px}
+        .mtb-5{margin-top:5px; margin-bottom:5px} .mtb-10{margin-top:10px; margin-bottom:10px}
+        .mtb-30{margin-top:30px; margin-bottom:30px} .mtb-20{margin-top:20px; margin-bottom:20px}
+        .mtb-40{margin-top:40px; margin-bottom:40px} .mtb-50{margin-top:50px; margin-bottom:50px}
+		.ml-15{    margin: 0 15px;}
+		.mtb-15{margin-top:5px;margin-bottom: 15px}
+		
+</style>
+
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+  </div>
+  <div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-login-leftbar></app-login-leftbar>
+    </div>
+    <div class="col-md-10">
+			<div class="card p-3 mtb-30" style="float: left;">
+
+					<!-- <div class="clearfix card-strip">
+						<aside class="col-sm-12 text-center">
+							<h4 class="table_title mt-5">Create Freight Challan</h4>
+						</aside>
+					</div> -->
+      <form [formGroup]="freightForm" name="freightForm" (ngSubmit)="submitFreight(freightForm)">
+      <div style="padding: 30px">
+			<div>
+			  <table style="width: 100%;">
+					<tr><td colspan="3" class="text-center form-heading" >LORRY HIRE SLIP</td></tr>
+          <tr style="margin-bottom:1px solid #ddd">
+              <td width="20%"> 
+                <img id="image" src="{{transporter_detail.transport_logo}}" alt="{{transporter_detail.company_name}}" style="height:90px" />
+                <!-- <img id="image" src="company-logo.png" alt="company-logo"/> -->
+              </td>
+              <!-- <td style="padding-bottom: 15px;">
+              <h3 style="margin: 0px 15px;">Contact:</h3>
+		  </td> -->
+		  <td align="center" width="60%">
+			<h4 class="ml-15">{{ transporter_detail.company_name }}</h4>
+			<p class="ml-15">{{ transporter_detail.address}}</p>
+		  </td>
+          <td align="right" width="20%">
+              <h4 style="margin:2px;">Contact : {{ transporter_detail.contact_no }}</h4>
+             
+         </td>  
+          </tr> 
+          
+        </table>
+		</div>
+		<div style="width:100%;float:left;padding-top: 2em;">
+		<div style="float: left;width: 65%;">
+			<div class="w20 ml-15" style="float: left;width: 13%;line-height: 43px;">
+				Lc Number<sup>*</sup>
+			</div>
+			<div class="w20" style="float: left;border: none;
+			border-bottom: 1px solid;">
+				<!-- <select name="lr_no" formControlName="lr_no" style="width: 100%;border: none;border-bottom: 1px solid;outline:0" required>
+					<option [value]="1">1</option>
+					<option [value]="2">2</option>
+		</select> -->
+		
+		<select (change)="logDropdown($event.target.value)"  class="form-control" style="
+		border: none;
+">
+		<option disabled>Please select</option>
+		<option *ngFor="let state of states" [value]="state.loading_challan_id">
+			{{state.lc_reference_number}}
+		</option>
+	</select>
+		</div>		
+        <div *ngIf="isChange==true" class="error-msg" style="    width: 100%;float: left;padding-left: 11em;">
+            <div>LC No. is required.</div>
+        </div>			
+		</div>
+		<div style="float: left;width: 35%">
+			<div class="w30 ml-15" style="float: left;font-size: 16px;font-weight: 600;">
+				Date
+			</div>
+			<div  style="float: left;width:58%">
+				<!-- <input type="date" class="form-control bd-set form-date-input" 
+							formControlName="fc_date" required style="padding: 0;height: 26px;" /> -->
+				<my-date-picker class="dateLoading" [options]="myDatePickerOptions" 
+				formControlName="fc_date" [selDate]="selDate"></my-date-picker>
+				<!-- <div *ngIf="freightForm.controls['fc_date'].errors && ( !freightForm.controls['fc_date'].pristine || submitted || freightForm.controls['fc_date'].touched )" class="error-msg">
+					<div [hidden]="!freightForm.controls['fc_date'].errors.required">Date is required.</div>
+				</div> -->
+			</div>			
+		</div>
+		<!-- <div class="mtb-15" style="float: left;width: 65%;">
+			<div class="w20 ml-15" style="float: left;font-size: 16px;font-weight: 600;">
+				CHALLAN No.<sup>*</sup>
+			</div>
+			<div class="w20" style="float: left;">
+        <input type="number" name="challan_no" formControlName="challan_no" style="border-bottom:1px solid;width:100%" required>
+        <div *ngIf="freightForm.controls['challan_no'].errors && ( !freightForm.controls['challan_no'].pristine || submitted || freightForm.controls['challan_no'].touched )" class="error-msg">
+            <div [hidden]="!freightForm.controls['challan_no'].errors.required">Challan No is required.</div>
+        </div>
+			</div>
+		</div> -->
+		
+		<div class="mtb-15" style="float: right;width: 35%">
+			<div class="w30 ml-15" style="font-size: 16px;font-weight: 600;float:left">
+				Vehicle No.<sup>*</sup>
+			</div>
+			<div class="w60" style="float: left;">
+        <input type="text" autocomplete="off" name="vehicle_number" [(ngModel)]="filterArg.vehicle_number"   (focus)="vehicleListShow()" formControlName="vehicle_number" style="border-bottom:1px solid; width:100%" required>
+        <div *ngIf="freightForm.controls['vehicle_number'].errors && ( !freightForm.controls['vehicle_number'].pristine || submitted || freightForm.controls['vehicle_number'].touched )" class="error-msg">
+            <div [hidden]="!freightForm.controls['vehicle_number'].errors.required">Vehicle No is required.</div>
+		</div>
+		<span>
+            <ul style="
+              overflow-y: scroll;
+              max-height: 100px;
+              position: absolute;
+              z-index: 999999;
+              width: 91%;
+              background: #fff;" *ngIf= "isShow1" >
+              
+              <li *ngFor="let data of vehicleListData | createLrFilter:filterArg"
+              (click) = searchVehicle(data.vehicle_number) style="cursor:pointer">{{data.vehicle_number}}</li>
+            </ul>           
+          </span>
+			</div>
+		</div>
+	</div>
+		<!-- <div>
+			<h3 style="background-color:#68A2B8;color:#333;text-align: center;">Loading Challan</h3>					
+		</div> -->
+
+	<div>
+
+  <table class="form-table" style="width: 100%;">
+      <tr>
+          <td class="align-middle" style="padding-bottom: 15px">
+              <span style="margin: 0px 15px;">
+                From<sup>*</sup> : <input required [ngClass]="{'feild-error': (freightForm.controls['from'].errors && ( !freightForm.controls['from'].pristine || submitted || freightForm.controls['from'].touched ))}" type="text" formControlName="from" style="width: 65%;"> 
+              </span>
+          </td>
+      </tr>
+			<tr>
+        <td style="width: 62%;">			
+            <span style="margin: 0px 15px;">To</span>
+            <input type="text"  formControlName="to" style="width: 67%;">
+        </td>
+        <td class="align-middle" style="text-align:right">
+            <span style=" font-weight: 600;">Voucher Ref No:</span>
+            <span style="margin:2px;"><input  type="text" formControlName="voucher_reference_number"></span>
+        </td> 
+		  </tr>
+			<tr>
+				<td colspan="2">
+					<span style="margin: 0px 15px;">
+						Broker Name<sup>*</sup> : <input [ngClass]="{'feild-error': (freightForm.controls['broker_name'].errors && ( !freightForm.controls['broker_name'].pristine || submitted || freightForm.controls['broker_name'].touched ))}" type="text" formControlName="broker_name" style="    width: 88%;"> 
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" valign="top" >
+					<span style="width:50%;float:left">
+					 <span style="width:16%; float:left; text-indent:15px">Address</span> 
+					 <input type="text"  formControlName="broker_address" style="width:83%; float:left">
+          			</span> 
+          			<span style="width:50%;float:left;">
+							<span style="width:16%; float:left; text-indent:15px">Contact<sup>*</sup></span>
+							<span style="width:84%; float:left">
+							<input minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " type="text" [ngClass]="{'feild-error': (freightForm.controls['broker_contact'].errors && ( !freightForm.controls['broker_contact'].pristine || submitted || freightForm.controls['broker_contact'].touched ))}" formControlName="broker_contact" style="width:96%">
+							</span>
+						</span> 
+         		 </td>
+			</tr>
+        </table>
+	</div>
+<br/>
+
+	<div style="width: 99%;">
+
+	<table cellpadding="5px" style="width: 100%;border-collapse: collapse">
+		
+		  <tr>
+		      <th class="text-center" >S.N</th>
+		      <th class="text-center">Particular</th>
+		      <th class="text-center">Packages</th>
+          	  <!-- <th style="position:relative" class="text-center">Weight<button class="add-row-btn" (click)="addRow()">+</button></th> -->
+          	  <th style="position:relative" class="text-center">Weight<button class="add-row-btn" (click)="addRow()"></button></th>
+         
+		  </tr>
+		  <!-- <tr style="text-align: center">
+		      <td valign="middle" style="border: 1px solid black;padding:15px 15px">
+		      	
+		      </td> 
+		      <td valign="middle" style="border: 1px solid black;padding:15px 15px">
+            	<input type="text" [ngClass]="{'feild-error': (freightForm.controls['particular'].errors && ( !freightForm.controls['particular'].pristine || submitted || freightForm.controls['particular'].touched ))}"  formControlName="particular" style="border-bottom: 1px solid;">
+		      </td> 
+		      <td valign="middle" style="border: 1px solid black;padding:15px 15px">
+            	<input type="text" [ngClass]="{'feild-error': (freightForm.controls['packages'].errors && ( !freightForm.controls['packages'].pristine || submitted || freightForm.controls['packages'].touched ))}" formControlName="packages" style="border-bottom: 1px solid;">
+		      </td> 
+		      <td valign="middle" style="border: 1px solid black;padding:15px 15px;position:relative">
+            	<input type="text" [ngClass]="{'feild-error': (freightForm.controls['weight'].errors && ( !freightForm.controls['weight'].pristine || submitted || freightForm.controls['weight'].touched ))}" formControlName="weight" style="border-bottom: 1px solid;">
+              	<button class="add-row-btn" (click)="addRow()">+</button>
+		      </td> 
+		  </tr> -->
+		  
+		  <tr style="text-align: center" *ngFor="let c of freight_challan_details;let i = index" [attr.data-index]="i">
+		      <td valign="middle" style="border: 1px solid black;">{{i+1}}   
+		      </td> 
+		      <td valign="middle" style="border: 1px solid black;">
+              	<input required  type="text" [(ngModel)]="c.particular" [ngModelOptions]="{standalone: true}" style="border-bottom: 1px solid;" readonly>
+		      </td> 
+		      <td valign="middle" style="border: 1px solid black;">
+              	<input type="text" [(ngModel)]="c.packages" [ngModelOptions]="{standalone: true}" style="border-bottom: 1px solid;" readonly>
+		      </td> 
+		      <td valign="middle" style="border: 1px solid black;position:relative">
+				<input type="text" [(ngModel)]="c.weight" [ngModelOptions]="{standalone: true}" style="border-bottom: 1px solid;" readonly> 	
+				<!-- <button *ngIf="i!=0"  class="delete-btn" (click)="deleteRow()">-</button> -->
+		      </td>
+		  </tr>
+		  <!-- <tr>
+			<td class="text-center" colspan="7">
+				<span class="error-msg" [ngStyle]="{'display':displayError1}">Please Fill Atleast One Detail</span>
+			</td>	  
+		</tr> -->
+		</table>
+	</div><br/>
+
+
+<!-- 	<div style="width: 100%; overflow-x: auto;"> -->
+	<div>
+	<table class="internal-table" style="width:100%;border-collapse: collapse;">
+		  <tr>
+		    <td>
+				Engine No  : <input class="eng-cha-input" [(ngModel)]="filterArg.engine_number"  formControlName="engine_number" type="text" style="width: 80%;">
+				
+			  </td> 	
+			  <td>
+				Chassis No  : <input class="eng-cha-input" [(ngModel)]="filterArg.chassis_number"  formControlName="chassis_number" type="text" style="width: 82%;">
+				
+			  </td>	    
+			</tr>
+			<tr>
+				<td colspan="2">Owner Name  : <input formControlName="owner_name"  [(ngModel)]="filterArg.owner_name"  class="internal-inputs" type="text" style="width: 90%;"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Address  :  <input formControlName="owner_address" [(ngModel)]="filterArg.owner_address"  class="internal-inputs" type="text" style="width: 93%;"></td>
+			</tr>
+			<tr>
+				<td>Mobile No  :  <input minlength="10" class="internal-inputs" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " formControlName="owner_mobile" type="text" style="width: 80%;"></td>
+				<td>PAN card no  :  <input class="internal-inputs"  [(ngModel)]="filterArg.owner_pan_number" formControlName="owner_pan_number"  type="text" style="width: 81%;"></td>
+			</tr>
+			<tr>
+				<td>Driver Name  :  <input class="internal-inputs" [(ngModel)]="filterArg.driver_name"  formControlName="driver_name" type="text" style="width: 78%;"/></td>
+				<td>S/o  :  <input class="internal-inputs" type="text"  [(ngModel)]="filterArg.driver_father_name" formControlName="driver_father_name" style="width: 94%;"/></td>
+			</tr>
+			<tr>
+				<td>Address  :  <input class="internal-inputs" [(ngModel)]="filterArg.driver_address" formControlName="driver_address" type="text" style="width: 84%;"/></td>
+				<td>Contact  :  <input minlength="10"  [(ngModel)]="filterArg.driver_contact" [ngClass]="{'feild-error': (freightForm.controls['driver_contact'].errors && ( !freightForm.controls['driver_contact'].pristine || driverSubmitted || freightForm.controls['driver_contact'].touched ))}" required class="internal-inputs"  onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " formControlName="driver_contact" type="text" style="width: 87%;"></td>
+			</tr>
+			<tr>
+				<td>Licence No  :  <input class="internal-inputs"  [(ngModel)]="filterArg.driver_license_number" formControlName="driver_license_number" type="text" style="width: 78%;"></td>
+				<td></td>
+			</tr>		  
+		</table>
+		<div>
+		<table class="bottom-table" cellspacing="0" cellpadding="2" style="width:100%;margin-top: 21px">
+			<tr class="text-left">
+				<td _ngcontent-c3="" _ngcontent-c9="" class="text-center" style="text-align: left;width: 60%;border: 1px solid;padding: 5px;height: 25px;" valign="top">
+					<p _ngcontent-c3="" style="
+					text-align: center;
+					font-size:  15px;
+					font-weight:  bold;
+					margin:  0 !important;
+					padding-top: 7px;
+					line-height:  18px;
+					">Terms and conditions</p><p style="
+					  font-size: 13px;
+					  padding-top: 5px;
+					  margin:  0 !important;
+					">1. The summery is mentioned of goods/weight and number of packages is with respect to its loading challan. </p>
+					<p style="
+					  font-size: 13px;
+					  margin: 0 !important;
+					">2. The rate mentioned of Per Metric Ton is as decided with Vehicle owner/Vehicle driver or Transport broker. </p>
+					<p style="
+					  font-size: 13px;
+					  margin: 0 !important;
+					">3. The payment of freight can be paid by any conventional mode of payment. </p>
+					<p style="
+					  font-size: 13px;
+					  margin: 0 !important;
+					">4. Proper proof of any other (Challan etc.) charges shall be submitted in original. </p>
+					<p style="
+					  font-size: 13px;
+					  margin: 0 !important;
+					">5. No balance payment will be made in absence of original acknowledgement.</p><p style="
+					  font-size: 13px;
+					  margin: 0 !important;
+					">6. Any other charges like- detention/Halting/demurrages or deductions like-late delivery etc. shall be paid or deducted as per local market norms or mutually agreed upon.</p>
+					
+				  </td>
+				<td style="width: 25%;">
+					<table formGroupName="freight_challan_charges" class="inner-table"  cellspacing="0" cellpadding="2" style="width:100%; text-align:left; border-top:0px">
+						<tr>
+							<td style="width: 50%; border-top:0px; border-left:0px">Rate PMT Lorry Hired</td>
+							<td style="border-right: none; border-top:0px">
+                				<input class="form-inputs" min="0" type="number" formControlName="rate_pmt" >
+        					</td>
+						</tr>
+						<tr>
+							<td style="border-left:0px">Other Charges</td>
+							<td style="border-right: none;">
+                <input type="number"  min="0" [(ngModel)]="other_charges" formControlName="other_charges" style="border-bottom: 1px solid;">
+              </td>
+						</tr>
+						<tr>
+							<td style="border-bottom: 0; border-left:0px">Advance<sup>*</sup></td>
+							<td style="border-bottom: 0;border-right: none;">
+									<input min="0" type="number" [(ngModel)]="less_advance" (change)="convertToInt(less_advance)" [ngClass]="{'feild-error': (freightForm.controls.freight_challan_charges.controls.less_advance.errors && (!freightForm.controls.freight_challan_charges.controls.less_advance.pristine || submitted || freightForm.controls.freight_challan_charges.controls.less_advance.touched ))}" formControlName="less_advance" style="border-bottom: 1px solid;">		
+              </td>
+						</tr>
+						<tr>
+							<td style="width: 50%;    border-left: 0;">Balance<sup>*</sup></td>
+							<td style="    border-left: 0; ">
+				  
+				  <input class="form-inputs"  min="0" type="number" [(ngModel)]="balance" [ngClass]="{'feild-error': (freightForm.controls.freight_challan_charges.controls.balance.errors && (!freightForm.controls.freight_challan_charges.controls.balance.pristine || submitted || freightForm.controls.freight_challan_charges.controls.balance.touched ))}" formControlName="balance" >
+              </td>
+						</tr>
+						<tr>
+							<td style="width: 50%;    border-left: 0;border-bottom:0">Total Freight <sup>*</sup></td>
+							<td style=" border-bottom:0">
+					
+					<input type="number" disabled value="{{convertToInt (less_advance) + convertToInt (balance) + convertToInt (other_charges)}}" (change)="convertToInt(total_freight)"  formControlName="total_freight" style="border-bottom: 1px solid;">
+				</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style="border:none">
+				<td style="border:none;padding-top: 12px;">Remarks
+          <input class="internal-inputs"  formControlName="remark" type="text" style="width: 88%;">
+        </td>
+					
+			</tr>
+			<tr style="border:none">
+					<td formGroupName="freight_challan_charges" style="border:none;padding-top: 12px;">Payable at<sup>*</sup>
+            <input required class="internal-inputs" formControlName="pay_at" [ngClass]="{'feild-error': (freightForm.controls.freight_challan_charges.controls.pay_at.errors && (!freightForm.controls.freight_challan_charges.controls.pay_at.pristine || submitted || freightForm.controls.freight_challan_charges.controls.pay_at.touched ))}" type="text" style="width: 85%;">
+		  </td>
+		  
+					
+						
+				</tr>
+
+
+				<!-- <tr style="border:none">
+					<td  style="border:none;padding-top: 12px;">Rs In Words<sup>*</sup>
+			<input required class="internal-inputs" type="text" style="width: 85%;">
+			{{ amountInWords }}
+		  </td>
+		  
+					
+						
+				</tr> -->
+		</table>
+		
+	</div>
+		</div>
+		<div style="padding-top: 20px;text-align:center">
+				<span class="text-center" style="    font-size: 14px;
+				font-weight: 600;background: #cfcfcf;padding: 5px 11px;">Driver Copy</span>
+		</div>
+
+		
+		<div>
+			<table style="width: 100%;">
+                <tr>
+                    <td style="padding-bottom: 15px;">
+		    <h4>Signature- Owner/Agent/Broker</h4> 
+		  </td>
+		  <td style="padding-bottom: 15px;">
+		  	<h4 class="text-right" style="margin:0 10px;">For- 3D Logistic Solutions</h4>
+		  </td>
+		</tr>
+	</table>
+		</div>
+  <!-- <button onclick="myFunction()">Print this page</button> -->
+  <div class="clearfix text-center" style="padding-top:10px;float: left; width: 100%;">
+      <!-- <input type="button" class="btn btn-success" value="Submit"> -->
+      <button type="submit" class="btn btn-success mt-15">Submit</button>
+    </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+<div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+    
+        <div class="modal-body">
+            <p>{{message}}</p>
+        </div>
+        
+        <div class="modal-footer popup2">
+            <button type="button" class="btn btn-default" (click)="hidePop()" >Ok</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="backdrop" [ngStyle]="{'display':displayLc}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':displayLc}">
+<div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+    
+        <div class="modal-body">
+            <p>{{message}}</p>
+        </div>
+        
+        <div class="modal-footer popup2">
+            <button type="button" class="btn btn-default" (click)="hidePopupLc()" >Ok</button>
+        </div>
+    </div>
+</div>
+</div>

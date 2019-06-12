@@ -1,0 +1,51 @@
+<div class="image-loader" *ngIf="imageLoader" style="top:14%">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+</div>
+<div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-login-leftbar></app-login-leftbar>
+    </div>
+    <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+       <div class="row form-group grp" >
+        <div class="col-md-10">
+        <h4 class="table_title text-center heading_list_contact_person">List Contact Person </h4>
+       
+        </div>
+        <div class="col-md-2 add_button">
+            <a [routerLink] = "['/contact-person/add/', branch_id]" class="btn btn-default site_btn addbuton ">Add</a>
+        </div>
+        </div>
+        <hr>
+            <div class="col-md-12 card p-3">
+                   
+                <div class="row">
+                       
+                    <div *ngIf = "lrStatus==false" class="text-center">
+                        <b>{{lrMessage}}</b>
+                      </div>
+                             
+                      <ng-container *ngIf = "lrStatus==true">
+                    <div class="col-md-6 " *ngFor="let br of listcontactperson.response.contact_persons  | paginate: {itemsPerPage: 6, currentPage:page, id: '1'}; let i = index">
+                        <div class="card p-3">
+                            <div class="title1_head">
+                                <h4 class="heading">{{br.name}}<a [routerLink] = "['/contact-person/update-contactperson',br.contact_person_id]"><i class="fas fa-pencil-alt" height="15px" hspace="9"></i></a></h4>
+                            </div>
+                            <div class="title">
+                                <label >Branch Contact:</label>
+                                <span  class="sub_title">{{br.mobile}}</span>
+                            </div>
+                            <div class="title">
+                                <label >Branch Mail:</label>
+                                <span >{{br.email}}</span>
+                            </div>
+                        </div>
+                </div>
+                </ng-container>
+            </div>
+            <pagination-controls (pageChange)="page = $event" id="1"
+                      maxSize="5"
+                      directionLinks="true"
+                      autoHide="true" style="float:right">
+                </pagination-controls>
+        </div>
+    </div>

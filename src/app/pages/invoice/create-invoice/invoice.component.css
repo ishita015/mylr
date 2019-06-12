@@ -1,0 +1,54 @@
+.add-row-btn
+{
+    right: -9px;
+    position: absolute;
+    padding: 0;
+    top: -11px;
+    background: green;
+    padding: 0px 8px;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+}
+.delete-btn
+{
+    right: -31px;
+    position: absolute;
+    padding: 0px 8px;
+    background: red;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;    
+    top: 7px;
+}
+.inner-part{
+    font-weight: 600;
+    
+}
+.particulars_detail td
+{
+    padding:4px
+}
+.order-table td{
+    padding:4px;
+}
+.error-msg
+{
+    color:red;
+}
+.feild-error
+{
+    border-color: red !important;
+}
+sup{
+    color:red;
+}
+.bnk-dtl-input
+{
+    padding-left: 5px;
+}
+.backdrop{
+    display: none;
+}

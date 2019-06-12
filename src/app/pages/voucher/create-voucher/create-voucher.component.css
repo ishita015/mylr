@@ -1,0 +1,11 @@
+.bdr-btm{border-bottom:1px solid #777; width:100%}
+
+.panel-custom>.panel-heading {
+    background-color: #0d2c7d;
+    border-color: #ddd;
+    border-top-right-radius: 0px; 
+    border-top-left-radius: 0px;
+    color:#fff;
+    font-family: roboto,sans-serif;
+}
+.feild-required, .error-msg{color:red}

@@ -1,0 +1,414 @@
+<style>
+  .opt-data{border-bottom:1px solid #ddd}
+</style>
+<div class="image-loader" *ngIf="imageLoader">
+  <img src="assets/images/loader.gif" />
+</div>
+<div class="row pt-67">
+  <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+     <app-login-leftbar></app-login-leftbar>
+  </div>
+  <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+     <div class="card p-3 relative">
+        <div class="panel panel-default panel-custom">
+           <div class="panel-heading" style="background: #808080;text-align: center">
+              <h4 class="panel-title">Loading Challan</h4>
+           </div>
+           <div class="panel-body">
+              <div id="print-section" class="" style="width:100%; float:left;">
+                 <div class="full-screen" style="width:100%;float:left; border-bottom:1px solid #ddd;padding-bottom: 3px;">
+                    <div class="w20 fl-left" style="width:20%;float:left">
+                       <!-- <img [src]="transporter_detail.transport_logo" alt="transport_logo" class="img-responsive logo-img" style="height:100px"> -->
+                       <div style="width: 100px;" id="imageDiv"></div>
+                    </div>
+                    <div class="w60 fl-left text-center" style="width:55%;text-align:center; float:left">
+                       <div style="text-align:center;width:100%;float:left;">
+                          <p class="mtb-5 lh-20 " style="line-height:20px;margin-top:5px;margin-bottom:5px;font-size:24px !important;">{{ transporter_detail.company_name }}</p>
+                          <p class="mtb-5 lh-20 " style="line-height:20px;margin-top:5px;margin-bottom:5px">{{ transporter_detail.address}}</p>
+                          <p class="mtb-5" style="margin-top:5px;margin-bottom:5px">Email-id: {{ transporter_detail.email_id }}</p>
+                       </div>
+                    </div>
+                    <div class="w20 fl-left" style="width:24%; float:left;margin-bottom:5px;margin-top:11px;display: flex;">
+                       <div class=" fl-left">
+                          <span class="">Contacts: </span>
+                       </div>
+                       <div class="w60 fl-left">
+                          <span style="padding-left: 42px;">
+                          {{ transporter_detail.contact_no}}
+                          </span>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="" style="width:40%; float:left;">
+                    <div class="" style="width:100%;float:left;display:flex;margin-top:1em">
+                       <div class=" fl-left">
+                          <span class="">
+                          Branch Name:
+                          </span>
+                       </div>
+                       <div class="fl-left">
+                          <span style="padding-left:16px">
+                          {{loadingChallanDetail.transporter_details.branch_name}}
+                          </span> 
+                       </div>
+                    </div>
+                    <div class="" style="width:100%;float:left;display:flex;margin-top:1em">
+                       <div class="fl-left">
+                          <span class="">Loading Staff Name:
+                          </span>
+                       </div>
+                       <div class="fl-left">
+                          <span style="padding-left:16px">{{loadingChallanDetail.loading_staff_name}}</span>  
+                       </div>
+                    </div>
+                    <div style="width:100%;float:left;display:flex;margin-top:1em">
+                       <div class="fl-left">
+                          <span class="">Date Of Loading:
+                          </span>
+                       </div>
+                       <div class=" fl-left">
+                          <span style="padding-left:16px">{{loadingChallanDetail.date_of_loading | date:'dd-MM-yyyy'}}</span>  
+                       </div>
+                    </div>
+                    <div style="width:100%;float:left;display:flex;margin-top:2em">
+                       <div class="fl-left">
+                          <!-- <img src="assets/images/invoice/LR-detail.png" alt="LR-detail"> -->
+                       </div>
+                    </div>
+                 </div>
+                 <div class="" style="width:30%; float:left">
+                    <!-- <div class="" style="width:100%; float:left;margin-bottom:5px;margin-top:11px;display: flex;"><div class=" fl-left"><span class="">LR No
+                       <sup class="feild-required">*</sup> : 
+                       </span></div><div class="w60 fl-left"><input  formControlName="lr_no" onkeypress="return event.charCode >= 48 && event.charCode 
+                       <= 57 ||event.charCode == '.' || event.charCode == 250" [ngClass]="{'feild-error': (lrForm.controls['lr_no'].errors && ( !lrForm.controls['lr_no'].pristine || submitted || lrForm.controls['lr_no'].touched ))}" required type="text" class="bdr-bottom full-screen" name="lr_no"/></div></div> -->
+                    <!-- <div class="w100 text-center" style="width:100%;text-align:center;float: left;margin-top: 1em;">Date
+                       <sup class="feild-required">*</sup></div><div style="width:100%; float:left;margin-bottom:5px"><input formControlName="lr_date"  [ngClass]="{'feild-error': (lrForm.controls['lr_date'].errors && ( !lrForm.controls['lr_date'].pristine || submitted || lrForm.controls['lr_date'].touched ))}" required type="date" class="bdr-bottom full-screen" name="lr_date" style="border: 1px solid;background: transparent;"/></div><div class="w100 text-center" style="width:100%;text-align:center;float: left;margin-top: 5px;">From
+                       <sup class="feild-required">*</sup></div><div style="width:100%; float:left;margin-bottom:5px"><input formControlName="from"  [ngClass]="{'feild-error': (lrForm.controls['from'].errors && ( !lrForm.controls['from'].pristine || submitted || lrForm.controls['from'].touched ))}" required type="text"  name="from" style="border: 1px solid;"/></div> -->
+                       <div _ngcontent-c10="" class="" style="width:100%;float:right;">
+                          <div _ngcontent-c10="" class="" style="float:left;margin-bottom:5px;margin-top:11px;display: flex;width:  100%;float:  left;">
+                             <div _ngcontent-c10="" class="fl-left" style="
+       width: 40%;
+       float:  left;
+       /* font-size: 12px; */
+   ">
+                                <span _ngcontent-c10="" class="" style="
+       width:  100%;
+       float:  left;
+       text-align: center;
+   ">Vehicle No.
+                                </span>
+                             </div>
+                             <div _ngcontent-c10="" class=" fl-left" style="
+       width: 45%;
+       float:  left;
+   ">
+                                <span _ngcontent-c10="" style="    width: 100%;display: flex;font-size: 14px;">{{loadingChallanDetail.vehicle_number}} </span> 
+                             </div>
+                          </div>
+                       </div>
+                       <div _ngcontent-c10="" class="" style="width:100%;float:right;">
+                          <div _ngcontent-c10="" class="" style="float:left;margin-bottom:5px;margin-top:11px;display: flex;width:  100%;">
+                             <div _ngcontent-c10="" class="fl-left" style="
+       width:  40%;
+       float:  left;
+       text-align: center;
+   ">
+                                <span _ngcontent-c10="" class="">Contact No.
+                                </span>
+                             </div>
+                             <div _ngcontent-c10="" class=" fl-left" style="
+       width:  50%;
+       float:  left;
+   ">
+                                <span _ngcontent-c10="" style="/* padding-left:16px */">{{loadingChallanDetail.contact_number}} </span> 
+                             </div>
+                          </div>
+                       </div>
+                       <div _ngcontent-c10="" class="" style="width:100%;float:right;">
+                          <div _ngcontent-c10="" class="" style="float:left;margin-bottom:5px;margin-top:11px;display: flex;width: 100%;float:  left;">
+                             <div _ngcontent-c10="" class="fl-left" style="
+       width: 43%;
+       float: left;
+       text-align: center;
+   ">
+                                <span _ngcontent-c10="" class="">From Station:
+                                </span>
+                             </div>
+                             <div _ngcontent-c10="" class=" fl-left" style="
+       width: 50%;
+       float:  left;
+   ">
+                                <span _ngcontent-c10="" style="/* padding-left:16px */">{{loadingChallanDetail.from}} </span> 
+                             </div>
+                          </div>
+                       </div>
+                 </div>
+                 <div class="" style="width:30%; float:left">
+                    <div _ngcontent-c10="" class="" style="width:100%;float: none;/* padding-left: 4em; */text-align: center;">
+                      <div _ngcontent-c10="" class="" style="float: left;margin-bottom:5px;margin-top:11px;display: flex;margin:  0 auto;text-align:  center;width:  100%;padding-top: 11px;">
+                         <div _ngcontent-c10="" class="fl-left" style="
+   width: 50%;
+   float:  left;
+   text-align:  right;
+">
+                            <span _ngcontent-c10="" class="">L Challan No.
+                            </span>
+                         </div>
+                         <div _ngcontent-c10="" class=" fl-left" style="
+   width:  50%;
+   float:  left;
+   text-align:  left;
+">
+                            <span _ngcontent-c10="" style="padding-left:16px">{{loadingChallanDetail.lc_reference_number}} </span> 
+                         </div>
+                      </div>
+                   </div>
+                 </div>
+                 <div style="width:100%;float:left;margin-top:3em;margin-bottom: 14px;">
+                    <table align="center" style="width:100%;" border="1" cellspacing="0" cellpadding="2">
+                       <tr style="text-align: center">
+                          <td style="border:1px solid #333;border-radius:6%;">
+                             SN
+                          </td>
+                          <td>
+                             Lr Dated
+                          </td>
+                          <td style="border:1px solid #333;" width="55px">
+                             LR NO.
+                          </td>
+                          <td style="border:1px solid #333;">
+                             Consignor
+                          </td>
+                          <td style="border:1px solid #333;">
+                             Consignee
+                          </td>
+                          <td style="border:1px solid #333;">
+                             To
+                          </td>
+                          <td style="border:1px solid #333;">
+                             Boxes
+                          </td>
+                          <td style="border:1px solid #333;">
+                             Goods
+                          </td>
+                          <td style="border:1px solid #333;">
+                             WT
+                          </td>
+                          <td style="border:1px solid #333;">
+                             Freight Type
+                          </td>
+                          <td style="border:1px solid #333;">
+                             Amount
+                          </td>
+                       </tr>
+                       <tr *ngFor = "let loadingChallanDetails of loadingChallanDetail.loading_challan_detail;let i = index">
+                          <td style="border:1px solid #333" align="center">
+                             {{ i + 1 }}
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             {{loadingChallanDetails.lr_date | date:'dd-MM-yyyy'}}
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             {{loadingChallanDetails.lr_reference_number}} 
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             {{loadingChallanDetails.consignor}} 
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             {{loadingChallanDetails.consignee}} 
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             {{loadingChallanDetails.to}} 
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             {{loadingChallanDetails.boxes}} 
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             {{loadingChallanDetails.goods}} 
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             {{loadingChallanDetails.weight}} 
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             <!-- {{loadingChallanDetails.freight_type}}  -->
+                             <span *ngIf="loadingChallanDetails.freight_type == '1'">TBB</span>
+                             <span *ngIf="loadingChallanDetails.freight_type == '2'">ToPay</span>
+                             <span *ngIf="loadingChallanDetails.freight_type == '3'">Advance</span>
+                             <span *ngIf="loadingChallanDetails.freight_type == '4'">Balance</span>
+                             <span *ngIf="loadingChallanDetails.freight_type == '5'">Paid</span>
+                          </td>
+                          <td style="border:1px solid #333" align="center">
+                             <span *ngIf="loadingChallanDetails.freight_type == '5'">{{loadingChallanDetails.amount}}</span>
+                             <span *ngIf="loadingChallanDetails.freight_type != '5'">0</span>
+                          </td>
+                       </tr>
+                       <tr>
+                          <td colspan="8"style="border:1px solid #333;text-align:center;">
+                             <h4 style="margin:2px;">Total </h4>
+                          </td>
+                          <td style="border:1px solid #333;text-align: center">
+                             {{sum2}}
+                          </td>
+                          <td style="border:1px solid #333;">
+                          </td>
+                          <td style="border:1px solid #333;text-align: center">
+                            <span *ngIf="isShow==false">{{sum3}}</span>
+                            <span *ngIf="isShow==true">0</span>
+                          </td>
+                       </tr>
+                    </table>
+                 </div>
+                 <div>
+                    <table style="width:100%;border-collapse: collapse;">
+                       <!-- <tr>
+                          <td>
+                             <div class="fl-left" style="width:100%;">
+                                <span style="display:block;">Total TBB Freight: &nbsp; &nbsp; {{loadingChallanDetail.loading_challan_charge.total_tbb_freight}}</span>
+                             </div>
+                          </td>
+                          <td>
+                          </td>
+                          
+                          <td style="border: 1px solid black;border-bottom:none;padding: 0px 30px;">
+                          </td>
+                          <td style="border: 1px solid black;border-bottom:1px solid white;padding: 0px 50px;">
+                          </td>
+                       </tr> -->
+                       <tr>
+                          <td>
+                             <div class="fl-left" style="width:100%;">
+                                <span style="display:block;"> Total Topay Freight : &nbsp; &nbsp;  {{loadingChallanDetail.loading_challan_charge.total_topay_freight}}</span>
+                             </div>
+                          </td>
+                          <td>
+                          </td>
+                          <!-- <td style="border:1px solid #333;">
+                             {{loadingChallanDetail.loading_challan_charge.total_topay_freight}} 
+                          </td> -->
+                          <td style="text-align:center;padding: 0px 10px;border: 1px solid">
+                             <b>Note:</b>
+                          </td>
+                          <td style="border: 1px solid black;border-bottom:1px solid black;padding: 0px 50px;">
+                             {{loadingChallanDetail.loading_challan_charge.note}}
+                          </td>
+                       </tr>
+                       <!-- <tr>
+                          <td>
+                             <div class="fl-left" style="width:100%;">
+                                <span style="display:block;">Total Paid Freight : &nbsp; &nbsp; {{loadingChallanDetail.loading_challan_charge.total_paid_freight}} </span>
+                             </div>
+                          </td>
+                          <td>
+                          </td>
+                          
+                          <td style="border: 1px solid black;border-top:none;padding: 0px 30px;">
+                          </td>
+                          <td style="border: 1px solid black;border-top:1px solid white;padding: 0px 50px;">
+                          </td>
+                       </tr> -->
+                    </table>
+                 </div>
+                 <div class="" style="width:100%;float:left;margin-top: 20px;">
+                    <div _ngcontent-c6="" class="fl-left" style="width:100%;">
+                        <span _ngcontent-c6="" style="display: inline-block;/* padding-bottom: 20px; */width:  100%;float:  left;"><b _ngcontent-c6="">Terms &amp; Conditions</b></span>
+                        <span _ngcontent-c10="" style="
+                        width:  100%;
+                        float:  left;
+                        text-align:  justify;
+                        font-size: 11px;
+                        line-height: 16px;
+                        margin: 5px 0;
+                    ">
+                       <p style="
+                       font-size: 12px;
+                       font-weight: 100;    margin: 0 !important;
+                   ">1. The goods loaded in lorry are as per loading challan only.</p>
+                   <p style="
+                       font-size: 12px;    margin: 0 !important;
+                   ">2. Here mentioned LR and respective invoices are attached along with Loading challan. </p>
+                   <p style="
+                       font-size: 12px;    margin: 0 !important;
+                   ">3. Any discrepancy in goods loaded that from mention in loading challan/LR is subject to recheck by loading staff. </p>
+                   <p style="
+                       font-size: 12px;    margin: 0 !important;
+                   ">4. Driver is solely responsible to count and check physical condition of goods loaded in his vehicle. </p>
+                   <p style="
+                       font-size: 12px;    margin: 0 !important;
+                   ">5. Any goods that require special precaution during transportation shall be communicated to driver. </p>
+                   <p style="
+                       font-size: 12px;    margin: 0 !important;
+                   ">6. Conditions of leakage, breakage, shortage or any other shall be communicated well in written/oral to driver/vehicle owner or concern transport broker.</p>
+                    </span>
+                     </div>
+                 </div>
+                 <div class="" style="width:50%;float:left;">
+                    <div class="fl-left" style="width:100%;">
+                       <span style="display:block;"><b>Signature of Loading Manager</b></span>
+                    </div>
+                 </div>
+                 <div class="" style="width:50%;float:right;">
+                    <div style="float:right">
+                       <span style="display:inline-block;"><b>Signature of Driver</b></span>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="clearfix" style="text-align: center;margin-bottom: 10px">
+           <button class="btn btn-primary" (click)="printDetail('print-section')">Print</button>
+           <button class="btn btn-primary mt-15" (click)="generatePdf()">
+            Share PDF
+            </button>
+        </div>
+     </div>
+  </div>
+</div>
+<!-- PDF Form Start -->
+<div class="backdrop" [ngStyle]="{'display':displaypdf}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':displaypdf}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+      <div class="modal-body">
+        <form [formGroup]="pdfForm" name="pdfForm" (ngSubmit)="sharePdf()">
+          <div class="form-group">
+            <label>Enter Email I'd <span style="color: red;">*</span></label>
+            <input class="form-control" formControlName="email_id" type="text" required>
+            <div *ngIf="pdfForm.controls['email_id'].errors && ( !pdfForm.controls['email_id'].pristine || submitted || pdfForm.controls['email_id'].touched )" class="error-msg" style="color: red;">
+                <div [hidden]="!pdfForm.controls['email_id'].errors.pattern">Email must be in valid form.</div>
+                <div [hidden]="!pdfForm.controls['email_id'].errors.required">Email Is Required.</div>
+                
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Enter Mobile Number </label>
+            <input class="form-control"  minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "   formControlName="mobile_number"   type="text"  required>
+            <!-- <div *ngIf="pdfForm.controls['mobile_number'].errors && ( !pdfForm.controls['mobile_number'].pristine || submitted ||pdfForm.controls['mobile_number'].touched )" class="error-msg" style="color: red;">
+              <div [hidden]="!pdfForm.controls['mobile_number'].errors.required">Mobile Number is required.</div>
+              <div [hidden]="!pdfForm.controls.mobile_number.hasError('minlength')">Mobile Number must be 10 digits</div>
+            </div> -->
+          </div>
+          
+          <input type="submit" class="btn btn-default mt-0" value="Share" style="margin-top: 0px;">
+          <button class="btn btn-primary" (click)="hidePopup()">
+              Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF Send Successfully -->
+<div class="backdrop" [ngStyle]="{'display':displaymessage}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':displaymessage}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+      <div class="modal-body text-center">
+        <p class="text-center">{{message}}</p>
+        <button class="btn btn-default" (click)="hidePopup()">
+            Ok
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.add-row-btn
+{
+    right: -9px;
+    position: absolute;
+    padding: 0;
+    /* margin-bottom: 12px; */
+    top: 11px;
+    background: green;
+    padding: 0px 7px;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+}
+.delete-btn
+{
+    right: -31px;
+    position: absolute;
+    padding: 0px 8px;
+    background: red;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+}
+.inner-table td
+{
+    padding: 5px;
+    font-size: 12px;
+}
+.mydp {
+    border: 0px;
+    border-bottom: 1px solid;
+}
+.backdrop
+{
+    display: none;
+}

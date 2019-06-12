@@ -1,0 +1,107 @@
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+    <div class="modal-dialog  modal-dialog-centered modal-sm">
+        <div class="modal-content dialog">
+            <div class="modal-header popup1">
+                <button type="button" class="close" ><span></span></button>
+                  <p>{{message}}</p>
+            </div>
+            <div class="modal-footer popup2">
+                <button type="button" class="btn btn-default" (click)="hidePopup()" >Ok</button>
+            </div> 
+        </div>
+    </div> 
+ </div> 
+<div class="row pt-67"> 
+  <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+      <app-login-leftbar></app-login-leftbar>
+  </div>
+  <div class="col-md-10">
+<div class="card p-3 relative mtb-30">
+    <div class="image-loader" *ngIf="imageLoader" style="top:14%">
+        <img src="assets/images/loader.gif" />
+    </div>
+    <div class="clearfix card-strip">
+  <h3 class="title_add_branch">Add Branch</h3>
+  </div>
+  <div class="form">
+    <form class="" [formGroup] = "addForm" (ngSubmit) = "onSubmit()" >
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label class="site_label" for="inputdefault">Branch Name:<span style="color:red"></span></label>
+          <input class="form-control site_input" formControlName="branch_name"   type="text" placeholder="branch name" required>
+          <div *ngIf="addForm.controls['branch_name'].errors && ( !addForm.controls['branch_name'].pristine || submitted ||addForm.controls['branch_name'].touched )" class="error-msg">
+            <div [hidden]="!addForm.controls['branch_name'].errors.required">Branch Name is required.</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label class="site_label" for="inputdefault">Branch Mail:<span style="color:red"></span></label>
+          <input class="form-control site_input" formControlName="branch_mail"  [(ngModel)]="addcontactperson.branch_mail"   type="text" placeholder="branch mail" required>
+          <div *ngIf="addForm.controls['branch_mail'].errors && ( !addForm.controls['branch_mail'].pristine || submitted || addForm.controls['branch_mail'].touched )" class="error-msg">
+            <div [hidden]="(!addForm.controls['branch_mail'].errors.pattern && !addForm.controls['branch_mail'].errors.required)">Email must be in valid form.</div>
+        </div>
+        </div>
+      </div> 
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label class="site_label" for="inputdefault">Branch Contact:<span style="color:red"></span></label>
+          <input class="form-control site_input"  minlength="10"   onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "  type="number" formControlName="branch_contact"  type="text" placeholder="branch contact" required>
+          <div *ngIf="addForm.controls['branch_contact'].errors && ( !addForm.controls['branch_contact'].pristine || submitted ||addForm.controls['branch_contact'].touched )" class="error-msg">
+            <div [hidden]="!branch_contact.hasError('minlength')">Mobile no. must be 10 digits</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label class="site_label" for="inputdefault">Address:<span style="color:red"></span></label>
+          <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
+          <span class="error-msg" [ngStyle]="{'display':displayError}">Address</span>
+        </div>
+      </div>  
+     
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <label class="site_label" for="inputdefault">City:<span style="color:red"></span></label>
+          <input class="form-control site_input" value="{{city}}" disabled="disabled"  type="text" [(ngModel)]="addcontactperson.city" formControlName="city" placeholder="city">
+          <!-- <div *ngIf="addForm.controls['city'].errors && ( !addForm.controls['city'].pristine || submitted || addForm.controls['city'].touched )" class="error-msg">
+            <div [hidden]="(!addForm.controls['city'].errors.pattern && !addForm.controls['city'].errors.required)">City is required.</div>
+          </div> -->
+        </div>
+        <div class="col-sm-6">
+          <label class="site_label" for="inputdefault">State:<span style="color:red"></span></label>
+          <input id="state" class="form-control site_input" disabled="disabled" value="{{state}}"  type="text"  [(ngModel)]="addcontactperson.state" formControlName="state" placeholder="state">
+          <!-- <div *ngIf="addForm.controls['state'].errors && ( !addForm.controls['state'].pristine || submitted || addForm.controls['state'].touched )" class="error-msg">
+            <div [hidden]="(!addForm.controls['state'].errors.pattern && !addForm.controls['state'].errors.required)">State is required.</div>
+          </div> -->
+        </div>
+      </div>
+    
+      <div class="align-items-center row form-group" *ngFor="let c of contact_person_details; let i = index" [attr.data-index]="i">
+        <div class="col-sm-3">
+          <label class="site_label" for="inputdefault">Name:<span style="color:red"></span></label>
+          <input class="form-control site_input"  [(ngModel)]="c.name" [ngModelOptions]="{standalone: true}" type="text"  placeholder="name" required>
+         
+        </div>
+        <div class="col-sm-3">
+          <label class="site_label" for="inputdefault">Mobile:<span style="color:red"></span></label>
+          <input class="form-control site_input" minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "  type="number" [(ngModel)]="c.mobile" [ngModelOptions]="{standalone: true}"   type="text" placeholder="mobile">
+          
+        </div>
+        <div class="col-sm-4">
+          <label class="site_label" for="inputdefault">Email Id:<span style="color:red"></span></label>
+          <input class="form-control site_input"  [ngModelOptions]="{standalone: true}" [(ngModel)]="c.email"   type="email" placeholder="email id" required>
+         
+        </div> 
+        <div class=" col-sm-2">
+            <label class="site_label" for="inputdefault"><span style="color:red"></span></label>
+          <a data-toggle="modal" *ngIf="i!=0"  (click)="deleteContact(i)"><i class="far fa-trash-alt deleticon" height="15px" hspace="9" style="line-height: 81px;"></i></a>
+         </div>
+      </div>
+      <span class="error-msg" [ngStyle]="{'display':displayError}">Please Atleast Select One Contact Person</span>
+         <!-- <button type="button"  class="btn btn-default site_btn " *ngIf="i!=0" (click)="deleteContact(i)">Delete</button> -->
+         <button type="button"  class="btn btn-default site_btn " (click)="addContact()">Add More Contact</button>
+         <button type="submit" [routerLink] = "[ '/branch/detail-branch/' ]" class="btn btn-default site_btn ">Save</button>
+
+    </form>
+  </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,273 @@
+<!-- <style>
+ .mydp
+{
+    border-bottom: 1px solid;
+    border: 0px ;
+}
+my-date-picker
+{
+    border-bottom: 1px solid;
+}
+</style> -->
+<div class="row pt-67"> 
+		<div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+			<app-login-leftbar></app-login-leftbar>
+		</div>
+		  
+<div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right invoice-form">
+    <form [formGroup]="invoiceForm" name="invoiceForm" (ngSubmit)="submitInvoice(invoiceForm)">
+    <div class="card p-30 p-3 relative mtb-30" style="float: left;">
+    <div style="width:100%;float:left;">
+      <div style="text-align:center; width:10%;float:left">
+        <img src={{transporter_detail.transport_logo}} alt="" class="img-responsive" style="margin-right: 15px; width:100%; min-height: 105px;">
+      </div>
+      <div style="width:90%;float:left"> 
+            <p style="text-align:center;width:86%;font-weight: 600;">TAX INVOICE</p> 
+      </div>
+      <div style="width:90%;float:left"> 
+          <p style="text-align:center;width:86%;">{{transporter_detail.company_name}} </p> 
+      </div>
+      <div style="width:90%;float:left"> 
+          <p style="text-align:center;width:86%;">{{transporter_detail.address}}</p> 
+      </div>
+      <div style="width:90%;float:left"> 
+          <p style="text-align:center;width:86%;">CONTACT: {{transporter_detail.contact_no}}</p> 
+      </div>
+      <div style="width:90%;float:left"> 
+          <p style="text-align:center;width: 86%;">E-mail: {{transporter_detail.email_id}}</p> 
+      </div>
+    </div>
+    
+    <div style="width:100%;float:left;">
+        <div style="width:60%;float:left;">
+        <div style="width:100%;float:left">
+            <label style="padding-left: 10px;padding-top: 20px;font-weight:600">Consignor</label>
+        </div>    
+        <div>
+            <span style="padding-left: 25px;width: 20%;float:left;">Consignor<sup>*</sup>:</span>
+            <span>
+                <input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.consignor.errors && (!invoiceForm.controls.consignor.pristine || submitted || invoiceForm.controls.consignor.touched ))}" formControlName="consignor" style="border-bottom: 1px solid;width: 80%;" required>
+            </span>
+        </div>
+          <div>
+            <span style="padding-left: 25px;width: 20%;float:left;">Address<sup>*</sup>:</span>
+            <span>
+                <input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.address.errors && (!invoiceForm.controls.address.pristine || submitted || invoiceForm.controls.address.touched ))}" formControlName="address" style="border-bottom: 1px solid;width: 80%;" required>
+            </span>
+          </div>
+          <div>
+              <span style="padding-left: 25px;width: 20%;float:left;">State<sup>*</sup>:</span>
+              <span><input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.state.errors && (!invoiceForm.controls.state.pristine || submitted || invoiceForm.controls.state.touched ))}" formControlName="state" name="usrname"  style="border-bottom: 1px solid;width: 80%;" required></span>
+          </div>
+          <div>
+              <span style="padding-left: 25px;width: 20%;float:left;">State Code<sup>*</sup>:</span>
+              <span><input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.state_code.errors && (!invoiceForm.controls.state_code.pristine || submitted || invoiceForm.controls.state_code.touched ))}" formControlName="state_code" name="usrname"  style="border-bottom: 1px solid;width: 80%;" required></span>
+          </div>
+          <div>
+              <span style="padding-left: 25px;width: 20%;float:left;">GST No.<sup>*</sup>:</span>
+              <span><input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.gst_number.errors && (!invoiceForm.controls.gst_number.pristine || submitted || invoiceForm.controls.gst_number.touched ))}" formControlName="gst_number"  style="border-bottom: 1px solid;width: 80%;" required></span>
+          </div>
+        </div>
+        <div style="width:40%;float:left;">
+            <div style="text-align:center">
+                <label for="" style="padding-left: 10px;padding-top: 20px;font-size: 22px;padding-bottom: 1em;">Invoice</label>
+            </div>
+            <div>
+                <span style="padding-left: 25px;width: 40%;float:left;">Invoice Date<sup>*</sup>:</span>
+                <span style="width: 60%;float: left;">
+                    <input type="date" [ngClass]="{'feild-error': (invoiceForm.controls.invoice_date.errors && (!invoiceForm.controls.invoice_date.pristine || submitted || invoiceForm.controls.invoice_date.touched ))}" formControlName="invoice_date"  required />
+                </span>
+            </div>
+            <div>
+                <span style="padding-left: 25px;width:40%;float:left;">Due Date<sup>*</sup>:</span>
+                <span style="width: 60%;float: left;">
+                        <input type="date"
+                        [ngClass]="{'feild-error': (invoiceForm.controls.due_date.errors && (!invoiceForm.controls.due_date.pristine || submitted || invoiceForm.controls.due_date.touched ))}" formControlName="due_date" required />
+                </span>
+            </div>
+            <div>
+                <span style="padding-left: 25px;width:40%;float:left;">Invoice#<sup>*</sup>:</span>
+                <span style="width: 60%;float: left;">
+                    <input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.invoice_number.errors && (!invoiceForm.controls.invoice_number.pristine || submitted || invoiceForm.controls.invoice_number.touched ))}" formControlName="invoice_number" style="border-bottom: 1px solid;width: 95%;" required>
+                </span>
+            </div>
+            <div>
+                <span style="padding-left: 25px;width:40%;float:left;">HSN Code<sup>*</sup>:</span>
+                <span style="width: 60%;float: left;">
+                    <input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.hsn_code.errors && (!invoiceForm.controls.hsn_code.pristine || submitted || invoiceForm.controls.hsn_code.touched ))}" formControlName="hsn_code" style="border-bottom: 1px solid;width: 95%;"required>
+                </span>
+            </div>
+        </div>
+</div>
+<div style="width:100%;float:left;padding-top: 3em">
+  <table class="order-table" cellspacing="0" border="1px solid black" style="width:100%;">
+    <tr>
+      <th colspan="2" style="text-align:center">Order Ref. No.<sup>*</sup></th>
+      <th style="text-align:center;width: 150px;">Dated<sup>*</sup></th>
+      <!-- <th style="text-align:center;padding: 15px;"></th> -->
+      <th colspan="2" style="text-align:center">From<sup>*</sup></th>
+      <th colspan="2" style="text-align:center;padding: 12px;">To<sup>*</sup></th>
+      <th style="text-align:center;width: 100px;">Order By<sup>*</sup></th>
+      <th style="text-align:center;width: 100px;"></th>
+      <th style="text-align:center;width: 100px;"></th>
+
+    </tr>
+    <tr>
+      <td style="width: 240px;" colspan="2"><input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.order_reference_number.errors && (!invoiceForm.controls.order_reference_number.pristine || submitted || invoiceForm.controls.order_reference_number.touched ))}" formControlName="order_reference_number" style="width: 100%;border-bottom:1px solid" required></td>      
+      <td>
+          <input type="date" 
+            [ngClass]="{'feild-error': (invoiceForm.controls.order_ref_date.errors && (!invoiceForm.controls.order_ref_date.pristine || submitted || invoiceForm.controls.order_ref_date.touched ))}" formControlName="order_ref_date" required />      </td>
+      <td colspan="2"><input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.from.errors && (!invoiceForm.controls.from.pristine || submitted || invoiceForm.controls.from.touched ))}" formControlName="from" style="width: 100%;border-bottom:1px solid"></td>     
+      <td colspan="2">
+          <input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.to.errors && (!invoiceForm.controls.to.pristine || submitted || invoiceForm.controls.to.touched ))}" formControlName="to" style="width: 100%;border-bottom:1px solid" style="width: 100%;border-bottom:1px solid">
+      </td>
+      <td colspan="3">
+          <input type="text" [ngClass]="{'feild-error': (invoiceForm.controls.order_by.errors && (!invoiceForm.controls.order_by.pristine || submitted || invoiceForm.controls.order_by.touched ))}" formControlName="order_by" style="width: 100%;border-bottom:1px solid" required>
+        </td>
+    </tr>
+    
+  </table>
+</div>
+<div style="width:100%;float:left;padding-top: 1em">
+  <label  style="width:100%;float:left;padding-top: 3em">Particulars<sup>*</sup></label>
+    <table class="particulars_detail" cellspacing="0" cellpadding="2px" border="1px solid black" style="width:100%;">
+      <tr>
+        <th style="text-align:center;width: 90px;">S.No</th>
+        <th style="text-align:center">Truck No.</th>
+        <th style="text-align:center;padding: 15px;width: 65px;">Wt(MT)</th>
+        <th style="text-align:center">Goods</th>
+        <th style="text-align:center;padding: 15px;width: 65px;">LR.No</th>
+        <th style="text-align:center;padding: 12px;">Rate(Per MT)</th>
+        <th style="text-align:center;position:relative">Amount
+            <button (click)="addRow()" class="add-row-btn">+</button>
+        </th>
+        <!-- <th style="text-align:center;padding: 15px;"></th>
+        <th style="text-align:center;padding: 15px;"></th> -->
+      </tr>
+      <tr *ngFor="let c of particulars_detail;let i = index" [attr.data-index]="i">
+        <td valign="top" class="text-center">{{i+1}}  </td>
+        <td valign="top">
+            <input type="text" [(ngModel)]="c.truck_number" [ngModelOptions]="{standalone: true}" style="width: 100%;border-bottom:1px solid" required>
+        </td>
+        <td valign="top" ><input type="text" [(ngModel)]="c.weight" [ngModelOptions]="{standalone: true}" style="width: 100%;border-bottom:1px solid"></td>
+        <td valign="top" ><input type="text" [(ngModel)]="c.goods" [ngModelOptions]="{standalone: true}" style="width: 100%;border-bottom:1px solid"></td>
+        <td valign="top" ><input type="text" [(ngModel)]="c.lr_number" [ngModelOptions]="{standalone: true}" style="width: 100%;border-bottom:1px solid"></td>
+        <td valign="top" ><input type="text" [(ngModel)]="c.rate_pmt" [ngModelOptions]="{standalone: true}" style="width: 100%;border-bottom:1px solid"></td>
+        <td valign="middle" style="position:relative">
+            <input type="text" [(ngModel)]="c.amount" [ngModelOptions]="{standalone: true}" style="width: 100%;border-bottom:1px solid;position:relative">
+            <button *ngIf="i!=0" (click)="deleteRow()" class="delete-btn">-</button>
+        </td>
+    </tr>
+    <tr *ngIf="showError==true">
+        <td class="text-center" style="color:red" colspan="7">Please Fill atleat One Detail</td>
+    </tr>
+        <tr>
+            <td class="text-center" colspan="2"><span class="inner-part">Loading & Unloading<sup>*</sup></span></td>
+            <td colspan="4"></td>
+            <td class="text-center"><input type="number" (input)="convert()" [ngClass]="{'feild-error': (invoiceForm.controls.loading_unloading_charges.errors && (!invoiceForm.controls.loading_unloading_charges.pristine || submitted || invoiceForm.controls.loading_unloading_charges.touched ))}" formControlName="loading_unloading_charges" style="border-bottom:1px solid" required></td>
+        </tr>
+        <tr>
+            <td class="text-center" colspan="2"><span class="inner-part">Detaintion<sup>*</sup></span></td>
+            <td colspan="4"></td>
+            <td class="text-center"><input type="number" (input)="convert()" [ngClass]="{'feild-error': (invoiceForm.controls.detention_amount.errors && (!invoiceForm.controls.detention_amount.pristine || submitted || invoiceForm.controls.detention_amount.touched ))}" formControlName="detention_amount" style="border-bottom:1px solid" required></td>
+        </tr>
+        <tr>
+            <td class="text-center" colspan="2"><span class="inner-part">Total</span></td>
+            <td colspan="4"></td>
+            <td class="text-center">{{convertToInt (loading_unloading_charges)+ convertToInt (detention_amount)}}</td>
+        </tr>
+        <tr>
+            <td class="text-center" colspan="2"><span class="inner-part">CGST 2.5%<sup>*</sup></span></td>
+            <td colspan="4"></td>
+            <td class="text-center"><input type="text" (input)="convert()" [ngClass]="{'feild-error': (invoiceForm.controls.cgst.errors && (!invoiceForm.controls.cgst.pristine || submitted || invoiceForm.controls.cgst.touched ))}" formControlName="cgst" style="border-bottom:1px solid" required></td>
+        </tr>
+        <tr>
+            <td class="text-center" colspan="2"><span class="inner-part">SGST 2.5%<sup>*</sup></span></td>
+            <td colspan="4"></td>
+            <td class="text-center"><input type="text" (input)="convert()"  [ngClass]="{'feild-error': (invoiceForm.controls.sgst.errors && (!invoiceForm.controls.sgst.pristine || submitted || invoiceForm.controls.sgst.touched ))}" formControlName="sgst" style="border-bottom:1px solid" required></td>
+        </tr>
+        <tr>
+            <td class="text-center" colspan="2"><span  class="inner-part">Total Tax<sup>*</sup></span></td>
+            <td colspan="4"></td>
+            <td class="text-center"><input type="text" (input)="convert()"  [ngClass]="{'feild-error': (invoiceForm.controls.total_tax.errors && (!invoiceForm.controls.total_tax.pristine || submitted || invoiceForm.controls.total_tax.touched ))}" formControlName="total_tax" style="border-bottom:1px solid" required></td>		
+        </tr>
+        <tr>
+            <td class="text-center" colspan="2"><span class="inner-part">Total value<sup>*</sup></span></td>
+            <td colspan="4"></td>
+            <td class="text-center"><input type="text" (input)="convert()" [ngClass]="{'feild-error': (invoiceForm.controls.total_value.errors && (!invoiceForm.controls.total_value.pristine || submitted || invoiceForm.controls.total_value.touched ))}" formControlName="total_value" style="border-bottom:1px solid" required></td>		
+        </tr>
+        <tr>
+            <td class="text-center" colspan="2"><span class="inner-part">Amount in Words</span></td>
+            <td colspan="4"></td>
+            <td class="text-center">{{total_amount}}</td>		
+        </tr>
+      
+    </table>
+  </div>
+  <div style="width:100%;float:left;padding-top:3em">
+      <div style="width:40%;float:left;font-size: 14px;">
+            Signature Receiver	
+      </div>
+      <div style="width:60%;float:left;text-align:center;font-size: 14px;">
+            Signature with Stamp					
+      </div>
+  </div>
+  <div style="width:100%;float:left;border-top: 1px solid;border-bottom: 1px solid;">
+        Please Pay by Check/DD/RTGS/NEFT only (Details Below)		
+  </div>
+  <div style="width:100%;float:left;border-bottom: 1px solid;">
+        <div style="width:40%;float:left">
+            <span>Branch Offices:</span>	
+        </div>
+        <div style="width:60%;float:left;text-align:center">
+            Bank Account Details
+        </div>
+  </div>
+  <div style="width:100%;float:left">
+      <div style="width:50%;float:left;padding-top: 3em">
+          <textarea rows="2" [ngClass]="{'feild-error': (invoiceForm.controls.Branch_offices.errors && (!invoiceForm.controls.Branch_offices.pristine || submitted || invoiceForm.controls.Branch_offices.touched ))}" formControlName="Branch_offices" style="border-bottom:1px solid;height: 35px; width: 90%;" required></textarea>
+          <div style="width:100%;float:left;color: #6f6f6f;font-weight:600">
+              <p>Service Tax Paid by Consignee</p>
+              <p>Subject to Indore Juridiction		</p>
+          </div>
+      </div>
+      <div style="width:35%;float:right;padding-top: 1em;">
+          <div style="width:100%;float:left;text-align:right;font-weight:600">
+            {{transporter_detail.company_name}}
+          </div>
+        <div style="width:100%;float:left;text-align:right;font-weight:600">
+            <span style="font-size: 14px;margin-right:5px;">Acc No. - </span>  
+            <span> {{bankDetail.account_number}}</span>           
+        </div>
+        <div style="width:100%;float:left;text-align:right;font-weight:600">
+                <span style="font-size: 14px;margin-right:5px;">IFSC - </span>     
+                <span> {{bankDetail.ifsc_code}}</span>            
+        </div>  
+        <div style="width:100%;float:left;text-align:right;font-weight:600"> 
+                <span style="font-size: 14px;margin-right:5px;">PAN - </span>     
+                <span>{{transporter_detail.pan_number}}</span>
+        </div>
+      </div>
+  </div>
+  <div class="clearfix text-center" style="padding-top:10px;float: left; width: 100%;">
+    <button type="submit" class="btn btn-success mt-15">Submit</button>
+  </div>
+</div>
+</form>
+</div>
+</div>
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+<div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+    
+        <div class="modal-body">
+            <p style="    text-align: center;font-size: 16px;">{{message}}</p>
+        </div>
+        
+        <div class="modal-footer popup2">
+            <button type="button" class="btn btn-default" (click)="hidePop()" >Ok</button>
+        </div>
+    </div>
+</div>
+</div>

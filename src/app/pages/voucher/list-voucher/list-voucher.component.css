@@ -1,0 +1,18 @@
+.search-box{
+    width:100%; float:left; border:1px solid #ddd; height: 44px; margin-bottom:50px
+}
+.search-box input{
+    width:80%; float:left; height: 40px;
+}
+.search-box button{
+    width:20%; float:left; background-color:#28D094; color:#fff; margin-top:1px;
+    height: 40px; border:1px solid #28D094
+}
+.search-box button:hover{
+    /* background-color:#fff; color:#28D094 */
+}
+.disabled
+{
+    opacity: 0.6;
+    cursor: not-allowed;
+}

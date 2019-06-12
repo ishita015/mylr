@@ -1,0 +1,161 @@
+
+<style>
+  .opt-data{border-bottom:1px solid #ddd}
+</style>
+<div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-login-leftbar></app-login-leftbar>
+    </div>
+    <div class="col-md-10 col-sm-10 col-xs-12">
+        <div class="card p-30 p-3 relative">
+            <div class="panel panel-default panel-custom">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Create Voucher</h4>
+                </div>
+                <div class="panel-body">
+                 <div id="printDiv">
+                  <table border="0" style="width:100%">
+                    <tr>
+                      <td align="center">
+                        <img  style="height:100px" src="{{ transporter_detail.transport_logo}}" alt="{{ transporter_detail.company_name }}"/>
+                      </td>
+                      <td align="center">
+                        <h2>{{ transporter_detail.company_name }}</h2>
+                        <br />
+                        <h5>{{ transporter_detail.address }}</h5>
+                      </td>
+                      <td align="center">
+                        <p>Contacts</p>
+                        <p>{{ transporter_detail.contact_no }}</p>
+                      </td>
+                    </tr>
+                  </table>
+                 
+                  <table style="width:100%; margin-top:30px">
+                    <tr>
+                      <td>
+                        <span style="width:135px; float:left">Freight Challan no.</span>
+                        <span style="float:left">
+                          <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.fr_challan_id }}</span>
+                        </span>
+                      </td>
+                      <td>
+                        <span>Voucher for</span>
+                      </td>
+                      <td>
+                        <span style="width:135px; float:left">Date:</span>
+                        <span style="float:left">
+                          <!-- <input type="text" class="bdr-btm" /> -->
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <span style="width:135px; float:left">Lr No.</span>
+                          <span style="float:left">
+                              <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.lr_id }}</span>
+                          </span>
+                        </td>
+                        <td>
+                          <!-- <select class="form-control bdt-btm">
+                            <option>1</option>
+                            <option>1</option>
+                          </select> -->
+                        </td>
+                        <td>
+                          <span style="width:135px; float:left">Voucher No.</span>
+                          <span style="float:left">
+                            <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.voucher_number }}</span>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td colspan="3">
+                              <span style="width:135px; float:left">Vehicle Number</span>
+                              <span style="float:left">
+                                <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.vehicle_number }}</span>
+                              </span>
+                            </td>
+                      </tr>
+                  </table>
+
+                  <table style="width:100%">
+                    <tr>
+                      <td>
+                        <div class="full-width mt-20" style="width:100%; float:left; margin-top:20px">
+                          <span style="float:left; width:20%">Pay to Shri/Ms.</span>
+                          <span style="float:left; width:80%">
+                            <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.voucher_charges.pay_to }}</span>
+                          </span>
+                        </div>
+                        <div class="full-width mt-20" style="width:100%; float:left; margin-top:20px">
+                          <span style="float:left; width:20%">Debit To</span>
+                          <span style="float:left; width:80%">
+                            <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.voucher_charges.debit_to }}</span>
+                          </span>
+                        </div>
+                        <div class="full-width mt-20" style="width:100%; float:left; margin-top:20px">
+                          <span style="float:left; width:20%">Narrations:</span>
+                          <span style="float:left; width:80%">
+                            <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.narration }}</span>
+                          </span>
+                        </div>
+                        <div class="full-width mt-20" style="width:100%; float:left; margin-top:20px">
+                          <div class="w60 pull-left" style="float:left; width:50%">
+                            <span style="float:left; width:30%">Bill No.</span>
+                            <span style="float:left; width:60%">
+                              <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.bill_no }}</span>
+                            </span>
+                          </div>
+                          <div class="w40 pull-left" style="float:left; width:50%">
+                              <span style="float:left; width:30%">Dated:</span>
+                              <span style="float:left; width:70%">
+                                <span class="opt-data" style="border-bottom:1px solid #ddd; width:77%; float:left">{{ voucher_detail.bill_date }}</span>
+                              </span>
+                            </div>
+                        </div>
+                        <div class="full-width mt-20" style="width:100%; float:left; margin-top:20px">
+                            <span style="float:left; width:20%">Rs. In Words:</span>
+                            <span style="float:left; width:20%">
+                              <!-- <input type="text" class="bdr-btm" /> -->
+                            </span>
+                          </div>
+                          <div class="full-width mt-20" style="width:100%; float:left; margin-top:20px">
+                              <span style="float:left; width:50%"> Amount Dr. or Cr. On Ledger Folio no:</span>
+                              <span style="float:left; width:50%">
+                              <span class="opt-data" style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.ledger_folio_number }}</span>
+                              </span>
+                            </div>
+                      </td>
+                      <td width="25%">
+                        <div style="border:1px solid #666; text-align: center">
+                          <div style="border-bottom:1px solid #666; padding: 15px">
+                              Amount
+                            </div>
+                            <div style="border-bottom:1px solid #666; min-block-size: 200px; padding: 15px">
+                               <span style="border-bottom:1px solid #ddd; width:90%; float:left">{{ voucher_detail.voucher_charges.amount }}</span>
+                            </div>
+                            <div style="padding: 15px">
+                              
+                            </div>
+                          </div>
+                      </td>
+                    </tr>
+                    
+                  </table>
+                  <table style="width:100%; margin-top:50px">
+                    <tr>
+                      <td>Cashier</td>
+                      <td align="center">Accounts</td>
+                      <td align="right">Receiver's Sign</td>
+                    </tr>
+                  </table>
+                </div>
+                </div>
+            </div>
+            <div class="clearfix">
+              <button class="btn btn-info" (click)="printDetail('printDiv')">Print</button>
+            </div>
+        </div>
+    </div>
+</div>

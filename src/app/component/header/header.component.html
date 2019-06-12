@@ -1,0 +1,259 @@
+<style>
+    .select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+sup{
+    color: red;
+}
+</style>
+<div class="image-loader" *ngIf="imageLoader">
+        <img src="http://mylr.in/assets/img/loader-orange.gif" />
+    </div>
+
+<header class="main_header_area "  >
+        <div  [ngClass]="isShow == true ? 'inner-header' : '' " >
+        <div class="container-fluid">
+        <div class="pull-left" style="    padding-top: 2px;
+        padding-bottom: 1px;">
+        <!-- <h1 *ngIf="isShow == false">
+            <a href="#/home" class="logo-img">
+                <img src="assets/images/logo.png" />
+            </a>
+        </h1> -->
+        <h1 *ngIf="isShow == true">
+            <a *ngIf="isTempalteSelected == true" href="#/dashboard" class="logo-img ">
+                <img src="assets/images/logo1.png" />
+            </a>
+            <a *ngIf="isTempalteSelected == false" href="JavaScript:Void(0);" class="logo-img ">
+                <img src="assets/images/logo1.png" />
+            </a>
+        </h1>
+        </div>
+        <div class="pull-right">
+        <!-- <div class="header_c_text" *ngIf="isShow == false">
+            <h5>Call us</h5>
+            <h4>+91-96445-44464</h4>
+        </div> -->
+        <!-- <div class="header_c_text" *ngIf="isShow == false">
+            <h5>Working Hours</h5>
+            <h4>Mon - Fri : 10am to 5pm</h4>
+        </div> -->
+        <!-- <div class="header_c_text" *ngIf="isShow == false">
+            <h5>Email Us</h5>
+            <h4>
+                <a href="mailto:sales@mylr.com" class="__cf_email__">
+                    sales@mylr.com
+                </a>
+            </h4>
+        </div> -->
+        <!-- <div class="header_c_text" *ngIf="isShow == false">
+        <a class="quote_btn" href="#/contact" style="top:10px">Request a Quote</a>
+        </div> -->
+        <div class="dropdown" style="margin-top:10px" *ngIf="isShow == true">
+            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="assets/images/transporter.png" style="width:40px; height:40px" />
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dLabel" style="left: -45px; padding:5px">
+              <li *ngIf="isTempalteSelected == true"><a class="profile" routerLink="/profile">My Profile</a></li>
+              <li><a class="profile" (click)="logout()">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="main_menu_area " data-spy="affix" data-offset-top="197" *ngIf="isShow == false">
+        <nav class="navbar navbar-default header-nav">
+        <div class="container-fluid">
+        
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        </div>
+        
+        <div class="collapse test navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav" id="header-scroll">
+        <li>
+                <a *ngIf="isShow == false" href="#/home" class="logo-img border-none">
+                    <img src="assets/images/logo.png" style="height: 65px;padding: 3px;">
+                </a>
+        </li>
+        
+        <!-- <li><a routerLink="/branch/add-branch">BRANCH</a></li> -->
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="header-scroll">
+            <li  *ngIf="isShow == false" class="active"><a routerLink="/home"> Home <i class="fa fa-home" aria-hidden="true"></i></a></li>
+            <li  *ngIf="isShow == false"><a routerLink="/about"> About Us <i class="fas fa-info-circle"></i></a></li>
+            <li  *ngIf="isShow == false"><a routerLink="/contact"> Contact Us <i class="fa fa-phone" aria-hidden="true"></i></a></li>
+            <li *ngIf="isShow == false"><a routerLink="/" (click)="openModal()"> Create Lr <i class="fa fa-file-text" aria-hidden="true"></i></a></li>
+            <li *ngIf="isShow == false">
+                <!-- <ul class="dropdown login-dropdwn">
+                    <li><a [routerLink]="['#/login']"> Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+                    <li><a href="#/signup/detail">Signup <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
+                </ul></a> -->
+                <a><div class="dropdown">
+                        <button class="dropdown-toggle" type="button" data-toggle="dropdown">LOGIN/SIGNUP
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu sub-menu">
+                          <li><a href="#/login"> Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+                          <li><a href="#/signup/detail">Signup <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
+                        </ul>
+                </div></a>
+            </li>
+            <li *ngIf="isShow == true"><a href="#/dashboard">Dashboard</a></li>
+            <!-- <li *ngIf="isShow == false"><a href="#/login"> Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li> -->
+            <li (click)="logout()" *ngIf="isShow == true" ><a href="#" >Log out</a></li>
+        </ul>
+    
+        </div>
+        </div>
+        </nav>
+        </div>
+
+        <div class="backdrop" [ngStyle]="{'display':display3}"></div>
+        <div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display3}">
+            <div class="modal-dialog  modal-dialog-centered modal-sm">
+                <div class="modal-content dialog">
+                    <div class="modal-header popup1">
+                        <button type="button" class="close"  (click)="onCloseHandled()"><span></span></button>
+                          <p>{{message}}</p>
+                    </div>
+                    <div class="modal-footer popup2">
+                        <button type="button" class="btn btn-default" (click)="hidePopMsg()" >Ok</button>
+                    </div> 
+                </div>
+            </div> 
+         </div> 
+        
+         <div class="backdrop" [ngStyle]="{'display':display5}"></div>
+        <div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display5}">
+            <div class="modal-dialog  modal-dialog-centered modal-sm">
+                <div class="modal-content dialog">
+                    <div class="modal-header popup1">
+                        <button type="button" class="close"  (click)="onCloseHandled()"><span></span></button>
+                          <p>{{message}}</p>
+                    </div>
+                    <div class="modal-footer popup2">
+                        <button type="button" class="btn btn-default" (click)="hidePopupOtp()" >Ok</button>
+                    </div> 
+                </div>
+            </div> 
+         </div> 
+        
+         <div class="backdrop" [ngStyle]="{'display':display4}"></div>
+        <div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display4}">
+            <div class="modal-dialog  modal-dialog-centered modal-sm">
+                <div class="modal-content dialog">
+                    <div class="modal-header popup1">
+                        <button type="button" class="close  pull-right"  aria-label="Close" (click)="onCloseHandledOtp()"><span aria-hidden="true">x</span></button>
+                          <p class="form_otp">OTP Form</p>
+                    </div>
+                    <div class="modal-body">
+                        <form id="verifyOtpForm" class="" [formGroup] = "verifyOtpForm" (ngSubmit) = "onSubmit2()" >
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="uname"><b>Transporter Otp<sup>*</sup></b></label>
+                                <input class="form-control" formControlName="transporter_otp" type="text" placeholder="Transporter Otp" required>
+                                <div *ngIf="verifyOtpForm.controls['transporter_otp'].errors && ( !verifyOtpForm.controls['transporter_otp'].pristine || submitted2 || verifyOtpForm.controls['transporter_otp'].touched )" class="error_msg">
+                                    <div [hidden]="(!verifyOtpForm.controls['transporter_otp'].errors.pattern && !verifyOtpForm.controls['transporter_otp'].errors.required)">Transporter Otp Is Required</div>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="uname"><b>User Otp<sup>*</sup></b></label>
+                                <input id="password" formControlName="user_otp"  class="form-control" type="text" placeholder="User Otp" required>
+                                <div *ngIf="verifyOtpForm.controls['user_otp'].errors && ( !verifyOtpForm.controls['user_otp'].pristine || submitted2 || verifyOtpForm.controls['user_otp'].touched )" class="error_msg">
+                                    <div [hidden]="(!verifyOtpForm.controls['user_otp'].errors.pattern && !verifyOtpForm.controls['user_otp'].errors.required)">User Otp Is Required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                        </div>
+                        
+                        </div>
+                        </form>
+                        </div>
+                    <!-- <div class="modal-footer popup2">
+                        <button type="button" class="btn btn-default" (click)="hidePopupOtp()" >Ok</button>
+                    </div>  -->
+                </div>
+            </div> 
+         </div> 
+        
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+    <div class="modal-dialog  modal-dialog-centered modal-sm">
+        <div class="modal-content dialog popupwidth">
+            <div class="modal-header popup1">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseHandled()">
+                            <span aria-hidden="true">×</span>
+                    </button>
+                <!-- <button type="button" class="close"  (click)="onCloseHandled()"></button> -->
+                  <p class="form_name">Create LR For Your Transporter</p>
+            </div>
+            <div class="modal-body">
+                    <form id="lrform" class="" [formGroup] = "lrForm" (ngSubmit) = "onSubmit()" >
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="uname"><b>Transporter Contact No.<sup>*</sup></b></label>
+                            <input class="form-control" formControlName="transporter_contact_number"  minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " type="text" placeholder="Transporter Contact No" required>
+                            <div *ngIf="lrForm.controls['transporter_contact_number'].errors && ( !lrForm.controls['transporter_contact_number'].pristine || submitted || lrForm.controls['transporter_contact_number'].touched )" class="error-msg">
+                                <div [hidden]="!lrForm.controls['transporter_contact_number'].errors.required">Transporter Contact No. Is Required.</div>
+                                <div [hidden]="!lrForm.controls.transporter_contact_number.hasError('minlength')">Transporter Contact No. Must Be 10 Digits</div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="uname"><b>User Name<sup>*</sup></b></label>
+                            <input id="password" formControlName="user_name"  class="form-control" type="text" placeholder="User Name" required>
+                            <div *ngIf="lrForm.controls['user_name'].errors && ( !lrForm.controls['user_name'].pristine || submitted || lrForm.controls['user_name'].touched )" class="error_msg">
+                                    <div [hidden]="(!lrForm.controls['user_name'].errors.pattern && !lrForm.controls['user_name'].errors.required)">User Name Is Required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="uname"><b>User Contact Number<sup>*</sup></b></label>
+                            <input class="form-control"  formControlName="user_contact_number"  minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "    type="text" placeholder="User Contact Number" required>
+                            <div *ngIf="lrForm.controls['user_contact_number'].errors && ( !lrForm.controls['user_contact_number'].pristine || submitted || lrForm.controls['user_contact_number'].touched )" class="error-msg">
+                                    <div [hidden]="!lrForm.controls['user_contact_number'].errors.required">User Contact Number Is Required.</div>
+                                    <div [hidden]="!lrForm.controls.user_contact_number.hasError('minlength')">User Contact Number Must Be 10 Digits</div>
+                                </div>
+                        </div> 
+                        <div class="form-group">
+                            <label for="uname"><b>Company Name<sup>*</sup></b></label>
+                            <textarea formControlName="user_purpose" class="form-control"  type="text" placeholder="Company Name" required></textarea>
+                            <div *ngIf="lrForm.controls['user_purpose'].errors && ( !lrForm.controls['user_purpose'].pristine || submitted || lrForm.controls['user_purpose'].touched )" class="error-msg">
+                                    <div [hidden]="(!lrForm.controls['user_purpose'].errors.pattern && !lrForm.controls['user_purpose'].errors.required)">Company Name Is Required</div>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="modal-footer">
+                    <div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                    </div>
+                    
+                    </div>
+                </form>
+             </div>
+            <!-- <div class="modal-footer popup2"> -->
+                <!-- <button type="button" class="btn btn-default" (click)="hidePopup()" >Ok</button> -->
+            <!-- </div>  -->
+        </div>
+    </div> 
+ </div>
+        </header>
+        
+          

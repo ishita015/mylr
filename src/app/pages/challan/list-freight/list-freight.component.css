@@ -1,0 +1,9 @@
+.fl-input
+{
+    color: #000;
+    border: 1px solid #ddd;
+}.edit-icon
+{
+    cursor: pointer;
+    outline: 0;
+}

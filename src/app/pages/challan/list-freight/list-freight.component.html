@@ -1,0 +1,104 @@
+<div class="image-loader" *ngIf="imageLoader">
+  <img src="assets/images/loader.gif" />
+</div>
+<div class="row pt-67"> 
+  <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+      <app-login-leftbar></app-login-leftbar>
+  </div>
+  <div class="col-md-10">  
+    <div class="clearfix">
+        <div class="card p-3 mtb-30" >
+
+            <div class="clearfix card-strip">
+                <aside class="col-sm-6">
+                    <h4 class="table_title mt-5">Freight Challan List</h4>
+                </aside>
+                <aside class="col-sm-6 text-right">
+                   <a routerLink="/freight-challan/add" class="btn btn-info">Add Challan</a> 
+                </aside>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table">
+                  <thead class="bg-success white">
+                    <tr>
+                      <th class="text-center" style="width:116px">Fr Challan Id </th>
+                      <th class="text-center" style="width:116px">Challan No</th>
+                      <th class="text-center" style="width:160px">Challan Date</th>
+                      <th>Broker Name</th>
+                      <th>Owner Name</th>
+                      <th>Driver Name</th>
+                      <th>Vehicle No.</th>
+                      <th class="text-center">Detail</th>
+                    </tr>                    
+                  </thead>
+                  <tbody>
+                    <!-- <tr>
+                        | freightChallanListFilter:filtreArg
+                      <td class="text-center"><input class="fl-input" type="text" [(ngModel)]="filtreArg.fr_challan_id" style="width:90px" /></td>
+                      <td class="text-center"><input class="fl-input" type="text" [(ngModel)]="filtreArg.challan_no" style="width:90px" /></td>
+                      <td class="text-center"><input class="fl-input" type="text" [(ngModel)]="filtreArg.fc_date" style="width:110px" /></td>
+                      <td><input class="fl-input" type="text" [(ngModel)]="filtreArg.broker_name" style="width:60px" /></td>
+                      <td><input class="fl-input" type="text" [(ngModel)]="filtreArg.owner_name" style="width:60px" /></td>
+                      <td><input class="fl-input" type="text" [(ngModel)]="filtreArg.driver_name" style="width:60px" /></td>
+                      <td></td>
+                    </tr> -->
+                    <ng-container *ngIf="isEmpty!=true">
+                        <tr>
+                   
+                            <td>
+                            <input  type="text" [(ngModel)]="filterArgs.fr_challan_id" class="form-control"  placeholder="Search" />
+                            </td>
+                            <td>
+                            <input  type="text" class="form-control" [(ngModel)]="filterArgs.loading_challan_id" placeholder="Search" />
+                            </td>
+                            <td>
+                                <input style="opacity:0"  type="text" class="form-control" [(ngModel)]="filterArgs.fc_date"  placeholder="Search" />
+                            </td>
+                            <td>
+                            <input  type="text" class="form-control" [(ngModel)]="filterArgs.broker_name"  placeholder="Search" />
+                            </td>
+                            <td>
+                                <input  type="text" class="form-control" [(ngModel)]="filterArgs.owner_name"  placeholder="Search" />
+                            </td>
+                            <td>
+                                <input  type="text" class="form-control" [(ngModel)]="filterArgs.driver_name"  placeholder="Search" />
+                            </td>
+                            <td>
+                                <input  type="text" class="form-control" [(ngModel)]="filterArgs.vehicle_number"  placeholder="Search" />
+                            </td>   
+                            <td></td> 
+                              
+                        </tr>
+                    <tr *ngFor="let challanList of challanList1 |loadingChallanFilter : filterArgs| paginate: {itemsPerPage: 5, currentPage:page, id: '1'}; let i = index">
+                      <td class="align-middle text-center">{{challanList.fr_challan_id}}</td>
+                      <td class="align-middle text-center"> {{challanList.loading_challan_id}}</td>
+                      <td class="text-center"> {{challanList.fc_date | date:'dd-MM-yyyy'}}</td>
+                      <td>{{challanList.broker_name}}</td>
+                      <td>{{challanList.owner_name}}</td>
+                      <td>{{challanList.driver_name}}</td>
+                      <td>{{challanList.vehicle_number}}</td>
+                      <td class="align-middle text-center">
+                        
+                          <span style="outline: 0;"  [routerLink] = "['/freight-challan/detail/',challanList.fr_challan_id]" class=" mr-1 mb-1 ">
+                            <i class="fas fa-eye edit-icon"></i>
+                          </span>
+                      </td>
+                    </tr>
+                  </ng-container>
+                    <tr *ngIf="isEmpty==true">
+                      <td class="text-center" style="font-size: 15px;" colspan="7">{{message1}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="page = $event" id="1"
+                          maxSize="5"
+                          directionLinks="true"
+                          autoHide="true" style="float:right">
+              </pagination-controls>
+              </div>
+        </div>
+      </div>
+  </div>
+
+  </div>

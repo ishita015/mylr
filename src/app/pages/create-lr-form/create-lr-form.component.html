@@ -1,0 +1,836 @@
+<style>
+.cl-red{color:red}
+div > aside{display:none}
+div > aside.step-1, div > aside.step-2, div > aside.step-3, div > aside.step-4,
+div > aside.step-5 { display: block}
+.step-nav li{float:left}
+.step-nav li.li-active a{background: blue; color:#fff}
+ul.step-nav li.li-active a {
+  background: #052c7d;
+  color: #fff;
+}
+.next-arrow
+{
+  padding-left: 5px;
+  font-size: 12px; 
+}
+.arrow-right
+{
+  padding-right: 5px;
+  font-size: 12px; 
+}
+.error-msg{
+  color:red;
+}
+
+</style>
+<div class="image-loader" *ngIf="imageLoader">
+  <img src="http://mylr.in/assets/img/loader-orange.gif" />
+</div>
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+<div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+    
+        <div class="modal-body">
+            <h3 style="font-size:14px;text-align:center">{{message}}</h3>
+        </div>
+        
+        <div class="modal-footer popup2">
+            <button type="button" class="btn btn-default"   (click)="hidePupUp()" >Ok</button>
+            <!-- [routerLink] = "['/lr/list']" -->
+          </div>
+    </div>
+</div>
+</div>
+<div class="row pt-67" style="margin-right:0px">    
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+      <app-login-leftbar></app-login-leftbar>
+    </div>
+      
+  <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right invoice-form" style="padding-bottom:30px">
+      
+<ul class="step-nav">
+    <li [ngClass]="{'li-active':isLRStep1}"><a href="javascript:void(0)">Vehicle Details</a></li>
+    <li [ngClass]="{'li-active':isLRStep2}"><a href="javascript:void(0)">Consignor/Consignee</a></li>
+    <li [ngClass]="{'li-active':isLRStep3}"><a href="javascript:void(0)">Goods Details</a></li>
+    <li [ngClass]="{'li-active':isLRStep4}"><a href="javascript:void(0)">Freight Details</a></li>
+    <li [ngClass]="{'li-active':isLRStep5}"><a href="javascript:void(0)">Other Details</a></li>
+  </ul>
+  <br />
+ 
+                                <!--   Vehicle No. Form -->
+  <div>
+    <aside [ngClass]="{'step-1':isLRStep1}">
+        <form  [formGroup] = "lrform1" autocomplete="off" (ngSubmit) = "activeStep2(lrform1)">
+         <!-- -->
+      <div class="row">
+        <div class="col-sm-4 col-xs-12">
+        <img src="assets/images/step-1.png" class="img-responsive center-block" />
+        </div>
+        <div class="col-sm-7 col-xs-12">
+          <!---->
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+              <label>Vehicle No<sup class="cl-red">*</sup></label>
+              <input id="name" autocomplete="off" name="vehicle_number"  [(ngModel)]="filterArg.vehicle_number"  (focus)="vehicleShow()"  class="form-control" formControlName="vehicle_number" required >
+              <span>
+                  <ul style="
+                    overflow-y: scroll;
+                    max-height: 100px;
+                    position: absolute;
+                    z-index: 999999;
+                    width: 91%;
+                    background: #fff;" *ngIf= "isVehicleList" >
+                    
+                    <li *ngFor="let createlrList3 of createlrList3 | createLrFilter:filterArg"
+                    (click) = vehicleno(createlrList3.vehicle_number) style="cursor:pointer">{{createlrList3.vehicle_number}}</li>
+                  </ul>
+      
+                  
+                </span>
+              <div *ngIf="lrform1.controls['vehicle_number'].errors && ( !lrform1.controls['vehicle_number'].pristine || submitted ||lrform1.controls['vehicle_number'].touched )" class="error-msg">
+                <div [hidden]="!lrform1.controls['vehicle_number'].errors.required">Vehicle No is required.</div>
+              </div>
+              <!-- <div *ngIf="vehicle_number.invalid && (vehicle_number.dirty || submitted || vehicle_number.touched)"
+      class="error_msg">
+                <div *ngIf="vehicle_number.errors.required">
+                    Vehicle No Is Required.
+                </div>
+              </div> -->
+            </div>
+            
+          
+            <div class="col-sm-6 col-xs-12" style="z-index: 999;">
+              <label>Loading Date <sup class="cl-red">*</sup></label>
+              <my-date-picker name="loading_date" [options]="myDatePickerOptions" formControlName="loading_date" [selDate]="selDate" (dateChanged)="change()"></my-date-picker>
+              <!-- <ng-datepicker id="loading_date" name="loading_date"  required  formControlName="loading_date" >
+              </ng-datepicker> -->
+              <!-- <input type="date" id="loading_date" name="loading_date" class="form-control" required  formControlName="loading_date" > -->
+              <div *ngIf="lrform1.controls['loading_date'].errors && ( !lrform1.controls['loading_date'].pristine || submitted ||lrform1.controls['loading_date'].touched )" class="error-msg">
+                <div [hidden]="!lrform1.controls['loading_date'].errors.required">Loading Date Is Required.</div>
+              </div>
+              <!-- <div *ngIf="loading_date.invalid && (loading_date.dirty || submitted || loading_date.touched)"
+      class="error_msg">
+                 
+                <div *ngIf="loading_date.errors.required">
+                  Loading Date Is Required.
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <!-- -->
+<!-- station_destination -->
+
+            <!---->
+          <div class="row m-t-10">
+              <div class="col-sm-6 col-xs-12">
+                <label>From <sup class="cl-red">*</sup></label>
+                <input id="station_source" autocomplete="off" name="station_source" [(ngModel)]="filterArg.station_source" class="form-control" required  formControlName="station_source" >
+                   <div *ngIf="lrform1.controls['station_source'].errors && ( !lrform1.controls['station_source'].pristine || submitted ||lrform1.controls['station_source'].touched )" class="error-msg">
+                     <div [hidden]="!lrform1.controls['station_source'].errors.required">Station Source Is Required.</div>
+                   </div>
+                <!-- <div *ngIf="station_source.invalid && (station_source.dirty || submitted || station_source.touched)"
+      class="error_msg">
+                  <div *ngIf="station_source.errors.required">
+                    From Is Required.
+                  </div>
+                </div> -->
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <label>To <sup class="cl-red">*</sup></label>
+                <input id="name" autocomplete="off" name="station_destination" [(ngModel)]="filterArg.station_destination" class="form-control" required  formControlName="station_destination" >
+                <div *ngIf="lrform1.controls['station_destination'].errors && ( !lrform1.controls['station_destination'].pristine || submitted ||lrform1.controls['station_destination'].touched )" class="error-msg">
+                  <div [hidden]="!lrform1.controls['station_destination'].errors.required">Station Destination Is Required.</div>
+                </div>
+                <!-- <div *ngIf="station_destination.invalid && (station_destination.dirty || submitted || station_destination.touched)"
+        class="error_msg">
+                  <div *ngIf="station_destination.errors.required">
+                      To Is Required.
+                  </div>
+                </div> -->
+              </div>
+          </div>
+            <!-- -->
+
+
+            <!---->
+          <div class="row m-t-10">
+              <div class="col-sm-6 col-xs-12">
+                <label>Vehicle In Time	</label>
+                <input type="time"  atp-time-picker id="vehicle_intime" name="vehicle_intime" class="form-control" required  formControlName="vehicle_intime" >
+               
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <label>Vehicle Out Time	</label>
+                <input type="time" id="vehicle_outtime" atp-time-picker  name="vehicle_outtime" class="form-control" required formControlName="vehicle_outtime"  >
+              </div>
+          </div>
+            <!-- -->
+
+            <!---->
+          <div class="row m-t-10">
+              <div class="col-sm-6 col-xs-12">
+                <label>Out Date</label>
+                <!-- <input type="date" id="out_date" name="out_date" class="form-control" required formControlName="out_date" > -->
+                <my-date-picker name="out_date" [options]="myDatePickerOptions" formControlName="out_date" (dateChanged)="outDate($event)" [selDate]="selDate"></my-date-picker>
+                <!-- <ng-datepicker id="out_date"name="out_date"  required [(ngModel)]="lr.out_date" #out_date="ngModel"></ng-datepicker> -->
+              </div>
+          </div>
+            <!-- -->
+
+             <!-- -->
+             <div class="row m-t-10">
+               <div class="col-sm-12 col-xs-12" style="text-align:right">
+                <button type="submit" class="btn btn-success" >Next<i class="fa fa-chevron-right next-arrow" aria-hidden="true"></i></button>
+              </div>
+             </div>
+             <!-- -->
+
+        </div>
+      </div>
+                                         <!--   Consignor/Consignee Form   -->
+     </form>    
+    </aside>
+    <aside [ngClass]="{'step-2':isLRStep2}">
+        <form  [formGroup] = "lrform2" (ngSubmit) = "activeStep3(lrform2)">
+        <!-- -->
+     <div class="row">
+       <div class="col-sm-4 col-xs-12">
+          <img src="assets/images/step-2.jpg" class="img-responsive center-block" />
+       </div>
+       <div class="col-sm-7 col-xs-12">
+         <!---->
+         <div class="row">
+           <div class="col-sm-6 col-xs-12" style="position: relative;">
+           <label>Consignor Name <sup class="cl-red">*</sup></label>
+           <input type="text" class="form-control" 
+             [(ngModel)]="filterArg.consignor_name" autocomplete="off"  (focus)="consignerShow()" required
+              formControlName="consignor_name">
+           <!-- <p-autoComplete [(ngModel)]="texts"  [ngModelOptions]="{standalone: true}" [suggestions]="results" (completeMethod)="search($event)" [multiple]="true"></p-autoComplete> -->
+           <span>
+            <ul style="
+              overflow-y: scroll;
+              max-height: 100px;
+              position: absolute;
+              z-index: 999999;
+              width: 91%;
+              background: #fff;" *ngIf= "isShow" >
+              
+              <li *ngFor="let createlrLists of createlrList | createLrFilter:filterArg"
+              (click) = searchconsignor(createlrLists.consignor_name) style="cursor:pointer">{{createlrLists.consignor_name}}</li>
+            </ul>           
+          </span>
+           <div *ngIf="lrform2.controls['consignor_name'].errors && ( !lrform2.controls['consignor_name'].pristine || submittedstep2 ||lrform2.controls['consignor_name'].touched )" class="error-msg">
+            <div [hidden]="!lrform2.controls['consignor_name'].errors.required">Consignor Name Is Required.</div>
+          </div>
+           <!-- <div *ngIf="consignor_name.invalid && (consignor_name.dirty || submittedstep2 || consignor_name.touched)"
+   class="error_msg">
+       <div *ngIf="consignor_name.errors.required">
+        Consignor Name Is Required.
+       </div>
+     </div> -->
+           </div>
+      
+           <div class="col-sm-6 col-xs-12">
+            <label>GSTIN No <sup class="cl-red">*</sup></label>
+            <input id="consignor_gstn" name="consignor_gstn" class="form-control"
+             required formControlName="consignor_gstn" [(ngModel)]="filterArg.consignor_gstn">
+            <div *ngIf="lrform2.controls['consignor_gstn'].errors && ( !lrform2.controls['consignor_gstn'].pristine || submittedstep2 ||lrform2.controls['consignor_gstn'].touched )" class="error-msg">
+              <div [hidden]="!lrform2.controls['consignor_gstn'].errors.required">Consignor Gstn Is Required.</div>
+            </div>
+            <!-- <div *ngIf="consignor_gstn.invalid && (consignor_gstn.dirty || submittedstep2 || consignor_gstn.touched)"
+    class="error_msg">
+        <div *ngIf="consignor_gstn.errors.required">
+         GSTIN No Is Required.
+        </div>
+      </div> -->
+           
+            </div>
+          </div>
+           <!-- -->
+
+           <!---->
+         <div class="row m-t-10">
+            <div class="col-sm-6 col-xs-12">
+                <label>Address Line 1 <sup class="cl-red">*</sup></label>
+                <input id="addressline1" name="address_line1"  [(ngModel)]="filterArg.address_line1" class="form-control" required formControlName="address_line1">
+                <div *ngIf="lrform2.controls['address_line1'].errors && ( !lrform2.controls['address_line1'].pristine || submittedstep2 ||lrform2.controls['address_line1'].touched )" class="error-msg">
+                  <div [hidden]="!lrform2.controls['address_line1'].errors.required">Address Line 1 Is Required.</div>
+                </div>
+                <!-- <div *ngIf="address_line1.invalid && (address_line1.dirty || submittedstep2 || address_line1.touched)"
+        class="error_msg">
+            <div *ngIf="address_line1.errors.required">
+             Address Line 1 Is Required.
+            </div>
+          </div> -->
+          </div>
+
+            <div class="col-sm-6 col-xs-12">
+          <label>Address Line 2	</label>
+          <input id="addressline2" name="address_line2" class="form-control" formControlName="address_line2" >
+        </div>
+        <!-- -->
+
+           <!---->
+</div>
+           <!-- -->
+
+           <!---->
+           
+         <div class="row m-t-10">
+            <div class="col-sm-6 col-xs-12">
+             <label>Consignee Name <sup class="cl-red">*</sup></label>
+             <input type="text" class="form-control" 
+             required formControlName="consignee_name" autocomplete="off" 
+              [(ngModel)]="filterArg.consignee_name" (focus)="consignerShow1()">
+             <span>
+              <ul style="
+                overflow-y: scroll;
+                max-height: 100px;
+                position: absolute;
+                z-index: 999999;
+                width: 91%;
+                background: #fff;" *ngIf= "isShow1">
+               
+                <li *ngFor="let createlrLists2 of createlrList2 | createLrFilter:filterArg"
+                (click) = searchconsignor1(createlrLists2.consignee_name) style="cursor:pointer">{{createlrLists2.consignee_name}}</li>
+              </ul>
+  
+              
+            </span>
+             <div *ngIf="lrform2.controls['consignee_name'].errors && ( !lrform2.controls['consignee_name'].pristine || submittedstep2 ||lrform2.controls['consignee_name'].touched )" class="error-msg">
+              <div [hidden]="!lrform2.controls['consignee_name'].errors.required">Consignee Name Is Required.</div>
+             </div>
+             <!-- <div *ngIf="consignee_name.invalid && (consignee_name.dirty || submittedstep2 || consignee_name.touched)"
+     class="error_msg">
+         <div *ngIf="consignee_name.errors.required">
+          Consignee Name Is Required.
+         </div>
+       </div> -->
+           </div>
+     
+             <!---->
+        <div class="col-sm-6 col-xs-12">
+            <label>GSTIN No <sup class="cl-red">*</sup></label>
+           
+            <input id="consignee_gstn" name="consignee_gstn" class="form-control" required
+             formControlName="consignee_gstn"  [(ngModel)]="filterArg.consignee_gstn" >
+            <div *ngIf="lrform2.controls['consignee_gstn'].errors && ( !lrform2.controls['consignee_gstn'].pristine || submittedstep2 ||lrform2.controls['consignee_gstn'].touched )" class="error-msg">
+              <div [hidden]="!lrform2.controls['consignee_gstn'].errors.required">Consignee Gstn Is Required.</div>
+            </div>
+            <!-- <div *ngIf="consignee_gstn.invalid && (consignee_gstn.dirty || submittedstep2 || consignee_gstn.touched)"
+    class="error_msg">
+        <div *ngIf="consignee_gstn.errors.required">
+         GSTIN No Is Required.
+        </div>
+      </div> -->
+           
+            </div>
+
+
+         
+        </div>
+        <!-- -->
+
+        <!---->
+      <div class="row m-t-10">
+
+          <div class="col-sm-6 col-xs-12">
+              <label >Address Line 1 <sup class="cl-red">*</sup></label>
+             
+              <input id="caddressline1" name="consignee_address_line1" class="form-control"
+               required formControlName="consignee_address_line1"  [(ngModel)]="filterArg.consignee_address_line1"  >
+              <div *ngIf="lrform2.controls['consignee_address_line1'].errors && ( !lrform2.controls['consignee_address_line1'].pristine || submittedstep2 ||lrform2.controls['consignee_address_line1'].touched )" class="error-msg">
+                <div [hidden]="!lrform2.controls['consignee_address_line1'].errors.required">Consignee Address Line 1 Is Required.</div>
+              </div>
+              <!-- <div *ngIf="consignee_address_line1.invalid && (consignee_address_line1.dirty || submittedstep2 || consignee_address_line1.touched)"
+      class="error_msg">
+          <div *ngIf="consignee_address_line1.errors.required">
+           Address Line 1 Is Required.
+          </div>
+        </div> -->
+             
+              </div>
+        
+        <div class="col-sm-6 col-xs-12">
+       <label>Address Line 2</label>
+       <input id="caddressline2" name="consignee_address_line2" class="form-control" required formControlName="consignee_address_line2">
+     </div>
+     <!-- -->
+
+      
+        
+        
+        </div>
+        <!-- -->
+
+
+         <!---->
+      <div class="row m-t-10">
+          <div class="col-sm-6 col-xs-12">
+        <label>Delivery Address <sup class="cl-red">*</sup></label>
+       
+        <input id="delivery_address" name="delivery_address"  class="form-control" required formControlName="delivery_address">
+        <div *ngIf="lrform2.controls['delivery_address'].errors && ( !lrform2.controls['delivery_address'].pristine || submittedstep2 ||lrform2.controls['delivery_address'].touched )" class="error-msg">
+          <div [hidden]="!lrform2.controls['delivery_address'].errors.required">Delivery Address Is Required.</div>
+        </div>
+        <!-- <div *ngIf="delivery_address.invalid && (delivery_address.dirty || submittedstep2 || delivery_address.touched)"
+ class="error_msg">
+    <div *ngIf="delivery_address.errors.required">
+      Delivery Address Is Required.
+    </div>
+  </div> -->
+      </div>
+      <!-- -->
+
+        <!---->
+        <div class="col-sm-6 col-xs-12">
+          <label>Delivery Contact <sup class="cl-red"></sup></label>
+          <input name="delivery_contact_number" type="text" [(ngModel)]="filterArg.delivery_contact_number"  onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " minlength="10" id="delivery_contact_number" class="form-control" formControlName="delivery_contact_number">
+          <div *ngIf="lrform2.controls['delivery_contact_number'].errors && ( !lrform2.controls['delivery_contact_number'].pristine || submittedstep2 ||lrform2.controls['delivery_contact_number'].touched )" class="error-msg">
+            <div [hidden]="!lrform2.controls.delivery_contact_number.hasError('minlength')">Mobile no. must be 10 digits</div>
+          </div>
+          <!-- <div *ngIf="delivery_contact_number.invalid && (delivery_contact_number.dirty || submittedstep2 || delivery_contact_number.touched)"
+   class="error_msg">
+      <div *ngIf="delivery_contact_number.errors.required">
+      
+      </div> 
+      
+    <div *ngIf="delivery_contact_number.hasError('minlength')">Mobile no. must be 10 digits</div>
+  </div> -->
+</div>     
+    </div>
+        <!-- -->
+
+            <!-- -->
+            <div class="row m-t-10">
+                <div class="col-sm-6 col-xs-6">
+                    <button type="button"  class="btn btn-success" (click)="activeStep1()"><i class="fa fa-chevron-left arrow-right" aria-hidden="true"></i>Previous</button>
+                 </div>
+              <div class="col-sm-6 col-xs-6 text-right" style="text-align:right">
+                <button type="submit"  class="btn btn-success" >Next<i class="fa fa-chevron-right next-arrow" aria-hidden="true"></i></button>
+             </div>
+            </div>
+            <!-- -->
+
+       </div>
+     </div>
+      <!-- -->
+    
+        </form>
+                                      
+    </aside>
+                                                  <!--   Good Detail Form   -->
+    <aside [ngClass]="{'step-3':isLRStep3}">
+        <form  [formGroup] = "lrform3" (ngSubmit) = "activeStep4(lrform3)">
+        <!-- -->
+     <div class="row">
+       <div class="col-sm-4 col-xs-12">
+          <img src="assets/images/step-3.png" class="img-responsive center-block" />
+       </div>
+       <div class="col-sm-7 col-xs-12">
+         <!---->
+         <div class="row">
+            <div class="col-sm-6 col-xs-12">
+           <label>Number of Goods <sup class="cl-red">*</sup></label>
+           <input id="packages" type="number" name="packages" autocomplete="off" min="-1" class="form-control" required formControlName="packages">
+           <div *ngIf="lrform3.controls['packages'].errors && ( !lrform3.controls['packages'].pristine || submittedstep3 ||lrform3.controls['packages'].touched )" class="error-msg">
+             <div [hidden]="!lrform3.controls['packages'].errors.required">Number of Goods Is Required.</div>
+           </div>
+           <!-- <div *ngIf="packages.invalid && (packages.dirty || submittedstep3 || packages.touched)"
+   class="error_msg">
+       <div *ngIf="packages.errors.required">
+        Packages Is Required.
+       </div>
+     </div> -->
+         </div>
+         <!-- -->
+
+         <!---->
+         <div class="col-sm-6 col-xs-12">
+             <label>Goods Description <sup class="cl-red">*</sup></label>
+             
+             <input id="goods_description" min="-1" name="goods_description" class="form-control" required formControlName="goods_description">
+             <div *ngIf="lrform3.controls['goods_description'].errors && ( !lrform3.controls['goods_description'].pristine || submittedstep3 ||lrform3.controls['goods_description'].touched )" class="error-msg">
+              <div [hidden]="!lrform3.controls['goods_description'].errors.required">Goods Description Is Required.</div>
+             </div>
+             <!-- <div *ngIf="goods_description.invalid && (goods_description.dirty || submittedstep3 || goods_description.touched)"
+     class="error_msg">
+         <div *ngIf="goods_description.errors.required">
+          Goods Description Is Required.
+         </div>
+       </div> -->
+            
+             </div>
+           </div>
+           <!-- -->
+
+           <!---->
+         <div class="row m-t-10">
+            <div class="col-sm-6 col-xs-12">
+          <label>Actual Weight (Tons) <sup class="cl-red">*</sup></label>
+          <input type="number" min="-1" id="actual_weight" name="actual_weight" class="form-control" required formControlName="actual_weight">
+          <div *ngIf="lrform3.controls['actual_weight'].errors && ( !lrform3.controls['actual_weight'].pristine || submittedstep3 ||lrform3.controls['actual_weight'].touched )" class="error-msg">
+            <div [hidden]="!lrform3.controls['actual_weight'].errors.required">Actual Weight Is Required.</div>
+          </div>
+          <!-- <div *ngIf="actual_weight.invalid && (actual_weight.dirty || submittedstep3 || actual_weight.touched)"
+  class="error_msg">
+      <div *ngIf="actual_weight.errors.required">
+        Actual Weight Is Required.
+      </div>
+    </div> -->
+        </div>
+        <div class="col-sm-6 col-xs-12">
+             <label>Charge Weight (Tons) <sup class="cl-red">*</sup></label>
+            
+             <input type="number" min="-1" id="charged_weight" name="charged_weight" class="form-control" required formControlName="charged_weight">
+             <div *ngIf="lrform3.controls['charged_weight'].errors && ( !lrform3.controls['charged_weight'].pristine || submittedstep3 ||lrform3.controls['charged_weight'].touched )" class="error-msg">
+              <div [hidden]="!lrform3.controls['charged_weight'].errors.required">Charged Weight Is Required.</div>
+            </div>
+             <!-- <div *ngIf="charged_weight.invalid && (charged_weight.dirty || submittedstep3 || charged_weight.touched)"
+     class="error_msg">
+         <div *ngIf="charged_weight.errors.required">
+          Charge Weight Is Required.
+         </div>
+       </div> -->
+            
+             </div>
+           </div>
+           <!-- -->
+
+           <!---->
+         <div class="row m-t-10">
+            <div class="col-sm-6 col-xs-12">
+             <label>Invoice No <sup class="cl-red">*</sup></label>
+             
+             <input id="invoice_number" min="-1" name="invoice_number" class="form-control" required formControlName="invoice_number">
+             <div *ngIf="lrform3.controls['invoice_number'].errors && ( !lrform3.controls['invoice_number'].pristine || submittedstep3 ||lrform3.controls['invoice_number'].touched )" class="error-msg">
+              <div [hidden]="!lrform3.controls['invoice_number'].errors.required">Invoice Number Is Required.</div>
+             </div>
+             <!-- <div *ngIf="invoice_number.invalid && (invoice_number.dirty || submittedstep3 || invoice_number.touched)"
+     class="error_msg">
+         <div *ngIf="invoice_number.errors.required">
+          Invoice No Is Required.
+         </div>
+       </div> -->
+           </div>
+           <div class="col-sm-6 col-xs-12">
+          <label>Invoice Date <sup class="cl-red">*</sup></label>
+            <my-date-picker name="invoice_date" [options]="myDatePickerOptions" formControlName="invoice_date" [selDate]="selDate"></my-date-picker>
+         
+          <!-- <input type="date" id="invoice_date" name="invoice_date" class="form-control" required formControlName="invoice_date"> -->
+          <div *ngIf="lrform3.controls['invoice_date'].errors && ( !lrform3.controls['invoice_date'].pristine || submittedstep3 ||lrform3.controls['invoice_date'].touched )" class="error-msg">
+            <div [hidden]="!lrform3.controls['invoice_date'].errors.required">Invoice Date Is Required.</div>
+          </div>
+          <!-- <div *ngIf="invoice_date.invalid && (invoice_date.dirty || submittedstep3 || invoice_date.touched)"
+  class="error_msg">
+      <div *ngIf="invoice_date.errors.required">
+        Invoice date Is Required.
+      </div>
+    </div> -->
+         
+          </div>
+        </div>
+        <!-- -->
+
+        <!---->
+      <div class="row m-t-10">
+          <div class="col-sm-6 col-xs-12">
+       <label>Invoice Amount <sup class="cl-red">*</sup></label>
+       
+       <input type="number" min="-1" id="invoice_amount" name="invoice_amount" class="form-control" required formControlName="invoice_amount">
+       <div *ngIf="lrform3.controls['invoice_amount'].errors && ( !lrform3.controls['invoice_amount'].pristine || submittedstep3 ||lrform3.controls['invoice_amount'].touched )" class="error-msg">
+          <div [hidden]="!lrform3.controls['invoice_amount'].errors.required">Invoice Amount Is Required.</div>
+       </div>
+       <!-- <div *ngIf="invoice_amount.invalid && (invoice_amount.dirty || submittedstep3 || invoice_amount.touched)"
+class="error_msg">
+   <div *ngIf="invoice_amount.errors.required">
+    Invoice Amount Is Required.
+   </div>
+ </div> -->
+       </div>
+       <div class="col-sm-6 col-xs-12">
+        <label>GSTIN Payable by <sup class="cl-red">*</sup></label>
+        <!-- <input  id="freight type" name="freight" class="form-control" required [(ngModel)]="lr.freight" #freight="ngModel" > -->
+        <select class="form-control" id="gst pay" name="gst_pay_by" class="form-control" required formControlName="gst_pay_by">
+            <option value="0" [selected]="gst_pay_by == 0">Select Option </option>
+            <option value="1">Consignor </option>
+            <option value="2">Consignee</option>
+            <option value="3">Transport</option>
+        </select>
+        <div *ngIf="lrform3.controls['gst_pay_by'].errors && ( !lrform3.controls['gst_pay_by'].pristine || submittedstep3 ||lrform3.controls['gst_pay_by'].touched )" class="error-msg">
+          <div [hidden]="!lrform3.controls['gst_pay_by'].errors.required">GSTIN Payable by Is Required.</div>
+        </div>
+      </div>
+     </div>
+     <!-- -->
+
+       
+
+            <!-- -->
+            <div class="row m-t-10">
+                  <div class="col-sm-6 col-xs-6" >
+                      <button type="button"  class="btn btn-success" (click)=" activeStep_2(lr2)"><i class="fa fa-chevron-left arrow-right" aria-hidden="true"></i>Previous</button>
+                   </div>
+                   <div class="col-md-6" style="text-align:right">                
+                    <button type="submit" class="btn btn-success" >Next<i class="fa fa-chevron-right next-arrow" aria-hidden="true"></i></button>
+                  </div>
+            </div>
+            <!-- -->
+
+       </div>
+     </div>
+      <!-- -->
+    
+        </form>
+</aside>
+
+                                             <!--   Freight Details Form   -->
+    <aside [ngClass]="{'step-4':isLRStep4}">
+        <!-- -->
+        <form  [formGroup] = "lrform4" (ngSubmit) = "activeStep5(lrform4)">
+     <div class="row">
+       <div class="col-sm-4 col-xs-12">
+          <img src="assets/images/step-4.jpg" class="img-responsive center-block" />
+       </div>
+       <div class="col-sm-7 col-xs-12">
+         <!---->
+         <div class="row">
+           <div class="col-sm-6 col-xs-12">
+              <label>Freight Type <sup class="cl-red">*</sup></label>
+              <!-- <input  id="freight type" name="freight" class="form-control" required [(ngModel)]="lr.freight" #freight="ngModel" > -->
+              <select class="form-control" id="freight type" name="freight_type" class="form-control" required formControlName="freight_type">
+                  <option [selected]="freight_type == 0" value="0">Select Option</option>
+                  <option value="1">TBB</option>
+                  <option value="2">ToPay</option>
+                  <option value="5">Paid</option>
+                </select>
+                <div *ngIf="lrform4.controls['freight_type'].errors && ( !lrform4.controls['freight_type'].pristine || submittedstep4 ||lrform4.controls['freight_type'].touched )" class="error-msg">
+                  <div [hidden]="!lrform4.controls['freight_type'].errors.required">Freight Type Is Required.</div>
+                </div>
+            </div>
+         <!-- -->
+
+         <!---->
+         <div class="col-sm-6 col-xs-12">
+            <label>Freight <sup class="cl-red">*</sup></label>
+            <input type="number" min="0" id="freight" name="freight" class="form-control" required formControlName="freight">
+            <div *ngIf="lrform4.controls['freight'].errors && ( !lrform4.controls['freight'].pristine || submittedstep4 ||lrform4.controls['freight'].touched )" class="error-msg">
+              <div [hidden]="!lrform4.controls['freight'].errors.required">Freight Is Required.</div>
+            </div>
+            <!-- <div *ngIf="freight.invalid && (freight.dirty || submittedstep4 || freight.touched)"
+    class="error_msg">
+        <div *ngIf="freight.errors.required">
+         Freight No Is Required.
+        </div>
+      </div> -->
+            
+             </div>
+           </div>
+           <!-- -->
+
+           <!---->
+         <div class="row m-t-10">
+            <div class="col-sm-6 col-xs-12">
+                <label>Advance <sup class="cl-red">*</sup></label>
+            
+                <input type="number" min="0" id="advance" name="advance" class="form-control" required formControlName="advance">
+                <div *ngIf="lrform4.controls['advance'].errors && ( !lrform4.controls['advance'].pristine || submittedstep4 ||lrform4.controls['advance'].touched )" class="error-msg">
+                  <div [hidden]="!lrform4.controls['advance'].errors.required">Advance Is Required.</div>
+                </div>
+                <!-- <div *ngIf="advance.invalid && (advance.dirty || submittedstep4 || advance.touched)"
+        class="error_msg">
+            <div *ngIf="advance.errors.required">
+             Advance Is Required.
+            </div>
+          </div> -->
+            
+             </div>
+             <div class="col-sm-6 col-xs-12">
+                <label>Balance <sup class="cl-red">*</sup></label>
+                <input type="number" min="0" id="balance" name="balance" class="form-control" required formControlName="balance">
+                <div *ngIf="lrform4.controls['balance'].errors && ( !lrform4.controls['balance'].pristine || submittedstep4 ||lrform4.controls['balance'].touched )" class="error-msg">
+                  <div [hidden]="!lrform4.controls['balance'].errors.required">Balance Is Required.</div>
+                </div>
+                <div class="error-msg" *ngIf="balanceIsZero">Balance should not to be less than 0</div>
+                
+                <!-- <div *ngIf="balance.invalid && (balance.dirty || submittedstep4 || balance.touched)"
+        class="error_msg">
+            <div *ngIf="balance.errors.required">
+             Balance Is Required.
+            </div>
+          </div> -->
+           
+       </div>
+            
+           
+           </div>
+           <!-- -->
+
+           <!---->
+         <div class="row m-t-10">
+            <div class="col-sm-6 col-xs-12">
+                <label>To Pay<sup class="cl-red">*</sup></label>
+             
+                <input type="number" min="0" id="to_pay" name="to_pay" class="form-control"  required formControlName="to_pay">
+                <div *ngIf="lrform4.controls['to_pay'].errors && ( !lrform4.controls['to_pay'].pristine || submittedstep4 ||lrform4.controls['to_pay'].touched )" class="error-msg">
+                  <div [hidden]="!lrform4.controls['to_pay'].errors.required">To Pay Is Required.</div>
+                </div>
+                <div class="error-msg" *ngIf="topayIsZero">To Pay should not to be less than 0</div>
+                <!-- <div *ngIf="to_pay.invalid && (to_pay.dirty || submittedstep4 || to_pay.to_payuched)"
+        class="error_msg">
+            <div *ngIf="to_pay.errors.required">
+             To Pay Is Required.
+            </div>  
+            </div> -->
+              </div>
+           
+              <div class="col-sm-6 col-xs-12">
+                  <label>To Be Billed At <sup class="cl-red">*</sup></label>
+                  <input id="to_be_billed_at" name="to_be_billed_at" class="form-control" required formControlName="to_be_billed_at">
+                  <div *ngIf="lrform4.controls['to_be_billed_at'].errors && ( !lrform4.controls['to_be_billed_at'].pristine || submittedstep4 ||lrform4.controls['to_be_billed_at'].touched )" class="error-msg">
+                    <div [hidden]="!lrform4.controls['to_be_billed_at'].errors.required">To Be Billed At Is Required.</div>
+                  </div>
+                  <!-- <div *ngIf="to_be_billed_at.invalid && (to_be_billed_at.dirty || submittedstep4 || to_be_billed_at.touched)"
+                    class="error_msg">
+                  <div *ngIf="to_be_billed_at.errors.required">
+                      To Be Billed At Is Required.
+                  </div>
+                </div>     -->
+             </div>
+           </div>
+           <!-- -->
+
+           <!---->
+         <div class="row m-t-10">
+            <div class="col-sm-6 col-xs-12">
+                <label>Loading/Unloading  </label>
+                <input  id="loading_unloading" name="loading_unloading" class="form-control" required formControlName="loading_unloading">
+             </div>
+             <div class="col-sm-6 col-xs-12">
+                <label>Other Charges</label>
+                <input type="number" min="0" id="other_charges" name="other_charges" class="form-control" required formControlName="other_charges">
+                </div>
+
+           </div>
+           <!-- -->
+
+            <!-- -->
+            <div class="row m-t-10">
+                <div class="col-sm-6 col-xs-6">
+                    <button type="button" class="btn btn-success" (click)="activeStep_3(lr3)"><i class="fa fa-chevron-left arrow-right" aria-hidden="true"></i>Previous</button>
+                 </div>
+              <div class="col-sm-6 col-xs-6" style="text-align:right">
+               <button type="submit" class="btn btn-success" >Next<i class="fa fa-chevron-right next-arrow" aria-hidden="true"></i></button>
+             </div>
+            </div>
+            <!-- -->
+
+       </div>
+     </div>
+      <!-- -->
+        </form>
+  </aside>
+
+                                             <!--  Other Details Form   -->
+  <aside [ngClass]="{'step-5':isLRStep5}">     
+      <!-- -->
+      <form  [formGroup] = "lrform5" (ngSubmit) = "submit(lrform5)">
+   <div class="row">
+     <div class="col-sm-4 col-xs-12">
+        <img src="assets/images/step-5.jpg" class="img-responsive center-block" />
+     </div>
+     <div class="col-sm-7 col-xs-12">
+       <!---->
+       <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <label>Length (Ft)</label>
+            <input type="number" min="0" id="length" name="length" class="form-control" required formControlName="length">  
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <label>Width (Ft)</label>
+            <input type="number" min="0" id="width" name="width" class="form-control" required formControlName="width">
+          </div>
+        </div>
+         <!-- -->
+
+         <!---->
+       <div class="row m-t-10">
+          <div class="col-sm-6 col-xs-12">
+            <label>Height (Ft)</label>
+            <input type="number" min="0" id="height" name="height" class="form-control" required formControlName="height">
+          </div>
+
+           <div class="col-sm-6 col-xs-12">
+            <label>Insurance Co.</label>
+            <input id="insurance_company" name="insurance_company" class="form-control" required formControlName="insurance_company">
+           </div>
+         </div>
+         <!-- -->
+
+         <!---->
+       <div class="row m-t-10">
+          <div class="col-sm-6 col-xs-12">
+           <label>Policy No.</label>
+           <input id="policy_number" name="policy_number" class="form-control" required formControlName="policy_number">
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <label>Risk Amount</label>
+            <input type="number" min="0"  id="amount" name="amount" class="form-control" required formControlName="amount">
+          </div>
+        </div>
+         <!-- -->
+
+        <!---->
+       <div class="row m-t-10">
+          <div class="col-sm-6 col-xs-12">
+          <label>Detention Days After  </label>
+          <input id="Detention_days_after" name="Detention_days_after" class="form-control" required formControlName="detention_charges">
+          </div>
+        
+          <div class="col-sm-6 col-xs-12">
+          <label>Detention Per Day</label>
+          <input type="number" id="Detention_per_day" name="Detention_per_day" class="form-control" required formControlName="detention_days">
+          </div>
+        </div>
+        <!-- -->
+
+         <!---->
+       <div class="row m-t-10">
+          <div class="col-sm-6 col-xs-12">
+           <label>Remarks</label>
+           <input id="remark" name="remark" class="form-control" required formControlName="remark">
+         </div>
+        </div>
+          <div class="row m-t-10">
+              <div class="col-sm-6 col-xs-6">
+                   <!-- <button  class="btn btn-success" (click)="activeStep12(lr4)"><i class="fa fa-chevron-left arrow-right" aria-hidden="true"></i>Previous</button> -->
+                   <a type="button" class="btn btn-success" (click)="activeStep_4(lr4)"><i class="fa fa-chevron-left arrow-right" aria-hidden="true"></i>Previous</a>
+                </div>
+            <div class="col-sm-6 col-xs-6 text-right">
+              <button  type="submit"  class="btn btn-success" >Submit</button>
+           </div>
+          </div>
+          <!-- -->
+
+     </div>
+   </div>
+    <!-- -->
+      </form>
+</aside>
+  </div>
+
+<br />
+</div>
+</div>
+
+
+
+
+
+
+<script>
+  var lr
+  lr.loading_date=new Date()
+</script>

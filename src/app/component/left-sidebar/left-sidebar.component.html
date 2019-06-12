@@ -1,0 +1,13 @@
+<div class="left_sdbar_bg">
+    <marquee direction = "up" height="380px" onmouseover="this.stop()" onmouseout="this.start()">
+            <ul type="none" class="list-unstyled"> 
+                <li *ngFor = "let add of showAd">
+                    <img [src]="add.ad_files">
+                    <span><strong>{{add.ad_title}}</strong><br/>
+                    {{add.ad_details}}</span>
+                </li>
+                
+            </ul>
+    </marquee>
+    
+</div>

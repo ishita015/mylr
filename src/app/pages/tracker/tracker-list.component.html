@@ -1,0 +1,170 @@
+<style>
+    .modal-body
+    {
+        font-size: 18px;
+    }
+</style>
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+</div>
+
+<div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+      <app-login-leftbar></app-login-leftbar>
+    </div>
+
+  <div class="col-md-10 col-sm-10 col-xs-12">
+    <div class="clearfix mtb-30">
+        <div class="card">
+           <form #trackerData="ngForm" name="trackerForm" >
+            <div class="row align-items-center card-strip" style="border-bottom:none">
+                        <aside class="col-sm-12">
+                            <span class="page-title">Tracker Record</span>
+                            <a class="btn btn-info filter-btn" href="javascript:void(0)" (click)="isShow='101'">Filter</a>
+                        </aside>
+                        <div class="col-md-12" *ngIf="isShow=='101'">
+                        <aside class="col-sm-4">
+                            <select name="filterType" class="form-control field-set input-xlarge" [(ngModel)]="filterType">
+                                <option value="select" selected>--Select A Filter--</option>
+                                <option value="vehicle">Vehicle</option>
+                                <option value="date">Date</option>
+                                <option value="date-range">Date Range</option>
+                                <option value="station-range">Station Range</option>
+                              </select>
+                        </aside> 
+                        <aside class="col-sm-4" style="padding:0"> 
+                            <input (change)="KeyPressVehicle(trackerData);" placeholder="Enter Vehicle Number" *ngIf="filterType=='vehicle'" id="vehicle_number" name="vehicle_number" type="text" class="form-control" [(ngModel)]="trackerData.vehicle_number" #vehicle_number="ngModel">
+                            <input (change)="KeyPressDate(trackerData);" *ngIf="filterType=='date'" name="date_value" type="date" class="form-control" [(ngModel)]="trackerData.date_value" #date_value="ngModel">
+                            <div class="col-sm-6">
+                            <input (change)="KeyPressDateRange(trackerData);" *ngIf="filterType=='date-range'" name="date_from" type="date" class="form-control" [(ngModel)]="trackerData.date_from" #date_from="ngModel">
+                            </div>
+                            <div class="col-sm-6">
+                            <input *ngIf="filterType=='date-range'" name="date_to" type="date" class="form-control" [(ngModel)]="trackerData.date_to" #date_to="ngModel">
+                            </div>
+                            <div class="col-sm-6">
+                            <input placeholder="From" (change)="KeyPressStationRange(trackerData);" *ngIf="filterType=='station-range'" name="from" type="text" class="form-control" [(ngModel)]="trackerData.station_from" #station_from="ngModel">
+                            </div>
+                            <div class="col-sm-6">
+                            <input placeholder="To" *ngIf="filterType=='station-range'" name="to" type="text" class="form-control" [(ngModel)]="trackerData.station_to" #station_to="ngModel">
+                            </div>
+                        </aside> 
+                        <aside class="col-md-4">
+                            <button type="submit"  [ngClass]="{disabled : isValid != true}" *ngIf="filterType=='vehicle'" class="btn btn-info" (click)="vehicleFilter(trackerData)">Apply</button>
+                            <button [ngClass]="{disabled : isValid1 != true}" *ngIf="filterType=='date'" class="btn btn-info" (click)="dateFilter(trackerData)">Apply</button>
+                            <button [ngClass]="{disabled : isValid2 != true}" *ngIf="filterType=='date-range'" class="btn btn-info" (click)="dateRangeFilter(trackerData)">Apply</button>
+                            <button [ngClass]="{disabled : isValid3 != true}" *ngIf="filterType=='station-range'" class="btn btn-info" (click)="stationRangeFilter(trackerData)">Apply</button>
+                        </aside>
+                        </div>   
+                    </div>
+            </form>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="bg-success white">
+                  <tr>
+                    <th valign="middle">LR Id</th>
+                    <th valign="middle">Consignor</th>
+                    <th valign="middle">Consignee</th>
+                    <th valign="middle">Vehicle Number</th>
+                    <th valign="middle">Delivery Contact No.</th>
+                    <!-- <th>Ledger Number</th> -->
+                    <th valign="middle">From</th>
+                    <th valign="middle">To</th>
+                    <th valign="middle">Loading Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>                   
+                    <td>
+                    <input  type="text" (blur)="searchBrId(filterArgs.lr_id)" [(ngModel)]="filterArgs.lr_id" class="form-control"  placeholder="Search" />
+                    </td>                    
+                    <td>
+                    <input  type="text" (blur)="searchBrConsignor(filterArgs.consignor_name)"  class="form-control" [(ngModel)]="filterArgs.consignor_name" placeholder="Search" />
+                    </td>
+                    <td>
+                        <input  type="text" (blur)="searchBrConsignee(filterArgs.consignee_name)"  class="form-control" [(ngModel)]="filterArgs.consignee_name"  placeholder="Search" />
+                        </td>
+                    <td>
+                    <input  type="text" (blur)="searchBrVehicle(filterArgs.vehicle_number)" class="form-control" [(ngModel)]="filterArgs.vehicle_number"  placeholder="Search" />
+                    </td>
+                    <td>
+                    <input  type="text" (blur)="searchBrContact(filterArgs.delivery_contact_number)" class="form-control" [(ngModel)]="filterArgs.delivery_contact_number"  placeholder="Search" />
+                    </td>
+                    <td>
+                        <input  type="text" (blur)="searchBrFrom(filterArgs.station_source)" class="form-control" [(ngModel)]="filterArgs.station_source"  placeholder="Search" />
+                    </td>
+                    <td>
+                        <input  type="text" (blur)="searchBrTo(filterArgs.station_destination)" class="form-control" [(ngModel)]="filterArgs.station_destination"  placeholder="Search" />
+                    </td>
+                    <td>
+                        <input  type="text" (blur)="searchBrDate(filterArgs.loading_date)" class="form-control" [(ngModel)]="filterArgs.loading_date"  placeholder="Search" />
+                    </td>
+                   
+                      
+                </tr>
+               
+                <tr >
+                  <td *ngIf = "TrackerStatus==false" colspan="8" class="text-center">
+                    <b>{{TrackerMessage}}</b>
+                  </td>
+                </tr>
+                <ng-container *ngIf = "TrackerStatus==true">
+                    <tr *ngFor="let TrackerLists of TrackerList |TrackerFilter : filterArgs| paginate: {itemsPerPage: 5, currentPage:page, id: '1'}; let i = index">
+                      <!-- <td class="align-middle">{{body?.body_id}}</td> -->
+                    <td class="align-middle">{{TrackerLists.lr_id}}</td>
+                    <td class="align-middle">{{TrackerLists.consignor_name}}</td>
+                    <td class="align-middle">{{TrackerLists.consignee_name}}</td> 
+                    <td class="align-middle">{{TrackerLists.vehicle_number}}</td>
+                    <td class="align-middle">{{TrackerLists.delivery_contact_number}}</td>
+                    <td class="align-middle">{{TrackerLists.station_source}}</td>
+                    <td class="align-middle">{{TrackerLists.station_destination}}</td>
+                    <!-- <td class="align-middle">{{TrackerLists.ledger_folio_number}}</td> -->
+                    <td class="align-middle">{{TrackerLists.loading_date}}</td>
+                  </tr>
+                 </ng-container>
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="page = $event" id="1"
+                          maxSize="2"
+                          directionLinks="true"
+                          autoHide="true" style="float:right">
+              </pagination-controls>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<!--for date to-->
+<div class="backdrop" [ngStyle]="{'display':display4}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display4}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+      <div class="modal-content dialog">
+      
+          <div class="modal-body">
+              <p>Station To Is Required</p>
+          </div>
+          
+          <div class="modal-footer popup2">
+              <button type="button" class="btn btn-default" (click)="hidePop4()" >Ok</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!--for station to-->
+<div class="backdrop" [ngStyle]="{'display':display3}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display3}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+      <div class="modal-content dialog">
+      
+          <div class="modal-body">
+              <p>Date To Is Required</p>
+          </div>
+          
+          <div class="modal-footer popup2">
+              <button type="button" class="btn btn-default" (click)="hidePop3()" >Ok</button>
+          </div>
+      </div>
+  </div>
+</div>

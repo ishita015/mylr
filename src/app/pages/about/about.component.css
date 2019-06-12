@@ -1,0 +1,29 @@
+.left-con{background-color:#ff6168;min-height: 317px;}
+.right-bg-con{background-color: rgb(75, 209, 160);min-height:312px;}
+.right-con{background-color:black;transform: translate(90px, 30px);
+height:250px;width:60%;}
+.main-con{text-align: center;}
+.parallax {
+    background-image: url('../../../assets/images/about-image3.webp');
+    height: 317px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax1 {
+    background-image: url('../../../assets/images/about-image5.jpg');
+    height: 312px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.our_about_middle{
+    padding: 12px 0px;
+}
+.our_about_bottom{
+    padding: 0px 0px 12px 0px;
+}
+

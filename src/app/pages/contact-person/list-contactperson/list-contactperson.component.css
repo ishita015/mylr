@@ -1,0 +1,55 @@
+.card {
+    box-shadow: 0 1px 15px 1px rgba(62,57,107,.07);
+    position: relative;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    margin-bottom: 17px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+/* .table>thead>tr>td{
+    border:none;
+}
+.icon{
+    float:right;
+}
+.table>thead>tr>th {
+    border: none;
+} */
+.title {
+    padding: 8px;
+    margin-left: 10px;
+}
+.fa, .fas {
+    font-weight: 900;
+    float: right;
+    padding-right: 10px;
+}
+.title1{
+    text-align: center;
+}
+.addbuton{
+    float:right;
+    margin:0;
+}
+.title{
+    margin:0;
+    /* float:left; */
+}
+.grp{
+    padding: 4px;
+}
+.heading{
+    margin-left: 9px;
+}
+.heading_list_contact_person{
+    float:left;
+    padding-top: 17px;
+    padding-left: 9px;
+}
+.add_button{
+    padding-top: 3px;
+}
+.grp{
+    margin: 0;
+}

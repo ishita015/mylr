@@ -1,0 +1,160 @@
+<div class="image-loader" *ngIf="imageLoader">
+	<img src="http://keraiz.com/mylr/loader.gif" />
+</div>
+
+<div class="row pt-50"> 
+		<!-- <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+			<app-left-sidebar></app-left-sidebar>
+		</div> -->
+		  
+		<div class="col-md-9 col-sm-9 col-xs-12 bdr-right pd-left-0">
+				<div class="container-contact100 pd-0">
+						<div class="wrap-contact100">
+							<form [formGroup]="contactReq" name="contactReq" (ngSubmit)="sendRequest(contactReq)" class="contact100-form validate-form">
+								<span class="contact100-form-title">
+									Send Us A Message
+								</span>
+				
+								<label class="label-input100" for="first-name">Tell us your name <sup class="feild-required">*</sup></label>
+								<div class="wrap-input100 rs1-wrap-input100 validate-input"  data-validate="Type first name">
+									<input id="first-name" class="input100" type="text" name="first-name" formControlName="first_name" placeholder="First name" required>
+									<span class="focus-input100"></span>
+								</div>
+								<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type last name">
+									<input class="input100" type="text" formControlName="last_name" name="last-name" placeholder="Last name">
+									<span class="focus-input100"></span>
+								</div>
+									<aside class="w50 pull-left">
+										<div *ngIf="contactReq.controls['first_name'].errors && ( !contactReq.controls['first_name'].pristine || submitted || contactReq.controls['first_name'].touched )" class="error-msg">
+											<div [hidden]="!contactReq.controls['first_name'].errors.required">First Name is required.</div>
+										</div>
+									</aside>
+								
+								<div class="w50 pull-left">
+									<div *ngIf="contactReq.controls['last_name'].errors && ( !contactReq.controls['last_name'].pristine || submitted || contactReq.controls['last_name'].touched )" class="error-msg">
+										<div [hidden]="!contactReq.controls['last_name'].errors.required">Last Name is required.</div>
+									</div>
+								</div>
+				
+								<label class="label-input100" for="email">Enter your email <sup class="feild-required">*</sup></label>
+								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+									<input id="txtEmail" class="input100" type="email" formControlName="email_id" name="email" required placeholder="Eg. example@email.com">
+									<span class="focus-input100"></span>
+								</div>
+								<div class="w100 pull-left">
+									<div *ngIf="contactReq.controls['email_id'].errors && ( !contactReq.controls['email_id'].pristine || submitted || contactReq.controls['email_id'].touched )" class="error-msg">
+										<div [hidden]="!contactReq.controls['email_id'].errors.required">Email Is Required.</div>
+										<div [hidden]="!contactReq.controls['email_id'].errors.pattern">Email Pattern is required.</div>
+									</div>
+								</div>
+				
+								<label class="label-input100" for="phone">Enter phone number <sup class="feild-required">*</sup></label>
+								<div class="wrap-input100">
+									<input id="phone" class="input100" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " minlength="10" type="text" name="phone" formControlName="mobile_number" placeholder="Your Contact No." required>
+									<span class="focus-input100"></span>
+								</div>
+								<div class="w100 pull-left">
+									<!-- <div *ngIf="contactReq.controls['mobile_number'].errors && ( !contactReq.controls['mobile_number'].pristine || submitted || contactReq.controls['mobile_number'].touched )" class="error-msg">
+										<div [hidden]="!mobile_number.hasError('minlength')">Contact no. must be 10 digits</div>
+									</div> -->
+									<div *ngIf="contactReq.controls['mobile_number'].errors && ( !contactReq.controls['mobile_number'].pristine || submitted ||contactReq.controls['mobile_number'].touched )" class="error-msg">
+										<div [hidden]="!contactReq.controls['mobile_number'].errors.required">Contact Number is required.</div>
+										<div [hidden]="!contactReq.controls.mobile_number.hasError('minlength')">Mobile no. must be 10 digits</div>
+									</div>
+								</div>
+				
+								<label class="label-input100" for="message">Message <sup class="feild-required">*</sup></label>
+								<div class="wrap-input100 validate-input" data-validate = "Message is required">
+									<textarea id="message" class="input100" formControlName="message" name="message" placeholder="Write us a message"></textarea>
+									<span class="focus-input100"></span>
+								</div>
+								<div class="w100 pull-left">
+									<div *ngIf="contactReq.controls['message'].errors && ( !contactReq.controls['message'].pristine || submitted || contactReq.controls['message'].touched )" class="error-msg">
+										<div [hidden]="!contactReq.controls['message'].errors.required">Message is required.</div>
+									</div>
+								</div>
+				
+								<div class="container-contact100-form-btn">
+									<button class="contact100-form-btn">
+										Send Message
+									</button>
+								</div>
+							</form>
+				
+							<div class="contact100-more flex-col-c-m" style="background-image: url('assets/img/contact/bg-01.jpg');">
+								<div class="flex-w size1 p-b-47">
+									<div class="txt1 p-r-25">
+										<span class="lnr lnr-map-marker"></span>
+									</div>
+				
+									<div class="flex-col size2">
+										<span class="txt1 p-b-20">
+											Address
+										</span>
+				
+										<span class="txt2">
+											Mada Center 8th floor, 379 Hudson St, New York, NY 10018 US
+										</span>
+									</div>
+								</div>
+				
+								<div class="dis-flex size1 p-b-47">
+									<div class="txt1 p-r-25">
+										<span class="lnr lnr-phone-handset"></span>
+									</div>
+				
+									<div class="flex-col size2">
+										<span class="txt1 p-b-20">
+											Lets Talk
+										</span>
+				
+										<span class="txt3">
+										 	+91-96445-44464
+										</span>
+									</div>
+								</div>
+				
+								<div class="dis-flex size1 p-b-47">
+									<div class="txt1 p-r-25">
+										<span class="lnr lnr-envelope"></span>
+									</div>
+				
+									<div class="flex-col size2">
+										<span class="txt1 p-b-20">
+											General Support
+										</span>
+				
+										<span class="txt3">
+											sales@mylr.com
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				
+				
+					<div id="dropDownSelect1"></div>
+							
+		</div>
+		<div class="col-md-3 right_sidebar bdr-left">
+			<app-right-sidebar></app-right-sidebar>
+		</div>
+	</div>
+
+	<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+	<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+		<div class="modal-dialog  modal-dialog-centered modal-sm">
+			<div class="modal-content dialog">
+			
+				<div class="modal-body">
+					<p>{{message}}</p>
+				</div>
+				
+				<div class="modal-footer popup2">
+					<button type="button" class="btn btn-default" (click)="hidePop()" >Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>

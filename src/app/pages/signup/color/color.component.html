@@ -1,0 +1,453 @@
+<div class="row pt-117"> 
+  <div class="col-md-8">
+<div class="clearfix">
+  <div class="card">
+    <div class="color-container" style="    width: 97%;">
+      <div class="clearfix">
+      <h4 class="text-center">
+        <i class="fas fa-paint-brush"></i>
+        <br />
+        Choose your Color
+      </h4>
+      <div class="color-scheme text-center">
+        <ul class="ul-color">
+          <li (click)="setSchemeColor('#F86A31')"></li>
+          <li (click)="setSchemeColor('#D22393')"></li>
+          <li (click)="setSchemeColor('#694ABF')"></li>
+          <li (click)="setSchemeColor('#305C8D')"></li>
+          <li (click)="setSchemeColor('#387228')"></li>
+          <li (click)="setSchemeColor('#4B4B4B')"></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id="print-section" class="clearfix mtb-30 text-center">
+        <div class="template-view">
+            <section class="in-voice">
+                <div>
+                  <table style="width: 100%;">
+                          <tr>
+                              <!-- ./../../../../assets/images/invoice/3d-logo.png -->
+                              <td> <img id="image" src="3d-logo.png" alt="3d-logo" />
+                        <img id="image" src="company-logo.png" alt="company-logo"/></td>
+                        <td style="padding-bottom: 15px; ">
+                        <h3 style="margin: 0px 15px; font-size: 19px;">Contact:</h3>
+                    </td>
+                    <td>
+                        <h4 style="margin:2px; font-size: 19px; ">9039022993</h4>
+                         <h4 style="margin:2px; font-size: 19px;">9893045217</h4>
+                   </td>  
+                    </tr> 
+                    <tr>
+                      
+                      <td>
+                        <p style="margin: 0;">109, Mini motor Market, Schm no 94, Ring Road, Dewas Naka Indore-MP</p>
+                        </td>	
+                </tr>
+                      </table>
+                  </div>
+             
+              <div>
+                <h3 class="test"  [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="color:#fff;text-align: center;padding-bottom: 13px;
+                padding-top: 10px;">Loading Challan</h3>					
+              </div>
+          
+            <div>
+          
+            <table style="width: 100%;">
+                          <tr>
+                              <td style="padding-bottom: 15px; text-align: left;;">
+                                <h3 style="margin: 0px 15px; font-size: 19px;">
+                                Branch Name___________________ </h3>
+                         <h3 style="margin: 0px 15px;  font-size: 19px;">
+                         Loading staff Name__________________</h3>
+                            <h3 style="margin: 0px 15px;  font-size: 19px;">
+                            Date of Loading__/__/__ </h3>
+                             </td>
+                    <td>
+                        <h4 style="margin:2px;  font-size: 19px;">Vehicle no.</h4>
+                         <h4 style="margin:2px; font-size: 19px;">Contact no.</h4>
+                         <h4 style="margin:2px;  font-size: 19px;">To Station</h4>
+                   </td>  
+                    <td>
+                        <h4 style="margin:2px;  font-size: 19px;">L Challan no.</h4>
+                  
+                   </td>  
+                    </tr> 
+                  </table>
+              
+            </div>
+          
+            <div>
+          <table border="1" style="border-collapse: collapse;">
+            <tr>
+            <img src="LR-detail.png" alt="LR-detail">
+              </tr>
+          </table>
+          </div><br/>
+          
+            <div style="width: 100%; overflow-x: auto;">
+          
+            <table cellpadding="5px" style="width: 100%;border-collapse: collapse;border: 1px solid black;">
+              
+                <tr>
+                    <th style="border: 1px solid black;">SN</th>
+                    <th style="border: 1px solid black;">Lr Dated</th>
+                    <th style="border: 1px solid black;">LR no</th>
+                    <th style="border: 1px solid black;" >Consignor</th>
+                     <th style="border: 1px solid black;">From</th>
+                      <th style="border: 1px solid black;">Boxes</th>
+                       <th style="border: 1px solid black;">Goods</th>
+                        <th style="border: 1px solid black;">Wt</th>
+                        <th style="border: 1px solid black;">Freight Type</th>
+                        <th style="border: 1px solid black;">Amount</th>
+                </tr>
+                
+                <tr style="text-align: center">
+                    <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                </tr>
+          
+                  <tr style="text-align: center">
+                    <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                </tr>
+          
+                   <tr style="text-align: center">
+                    <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                </tr>
+          
+                  <tr style="text-align: center">
+                    <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                </tr>
+          
+                  <tr style="text-align: center">
+                    <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                </tr>
+          
+                  <tr style="text-align: center">
+                    <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                </tr>
+          
+                  <tr style="text-align: center">
+                    <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                       <td style="border: 1px solid black;">
+                      price
+                    </td> 
+                </tr>
+          
+              
+              </table>
+            </div><br/>
+          
+          
+          <!-- 	<div style="width: 100%; overflow-x: auto;"> -->
+            <div>
+            <table style="width:100%;border-collapse: collapse; text-align: left;">
+              
+                <tr>
+                    <td>
+                      Total TBB Freight
+                    </td> 
+                       <td>
+                    
+                    </td> 
+                     <td style="border: 1px solid black;padding: 0px 20px;">
+                   
+                    </td> 
+                   
+                      <td style="border: 1px solid black;border-bottom:none;padding: 0px 30px;">
+                    
+                    </td> 
+                       <td style="border: 1px solid black;border-bottom:1px solid white;padding: 0px 50px;">
+                      
+                    </td> 
+                  
+                </tr>
+          
+                  <tr>
+                       <td>
+                      Total Topay Freight
+                    </td> 
+                       <td>
+                      
+                    </td> 
+                      <td style="border: 1px solid black;padding: 0px 20px;">
+                      
+                    </td> 
+                    
+                
+                       <td style="text-align:center;padding: 0px 10px;">
+                      <b>Note:</b>
+                    </td> 
+                      <td style="border: 1px solid black;border-bottom:1px solid white;padding: 0px 50px;">
+                      
+                    </td> 
+                </tr>
+          
+                    <tr>
+                       <td>
+                       Total Paid Freight
+                    </td> 
+                       <td>
+                      
+                    </td> 
+                       <td style="border: 1px solid black;padding: 0px 20px;">
+                      
+                    </td> 
+                   
+                     
+                       <td style="border: 1px solid black;border-top:none;padding: 0px 30px;">
+                      
+                    </td> 
+                      <td style="border: 1px solid black;border-top:1px solid white;padding: 0px 50px;">
+                      
+                    </td> 
+                </tr>
+          
+              </table>
+              </div>
+          
+              <div>
+                <h4 style="text-align: left; font-size: 19px;">Terms & Conditions</h4>
+              </div>
+              <div>
+                <table style="width: 100%;">
+                          <tr>
+                              <td style="padding-bottom: 15px;">
+                  <h4 style="margin:0 10px;text-align: left;">Signature of Loading Manager</h4> 
+                </td>
+                <td style="padding-bottom: 15px;">
+                  <h4 style="margin:0 10px; text-align: left;">Signature of Driver</h4>
+                </td>
+              </tr>
+            </table>
+              </div>
+            <!-- <button onclick="myFunction()">Print this page</button> -->
+            </section>
+          
+          <!-- <img src="./../../../../assets/images/invoice/invoice.png" />  -->
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="clearfix text-center mtb-30" style="float:left;width:100%">
+    <div class="col-md-3 color-template text-left ">
+      <button [routerLink] = "['/signup/template']" class="btn btn-success btns"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
+    </div>
+    <div class="col-md-6 text-center" style="cursor: pointer;">
+      <button class="btn btn-primary btns" (click)="print()"><i class="fa fa-print" aria-hidden="true"></i> Preview</button>
+    </div>
+    <div class="col-md-4 text-right" style="cursor: pointer;">
+        <button style="background: #119c89;border-color:#119c89" class="btn btn-primary btns" (click)="onSubmit()"> Submit</button>
+    </div>
+  </div>
+    
+ 
+</div>
+</div>
+</div>
+<script>
+    function myFunction() {
+        window.print();
+    }
+    </script>

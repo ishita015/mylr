@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+/* -- properties --*/
+section.properties p, section.properties ul li, .quality-set h2, .quality-set h4,
+.why-us-content h5, .first-invoice h2, .first-invoice p, .testimonials h4, .testimonials{
+    font-family: 'Rubik', sans-serif;
+}
+.quality-set h2, .quality-set h4, section.properties h3, .first-invoice h2, .testimonials h4{
+    margin-top: 20px;
+    margin-bottom: 10px
+}
+section p, .first-invoice p{
+    color: #72808e;
+    font-weight: 400;
+    font-size: 14px;
+}
+body, body p{
+    font-family: 'Rubik', sans-serif;
+    line-height: 30px;
+    color: #72808e;
+    font-weight: 400;
+    font-size: 14px;
+}
+section{width:100%; float:left}
+section.properties{
+    padding: 100px 0px; background-color:#eeeeee; width:100%; float:left
+}
+section.properties p, section.properties ul li,  .why-us-content p{
+   
+    line-height: 30px;
+    color: #72808e;
+    font-weight: 400;
+    font-size: 14px;  
+}
+section.properties h3{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color:#72808e;
+    font-family: 'Rubik', sans-serif;
+    line-height: 30px;
+    font-size: 21px
+}
+section.properties ul li{
+    list-style-type: disc; list-style-position:inside
+}
+/*-- Quality set --*/
+.quality-set h3, .quality-set h4 {color:#444}
+section.quality-set{
+    padding: 100px 0px; background-color:#fff;
+     
+    font-weight: 400; color:#333
+}
+section.quality-set p{
+    color:#72808e
+}
+section.quality-set h4{
+    font-size: 21px
+}
+.service-items .fa{
+    color:#2E406F;
+    font-size: 35px
+}
+.service-items p{
+    text-align: justify;
+}
+.mb-50{
+    margin-bottom:50px
+}
+.pb-20{
+    padding-bottom: 20px
+}
+
+/* -- why Us --*/
+.why-us{
+    position: relative;
+    background:#ee4f4c;
+     width:100%; float:left
+}
+.why-us-content{
+    height: 650px;
+    margin-left: -55px;
+    position: relative;
+    z-index: 2;
+    padding: 50px 0px; color:#fff
+    }
+    .why-us-content h5{font-size:18px}
+    .why-us-content p{color:#fff}
+.ptb-20{padding:20px 0px}
+.why-us-content h5{text-transform: uppercase; margin-bottom: 20px}
+.icon-circle{background: #ffffff;
+border-radius: 50%;
+color: #ee4f4c;
+font-size: 40px;
+height: 80px;
+line-height: 80px;
+text-align: center;
+width: 80px;}
+.background-part{position: absolute;
+top: 0;
+left: 0;
+background: url('https://www.pentathemes.com/saaspro/images/functionalities.jpg') !important;
+background-size: cover;
+background-position: bottom left;
+width: 50%;
+z-index: 0;
+height: 650px;}
+
+/* -- Testimonial -- */
+.testimonials{ width:100%; float:left}
+.testimonial-card{box-shadow:0 0 40px rgba(0,0,0,.2); padding:5px; background: #fff}
+.testimonial-card .media-object{width:200px; height:200px}
+.testimonial-card .media-body{padding:30px 20px 20px}
+.t-container > div:nth-child(odd){width:65%; float:left; margin-top:-20px}
+.t-container > div:nth-child(even){width:65%; float:right; margin-top:-20px; position:relative; z-index: 1000}
+
+.first-invoice{width:100%; float:left; background: url('https://www.pentathemes.com/saaspro/images/call-bg2.jpg') no-repeat center center;
+    background-size:cover; color: #fff; text-align: center
+} 
+.first-invoice p{color:#fff} 
+.btn-fi{border: 1px solid #f2804c;
+color: #ffffff; margin-top:20px;
+padding: 10px 15px;
+border-radius: 20px;
+font-size: 15px;}
+.ptb-100{padding:100px 0px}
+
+
+
+.site_btn_pop_up{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.backdrop{
+width:100%;
+height:100vh;
+}
+.btn-block{
+ 
+    color: white !important;
+    background: #ee4f4c !important;
+    border-color: #efecec !important;
+}
+.error-msg{
+    color:red;
+    
+}
+.form_name{
+    font-size: 26px;
+    text-align: center;
+    color: #ee4f4c;
+}
+.popupwidth{
+    width: 160%;
+}
+.form_otp{
+    text-align: center;
+    color: #ee4f4c;
+}
+/* -- Testimonial -- */
+.testimonials{ width:100%; float:left}
+.testimonial-card{box-shadow:0 0 40px rgba(0,0,0,.2); padding:5px; background: #fff}
+.testimonial-card .media-object{width:200px; height:200px}
+.testimonial-card .media-body{padding:30px 20px 20px}
+.t-container > div:nth-child(odd){width:65%; float:left; margin-top:-20px}
+.t-container > div:nth-child(even){width:65%; float:right; margin-top:-20px; position:relative; z-index: 1000}
+
+.first-invoice{width:100%; float:left; background: url('https://www.pentathemes.com/saaspro/images/call-bg2.jpg') no-repeat center center;
+    background-size:cover; color: #fff; text-align: center
+} 
+.first-invoice p{color:#fff} 
+.btn-fi{border: 1px solid #f2804c;
+color: #ffffff; margin-top:20px;
+padding: 10px 15px;
+border-radius: 20px;
+font-size: 15px;}
+.ptb-100{padding:100px 0px}
+  .client-block{
+    display: block;
+    background-color: #f4f4f4;
+    padding: 50px 50px;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+  .client-block:before {
+    content: ' ';
+    position: absolute;
+    bottom: -15px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #f4f4f4;
+  }
+  .client-block span {
+    font-weight: 700;
+    font-style: italic;
+    opacity: 1;
+  }
+  .client-block i {margin-bottom: 10px;}
+  .client-post {font-size: 14px; color: #72808e;font-weight: 400;}
+  .client-block .client-quote {color: hsl(14, 88%, 55%);}
+  .client-dtl{margin-top: 15px;}
+  .client-name{
+    text-transform: uppercase;
+    color: #333;
+    margin-bottom: 2px;
+  }
+  .testimonial-three .testimonial-block {
+    display: block;
+    background-color: #FFF;
+    padding: 51px 42px 63px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-align: center;
+    position: relative;
+  }
+  .testimonial-block {padding: 0px 10px;}
+  .glyphicon-chevron-right:before
+  {
+    content: "\203a" !important;
+  }
+  .glyphicon-chevron-left:before
+  {
+    content: '\2039' !important;
+  }

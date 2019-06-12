@@ -1,0 +1,311 @@
+<style>
+	a{
+		cursor: pointer;
+	}
+	.forget-form
+	{
+		padding: 12px 5px;
+		text-align: center;
+	}
+	.forget-modal-header
+	{		
+		color: #ee4f4c;
+		font-size: 17px;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 5px;
+	}
+	.forget-label
+	{
+		font-size: 14px;
+	}
+	.forget-input-container
+	{
+		text-align: left;
+		border-radius: 4px;
+		height: 36px;
+	}
+	.f-submit
+	{
+		width: 94%;
+		margin-left: 10px;
+		padding: 10px;
+	}
+	.cls-spn
+	{
+		padding-right: 7px !important;
+		/* margin-top: 9px; */
+		line-height: 30px !important;
+	}
+	.reset-modal-header
+	{
+		border-bottom:1px solid #ddd; 
+	}
+	.f-modal
+	{
+		width: 355px;
+	}
+	sup{
+		color: red;
+	}
+</style>
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="assets/images/loader.gif" />
+</div>
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal popup_mod"  tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+	<div class="modal-dialog  modal-dialog-centered modal-sm">
+		<div class="modal-content dialog">
+			<div class="modal-header heading-none popup1">
+			</div>
+			<div class="modal-body heading-mes text-center">
+				<h4>{{message}}</h4>
+			</div>
+			<div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+				<button *ngIf="isShowRetry==100" type="button" [routerLink] = "['/pages/login/']" class="btn btn-default" (click)="hidePop()" >Ok</button>
+				<button *ngIf="isShowRetry==101" type="button" class="btn btn-default" (click)="reSend()" >Re-Send Link</button>				
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal! -->
+ <!-- for Retry-->
+ <div class="backdrop" [ngStyle]="{'display':display3}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display3}">
+	<div class="modal-dialog  modal-dialog-centered modal-sm">
+		<div class="modal-content dialog">
+			<div class="modal-header heading-none popup1">
+				<button aria-label="Close" (click)="hideForgetPop()" class="close pull-right" type="button">
+						<span class="cls-spn" aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body heading-mes text-center">
+				<h4>{{message}}</h4>
+			</div>
+			<div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal! --> 
+
+ <!-- for forget password-->
+ <div class="backdrop" [ngStyle]="{'display':display4}"></div>
+<div class="modal" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display4}">
+	<div class="modal-dialog  modal-dialog-centered modal-sm">
+		<div class="modal-content dialog f-modal">
+			<form [formGroup] = "forgetForm"  (ngSubmit) = "forgetSubmit(forgetForm)" style="padding-top: 12px;" class="forget-form validate-form">
+			<div class="forget-modal-header modal-header heading-none popup1">
+				Forget Password
+				<button aria-label="Close" (click)="hideForgetPop()" class="close pull-right" type="button">
+						<span class="cls-spn" aria-hidden="true">×</span>
+				</button>
+			</div>
+			
+			<div class="modal-body heading-mes">
+				<div class="text-left" style="padding: 0 8px;">
+					<label class="forget-label">Email Id <sup>*</sup></label>
+					<div class="forget-input-container form-control" data-validate = "Enter username" >
+						<input style="" class="" style="width: 100%;" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  formControlName="forget_email_id" type="email" name="forget_email_id" placeholder="Enter Email Id" required/>
+						<!-- <span class="focus-input100" placeholder="Username"></span> -->
+					</div>
+					<!-- <div *ngIf="addForm.controls['email_id'].errors && ( !addForm.controls['email_id'].pristine || submitted ||addForm.controls['email_id'].touched )" class="error-msg">
+						<div [hidden]="!addForm.controls['email_id'].errors.required">Email is required.</div>
+						<div [hidden]="!addForm.controls['email_id'].errors.pattern"> email is invalid</div>
+					</div> -->
+					<div *ngIf="forgetForm.controls['forget_email_id'].errors && ( !forgetForm.controls['forget_email_id'].pristine || submitted1 || forgetForm.controls['forget_email_id'].touched )" class="error-msg">
+						<div class="" [hidden]="!forgetForm.controls['forget_email_id'].errors.required">Email Id is Required.</div>
+						<div [hidden]="(!forgetForm.controls['forget_email_id'].errors.pattern)">Email must be in valid form.</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+				<button type="submit" class="btn btn-default mr-tp-0 f-submit" >Submit</button>
+			</div>
+			</form>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal! --> 
+
+
+ <!-- for forget message-->
+ <div class="backdrop" [ngStyle]="{'display':display5}"></div>
+<div class="modal" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display5}">
+	<div class="modal-dialog  modal-dialog-centered modal-sm">
+		<div class="modal-content dialog ">
+			<div class="modal-header heading-none popup1">
+			</div>
+			<div class="modal-body heading-mes text-center">
+				<h4 style=" font-size: 15px;font-weight: 600;">{{message}}</h4>
+			</div>
+			<div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+					<button type="button" class="btn btn-default mr-tp-0" (click)="hideForgetMsgPop()" >ok</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal! --> 
+
+ <!-- for forget password-->
+<div class="backdrop" [ngStyle]="{'display':display6}"></div>
+<div class="modal" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display6}">
+	<div class="modal-dialog f-modal modal-dialog-centered modal-sm">
+		<div class="reset-modal-header modal-content dialog">
+			<form [formGroup] = "resetForm"  (ngSubmit) = "resetSubmit(resetForm)" style="padding-top: 12px;" class="forget-form validate-form">
+			<div class="forget-modal-header modal-header heading-none popup1">
+				Reset Password
+				<button aria-label="Close" (click)="hideResetPop()" class="close pull-right" type="button">
+						<span class="cls-spn" aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body heading-mes">				
+				<div class="form-group text-left" style="padding: 0 8px;">
+					<label class="forget-label">OTP<sup>*</sup></label>
+					<div class="forget-input-container form-control" data-validate = "Enter username" >
+						<input  class="" style="width: 100%;"  formControlName="otp" type="number" name="otp" placeholder="Enter OTP" required/>						
+					</div>
+					<div *ngIf="resetForm.controls['otp'].errors && ( !resetForm.controls['otp'].pristine || submitted2 || resetForm.controls['otp'].touched )" class="error-msg">
+						<div class="" [hidden]="!resetForm.controls['otp'].errors.required">OTP is Required.</div>
+					</div>
+				</div>
+				<div class="form-group text-left" style="padding: 0 8px;">
+					<label class="forget-label">New Password<sup>*</sup></label>
+					<div class="forget-input-container form-control" data-validate = "Enter New Password" >
+						<input class="" style="width: 100%;"  formControlName="new_password" type="password" name="new_password" placeholder="Enter New Password" required/>						
+					</div>
+					<div *ngIf="resetForm.controls['new_password'].errors && ( !resetForm.controls['new_password'].pristine || submitted2 || resetForm.controls['new_password'].touched )" class="error-msg">
+						<div class="" [hidden]="!resetForm.controls['new_password'].errors.required">New Password is Required.</div>
+					</div>
+				</div>
+				<div class="form-group text-left" style="padding: 0 8px;">
+					<label class="forget-label">Confirm Password<sup>*</sup></label>
+					<div class="forget-input-container form-control" data-validate = "Enter username" >
+						<input class="" style="width: 100%;" formControlName="c_pass" type="password" name="c_pass" placeholder="Enter Confirm Password" required/>
+					</div>
+					<div *ngIf="resetForm.controls['c_pass'].errors && ( !resetForm.controls['c_pass'].pristine || submitted2 || resetForm.controls['c_pass'].touched )" class="error-msg">
+						<div class="" [hidden]="!resetForm.controls['c_pass'].errors.required">Confirm Password is Required.</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+				<button type="submit" class="f-submit btn btn-default mr-tp-0" >Submit</button>
+			</div>
+			</form>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal! --> 
+
+
+ <!-- for Password Matching message-->
+ <div class="backdrop" [ngStyle]="{'display':confirmDialog}"></div>
+<div class="modal" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':confirmDialog}">
+	<div class="modal-dialog  modal-dialog-centered modal-sm">
+		<div class="modal-content dialog ">
+			<div class="modal-header heading-none popup1">
+			</div>
+			<div class="modal-body heading-mes text-center">
+				<h4 style=" font-size: 15px;font-weight: 600;">Password And Confirm Password Didn't Match.</h4>
+			</div>
+			<div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+				<button type="button" class="btn btn-default mr-tp-0" (click)="hideConfirmDialog()" >ok</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal! --> 
+
+ <!-- for reset message-->
+<div class="backdrop" [ngStyle]="{'display':display7}"></div>
+<div class="modal" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display7}">
+	<div class="modal-dialog  modal-dialog-centered modal-sm">
+		<div class="modal-content dialog">
+			<div class="modal-header heading-none popup1">
+			</div>
+			<div class="modal-body heading-mes text-center">
+				<h4 style=" font-size: 15px;font-weight: 600;">{{message}}</h4>
+			</div>
+			<div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+					<button type="button" class="btn btn-default mr-tp-0" (click)="hideResetMstPop()" >ok</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal! --> 
+
+<div class="row pt-50"> 
+		<!-- <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+			<app-left-sidebar></app-left-sidebar>
+		</div> -->
+		  
+		<div class="col-md-9 col-sm-9 col-xs-12 bdr-right">
+				<div class="col-md-12">
+	
+					</div>
+					<div class="limiter">
+							
+					
+							<div class="col-md-12 login100 mrg-none">
+								<div class="wrap-login100 p-t-85 p-b-20">
+									<form [formGroup] = "addForm"  (ngSubmit) = "onSubmit()" class="login100-form validate-form">
+										<span class="login100-form-title p-b-70 wel text-center">
+											Login to My LR
+										</span>
+										<!-- <p>Your id and password is sent your register mobile no.</p> -->
+										<span class="login100-form-avatar">
+											<img class="image_circle" src="assets/img/login/avatar-01.jpg" alt="AVATAR">
+										</span>
+					
+										<label class="label_block login-lable">Username</label>
+										<div  class="wrap-input100 login-inputs validate-input " data-validate = "Enter username" >
+											<input id="txtEmail" class="input100" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  formControlName="email_id" type="email" name="email_id" placeholder="Enter Username" required/>
+											<!-- <span class="focus-input100" placeholder="Username"></span> -->
+										</div>
+										<!-- <div *ngIf="addForm.controls['email_id'].errors && ( !addForm.controls['email_id'].pristine || submitted ||addForm.controls['email_id'].touched )" class="error-msg">
+											<div [hidden]="!addForm.controls['email_id'].errors.required">Email is required.</div>
+											<div [hidden]="!addForm.controls['email_id'].errors.pattern"> email is invalid</div>
+										</div> -->
+										<div *ngIf="addForm.controls['email_id'].errors && ( !addForm.controls['email_id'].pristine || submitted || addForm.controls['email_id'].touched )" class="error-msg">
+											<div class="failed" [hidden]="!addForm.controls['email_id'].errors.required">Email is required.</div>
+											<div [hidden]="(!addForm.controls['email_id'].errors.pattern)">Email must be in valid form.</div>
+										</div>
+										<label class="label_block login-lable">Password</label>
+										<div class="wrap-input100 validate-input  login-inputs" data-validate="Enter password">
+											<input class="input100" type="password" formControlName="password" name="password" placeholder="Enter Password" />
+											<!-- <span class="focus-input100" placeholder="Password"></span> -->
+										</div>
+										<div *ngIf="addForm.controls['password'].errors && ( !addForm.controls['password'].pristine || submitted ||addForm.controls['password'].touched )" class="error-msg">
+												<div class="failed" [hidden]="!addForm.controls['password'].errors.required">Password is required.</div>
+									</div>	
+										<div class="container-login100-form-btn pd-top-2em m-t-15">
+												<a href="#loginScreen"> <button type="submit" class="login100-form-btn left-align-bt">
+												Login
+											</button></a>
+										</div>
+										<ul class="login-more p-t-190">
+											<li class="m-b-8">
+												<!-- <span class="txt1">
+													Forgot
+												</span> -->
+												<a (click)="forget()" class="txt2">
+													Forgot Password??
+												</a>
+											</li>
+											<li>
+												<span class="txt1">
+													Don’t have an account?
+												</span>
+					
+												<a routerLink="/signup/detail" class="txt2" style="cursor: pointer;">
+													Sign up
+												</a>
+											</li>
+										</ul>
+									</form>
+									
+								</div>
+							</div>
+							</div>		
+		</div>
+		<div class="col-md-3 right_sidebar bdr-left">
+			<app-right-sidebar></app-right-sidebar>
+		</div>
+	</div>
+	
+
+
+		  

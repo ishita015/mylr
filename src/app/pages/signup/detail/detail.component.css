@@ -1,0 +1,44 @@
+.login101-form-btn{
+    background: #00327A;
+    color: white;
+    padding: 5px;
+}
+.error-msg{
+    color: red;
+}
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+     appearance: none;
+    -moz-appearance: none;
+}
+#search_places:focus{
+    border-color: #ccc !important;
+
+}
+textarea:focus, input:focus {
+    border-color: #ccc !important;
+}
+.search-icon[_ngcontent-c4] {
+    display: none ;
+ }
+.backdrop
+{
+    display: none;
+}
+.item-inner a{
+    text-align: center
+}
+.item-inner a img{
+    height: 220px;
+}
+.condition{
+    font-weight: bold;
+    color: #58585a;
+    padding-top: 5px;
+}
+.terms-spn:hover
+{
+    opacity: 0.8;
+    color: #f0684c;
+    cursor: pointer
+}

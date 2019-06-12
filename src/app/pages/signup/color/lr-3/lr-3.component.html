@@ -1,0 +1,607 @@
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal modal_bg_transparent" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+    <div class="modal-content dialog bd-none">
+       <div class="modal-body heading-mes popup1">
+          <h3 style="font-size: 20px;font-weight: 600;">{{templateArray.message}}</h3>
+      </div>
+      <div class="modal-footer footer-mes popup2">
+        <button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopup()" >OK</button>
+      </div>
+    </div>
+  </div>
+</div> 
+<div class="clearfix">
+    <div class="image-loader" *ngIf="imageLoader===true">
+        <img src="http://mylr.in/assets/img/loader-orange.gif" />
+    </div>
+  <div class="row pd-top-5">       
+      <div class="col-md-9">
+      <div class="card p-3 relative" style="    padding-top: 30px;">
+      <div class="color-container" style="width:100%">
+        
+      <div class="clearfix color_choose_option" style="background: #f7f7f7;padding-bottom: 1em;">
+          <h4 class="text-center">
+            <i class="fas fa-paint-brush"></i>
+            <br />
+            Choose your Color {{imageLoader}}
+          </h4>
+          <div class="color-scheme text-center">
+            <ul class="ul-color">
+              <li (click)="setSchemeColor('#F86A31')"></li>
+              <li (click)="setSchemeColor('#D22393')"></li>
+              <li (click)="setSchemeColor('#694ABF')"></li>
+              <li (click)="setSchemeColor('#305C8D')"></li>
+              <li (click)="setSchemeColor('#387228')"></li>
+              <li (click)="setSchemeColor('#4B4B4B')"></li>
+            </ul>
+          </div>
+        </div>
+        
+    <style>
+      @media print
+    {
+      
+      .bg-gray{background-color: #BEBEBE}
+      .bdr-bottom{border:none; border-bottom: 1px solid #777}
+      .full-screen{width:100%; float:left} .fl-left{float:left}
+      .w10{width:10%} .w20{width:20%} .w30{width:30%} .w40{width:40%} .w50{width:50%}
+      .w60{width:60%} .w70{width:70%} .w80{width:80%} .w90{width:90%} .w100{width:100%}
+    
+      .mt-10{margin-top:10px} .mt-20{margin-top:20px} .mt-30{margin-top:30px} 
+      .mt-40{margin-top:40px} .mt-50{margin-top:50px}
+    
+      .mtb-5{margin-top:5px; margin-bottom:5px} .mtb-10{margin-top:10px; margin-bottom:10px}
+      .mtb-30{margin-top:30px; margin-bottom:30px} .mtb-20{margin-top:20px; margin-bottom:20px}
+      .mtb-40{margin-top:40px; margin-bottom:40px} .mtb-50{margin-top:50px; margin-bottom:50px}
+     
+      .lh-20{line-height:20px}
+    
+      table .bdr-bottom{width:100px}
+    }
+    </style>
+    
+          <div id="print-section" class="clearfix" style="padding-bottom:2em">
+              
+              <section id="partToPrint" style="width:100%;padding-bottom: 1em;">
+                  <div class="abc" style="width:100%;float:left;position:relative;margin-bottom: 0px;">
+                <span style="    -webkit-print-color-adjust: exact;
+                  font-size: 16px;
+                  background: #cfcfcf;
+                  width: 100%;
+                  display: block;
+                  margin: 0 auto;
+                  padding: 1px 0;
+                  font-weight: 600;
+                  margin-bottom: 0px;
+                  text-align: center;
+                  line-height: 23px;
+                  letter-spacing: 1px;
+                  float:left">LORRY RECIEPT</span>
+                <div style="text-align: center;">Subject to Indore Jurisdiction
+                </div>
+                <div>
+                  <table cellspacing="0" cellpadding="0" style="width: 100%;">
+                    <tr>
+    
+                      <td>
+                        <!-- <h5 style="margin: 0px 0px;">Subject to indore Juridiction</h5>  -->
+                        <!-- <img id="image" style="width: 94px;" [src]="transporter_detail.transport_logo" alt="3d-logo" /> -->
+                        <img style="height:80px;    padding-bottom: 5px;" class="logo-image" [src]="signupValue.transport_logo">
+    
+                      </td>
+    
+                      <td style="text-align: center;">
+    
+                        <h3 style="margin: 0px 15px;font-size: 17px;font-weight:600">{{signupValue.company_name}}</h3>
+                        <h5 *ngIf="signupValue.tagline!=''" style="color:red;margin: 0px 0px;">({{signupValue.tagline}})</h5>
+                        <h5 style="margin: 0px 15px;font-size: 14px !important;">{{signupValue.address}}</h5>
+                        <h5 style="margin: 0px 15px;font-size: 14px !important;">E-mail- {{signupValue.email_id}}</h5>
+                        <h5 style="margin: 0px 15px;font-size: 14px !important;">Contacts:{{signupValue.contact_no}}</h5>
+                      </td>
+                      <td style="text-align: right;">
+                        <!-- <img id="image" style="width: 94px;" [src]="transporter_detail.transport_logo" alt="3d-logo" /> -->
+                        <img style="height:80px;    padding-bottom: 5px;" class="logo-image" [src]="signupValue.transport_logo">
+                      </td>
+                    </tr>
+    
+                  </table>
+                </div>
+                <div>
+                  <table width="100%" style="    z-index: 999;
+        position: relative;-webkit-print-color-adjust: exact" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td width="20%" style="border: 1px solid black;border-right:none;vertical-align: text-top; padding:0px 0px;border-bottom: none;">
+                        <table width="100%" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td>
+                              <table cellspacing="0" style="width: 100%;">
+                                <tbody>
+                                  <tr>
+                                    <td style="border-bottom: 1px solid;height: 25px;text-align: center;">Branches</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="border-bottom: 1px solid;text-align: center;padding-top: 1em;padding-bottom: 1em;">
+                                      <span style="font-size:12px">Ranipura, Indore</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="border-bottom: 1px solid;text-align: center;padding-top: 1em;padding-bottom: 1em;">
+                                      <span style="font-size:12px">Rajendra Nagar, Indore</span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <!-- <h5 style="margin-left:4px;"> Branch Offices</h5>
+                          <h4 style="margin-left:4px !important;margin-bottom:90px !important;"> 1</h4>
+                            <h5 style="margin-left:4px;"> Branch Offices</h5>
+                            <h4 style="margin-left:4px !important;margin-bottom:90px !important;">2</h4>
+                         <h5 style="margin-left:4px;"> Branch Offices</h5>
+                         <h4 style="margin-left:4px !important;margin-bottom:90px !important;">3</h4>
+                         <h5 style="margin-left:4px;"> Branch Offices</h5>
+                         <h4 style="margin-left:4px !important;margin-bottom:90px !important;">4</h4>
+                         <h5 style="margin-left:4px;"> Branch Offices</h5>
+                         <h4 style="margin-left:4px !important;margin-bottom:90px !important;">5</h4>
+                         <h5 style="margin-left:4px;"> Branch Offices</h5>
+                         <h4 style="margin-left:4px !important;margin-bottom:90px !important;">6</h4>
+                         <span style="display:inline-block;vertical-align: text-bottom;">
+                         <h5 style="margin-left:2px;"> For more contact</h5>
+                        <h4 style="margin-left:2px;"> 0731-4204201</h4>
+                        </span> -->
+                            </td>
+                            </tr>
+                        </table>
+                      </td>
+                      <td width="80%" valign="top">
+                        <table cellpadding="0" style="width:100%;border-collapse: collapse;border: 1px solid #333;border-right: none;border-bottom: none;">
+                          <tr>
+                            <td style="border: 1px solid black; vertical-align: text-top; padding:0px 0px" width="30%">
+                              <div style="margin-left:2px;font-size:14px"> Schedule of Demurrage Charges.</div>
+                              <div style="margin-left:2px;font-size: 12px;">
+                                Demarges Chargeable After
+                                <span style="color: gray;font-weight:600;font-size: 12px;"> 100</span>
+    
+                              </div>                              
+                              <div style="margin-left:2px;font-size: 12px;">
+                                From Today @Rs.
+                                <span style="color: gray;font-weight:600;font-size: 12px;"> 14</span>&nbsp;&nbsp;Per day.
+    
+                              </div>
+                              <br/>
+                              <div style="font-size: 12px;margin-left:2px;text-align: center;border-top: 1px solid black;border-bottom:1px solid black;">
+                                Delivery Address
+                              </div>
+                              <span style="color: gray;font-weight:600;font-size: 12px;padding-left:5px">{{signupValue.address}}</span>
+    
+                            </td>
+    
+                            <td style="border: 1px solid black;text-align: center; vertical-align: text-top;padding-left: 5px;
+                      padding-right: 5px;" width="30%">
+                              <div style="margin-left:2px;font-size: 14px;">
+                                <b>CONSIGNEE COPY</b>
+                              </div>
+                              <div style="margin-left:2px;font-size: 14px;">
+                                <b>AT OWNER'S RISK</b>
+                              </div>
+                              <div style="margin-left:2px;font-size: 14px;">
+                                <b>INSURANCE</b>
+                              </div>
+                              <br/>
+                              <div style="margin-left:2px;text-align: left;font-size:14px">
+                                <b>The customer stated that:</b>
+                              </div>
+                              <div style="margin-left:2px;text-align: left; font-size: 13px;">He has insured the consingment</div>
+                              <div style="margin-left:2px;text-align: left;font-size: 12px;">Company
+                                <span style="float:right">
+                                  <span style="color: gray;font-weight:600">National Insurance</span>
+                                </span>
+                              </div>
+    
+                              <div style="margin-left:2px;text-align: left;font-size: 12px;">Policy no.
+                                <span style="float:right">
+                                  <span style="color: gray;font-weight:600">A41541</span>
+                                </span>
+                              </div>
+                              <div style="margin-left:2px;text-align: left;font-size: 12px;">Amount/Risk
+                                <span style="float:right">
+                                  <span style="color: gray;font-weight:600">25000</span>
+                                </span>
+                              </div>
+                            </td>
+                            <td style="vertical-align: text-top;border-bottom: 1px solid #333;padding-left: 5px;padding-right: 5px;" width="25%">
+                              <h4 style="margin-left:2px;text-align: center;font-size:14px">
+                                <b>CAUTION</b>
+                              </h4>
+                              <span style="margin-left: 2px;font-size: 12px;">
+                                The Consingment will be not detained delivered re-routed or rebooked without Consignee Bank's Written Permition will be delivered
+                                at destination.
+                              </span>
+                            </td>
+                            <td style="border: 1px solid black;vertical-align: text-top;text-align: center;" width="15%">
+                              <table style=" width:  100%" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                  <tr>
+                                    <td style="height:20px;border-bottom: 1px solid;font-weight:  600;border-right: none;font-size:14px;text-align:center">GSTN by</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align:center">
+                                      <span style="width:100%;float:left;padding-bottom:5px;font-size:13px">Consignee</span>
+                                      <span style="width:100%;float:left;padding-bottom:5px;font-size:13px">Consignor</span>
+                                      <span style="width:100%;float:left;padding-bottom:5px;font-size:13px">Transport</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align:center;padding:7px 0">
+                                      <span style="width:100%;float:left;font-weight: 600;font-size:13px">LR No</span>
+                                      <span style="width:100%;float:left;font-size:12px;color: gray;font-weight:600">Mylr/968</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align:center;padding:7px 0">
+                                      <span style="width:100%;float:left;font-weight: 600;font-size:13px">Dated</span>
+                                      <span style="width:100%;float:left;font-size:12px;color: gray;font-weight:600">04-09-2018</span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+    
+                          <tr>
+                            <td colspan="3" style="padding: 0px;border-right: 1px solid #333;">
+                              <table cellspacing="0" width="100%" style="width:100%;border-collapse: collapse;border-right: 0px;border-top: none;">
+    
+                                <tr style="border:1px solid white;">
+                                  <td style="text-align: center; width: 24%;height: 20px;border:1px solid #333;border-top: none;border-right: none;border-left: none;font-size:14px">Transport ID </td>
+                                  <td style=" text-align: center; width: 24%;height: 20px;font-size:14px">GSTIN </td>
+                                  <td style=" text-align: center; width: 23%;height: 20px;font-size:14px">PAN no</td>
+                                  <td style=" text-align: center; width: 27%;height: 20px;font-size:14px">Vehicle no</td>
+    
+    
+                                </tr>
+    
+                                <tr>
+                                  <td style="border:1px solid #333;border-right: none;width: 24%;height: 20px;text-align:center;border-left: none;font-size:12px;color:gray;font-weight:600">
+                                    Mylr-35
+                                  </td>
+                                  <td style="border:1px solid #333;text-align: center;height: 20px;font-size:12px;color:gray;font-weight:600" width="24%">
+                                    25414A
+                                  </td>
+                                  <td style="font-size:12px;border:1px solid #333;border-right:none; padding-left: 5px;width:23%;height: 20px;text-align:center;color:gray;font-weight:600">
+                                    25871A
+                                  </td>
+                                  <td style="font-size:12px;border:1px solid #333;border-right:none; padding-left: 5px;width:29%;height: 20px;text-align:center;color:gray;font-weight:600">
+                                    MP-09-CS-2540
+                                  </td>
+                                </tr>
+    
+    
+                                <tr>
+                                  <td colspan="2" style="text-align: center;">
+                                    <span style="margin:2px;width:100%;float:left;font-size: 14px;font-weight: 600;">Consignor Name & Address </span>
+                                    <span style="color: gray;font-weight:600;width:100%;float:left;text-align: center;padding-left: 7px;font-size:12px">XYZ</span>
+                                    <span style="color: gray;font-weight:600;width:100%;float:left;text-align: center;padding-left: 7px;;font-size:12px">104-Sample,Indore</span>
+                                  </td>
+                                  <td valign="bottom" style="padding-left:25px;text-align:center" colspan="2">
+                                    <h4 style="margin:2px;font-weight:600;text-align:center;font-size: 14px;">From</h4>
+                                    <span style="color: gray;font-weight:600;;font-size:12px">Indore</span>
+                                    <!-- <h4 style="margin:2px;">To.</h4>
+                                <span style="color: gray;font-weight:600">{{lrDetail.to}}</span> </td> -->
+                                </tr>
+    
+    
+                                <tr>
+                                  <td style="height: 25px;"></td>
+                                  <td style="height: 25px;"></td>
+                                  <td valign="middle" style="text-align:center;padding-left: 25px;" rowspan="2" colspan="2">
+                                    <h4 style="margin:2px;font-weight:600;font-size: 14px;">To</h4>
+                                    <span style="color: gray;font-weight:600;;font-size:12px">Bhopal</span>
+                                  </td>
+                                </tr>
+    
+                                <tr>
+                                  <td style="padding-top:0px;text-align: center;height:25px" colspan="2">
+                                    <h4 style="margin:2px;font-size: 14px;font-weight: 600;">Consignee Name & Address</h4>
+                                    <span style="color: gray;font-weight:600;font-size: 12px;width:100%;float:left;text-align:center;padding-left:7px">ABC</span>
+                                    <span style="color: gray;font-weight:600;font-size: 12px;width:100%;float:left;text-align:center;padding-left:7px">1040-Sample,Indore</span>
+                                  </td>
+                                </tr>
+    
+                                <tr>
+                                  <td style="border:1px solid #333;border-top: none;border-right: none;border-left: none;"></td>
+                                  <td style="padding-top: 20px;"></td>
+                                  <td colspan="2" style="padding-left: 4em;">
+                                    <div style="width:100%;float:left">
+                                      <span style="font-weight: 600;font-size:14px;width: 35%;float:left">Intime</span>
+                                      <span style="color: gray;font-weight:600;font-size:12px">10:45 AM</span>
+                                    </div>
+                                    <div style="width:100%;float:left">
+                                      <span style="font-weight: 600;font-size:14px;width: 35%;float:left">Out time</span>
+                                      <span style="color: gray;font-weight:600;font-size:12px">11:30 AM</span>
+                                    </div>
+                                    <div style="width:100%;float:left">
+                                      <span style="font-weight: 600;font-size:14px;width: 35%;float:left">Date :</span>
+                                      <span style="color: gray;font-weight:600;font-size:12px">04-09-2018</span>
+                                    </div>
+                                  </td>
+                                </tr>
+    
+                                <tr style="text-align: center">
+                                  <th width="5%" style="padding-bottom: 5px; border:1px solid #333;text-align:center;border-left: none;font-size:14px">
+                                    Packages
+                                  </th>
+                                  <th style="border:1px solid #333; padding-bottom: 5px;text-align:center; width: 15%;font-size:14px">
+                                    Description Goods
+                                  </th>
+                                  <th style="border:1px solid #333; padding-bottom: 5px;text-align:center;font-size:14px">
+                                    Actual WT
+    
+                                  </th>
+                                  <th style="font-size:14px;text-align:center;padding-bottom: 5px; border:1px solid #333;border-top-color: #333;border-right:none;">
+                                    Charged WT
+    
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <td style="border:1px solid;border-left: none;;text-align:center">
+                                    <span style="color: gray;font-weight:600;font-size:12px">5</span>
+                                  </td>
+                                  <td style="border:1px solid;;text-align:center">
+                                    <span style="color: gray;font-weight:600;font-size:12px">Plywood Sheets</span>
+                                  </td>
+                                  <td style="border:1px solid;;text-align:center">
+                                    <span style="color: gray;font-weight:600;font-size:12px">125</span>
+                                  </td>
+                                  <td style="border:1px solid;border-right:none;text-align:center">
+                                    <span style="color: gray;font-weight:600;font-size:12px">100</span>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td colspan="4" style="height: 24px;"></td>
+                                </tr>
+    
+                                <tr style="text-align: center;">
+                                  <td colspan="4" style="    padding-bottom: 1em;">
+                                    <table width="100%" cellspacing="0px" cellpadding="0px">
+                                      <tr>
+                                        <th style="border: 1px solid;border-left: none;border-right:none;text-align:center;font-size:14px">
+                                          Freights
+                                        </th>
+                                        <th colspan="6" style="border-bottom:1px solid #333;">
+                                          <table width="100%" cellspacing="0px" cellpadding="0px">
+                                            <tr>
+                                              <th style="text-align:center; border:1px solid #333;border-right: none;font-size:14px">
+                                                Freight Type
+                                              </th>
+                                              <th style="text-align:center; border:1px solid #333;border-right: none;border-bottom: none;font-size:14px">
+                                                Freight
+                                              </th>
+                                              <th style="text-align:center; border:1px solid #333;border-right: none;border-bottom: none;font-size:14px">
+                                                Advance
+                                              </th>
+                                              <th style="text-align:center;border:1px solid #333;border-right: none;border-bottom: none;font-size:14px">
+                                                Balance
+                                              </th>
+                                              <th style="text-align:center;border:1px solid #333;border-right: none;border-bottom: none;font-size:14px">
+                                                Topay
+                                              </th>
+                                              <th style="text-align:center; border:1px solid #333;border-right: none;border-bottom: none;font-size:14px">
+                                                TTB AT
+                                              </th>
+                                              <th style="text-align:center;  border:1px solid #333;border-right: none;border-bottom: none;font-size:14px">
+                                                L/UL
+                                              </th>
+                                              <th style="text-align:center; border:1px solid #333;border-bottom: none;border-right:none;font-size:14px">Othr Chr</th>
+                                            </tr>
+                                            <tr>
+                                              <td style=" border:1px solid #333;border-bottom:none;border-right: none;border-top:none;height: 25px;text-align:center">
+                                                <span  style="color: gray;font-weight:600;font-size:12px">TBB</span>
+                                              </td>
+                                              <td style="border:1px solid;border-bottom: none;    border-right: none;text-align:center;font-size:12px">
+                                                <span  style="color: gray;font-weight:600;"> 1250</span>
+                                              </td>
+                                              <td style="border:1px solid;border-bottom: none;    border-right: none;text-align:center;font-size:12px">
+                                                <span  style="color: gray;font-weight:600"> 500</span>
+                                              </td>
+                                              <td style="border:1px solid;border-bottom: none;    border-right: none;text-align:center;font-size:12px">
+                                                <span  style="color: gray;font-weight:600"> 500</span>
+                                              </td>
+                                              <td style="border:1px solid;border-bottom: none;    border-right: none;text-align:center;font-size:12px">
+                                                <span  style="color: gray;font-weight:600"> 750</span>
+                                              </td>
+                                              <td style="border:1px solid;border-bottom: none;    border-right: none;text-align:center;font-size:12px">
+                                                <span  style="color: gray;font-weight:600"> 0</span>
+                                              </td>
+                                              <td style="border:1px solid;border-bottom: none;    border-right: none;text-align:center;font-size:12px">
+                                                <span  style="color: gray;font-weight:600">100</span>
+                                              </td>
+                                              <td style="border:1px solid; border-bottom: none;border-right:none;text-align:center;font-size:12px">
+                                                <span  style="color: gray;font-weight:600"> 0</span>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                        </th>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="3" style="height:20px"></td>
+                                        <td valign="top" rowspan="2" style="text-align:center;padding-top: 7px;" width="30%">
+                                          <span style="width:100%;float:left;padding-bottom:1eml;font-size:14px ;font-weight:600">Consignor GSTIN</span>
+                                          <span style="width:100%;float:leftl;font-size:12px;color:gray;font-weight:600">12417A</span>
+                                          <span style="width:100%;float:left;padding-bottom:1eml;font-size:14px ;font-weight:600">Consignee GSTIN</span>
+                                          <span style="width:100%;float:left;font-size:12px;color:gray;font-weight:600">12418A</span>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <th style="border:1px solid;border-left:none;text-align:center;height: 10%;;font-size:14px">Dimension in Fts</th>
+                                        <th>
+                                          <table style="width:100%" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                              <th style="border:1px solid;border-left:none;width:28%;height: 25px;text-align:center;border-left: none;font-size:14px">Length</th>
+                                              <th style="border:1px solid;;width:37%;height: 25px;text-align:center;    border-left: none;font-size:14px">Width</th>
+                                              <th style="border:1px solid;height: 25px;text-align:center;    border-left: none;font-size:14px">Height</th>
+                                            </tr>
+                                            <tr>
+                                              <td style="color:gray;font-weight:600;text-align:center;border:1px solid #000;border-left:none;width:28%;height: 25px;    border-top: none;font-size:12px;">
+                                                15
+                                              </td>
+                                              <td style="color:gray;font-weight:600;text-align:center;border:1px solid #000;width:37%;height: 25px;    border-top: none;    border-left: none;font-size:12px;">
+                                                7
+                                              </td>
+                                              <td style="color:gray;font-weight:600;text-align:center;border:1px solid #000;height: 25px;border-top:none ;   border-left: none;font-size:12px;">
+                                                5
+                                              </td>
+                                            </tr>
+                                          </table>
+                                        </th>
+                                      </tr>
+                                    </table>
+    
+                                  </td>
+    
+                                </tr>
+    
+                              </table>
+                              </td>
+    
+                              <td style="padding: 0px 0px;vertical-align: top;border:1px solid #333;border-top:none;border-bottom:none" width="25%">
+                                <table cellspacing="0" width="100%">
+                                  <tr>
+                                    <td style="text-align:center;    height: 120px;">
+                                      <span style="width:100%;float:left;font-size: 14px;font-weight: 600;">Invoice no</span>
+                                      <span style="width:100%;float:left;font-size:12;color: gray;font-weight:600">INV1241</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align:center;    height: 120px;">
+                                      <span style="width:100%;float:left;font-size: 14px;font-weight: 600;">Invoice Dt</span>
+                                      <span style="width:100%;float:left;font-size:12px;color: gray;font-weight:600">04-09-2018</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align:center;height: 120px;">
+                                      <span style="width:100%;float:left;font-size: 14px;font-weight: 600;">Invoice Amt </span>
+                                      <span style="width:100%;float:left;font-size:12px;color: gray;font-weight:600">1250</span>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="height: 25px;border-top: 1px solid;border-bottom: 1px solid;text-align: center;    font-size: 14px;
+                             font-weight: 600;">
+                                      Remarks
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td style="font-weight:600;color:gray">
+                                      <span style="padding-left:5px;font-size:12px;word-wrap: break-word;width: 135px;float: left;">Good loaded in good condition</span>
+                                    </td>
+                                  </tr>
+                                </table>
+    
+    
+                                <!-- <h4 style="margin:0px;">
+                        
+                          <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                          <span style="float: right;">Consignor</span></h4><br/>
+                        <h4 style="margin:0px;">
+                            
+                          <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                          <span style="float: right;">Consignee</span></h4><br/>
+                        <h4 style="margin:0px;">
+                          <input type="button" style="background-color: #052c7d;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                          <span style="float: right;">Transport</span></h4><br/>
+                        <h4 style="margin: 0px 4px;">Invoice date: 
+                        </h4>
+                        <span style="color: gray;font-weight:600">{{lrDetail.invoice_date}}</span>
+                        <h4 style="margin:34px 4px;">Invoice no. 
+                        </h4>
+                        <span style="color: gray;font-weight:600">{{lrDetail.invoice_number}}</span>
+                        <h4 style="margin:6px 4px;">Consignor GST no </h4>
+                        <span style="color: gray;font-weight:600">{{lrDetail.consignor_gstn}}</span>
+                        <h4 style="margin:6px 4px;"> Way-bill no </h4>
+                        <span style="color: gray;font-weight:600">{{lrDetail.eway_bill_number}}</span> -->
+    
+                              </td>
+                          </tr>
+    
+    
+                        </table>
+                        </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="border: 1px solid;">
+                            <div style="width:99%;padding:10px 0;float:none;margin:0 auto;  padding: 5px 0;">
+                              <div style="font-weight: 600;line-height: 16px;font-size: 10px;">Terms and conditions</div>
+                              <p style="text-align: justify;font-size: 9px !important;line-height: 11px;
+                              padding: 0 !important;
+                              margin: 0 !important;">
+                                "1. The goods being loaded in vehicle is not prohibited by any means to transport or trade whether within state or country
+                                (India). 2. The document in support of transportation required by the local national authorities
+                                are attached and handed over to driver in original. 3. The consignor has checked and verified
+                                all vehicle’s/Driver’s documents and satisfied to load the goods. 4. The transport company does
+                                not take any responsibility of any leakage/damage/breakage or shortage by act of god, act of
+                                war or public enemy, riots and civil commotion, prohibited imposed by central Govt. or arrest,
+                                restrain or seizure under legal process. 5. The customer (Consigner or consignee) should get
+                                his goods insured against every risk. The transport company cannot be held responsible for any
+                                damage/leakage or breakage due to any reason. 6. The goods will be transported as earliest as
+                                possible in one lot or part as per our convenient. 7. The goods will be delivered to consignee
+                                against payment of all dues and transit expenses or as mutually agreed. 8. The vehicle should
+                                be unloaded same day it reaches else detention (as per local market norms) will be applicable
+                                and the same will be payable with balance freight. 9. Any financial charges occurred due to short
+                                of documents, extra weight or dimension, or any breach of transport law shall be paid by consignee/consignor
+                                along with balance freight. 10. And finally this consignment note fall under the regulation of
+                                “THE CARRIAGE BY ROAD ACT,2007”."
+                              </p>
+                            </div>
+                          </td>
+    
+                        </tr>
+                  </table>
+    
+    
+                </div>
+                <div style="width:100%;float:left">
+                  <p style="    padding: 0 !important;
+                  margin: 0 !important;
+                  font-size: 10px !important;
+                  line-height: 12px;">
+                    Cheque/DD to be issued in favour of
+                    <b>"{{signupValue.company_name}}"</b>
+                    <br/> NEFT/RTGS: Axis Bank A/C NO 10247157A14
+                    <br/> IFSC CODE-AXBK25471-{{signupValue.address}}
+                  </p>
+                </div>
+                <div style="display:none;width:100%;float:left;text-align:center">
+                  <span style="padding: 5px 10px; background: #ddd;font-weight: 600;-webkit-print-color-adjust: exact">Consignor Copy</span>
+                  <span style="float: right;position: absolute; right: 18px;">Generated by
+                    <a href="http://mylr.in/" target="_blank">mylr.in</a>
+                  </span>
+                </div>
+              </div>
+              </section>
+          </div>
+          </div>      
+        </div>
+          <div class="clearfix text-center mtb-30" style="float:left;width:100%">
+              <div class="col-md-3 color-template text-left ">
+                <button [routerLink] = "['/signup/template']" class="btn btn-success btns"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
+              </div>
+              <div class="col-md-6 text-center" style="cursor: pointer;">
+                <button class="btn btn-primary btns" (click)="print()"><i class="fa fa-print" aria-hidden="true"></i> Preview</button>
+              </div>
+              <div class="col-md-3 text-right" style="cursor: pointer;">
+                  <button style="background: #119c89;border-color:#119c89" class="btn btn-primary btns" (click)="onSubmit()"> Submit</button>
+              </div>
+            </div>
+
+         
+    </div>
+    <div class="col-md-3 right_sidebar bdr-left">
+        <app-right-sidebar></app-right-sidebar>
+    </div>
+</div>
+
+</div>
+
+
+
+<!-- Basic form layout section start -->

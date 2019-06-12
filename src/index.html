@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mylr</title>
+  <base href="/">
+  <link rel="icon" href="assets/img/fav.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta http-equiv="Cache-control" content="max-age=10800"> -->
+  
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="assets/css/mainlogin.css" type="text/css" rel="stylesheet">
+  <link href="assets/css/utillogin.css" type="text/css" rel="stylesheet"> -->
+  <link href="assets/css/util.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/fonts/material-design-iconic-font.min.css">
+  
+  
+  <link href="assets/vendors/animate-css/animate.css" type="text/html" rel="stylesheet">
+  <link href="assets/vendors/magnific-popup/magnific-popup.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" type="text/css" href="assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" type="text/css" href="assets/vendors/animate/animate.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" type="text/css" href="assets/vendors/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" type="text/css" href="assets/vendors/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" type="text/css" href="assets/vendors/select2/select2.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+    <script src="https://use.fontawesome.com/94ba6c70e0.js"></script>
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script src="./assets/js/jquery-2.2.4.js"></script>
+    <script>
+      $(window).load(function() {
+          // Animate loader off screen
+          $(".page-load").hide();
+      });
+  </script>
+</head>
+<body>
+    
+
+  <app-root>
+      <div class="app-loading">
+          <div class="logo"></div>
+          <div class="image-loader" *ngIf="page-load">
+              <img src="http://mylr.in/assets/img/loader-orange.gif" />
+          </div>
+        </div>
+    
+  </app-root>
+  
+
+  <script src="./assets/js/bootstrap.min.js"></script>
+  
+  <script src="assets/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+  <script src="assets/vendors/jvectormap/jvectormap.min.js"></script>
+  <script src="assets/vendors/jvectormap/jvectormap-worldmill.js"></script>
+
+    
+  <!--========================================= Google Map Api ======================================================-->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt2JfCVbqr5LoLbtjJ-chpCXeHXL1DZYk&libraries=places&language=en-US"
+  type="text/javascript"></script>
+
+  
+  <!--===============================================================================================-->
+	<script src="./assets/vendors/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="./assets/vendors/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="./assets/vendors/bootstrap/js/popper.js"></script>
+    <script src="./assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+    <script src="./assets/vendors/select2/select2.min.js"></script>
+    <script src="./assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script>
+      $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+      });
+      setTimeout(function(){
+       
+              $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                  0: {
+                    items: 1,
+                    nav: true
+                  },
+                  600: {
+                    items: 3,
+                    nav: false
+                  },
+                  1000: {
+                    items: 3,
+                    nav: true,
+                    loop: false,
+                    margin: 20
+                  }
+                }
+              })
+            }, 3000);
+    </script>
+    	<script src="./assets/js/main.js"></script>
+  
+ 
+  <!--===============================================================================================-->
+  <script type="text/javascript">
+    $("html,body").scrollTop(0);
+  </script>
+</body>
+</html>
+
+ <!-- <script>
+   $('.nav.nav-tabs.st li a').click(function(){
+     $(this).addClass('active')
+   })
+  
+   
+ </script> -->
+ 
+ 

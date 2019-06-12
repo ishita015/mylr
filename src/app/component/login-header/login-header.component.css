@@ -1,0 +1,10 @@
+
+.login_menu_area
+{
+    background: #f4f4f4;
+}
+.login_menu_area .navbar.navbar-default .nav.navbar-nav li a
+{
+    line-height: 50px;
+    color: #000;
+}

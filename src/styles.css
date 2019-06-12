@@ -1,0 +1,202 @@
+/* You can add global styles to this file, and also import other style files */
+.main_header_area{z-index: 2200;}
+@media screen and (min-width:768px){
+    /* .bdr-left{}
+    .bdr-right{} */
+    .bdr-left-right{border-left:1px solid #ddd; border-right:1px solid #ddd }
+}
+
+.p-30{
+    padding: 30px
+}
+.plrz{padding-left: 0px; padding-right: 0px}
+
+textarea{resize: none}
+
+table.table-padding-0>tbody>tr>td{padding: 0px}
+table>tbody>tr>td{height: 40px}
+
+.panel-custom>.panel-heading{
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+.panel-custom .panel-title{
+    font-size: 20px
+}
+
+.image-loader{position:fixed;     z-index: 999999;; top:25%; text-align:center; width:100%}
+.image-loader img{height: 150px;}
+@media screen, print
+{
+  .bg-gray{background-color: #BEBEBE}
+  .bdr-bottom{border:none; border-bottom: 1px solid #777}
+  .full-screen{width:100%; float:left} .fl-left{float:left}
+  .w10{width:10%} .w20{width:20%} .w30{width:30%} .w40{width:40%} .w50{width:50%}
+  .w60{width:60%} .w70{width:70%} .w80{width:80%} .w90{width:90%} .w100{width:100%}
+
+  .mt-5{margin-top:5px}; .mt-10{margin-top:10px} .mt-20{margin-top:20px} .mt-30{margin-top:30px} 
+  .mt-40{margin-top:40px} .mt-50{margin-top:50px}
+
+  .mtb-5{margin-top:5px; margin-bottom:5px} .mtb-10{margin-top:10px; margin-bottom:10px}
+  .mtb-30{margin-top:30px; margin-bottom:30px} .mtb-20{margin-top:20px; margin-bottom:20px}
+  .mtb-40{margin-top:40px; margin-bottom:40px} .mtb-50{margin-top:50px; margin-bottom:50px}
+ 
+  .lh-20{line-height:20px}
+
+  table .bdr-bottom{width:100px}
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+     appearance: none;
+    -moz-appearance: none;
+}
+
+input[type=time]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+     appearance: none;
+    -moz-appearance: none;
+}
+@media (min-width: 768px){
+.modal-dialog {
+    margin-top:5%
+}
+}
+
+.bdr-right{margin-top:-5px; position:relative; z-index: 1000;box-shadow: -1px -5px 5px 2px #0000001a;}
+.pt-117 .bdr-right{z-index: 500;}
+.pt-67 .bdr-right{z-index: 3000;}
+.bdr-left-right{margin-top:20px;}
+.z-1k{position:relative; z-index: 1000;}
+.pt-117{padding-top:117px}
+.pt-67{padding-top:80px}
+.inner-header{position:relative;
+     border:1px solid #e6e6e6;
+      box-shadow: 0px 3px 5px #e6e6e6}
+
+
+.backdrop
+{
+    z-index: 9999 !important;
+}      
+.modal
+{
+    z-index: 99999 !important;
+}
+.error_msg{
+    text-transform: capitalize;
+}
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+     appearance: none;
+    -moz-appearance: none;
+}
+
+.logo-img img{max-height: 67px}
+
+.detail-btn
+{
+    height: 28px;
+    line-height: 10px;
+    font-size: 12px;
+    width: 65px;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 0px 10px #b8b8b8;
+    box-shadow: 0px 0px 10px #b8b8b8;
+    background: #f2804c;
+    border-color: #f2804c;
+}
+.detail-btn:hover
+{
+    background: #052c7d;
+    opacity: 0.6;
+    border-color: #052c7d;
+}
+.detail-btn:active
+{
+    background: #052c7d;
+    border-color: #052c7d;
+}
+.detail-btn:focus
+{
+    background-color: #052c7d !important;
+    border-color: #052c7d !important;
+}
+
+.dateLoading .mydp{
+    border: none !important;
+    border-bottom: 1px solid !important;
+    border-radius: 0 !important;
+  }
+
+  #time-picker-wrapper.active[_ngcontent-c6] {    background: rgba(0, 0, 0, 0.3);    z-index: 10000;}#time-picker-wrapper[_ngcontent-c6] #time-picker[_ngcontent-c6] .time-picker-header[_ngcontent-c6] {        padding: 3px 0px !important;}#time-picker-wrapper[_ngcontent-c6] #time-picker[_ngcontent-c6] .time-picker-footer[_ngcontent-c6] {    padding: 4px !important;    }#time-picker-wrapper[_ngcontent-c6] #time-picker[_ngcontent-c6] .time-picker-footer[_ngcontent-c6] button[_ngcontent-c6] {        margin-left: 6px !important;    padding: 10px !important;}#time-picker-wrapper[_ngcontent-c6] #time-picker[_ngcontent-c6] .time-picker-content[_ngcontent-c6] .time-picker-clock[_ngcontent-c6] {       padding: 24px !important;    margin: 13px auto !important;}#time-picker-wrapper[_ngcontent-c6] #time-picker[_ngcontent-c6] .time-picker-footer[_ngcontent-c6] button[_ngcontent-c6] {   padding: 10px !important;}
+  ul.step-nav li.li-active a
+  {
+    background: -webkit-linear-gradient(#f2804c, #ee4f4c) !important;
+  }
+
+  .header-nav
+  {
+    box-shadow: 0px 1px 10px #646363;
+  }
+
+.pt-50
+{
+    padding-top: 50px;
+}  
+.pd-t-55
+{
+    padding-top: 55px;
+}
+.pd-left-0
+{
+    padding-left: 0;
+}
+.pd-left-6
+{
+    padding-left: 6px;
+}
+.pd-top-5{
+    padding-top: 5%;
+}
+.pd-0
+{
+    padding:0;
+}
+.mr-tp-0
+{
+    margin-top: 0 !important;
+}
+.main_menu_area .navbar-nav>li>.border-none:before
+{
+    text-decoration: none !important;
+    content: none !important;
+}
+.login-dropdwn
+{
+    border: none;
+    background: #f06a4c;
+    outline: 0;
+    color: #fff
+}
+.carousel-indicators
+{
+    margin-left: 10% !important;
+}
+.carousel-indicators li{
+    margin: 0 4px !important;
+}
+.outer {
+    margin-top: 10px;
+    padding-right: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.right_sidebar
+{
+    top:16px
+}
+.pd-top-30
+{
+    padding-top: 30px;
+}
+

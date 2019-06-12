@@ -1,0 +1,96 @@
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="assets/images/loader.gif" />
+</div>
+
+<div class="row pt-67"> 
+        <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+            <app-login-leftbar></app-login-leftbar>
+        </div>
+          
+        <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+            <div class="clearfix">
+                <div class="clearfix card-strip">
+                    <aside class="col-sm-6">
+                        <h4 class="table_title mt-5">LR List</h4>
+                    </aside>
+                    <aside class="col-sm-6 text-right">
+                        <a routerLink="/lr/create" class="btn btn-info">Create LR</a>
+                    </aside>
+                </div>
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table">
+                          <thead class="bg-success white">
+                            <tr>
+                              <th>Lr Id</th>
+                              <th>Lr No</th>
+                              <th style="width: 130px;text-align: center;">Vehicle No</th>
+                              <th style="width: 130px;text-align: center;">Lr Date</th>
+                              <th style=" width: 185px;">From</th>
+                              <th style="    width: 185px;">To</th>
+                              <th>Consignor Name</th>
+                              <th class="text-center">Detail</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <input class="fl-input" type="text" [(ngModel)]="filtreArg.lr_id" style="width:60px" />
+                              </td>
+                              <td>
+                                <input class="fl-input" type="text" [(ngModel)]="filtreArg.lr_reference_number"  style="max-width:100px" />
+                              </td>
+                              <td style="width: 130px;text-align: center;">
+                                <input class="fl-input" type="text" [(ngModel)]="filtreArg.vehicle_number" />
+                              </td>
+                              <td style="width: 130px;text-align: center;">
+                                <input class="fl-input" type="text" [(ngModel)]="filtreArg.loading_date" />
+                              </td>
+                              <td>
+                                <input class="fl-input" type="text" [(ngModel)]="filtreArg.station_source" style="" />
+                              </td>
+                              
+                              <td>
+                                <input class="fl-input" type="text" [(ngModel)]="filtreArg.station_destination" />
+                              </td>
+                              <td>
+                                <input class="fl-input" type="text" [(ngModel)]="filtreArg.consignor_name" />
+                              </td>
+                              <td></td>
+                            </tr>
+                          <tr >
+                            <td *ngIf = "lrStatus==false" colspan="8" class="text-center">
+                              <b>{{lrMessage}}</b>
+                            </td>
+                          </tr>
+                          <ng-container *ngIf = "lrStatus==true">
+                          <!-- *ngIf = "lrStatus=='true'" -->
+                            <tr  *ngFor="let lrList of lrDataList | lrListFilter:filtreArg |
+                             paginate: {itemsPerPage: 10, currentPage:page, id: '1'}; let i = index" >
+                              <td class="align-middle">{{lrList.lr_id}}</td>
+                              <td> {{lrList.lr_reference_number}}</td>
+                              <td class="text-center"> {{lrList.vehicle_number}}</td>
+                              <td class="text-center">{{lrList.loading_date}}</td>
+                              <td>{{lrList.station_source}}</td>
+                              <td>{{lrList.station_destination}}</td>                              
+                              <td>{{lrList.consignor_name }}</td>
+                              <td class="align-middle text-center">
+                                  <!-- routerLink="/transporter/update/'{{transporterList.transporter_id}}'" -->
+                                  <a  [routerLink] = "['/lr/detail/', lrList.lr_id, cookieValue.template_id]" class=" mr-1 mb-1 ">
+                                    <button class="btn btn-info detail-btn">Detail</button>
+                                  </a>
+                              </td>
+                            </tr>
+                          </ng-container>
+                          </tbody>
+                        </table>
+                        <pagination-controls (pageChange)="page = $event" id="1"
+                      maxSize="5"
+                      directionLinks="true"
+                      autoHide="true" style="float:right">
+                </pagination-controls>
+                      </div>
+                </div>
+              </div>
+          </div>
+          </div>

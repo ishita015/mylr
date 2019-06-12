@@ -1,0 +1,210 @@
+
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+  </div>
+
+<div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-login-leftbar></app-login-leftbar>
+    </div>
+    <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+        <div class="card p-30 relative">
+            <div class="panel panel-default panel-custom">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Create Voucher</h4>
+                </div>
+                <div class="panel-body">
+                 <form [formGroup]="voucherForm" name="voucherForm" (ngSubmit)="submitVoucher(voucherForm)">
+                  <table border="0" style="width:100%">
+                    <tr>
+                      <td align="center">
+                        <img  style="height:100px" src="{{ transporter_detail.transport_logo}}" alt="{{ transporter_detail.company_name }}"/>
+                      </td>
+                      <td align="center">
+                        <h2>{{ transporter_detail.company_name }}</h2>
+                        <br />
+                        <h5>{{ transporter_detail.address }}</h5>
+                      </td>
+                      <td align="center">
+                        <p>Contacts</p>
+                        <p>{{ transporter_detail.contact_no }}</p>
+                      </td>
+                    </tr>
+                  </table>
+                
+                  <table border="0" style="width:100%; margin-top:30px">
+                    <tr>
+                      <td>
+                        <span style="width:135px; float:left">Freight Challan no. <span class="feild-required">*</span></span>
+                        <span style="float:left">
+                          <input type="text" class="bdr-btm" formControlName="fr_challan_id" required />
+                          <div *ngIf="voucherForm.controls['fr_challan_id'].errors && ( !voucherForm.controls['fr_challan_id'].pristine || submitted || voucherForm.controls['fr_challan_id'].touched )" class="error-msg">
+                              <div [hidden]="!voucherForm.controls['fr_challan_id'].errors.required">Freight Challan No Is Required.</div>
+                          </div>
+                        </span>
+                      </td>
+                      <td>
+                        <span>Voucher for</span>
+                      </td>
+                      <td>
+                          <span style="width:135px; float:left">Date</span>
+                        <span style="float:left">
+                          <input type="date" class="bdr-btm" />
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="width:135px; float:left">Lr No. <span class="feild-required">*</span></span>
+                          <span style="float:left">
+                            <input type="text" class="bdr-btm" formControlName="lr_id" required/>
+                            <div *ngIf="voucherForm.controls['lr_id'].errors && ( !voucherForm.controls['lr_id'].pristine || submitted || voucherForm.controls['lr_id'].touched )" class="error-msg">
+                                <div [hidden]="!voucherForm.controls['lr_id'].errors.required">LR No Is Required.</div>
+                            </div>
+                          </span>
+                        </td>
+                        <td style="padding:10px">
+                          <select class="form-control bdt-btm" >
+                            <option>1</option>
+                            <option>1</option>
+                          </select>
+                        </td>
+                        <td>
+                            <span style="width:135px; float:left">Voucher No. <span class="feild-required">*</span></span>
+                          <span style="float:left">
+                              <input type="text" class="bdr-btm" formControlName="voucher_number" />
+                              <div *ngIf="voucherForm.controls['voucher_number'].errors && ( !voucherForm.controls['voucher_number'].pristine || submitted || voucherForm.controls['voucher_number'].touched )" class="error-msg">
+                                  <div [hidden]="!voucherForm.controls['voucher_number'].errors.required">Voucher Number Is Required.</div>
+                              </div>
+                            </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                            <span style="width:135px; float:left">Vehicle No. <span class="feild-required">*</span></span>
+                          <span style="float:left">
+                            <input type="text" class="bdr-btm" formControlName="vehicle_number" />
+                            <div *ngIf="voucherForm.controls['vehicle_number'].errors && ( !voucherForm.controls['vehicle_number'].pristine || submitted || voucherForm.controls['vehicle_number'].touched )" class="error-msg">
+                                <div [hidden]="!voucherForm.controls['vehicle_number'].errors.required">Vehicle No Is Required.</div>
+                            </div>
+                          </span>
+                        </td>
+                      </tr>
+                  </table>
+
+                  <table border="0" style="width:100%">
+                    <tr>
+                      <td>
+                        <div class="full-screen mt-20">
+                          <span class="w20 pull-left">Pay to Shri/Ms. <span class="feild-required">*</span></span>
+                          <span class="w80 pull-left">
+                            <input type="text" class="bdr-btm" formControlName="pay_to" />
+                            <div *ngIf="voucherForm.controls['pay_to'].errors && ( !voucherForm.controls['pay_to'].pristine || submitted || voucherForm.controls['pay_to'].touched )" class="error-msg">
+                                <div [hidden]="!voucherForm.controls['pay_to'].errors.required">Pay To Is Required.</div>
+                            </div>
+                          </span>
+                        </div>
+                        <div class="full-screen mt-20">
+                          <span class="w20 pull-left">Debit To <span class="feild-required">*</span></span>
+                          <span class="w80 pull-left"><input type="text" class="bdr-btm" formControlName="debit_to"/>
+                            <div *ngIf="voucherForm.controls['debit_to'].errors && ( !voucherForm.controls['debit_to'].pristine || submitted || voucherForm.controls['debit_to'].touched )" class="error-msg">
+                                <div [hidden]="!voucherForm.controls['debit_to'].errors.required">Debit To Is Required.</div>
+                            </div>
+                          </span>
+                        </div>
+                        <div class="full-screen mt-20">
+                          <span class="w20 pull-left">Narrations <span class="feild-required">*</span></span>
+                          <span class="w80 pull-left"><input type="text" class="bdr-btm" formControlName="narration" />
+                            <div *ngIf="voucherForm.controls['narration'].errors && ( !voucherForm.controls['narration'].pristine || submitted || voucherForm.controls['narration'].touched )" class="error-msg">
+                                <div [hidden]="!voucherForm.controls['narration'].errors.required">Narration Is Required.</div>
+                            </div>
+                          </span>
+                        </div>
+                        <div class="full-screen mt-20">
+                          <div class="w50 pull-left">
+                            <span class="w30 pull-left">Bill No. <span class="feild-required">*</span></span>
+                            <span class="w70 pull-left">
+                              <input type="text" class="bdr-btm" formControlName="bill_no"/>
+                              <div *ngIf="voucherForm.controls['bill_no'].errors && ( !voucherForm.controls['bill_no'].pristine || submitted || voucherForm.controls['bill_no'].touched )" class="error-msg">
+                                  <div [hidden]="!voucherForm.controls['bill_no'].errors.required">Bill Number Is Required.</div>
+                              </div>
+                            </span>
+                          </div>
+                          <div class="w50 pull-left">
+                              <span class="w30 pull-left">Dated <span class="feild-required">*</span></span>
+                              <span class="w70 pull-left"><input type="date" class="bdr-btm" formControlName="bill_date" />
+                                <div *ngIf="voucherForm.controls['bill_date'].errors && ( !voucherForm.controls['bill_date'].pristine || submitted || voucherForm.controls['bill_date'].touched )" class="error-msg">
+                                    <div [hidden]="!voucherForm.controls['bill_date'].errors.required">Bill Date Is Required.</div>
+                                </div>
+                              </span>
+                            </div>
+                        </div>
+                        <div class="full-screen mt-20">
+                            <span class="w20 pull-left">Rs. In Words:</span>
+                            <span class="w80 pull-left">
+                              {{ amountInWords }}
+                              <!-- <input type="text" class="bdr-btm" [(ngModel)]="" /> -->
+                            </span>
+                          </div>
+                          <div class="full-screen mt-20">
+                              <span class="w50 pull-left"> Amount Dr. or Cr. On Ledger Folio no <span class="feild-required">*</span></span>
+                              <span class="w50 pull-left">
+                                <input type="text" class="bdr-btm" formControlName="ledger_folio_number" required/>
+                                <div *ngIf="voucherForm.controls['ledger_folio_number'].errors && ( !voucherForm.controls['ledger_folio_number'].pristine || submitted || voucherForm.controls['ledger_folio_number'].touched )" class="error-msg">
+                                    <div [hidden]="!voucherForm.controls['ledger_folio_number'].errors.required">Ledger Folio Number Is Required.</div>
+                                </div>
+                              </span>
+                          </div>
+                      </td>
+                      <td width="20%">
+                        <div style="margin:10px; border:1px solid #666; text-align: center">
+                          <div style="border-bottom:1px solid #666">
+                              Amount <span class="feild-required">*</span>
+                            </div>
+                            <div style="border-bottom:1px solid #666; min-block-size: 200px; padding:25px">
+                                <input style="margin-top:10px" type="text" class="bdr-btm" formControlName="amount" [(ngModel)]="amount" required (keyup)="convert(amount)" onkeypress="return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250" />
+                                <div *ngIf="voucherForm.controls['amount'].errors && ( !voucherForm.controls['amount'].pristine || submitted || voucherForm.controls['amount'].touched )" class="error-msg">
+                                    <div [hidden]="!voucherForm.controls['amount'].errors.required">Amount Is Required.</div>
+                                </div>
+                            </div>
+                            <div style="min-height: 50px">
+                              
+                            </div>
+                          </div>
+                      </td>
+                    </tr>
+                    
+                  </table>
+                  <table border="0" style="width:100%;">
+                    <tr>
+                      <td>Cashier</td>
+                      <td align="center">Accounts</td>
+                      <td align="right">Receiver's Sign</td>
+                    </tr>
+                  </table>
+                  <div class="clearfix text-center">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+<div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+    
+        <div class="modal-body">
+            <p>{{message}}</p>
+        </div>
+        
+        <div class="modal-footer popup2">
+            <button type="button" [routerLink] = "['/pages/login/']" class="btn btn-default" (click)="hidePop()" >Ok</button>
+        </div>
+    </div>
+</div>
+</div>

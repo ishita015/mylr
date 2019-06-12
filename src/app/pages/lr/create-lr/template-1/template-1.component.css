@@ -1,0 +1,53 @@
+
+td.td-invisible, th.td-invisible{
+    padding: 0px
+  }
+  .feild-error{
+    border-bottom:1px solid red !important
+  }
+  .p-5{padding: 5px}
+  .cl-orange{background-color:#FBBD91}
+  .error-msg{
+    color:red
+  }
+  .feild-required{
+    color:red
+  }
+  .plr-10{
+    padding-left: 10px; padding-right: 10px
+  }
+  @media screen
+  {
+    body{
+      font-family:verdana, arial, sans-serif;
+      color:#333;
+    }
+  }
+  
+  @media print
+  {
+    body{
+      font-family:georgia, times, serif;
+      color:green
+    }
+  }
+  @media screen, print
+  {
+    body{font-size:10pt}
+    .bg-gray{background-color: #BEBEBE}
+    .bdr-bottom{border:none; border-bottom: 1px solid #777}
+    .full-screen{width:100%; float:left} .fl-left{float:left}
+    .w10{width:10%} .w20{width:20%} .w30{width:30%} .w40{width:40%} .w50{width:50%}
+    .w60{width:60%} .w70{width:70%} .w80{width:80%} .w90{width:90%} .w100{width:100%}
+  
+    .mt-10{margin-top:10px} .mt-20{margin-top:20px} .mt-30{margin-top:30px} 
+    .mt-40{margin-top:40px} .mt-50{margin-top:50px}
+  
+    .mtb-5{margin-top:5px; margin-bottom:5px} .mtb-10{margin-top:10px; margin-bottom:10px}
+    .mtb-30{margin-top:30px; margin-bottom:30px} .mtb-20{margin-top:20px; margin-bottom:20px}
+    .mtb-40{margin-top:40px; margin-bottom:40px} .mtb-50{margin-top:50px; margin-bottom:50px}
+   
+    .lh-20{line-height:20px}
+  
+    table .bdr-bottom{width:100%}
+  }

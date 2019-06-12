@@ -1,0 +1,609 @@
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal modal_bg_transparent" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm bd-heading">
+    <div class="modal-content dialog bd-none">
+       <div class="modal-body heading-mes popup1">
+          <h3 style="font-size: 20px;font-weight: 600;">{{templateArray.message}}</h3>
+      </div>
+      <div class="modal-footer footer-mes popup2">
+        <button type="button" class="btn btn-design btn-default btn-primary" (click)="hidePopup()" >OK</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<div class="clearfix">
+    <div class="image-loader" *ngIf="imageLoader===true">
+        <img src="http://mylr.in/assets/img/loader-orange.gif" />
+    </div>
+  <div class="row pd-top-5"> 
+      <div class="col-md-9">
+      <div class="card p-30 p-3 relative">
+      <div class="color-container" style="width:100%">
+        
+      <div class="clearfix" style="background: #f7f7f7;padding-bottom: 1em;">
+          <h4 class="text-center">
+            <i class="fas fa-paint-brush"></i>
+            <br />
+            Choose your Color
+          </h4>
+          <div class="color-scheme text-center">
+            <ul class="ul-color">
+              <li (click)="setSchemeColor('#F86A31')"></li>
+              <li (click)="setSchemeColor('#D22393')"></li>
+              <li (click)="setSchemeColor('#694ABF')"></li>
+              <li (click)="setSchemeColor('#305C8D')"></li>
+              <li (click)="setSchemeColor('#387228')"></li>
+              <li (click)="setSchemeColor('#4B4B4B')"></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+    <style>
+      @media print
+    {
+      
+      .bg-gray{background-color: #BEBEBE}
+      .bdr-bottom{border:none; border-bottom: 1px solid #777}
+      .full-screen{width:100%; float:left} .fl-left{float:left}
+      .w10{width:10%} .w20{width:20%} .w30{width:30%} .w40{width:40%} .w50{width:50%}
+      .w60{width:60%} .w70{width:70%} .w80{width:80%} .w90{width:90%} .w100{width:100%}
+    
+      .mt-10{margin-top:10px} .mt-20{margin-top:20px} .mt-30{margin-top:30px} 
+      .mt-40{margin-top:40px} .mt-50{margin-top:50px}
+    
+      .mtb-5{margin-top:5px; margin-bottom:5px} .mtb-10{margin-top:10px; margin-bottom:10px}
+      .mtb-30{margin-top:30px; margin-bottom:30px} .mtb-20{margin-top:20px; margin-bottom:20px}
+      .mtb-40{margin-top:40px; margin-bottom:40px} .mtb-50{margin-top:50px; margin-bottom:50px}
+     
+      .lh-20{line-height:20px}
+    
+      table .bdr-bottom{width:100px}
+    }
+    </style>
+    <div class="clearfix">
+    <section style="width:100%;-webkit-print-color-adjust: exact"
+    id="print-section">
+    <div class="abc" style="    width: 100%;
+    float: left;position:relative;margin-bottom: 6px;">
+      <span style="    -webkit-print-color-adjust: exact;
+      font-size: 16px;
+      background: #cfcfcf;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      padding: 1px 0;
+      font-weight: 600;
+      margin-bottom: 0px;
+      text-align: center;
+      line-height: 23px;
+      letter-spacing: 1px;">LORRY RECIEPT</span>
+      <div>
+        <table style="width: 100%;" cellspacing="0px">
+          <tr>
+            <td class="logo_image" width="20%">
+              <!-- <img class="image" style="width: 100px;" src="https://i.stack.imgur.com/vJ3Id.png" alt="3d-logo" /> -->
+              <img style="width: 100px;" [src]="signupValue.transport_logo">
+              <!-- <img src="src" id="img{{print.id}}"> -->
+            </td>
+            <td style="text-align: center;">
+              <h5 style="margin: 0px 15px;">Subject to Indore Jurisdiction</h5>
+              <h3 style="margin: 0px 15px;font-weight: 600;font-size:15px">{{signupValue.company_name}}</h3>
+              <h5 *ngIf="signupValue.tagline!=''" style="color:red;margin: 0px 0px;">({{signupValue.tagline}})</h5>
+              <h5 style="margin: 0px 15px;">{{signupValue.address}}</h5>
+              <h5 style="margin: 0px 15px;">E-mail- {{signupValue.email_id}}</h5>
+            </td>
+            <td style="text-align: right;width:20%">
+              <h3 style="padding: 0 0px; font-size: 12px;line-height: 15px;margin: 0px !important;">Contacts:
+                <span style="padding-left:20px;">{{signupValue.contact_no}}</span>
+              </h3>
+              <h3 style="padding: 0 0px; font-size: 12px;line-height: 15px;margin: 0px !important;">PAN:
+                <span style="padding-left:20px;">{{signupValue.pan_number}}</span>
+              </h3>
+              <h3 style="padding: 0 0px;font-size: 12px;line-height: 15px;margin: 0px !important;">GSTIN:
+                <span style="padding-left:20px;">{{signupValue.gst_number}}</span>
+              </h3>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+      <div>
+        <table cellspacing="0px" cellpadding="5px" style="width: 100%;border-collapse: collapse;border: 1px solid #333;border-right: none;border-bottom: none;">
+          <tr>
+            <td style="border: 1px solid #333; vertical-align: text-top; padding:0px 0px" width="30%">
+              <h3 style="text-align:center;font-size:14px;font-weight:600">
+                <b> Schedule of Demurrage Charges.</b>
+              </h3>
+              <h5 style="margin:2px 6px;font-weight:400;font-size: 13px;">
+                  Demurrage charges after days
+                <span style="color: gray;font-weight:600">100</span>
+              </h5>
+              <h5 style="margin:2px 6px;font-weight:400;font-size: 13px;">
+                From Today @Rs.
+                <span style="color: gray;font-weight:600">15</span>&nbsp;&nbsp;Per day.
+              </h5>
+              <h3 style="text-align: center;border-top: 1px solid #333;border-bottom:1px solid #333;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                Delivery Address
+              </h3>
+              <p style="margin:2px 6px;;font-size:12px">
+                <span style="color: gray;font-weight:600">{{signupValue.address}}</span>
+              </p>
+            </td>
+
+            <td style="border: 1px solid #333;text-align: center; vertical-align: text-top;" width="25%">
+              <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;">
+                <b>CONSIGNEE COPY</b>
+              </h3>
+              <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;">
+                <b>AT OWNER'S RISK</b>
+              </h3>
+              <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;">
+                <b>INSURANCE</b>
+              </h3>
+              <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:600">
+                <b>The customer stated that:</b>
+              </h5>
+              <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">He has insured the consingment</h5>
+              <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Company
+                <span style="float:right">
+                  <span style="font-size:12px;color: gray;font-weight:600">National Insurance</span>
+                </span>
+              </h5>
+              <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Policy no.
+                <span style="float:right">
+                  <span style="font-size:12px;color: gray;font-weight:600">A104415</span>
+                </span>
+              </h5>
+              <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Amount/Risk
+                <span style="float:right">
+                  <span style="font-size:12px;color: gray;font-weight:600">25000</span>
+                </span>
+              </h5>
+            </td>
+            <td style="padding:0px 4px; border-top:1px solid #333;border-bottom:1px solid #333;vertical-align: text-top;" width="18%">
+              <div style="text-align: center;font-size: 14px;">
+                <b>CAUTION</b>
+              </div>
+              <p style="margin: 0px 2px;font-size: 12px">
+                  This consignment will not be  detained, delivered, re-routed or rebooked without consignee/Consignee’s bank written permission and will be delivered to destination
+              </p>
+            </td>
+            <td width="28%" style="border: 1px solid #333;vertical-align: text-top;padding: 0px 4px;">
+              <div style="text-align:center;line-height: 32px;font-size: 14px;font-weight: 400;">GSTIN payable by</div>
+              <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+          margin-bottom: 10px;margin-top: 10px;">
+                <span style="width:45%;float:left">Consignor</span>
+                <span style="width:55%;float:left">
+                  <input type="button" [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;"
+                  />
+                </span>
+              </div>
+              <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+          margin-bottom: 10px;">
+                <span style="width:45%;float:left">Consignee</span>
+                <span style="width:55%;float:left">
+                  <input type="button" [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;"
+                  />
+                </span>
+              </div>
+              <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+          margin-bottom: 10px;">
+                <span style="width:45%;float:left">Transport</span>
+                <span style="width:55%;float:left">
+                  <input type="button" [ngStyle]="{'background-color':schemecolor,'-webkit-print-color-adjust': 'exact'}" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;"
+                  />
+                </span>
+              </div>
+            </td>
+          </tr>
+
+        </table>
+        <table cellspacing="0px" style="width:100%;border-collapse: collapse;border: 1px solid #333;border-bottom:none;border-top:none;">
+          <tr>
+
+            <td colspan="3" style="padding: 0px;width: 72.99%;">
+              <table cellspacing="0px" style="width:100%;border-collapse: collapse;border-right: 0px;border-top: none;">
+                <tr>
+                  <td style="width: 50%;height: 29px;text-align:center">
+                    <b>LR no.</b>
+                  </td>
+                  <td style="text-align: center; height: 29px;text-align:center" width="100px">
+                    <b>Date</b>
+                  </td>
+                  <td style="padding-left: 5px;height: 29px;text-align:center" colspan="2">
+                    <b>Transporter ID</b>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="    font-size: 12px;border:1px solid #333;border-right: none;border-left: none;width: 50%;height: 29px;text-align:center;color: gray;font-weight:600">
+                    <span>Mylr/1024</span>
+                  </td>
+                  <td style="    font-size: 12px;border:1px solid #333;height: 29px;text-align:center;color: gray;font-weight:600" width="100px">
+                    <span>04-09-2018</span>
+                  </td>
+                  <td style="    font-size: 12px;border:1px solid #333;padding-left: 5px;height: 29px;text-align:center;color: gray;font-weight:600"
+                    colspan="2">
+                    <span>mylr-35</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="text-align: center;padding-top: 10px;vertical-align: middle;">
+                    <b>Consignor Name & Address</b>
+                    <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size: 12px;">
+                      <span style="padding-left:1em">XYZ</span>
+                    </p>
+                    <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size: 12px;">
+                      <span style="padding-left:1em">104,Sample,indore</span>
+                    </p>
+                  </td>
+                  <td colspan="3" style="padding-left: 4em;">
+                    <h3 style="text-align: center;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                      <span style="display: block;padding-bottom: 6px;">
+                        <b>From</b>
+                      </span>
+
+                      <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                 margin: 0 auto;
+                 display: block;font-size: 12px;">Indore</span>
+                    </h3>
+                    <h3 style="text-align: center;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                      <span style="display: block;padding-bottom: 6px;">
+                        <b>To:</b>
+                      </span>
+
+                      <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                      margin: 0 auto;
+                      display: block;font-size: 12px;">Bhopal</span>
+                    </h3>
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td style="height: 10px;" colspan="4"></td>
+                </tr>
+
+                <tr>
+                  <td style="padding-top:0px;text-align: center;">
+                    <b>Consignee Name & Address</b>
+                    <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size:12px">
+                      <span>ABC</span>
+                    </p>
+                    <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size:12px">
+                      <span>1089,Sample,Indore</span>
+                    </p>
+                  </td>
+                  <td colspan="3" style="padding-left: 4em;">
+                    <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                      <span style="float: left;width: 28%;">
+                        <b>Intime</b>
+                      </span>
+                      <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                 width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">10:45 AM</span>
+                    </h3>
+                    <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                      <span style="float: left;width: 28%;">
+                        <b>Out time</b>
+                      </span>
+                      <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                   width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">11:30 AM</span>
+                    </h3>
+                    <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                      <span style="float: left;width: 28%;">
+                        <b>Date </b>
+                      </span>
+                      <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                   width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">04-09-2018</span>
+                    </h3>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="border:1px solid #333;border-top: none;border-right: none;border-left: none;height:10px"></td>
+                  <td style="padding-top: 20px;height:10px"></td>
+                  <td style="height:10px"></td>
+                  <td style="height:10px"></td>
+                </tr>
+
+                <tr style="text-align: center">
+                  <td colspan="4">
+                    <table border="0px" width="100%" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td style="    height: 25px; border:1px solid #333;border-left: none;    border-top: none;    text-align: center;border-right:none">
+                          <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;">
+                            <b>Packages</b>
+                          </h3>
+                        </td>
+                        <td style="    height: 25px;border:1px solid #333;    border-top: none;border-right:none">
+                          <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;    text-align: center;">
+                            <b>Goods Description</b>
+                          </h3>
+                        </td>
+                        <td style="    height: 25px;border:1px solid #333;    border-top: none;border-right:none">
+                          <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;    text-align: center;">
+                            <b>Actual WT</b>
+                          </h3>
+                        </td>
+                        <td style="    height: 25px; border:1px solid #333;border-top-color: #333;;border-top: none;text-align: center;border-right:none">
+                          <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;">
+                            <b>Charged WT</b>
+                          </h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="    height: 25px; border:1px solid #333;border-right: none;border-top: none; border-left: none;    text-align: center;">
+                          <span style="color: gray;font-weight:600;    font-size: 12px;">5</span>
+                        </td>
+                        <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                          <span style="color: gray;font-weight:600;    font-size: 12px;">Plywood Sheets</span>
+                        </td>
+                        <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                          <span style="color: gray;font-weight:600;    font-size: 12px;">152</span>
+                        </td>
+                        <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                          <span style="color: gray;font-weight:600;    font-size: 12px;">1250</span>
+                        </td>
+
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+
+
+                <tr>
+                  <td style="padding-bottom: 15px;height:10px !important"></td>
+                  <td style="height:10px !important"></td>
+                  <td style="height:10px !important"></td>
+                  <td style="border:1px solid #fff;height:10px !important"></td>
+
+
+                </tr>
+
+                <tr style="text-align: center;">
+                  <td colspan="4">
+
+                    <table width="100%" cellspacing="0px" cellpadding="0px">
+                      <tr style="text-align: center;">
+                        <td style="border: 1px solid;border-right: none;border-left: none;font-size: 14px;">
+                          <b>Dimension in Fts</b>
+                        </td>
+                        <td colspan="6">
+                          <table width="100%" cellspacing="0px" cellpadding="0px">
+                            <tr style="text-align: center;">
+                              <td style="width:20%;border:1px solid;border-right: none;height:25px;font-size:14px">
+                                <b>Length</b>
+                              </td>
+                              <td style="width:20%;border:1px solid ;border-right: none;height:25px;font-size:14px">
+                                <b>Width</b>
+                              </td>
+                              <td style="width:20%;border:1px solid;height:25px;font-size:14px">
+                                <b>Height</b>
+                              </td>
+                              <td style="height:25px" width="170px"></td>
+                            </tr>
+                            <tr>
+                              <td style="border:1px solid;border-right:none;border-top:none;height:25px;text-align:center;font-size:12px">
+                                <span style="color: gray;font-weight:600">15</span>
+                              </td>
+                              <td style="border:1px solid;border-top:none;border-right:none;height:25px;text-align:center;font-size:12px">
+                                <span style="color: gray;font-weight:600">5</span>
+                              </td>
+                              <td style="border:1px solid;border-top:none;height:25px;text-align:center;font-size:12px">
+                                <span style="color: gray;font-weight:600">7</span>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top: 15px;height:10px !important"></td>
+                  <td style="height:10px !important"></td>
+                  <td style="height:10px !important"></td>
+                  <td style="height:10px !important"></td>
+                </tr>
+
+                <tr style="text-align: center;">
+                  <td colspan="4">
+                    <table width="100%" cellspacing="0px" cellpadding="0px">
+                      <tr style="text-align: center;">
+                        <td style="width: 145px;;border: 1px solid #333;border-right: none;border-left: none;font-size:14px">
+                          <b>Freights</b>
+                        </td>
+                        <td colspan="6" style="border: 1px solid #fff;">
+                          <table width="100%" cellspacing="0px" cellpadding="0px">
+                            <tr style="text-align: center;">
+                              <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                <b>Freight Type</b>
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                <b>Freight</b>
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                <b>Advance</b>
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                <b>Balance</b>
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none; height: 25px;font-size: 14px;">
+                                <b>Topay</b>
+                              </td>
+                              <td style=" border:1px solid #333;border-right:none;height: 25px;font-size: 14px;">
+                                <b>TBB AT</b>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                <span style="color: gray;font-weight:600;font-size:12px">TBB</span>
+                                
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                <span  style="color: gray;font-weight:600;font-size:12px"> 120</span>
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                <span  style="color: gray;font-weight:600;font-size:12px"> 1000</span>
+                               
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                <span  style="color: gray;font-weight:600;font-size:12px"> 0</span>
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                <span  style="color: gray;font-weight:600;font-size:12px"> 250</span>
+                              </td>
+                              <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                <span  style="color: gray;font-weight:600;font-size:12px">0 </span>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                    <td colspan="4" style="border: 0px; border-bottom:1px solid #333;padding:10px;"></td>
+                  </tr> -->
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td style="vertical-align: top;border:1px solid #333;border-top:none;    width: 28%;">
+              <table width="100%" cellspacing="0px">
+                <tr>
+                  <td style="text-align:center; height: 29px;border-bottom: 1px solid;font-weight: 600">
+                    Vehicle No.
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align:center; height: 29px;border-bottom: 1px solid;">
+                    <span style="color: gray;font-weight:600;display:block;text-align:center;font-size: 12px;">MP-09-NJ-2540</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 8px;height: 40px;">
+                    <b>Consignor GSTN</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height:25px">
+                    <span style="color: gray;font-weight:600;display:block;text-align:center;font-size:12px">25416AI</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-left: 8px;height: 40px;">
+                    <b>Consignee GSTN</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height:25px">
+                    <span style="color: gray;font-weight:600;display:block;text-align:center;;font-size:12px">25897AO</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height: 49px;">
+                    <span style="width:50%;float:left">Invoice Date:</span>
+                    <span style="width:50%;float:left;color: gray;font-weight:600;font-size:12px">04-09-2018</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height: 50px;">
+                    <span style="width:50%;float:left">Invoice No:</span>
+                    <span style="width:50%;float:left;color: gray;font-weight:600;font-size:12px">INV8954</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height:26px;text-align:center;font-size:14px;border-top:1px solid;border-bottom:1px solid">
+                    <b>Delivery contact no</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="height: 25px;text-align:center;border-bottom: 1px solid;">
+                    <span style="font-size:12px;color: gray;font-weight:600;font-size:12px">9981848879</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 1px solid;height:25px;text-align:center">
+                    <b>REMARK</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span style="color: gray;font-weight:600;display:block;font-size:12px">Good Loaded in Good condition</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+
+
+
+
+
+      <div style="line-height:12px">
+        <div style="font-size:14px;line-height:12px;    font-weight: 600;">Terms & Conditions</div>
+        <div style="border-bottom: 1px solid #ddd;
+    padding-bottom: 3px;text-align: justify;line-height:14px">
+          <span style="font-size:12px;">We store goods in our godown entirely at the cost and risk of the Consignee or Consignor. 2. This goods not
+            is issued at owners risk. 3. we are not responsible for any damage or breakage due to any reason. 4. The
+            company doesnot take any responsibility for shortage/breakage/damage/leakage by sun, rain, weat er, fire,
+            theft, accident any of the cause which are beyound control.5. The customer should get insured his goods
+            agaisnt all risks.6. The goods will be delivered against all due and transit expenses. 7. Vehicle shall
+            be unloaded and loaded same day else the detaintion will be chared as per market rule.8. The consignee
+            is absolutly responsible for legal liabilities of any rational contorlled or prohibited goods smu ggled,
+            black market etc. And that while sending and receiving goods all the formalities have been performed under
+            Transport acts and rules regulations.
+          </span>
+        </div>
+        <span style="font-size:12px;display:block;    line-height: 17px;
+font-size: 13px;">
+          Cheque/DD to be issued in favour of
+          <b>"{{signupValue.company_name}}"</b>
+          <br/> NEFT/RTGS: Axis Bank A/C NO 51474574AO981
+          <br/> IFSC CODE-AXSB514-{{signupValue.address}}
+        </span>
+        <div style="width: 100%;float:left;text-align:center;line-height: 25px;padding-top: 10px;">
+          <span id="copy-btn" style="padding: 5px 10px; background: #ddd;font-weight: 600;-webkit-print-color-adjust: exact;font-size: 16px;">Consignor Copy</span>
+
+          <span style="float: left;position: absolute;right: 54px;">Generated By:
+            <a href="http://mylr.in/" style="text-decoration:none" target="_blank">mylr.in</a>
+          </span>
+        </div>
+      </div>
+    
+    </div>
+  </section>
+</div>
+          </div>      
+        </div>
+          <div class="clearfix text-center mtb-30" style="float:left;width:100%">
+              <div class="col-md-3 color-template text-left ">
+                <button [routerLink] = "['/signup/template']" class="btn btn-success btns"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</button>
+              </div>
+              <div class="col-md-6 text-center" style="cursor: pointer;">
+                <button class="btn btn-primary btns" (click)="print()"><i class="fa fa-print" aria-hidden="true"></i> Preview</button>
+              </div>
+              <div class="col-md-3 text-right" style="cursor: pointer;">
+                  <button style="background: #119c89;border-color:#119c89" class="btn btn-primary btns" (click)="onSubmit()"> Submit</button>
+              </div>
+            </div>
+
+         
+    </div>
+    <div class="col-md-3 right_sidebar bdr-left">
+        <app-right-sidebar></app-right-sidebar>
+    </div>
+</div>
+</div>
+
+
+
+<!-- Basic form layout section start -->

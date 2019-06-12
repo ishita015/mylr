@@ -1,0 +1,1566 @@
+
+<style>
+    #partToPrint .abc:nth-child(2), #partToPrint .abc:nth-child(3) {
+      display: none;
+  }
+  #driver
+  {
+    display: none;
+  }
+  #cosignee
+  {
+    display: none
+  }
+  .popup-head
+  {
+    padding-bottom: 1em;
+    font-size: 17px;
+  }
+  </style>
+<div class="image-loader" >
+    <img src="assets/images/loader.gif" *ngIf="imageLoader" />
+  </div>
+<div class="row pd-t-55" style="margin-right:0px">
+
+
+  <div class="col-md-9 col-sm-9 col-xs-12" style="padding-bottom:80px;margin-top:20px">
+
+    <div class="card p-30 p-3 relative">
+      <div class="clearfix">
+        
+                
+          <section [ngStyle]="{'display':cosignorDisplayHtml}" style="width:100%;-webkit-print-color-adjust: exact" id="partToPrint"> 
+              <span style="    -webkit-print-color-adjust: exact;
+              font-size: 16px;
+              background: #cfcfcf;
+              width: 100%;
+              display: block;
+              margin: 0 auto;
+              padding: 1px 0;
+              font-weight: 600;
+              margin-bottom: 0px;
+              text-align: center;
+              line-height: 23px;
+              letter-spacing: 1px;">LORRY RECIEPT</span>          
+            <div>
+              <table style="width: 100%;" cellspacing="0px">
+                <tr>
+                  <td width="17%"> 
+                    <!-- <img id="image" style="width: 100px;" src="data:image/png;base64,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" alt="3d-logo" /> -->
+                    <div style="width: 100px;" id="imageDiv"></div>
+                  </td>
+                  <td style="text-align: center;">                    
+                    <h5 style="margin: 0px 15px;">Subject to Indore Jurisdiction</h5>
+                    <h3 style="margin: 0px 15px;font-weight: 600;">{{lrDetail.transporter_details.company_name}}</h3>
+                    <h5 *ngIf="lrDetail.transporter_details.tagline != ''" style="color:red;margin: 0px 0px;line-height: 22px;">({{lrDetail.transporter_details.tagline}})</h5>
+                    <h5 style="margin: 0px 15px;">{{lrDetail.transporter_details.address}}</h5>
+                    <h5 style="margin: 0px 15px;">E-mail- {{lrDetail.transporter_details.email_id}}</h5>
+                  </td>
+                  <td style="text-align: right;width:10%">
+                    <h3 style="padding: 0 0px; font-size: 14px;line-height: 22px;margin: 0px !important;">Contacts:<span style="padding-left:20px;">{{lrDetail.transporter_details.contact_number}}</span></h3>
+                    <h3 style="padding: 0 0px; font-size: 14px;line-height: 22px;margin: 0px !important;">PAN:<span style="padding-left:20px;">{{lrDetail.transporter_details.pan_number}}</span></h3>
+                    <h3 style="padding: 0 0px;font-size: 14px;line-height: 22px;margin: 0px !important;">GSTIN:<span style="padding-left:20px;">{{lrDetail.transporter_details.gst_number}}</span></h3>
+                  </td>
+                </tr>
+  
+              </table>
+            </div>
+  <div>
+            <table cellspacing="0px" cellpadding="5px" style="width: 100%;border-collapse: collapse;border: 1px solid #333;border-right: none;border-bottom: none;">
+              <tr>
+                <td style="border: 1px solid #333; vertical-align: text-top; padding:0px 0px" width="30%">
+                  <h3 style="text-align:center;font-size:14px;font-weight:600"><b> Schedule of Demurrage charges.</b></h3>
+                  <h5 style="margin:2px 6px;font-weight:400;font-size: 13px;">
+                    Demurrage charges after days 
+                    <span style="color: gray;font-weight:600">{{lrDetail.lr_charges.detention_charges}}</span>
+                  </h5>
+                 
+                  <h5 style="margin:2px 6px;font-weight:400;font-size: 13px;">
+                    From Today @Rs.
+                   <span style="color: gray;font-weight:600">{{lrDetail.lr_charges.detention_days}}</span>&nbsp;&nbsp;Per day.
+                  </h5>
+                  <h3 style="text-align: center;border-top: 1px solid #333;border-bottom:1px solid #333;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                    Delivery Address 
+                  </h3>
+                 <p style="margin:2px 6px;;font-size:12px"><span style="color: gray;font-weight:600">{{lrDetail.delivery_address}}</span></p>
+                </td>
+  
+                <td style="border: 1px solid #333;text-align: center; vertical-align: text-top;" width="25%">
+                  <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>CONSIGNEE COPY</b></h3>
+                  <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>AT OWNER'S RISK</b></h3>
+                  <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>INSURANCE</b></h3>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:600"><b>The customer stated that:</b></h5>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">He has insured the consingment</h5>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Company<span style="float:right"> 
+                     <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.insurance_company}}</span></span></h5>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;color: gray;font-weight:600">Policy no.<span style="float:right"> 
+                     <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.policy_number}}</span></span></h5>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Amount/Risk<span style="float:right"> 
+                     <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.amount}}</span>   </span></h5>                
+                </td>
+                <td style="padding:0px 4px; border-top:1px solid #333;border-bottom:1px solid #333;vertical-align: text-top;" width="18%">
+                  <div style="text-align: center;font-size: 14px;">
+                    <b>CAUTION</b>
+                  </div>
+                  <p style="margin: 0px 2px;font-size: 12px;color: #47abc9;font-weight:600">
+                    " This consignment will not be  detained, delivered, re-routed or rebooked without consignee/Consignee’s bank written permission and will be delivered to destination. "
+                  </p>
+                </td>
+                <td width="28%" style="border: 1px solid #333;vertical-align: text-top;padding: 0px 4px;">
+                  <div style="text-align:center;line-height: 32px;font-size: 14px;font-weight: 400;">GSTIN payable by</div>
+                  <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                  margin-bottom: 10px;margin-top: 10px;">
+                    <span style="width:45%;float:left">Consignor</span>
+                    <span style="width:55%;float:left">
+                      <input *ngIf="lrDetail.gst_pay_by=='1'" type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                      <input *ngIf="lrDetail.gst_pay_by!='1'" type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    </span>
+                    
+                  </div>
+                  <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                  margin-bottom: 10px;">
+                    <span style="width:45%;float:left">Consignee</span> 
+                    <span style="width:55%;float:left">
+                      <input *ngIf="lrDetail.gst_pay_by=='2'" type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                      <input *ngIf="lrDetail.gst_pay_by!='2'" type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    </span>
+                  </div>
+                  <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                  margin-bottom: 10px;">
+                      <span style="width:45%;float:left">Transport</span>
+                      <span style="width:55%;float:left">
+                        <input *ngIf="lrDetail.gst_pay_by=='3'" type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                        <input *ngIf="lrDetail.gst_pay_by!='3'" type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                      </span>
+                  </div>
+                  </td>
+              </tr>
+              
+              </table>
+              <table cellspacing="0px" style="width:100%;border-collapse: collapse;border: 1px solid #333;border-bottom:none;border-top:none;">
+              <tr>
+                
+                <td colspan="3" style="padding: 0px;width: 72.99%;">
+                  <table cellspacing="0px" style="width:100%;border-collapse: collapse;border-right: 0px;border-top: none;">
+                    <tr>
+                      <td style="width: 50%;height: 29px;text-align:center">
+                        <b>LR no.</b> 
+                      </td>
+                      <td style="text-align: center; height: 29px;text-align:center" width="100px">
+                        <b>Date</b> 
+                      </td>
+                      <td style="padding-left: 5px;height: 29px;text-align:center" colspan="2">
+                          <b>Transporter ID</b>
+                      </td>
+                    </tr>
+  
+                    <tr>
+                        <td style="    font-size: 12px;border:1px solid #333;border-right: none;border-left: none;width: 50%;height: 29px;text-align:center;color: gray;font-weight:600">                        
+                             <span>{{lrDetail.lr_reference_number}}</span>    
+                        </td>
+                        <td style="    font-size: 12px;border:1px solid #333;height: 29px;text-align:center;color: gray;font-weight:600" width="100px">
+                              <span>{{lrDetail.loading_date | date:'dd-MM-yyyy'}}</span> 
+                        </td>
+                        <td style="    font-size: 12px;border:1px solid #333;padding-left: 5px;height: 29px;text-align:center;color: gray;font-weight:600" colspan="2">
+                           <span>mylr-{{lrDetail.transporter_id}}</span>
+                        </td>
+                      </tr>
+  
+                    <tr>
+                      <td style="text-align: center;padding-top: 10px;vertical-align: middle;">
+                        <b>Consignor Name & Address</b>
+                        <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size: 12px;"><span style="padding-left:1em">{{lrDetail.consignor_name}}</span></p>
+                        <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size: 12px;"><span style="padding-left:1em">{{lrDetail.consignor_address}}</span></p>
+                      </td>
+                      <td colspan="3" style="padding-left: 4em;">
+                          <h3 style="text-align: center;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="display: block;padding-bottom: 6px;"><b>From</b></span>
+  
+                         <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                         margin: 0 auto;
+                         display: block;font-size: 12px;">{{lrDetail.station_source}}</span></h3>
+                          <h3 style="text-align: center;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="display: block;padding-bottom: 6px;"><b>To:</b></span>
+                           
+                              <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                              margin: 0 auto;
+                              display: block;font-size: 12px;">{{lrDetail.station_destination}}</span></h3>
+                      </td>
+                    </tr>
+  
+  
+                    <tr>
+                      <td style="height: 10px;" colspan="4"></td>
+                    </tr>
+  
+                    <tr>
+                      <td style="padding-top:0px;text-align: center;">
+                        <b>Consignee Name & Address</b>
+                        <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size:12px"><span>{{lrDetail.consignee_name}}</span></p>
+                        <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size:12px"><span>{{lrDetail.consignee_address}}</span></p>
+                      </td>
+                      <td colspan="3" style="padding-left: 4em;">
+                          <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Intime</b></span>
+                          <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                         width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{inTime}}</span></h3>
+                          <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Out time</b></span>  
+                            <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                           width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{outTime}}</span></h3>
+                          <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Date</b></span>
+                            <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                           width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{lrDetail.out_date | date:'dd-MM-yyyy'}}</span></h3>
+                      </td>
+                    </tr>
+  
+                    <tr>
+                      <td style="border:1px solid #333;border-top: none;border-right: none;border-left: none;height:10px"></td>
+                      <td style="padding-top: 20px;height:10px"></td>
+                      <td style="height:10px"></td>
+                      <td style="height:10px"></td>
+                    </tr>
+  
+                    <tr style="text-align: center">
+                      <td colspan="4">
+                      <table border="0px" width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                      <td style="    height: 25px; border:1px solid #333;border-left: none;    border-top: none;    text-align: center;border-right:none">
+                        <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>Packages</b></h3>
+                      </td>
+                      <td style="    height: 25px;border:1px solid #333;    border-top: none;border-right:none">
+                        <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;    text-align: center;"><b>Goods Description</b></h3>
+                      </td>
+                      <td style="    height: 25px;border:1px solid #333;    border-top: none;border-right:none">
+                        <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;    text-align: center;"><b>Actual WT</b></h3>
+                      </td>
+                      <td style="    height: 25px; border:1px solid #333;border-top-color: #333;;border-top: none;text-align: center;border-right:none">
+                        <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>Charged WT</b></h3>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="    height: 25px; border:1px solid #333;border-right: none;border-top: none; border-left: none;    text-align: center;">
+                        <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.packages_of_goods}}</span>
+                      </td>
+                      <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                        <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.goods_description}}</span>
+                      </td>
+                      <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                        <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.actual_weight}}</span>
+                      </td>
+                      <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                        <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.charged_weight}}</span>
+                      </td>
+                      
+                    </tr>
+                    </table>
+                    </td>
+                    </tr>
+  
+         
+  
+                    <tr>
+                      <td style="padding-bottom: 15px;height:10px !important"></td>
+                      <td style="height:10px !important"></td>
+                      <td style="height:10px !important"></td>
+                      <td style="border:1px solid #fff;height:10px !important"></td>
+  
+  
+                    </tr>
+  
+                    <tr style="text-align: center;">
+                      <td colspan="4">
+  
+                        <table width="100%" cellspacing="0px" cellpadding="0px">
+                          <tr  style="text-align: center;">
+                            <td style="border: 1px solid;border-right: none;border-left: none;font-size: 14px;">
+                              <b>Dimension in Fts</b>
+                            </td>
+                            <td colspan="6">
+                              <table width="100%" cellspacing="0px" cellpadding="0px">
+                                <tr style="text-align: center;">
+                                  <td style="width:20%;border:1px solid;border-right: none;height:25px;font-size:14px">
+                                   <b>Length</b>
+                                  </td>
+                                  <td style="width:20%;border:1px solid ;border-right: none;height:25px;font-size:14px">
+                                    <b>Width</b>
+                                  </td>
+                                  <td style="width:20%;border:1px solid;height:25px;font-size:14px">
+                                    <b>Height</b>
+                                  </td>
+                                  <td style="height:25px" width="170px"></td>
+                                </tr>
+                                <tr>
+                                  <td style="border:1px solid;border-right:none;border-top:none;height:25px;text-align:center;font-size:12px">
+                                      <span style="color: gray;font-weight:600">{{lrDetail.length}}</span>
+                                  </td>
+                                  <td style="border:1px solid;border-top:none;border-right:none;height:25px;text-align:center;font-size:12px">
+                                      <span style="color: gray;font-weight:600">{{lrDetail.width}}</span>
+                                  </td>
+                                  <td style="border:1px solid;border-top:none;height:25px;text-align:center;font-size:12px">
+                                      <span style="color: gray;font-weight:600">{{lrDetail.height}}</span>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 15px;height:10px !important"></td>
+                      <td style="height:10px !important"></td>
+                      <td style="height:10px !important"></td>
+                      <td style="height:10px !important"></td>
+                    </tr>
+  
+                    <tr style="text-align: center;">
+                      <td colspan="4">
+                        <table width="100%" cellspacing="0px" cellpadding="0px">
+                          <tr style="text-align: center;">
+                            <td style="width: 145px;;border: 1px solid #333;border-right: none;border-left: none;font-size:14px">
+                              <b>Freights</b>
+                            </td>
+                            <td colspan="6" style="border: 1px solid #fff;">
+                              <table width="100%" cellspacing="0px" cellpadding="0px">
+                                <tr style="text-align: center;">
+                                  <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                    <b>Freight Type</b>                            
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                    <b>Freight</b>                            
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                    <b>Advance</b>                                                                
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                    <b>Balance</b>    
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none; height: 25px;font-size: 14px;">
+                                    <b>Topay</b>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right:none;height: 25px;font-size: 14px;">
+                                    <b>TBB AT</b>                                 
+                                  </td>                              
+                                </tr>
+                                <tr>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==1" style="color: gray;font-weight:600;font-size:12px">TBB</span>   
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px">To Pay</span>   
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==5" style="color: gray;font-weight:600;font-size:12px">Paid</span>   
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.freight}}</span>   
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.advance}}</span>   
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.balance}}</span> 
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.to_pay}}</span>  
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.tbb}}</span>
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                          <!-- <tr>
+                            <td colspan="4" style="border: 0px; border-bottom:1px solid #333;padding:10px;"></td>
+                          </tr> -->
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td style="vertical-align: top;border:1px solid #333;border-top:none;    width: 28%;">
+                  <table width="100%" cellspacing="0px">
+                    <tr>
+                      <td style="text-align:center; height: 29px;border-bottom: 1px solid;font-weight: 600">
+                        Vehicle No.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center; height: 29px;border-bottom: 1px solid;">
+                          <span style="color: gray;font-weight:600;display:block;text-align:center;font-size: 12px;">{{lrDetail.vehicle_number}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left: 8px;height: 40px;">          
+                          <b>Consignor GSTN</b> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height:25px">
+                          <span style="color: gray;font-weight:600;display:block;text-align:center;font-size:12px">{{lrDetail.consignor_gstn}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 8px;height: 40px;">          
+                            <b>Consignee GSTN</b> 
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="height:25px">
+                            <span style="color: gray;font-weight:600;display:block;text-align:center;;font-size:12px">{{lrDetail.consignee_gstn}}</span>
+                        </td>
+                      </tr>
+                    <tr>
+                      <td style="height: 49px;">
+                        <span style="width:50%;float:left">Invoice Date:</span>
+                        <span style="width:50%;float:left;color: gray;font-weight:600;font-size:12px">{{lrDetail.invoice_date | date:'dd-MM-yyyy'}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height: 50px;">
+                        <span style="width:50%;float:left">Invoice No:</span>
+                        <span style="width:50%;float:left;color: gray;font-weight:600;font-size:12px">{{lrDetail.invoice_number}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height:26px;text-align:center;font-size:14px;border-top:1px solid;border-bottom:1px solid">
+                       <b>Delivery contact no</b>                       
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height: 25px;text-align:center;border-bottom: 1px solid;">
+                          <span style="font-size:12px;color: gray;font-weight:600;font-size:12px">{{lrDetail.delivery_contact_number}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="border-bottom: 1px solid;height:25px;text-align:center">
+                          <b>REMARK</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <span style="color: gray;font-weight:600;display:block;font-size:12px">{{lrDetail.remark}}</span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+  
+  
+            </table>
+          </div>
+        
+  
+        
+          
+    
+          <div style="line-height:12px">
+            <div style="font-size:14px;line-height:12px;    font-weight: 600;">Terms & Conditions</div>
+            <div style= "border-bottom: 1px solid #ddd;
+            padding-bottom: 3px;text-align: justify;line-height:14px">
+            <span style="font-size:12px;">We store goods in our godown entirely at the cost and risk of the Consignee or Consignor. 2. This goods 
+      not is issued at owners risk. 3. we are not responsible for any damage or breakage due to any reason. 4.                    
+      The company doesnot take any responsibility for shortage/breakage/damage/leakage by sun, rain, weat                   
+      er, fire, theft, accident any of the cause which are beyound control.5. The customer should get insured                     
+      his goods agaisnt all risks.6. The goods will be delivered against all due and transit expenses. 7. Vehicle                   
+      shall be unloaded and loaded same day else the detaintion will be chared as per market rule.8. The                    
+      consignee is absolutly responsible for legal liabilities of any rational contorlled or prohibited goods smu                   
+      ggled, black market etc.                    
+      And that while sending and receiving goods all the formalities have been performed under Transport                    
+      acts and rules regulations.                   
+            </span>
+          </div>
+      <span style="font-size:12px;display:block;    line-height: 17px;
+      font-size: 14px;">
+        Cheque/DD to be issued in favour of <b>"{{lrDetail.transporter_details.company_name}}"</b><br/>                 
+        NEFT/RTGS: {{lrDetail.transporter_bank_details.bank_name}} A/C NO  {{lrDetail.transporter_bank_details.account_number}}  <br/>                
+        IFSC CODE-{{lrDetail.transporter_bank_details.ifsc_code}}-{{lrDetail.transporter_details.address}}  
+      </span>
+      <div style="width: 100%;float:left;text-align:center;line-height: 25px;padding-top: 10px;">
+        <span id="copy-btn" style="padding: 5px 10px; background: #ddd;font-weight: 600;-webkit-print-color-adjust: exact;font-size: 15px;">Consignor Copy</span>
+       
+        <span style="float: left;position: absolute;right: 54px;">Generated By: <a href="http://mylr.in/" style="text-decoration:none" target="_blank">mylr.in</a></span>
+      </div>
+      <br><br><br>
+          </div>
+          <div *ngIf="lrDetail.lr_charges.freight_type==5" style="width: 96%;float: left;z-index: -1;position: absolute;text-align: center;display: flex;
+            flex-direction: column;top: 34%;">
+              <img style="position: relative;opacity: 0.4;align-self: center;width: 24%;" src="assets/images/paid-1.png">
+            </div>
+        </section>
+      <div >
+        <section [ngStyle]="{'display':cosigneeDisplayHtml}" style="width:100%;-webkit-print-color-adjust: exact" id="cosignee"> 
+             
+            <span style="    -webkit-print-color-adjust: exact;
+            font-size: 16px;
+            background: #cfcfcf;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+            padding: 1px 0;
+            font-weight: 600;
+            margin-bottom: 0px;
+            text-align: center;
+            line-height: 23px;
+            letter-spacing: 1px;">LORRY RECIEPT</span>          
+          <div>
+            <table style="width: 100%;" cellspacing="0px">
+              <tr>
+                <td width="17%"> 
+                  <!-- <img id="image" style="width: 100px;" src="data:image/png;base64,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" alt="3d-logo" /> -->
+                  <div style="width: 100px;" id="imageDiv1"></div>
+                </td>
+                <td style="text-align: center;">                    
+                  <h5 style="margin: 0px 15px;">Subject to Indore Jurisdiction</h5>
+                  <h3 style="margin: 0px 15px;font-weight: 600;">{{lrDetail.transporter_details.company_name}}</h3>
+                  <h5 *ngIf="lrDetail.transporter_details.tagline != ''" style="color:red;margin: 0px 0px;line-height: 22px;">({{lrDetail.transporter_details.tagline}})</h5>
+                  <h5 style="margin: 0px 15px;">{{lrDetail.transporter_details.address}}</h5>
+                  <h5 style="margin: 0px 15px;">E-mail- {{lrDetail.transporter_details.email_id}}</h5>
+                </td>
+                <td style="text-align: right;width:10%">
+                    <h3 style="padding: 0 0px; font-size: 14px;line-height: 22px;margin: 0px !important;">Contacts:<span style="padding-left:20px;">{{lrDetail.transporter_details.contact_number}}</span></h3>
+                    <h3 style="padding: 0 0px; font-size: 14px;line-height: 22px;margin: 0px !important;">PAN:<span style="padding-left:20px;">{{lrDetail.transporter_details.pan_number}}</span></h3>
+                    <h3 style="padding: 0 0px;font-size: 14px;line-height: 22px;margin: 0px !important;">GSTIN:<span style="padding-left:20px;">{{lrDetail.transporter_details.gst_number}}</span></h3>
+                </td>
+              </tr>
+  
+            </table>
+          </div>
+  <div>
+          <table cellspacing="0px" cellpadding="5px" style="width: 100%;border-collapse: collapse;border: 1px solid #333;border-right: none;border-bottom: none;">
+            <tr>
+              <td style="border: 1px solid #333; vertical-align: text-top; padding:0px 0px" width="30%">
+                <h3 style="text-align:center;font-size:14px;font-weight:600"><b> Schedule of Demurrage Charges.</b></h3>
+                <h5 style="margin:2px 6px;font-weight:400;font-size: 13px;">
+                  Demurrage charges after days 
+                  <span style="color: gray;font-weight:600">{{lrDetail.lr_charges.detention_charges}}</span>
+                </h5>
+               
+                <h5 style="margin:2px 6px;font-weight:400;font-size: 13px;">
+                  From Today @Rs.
+                 <span style="color: gray;font-weight:600">{{lrDetail.lr_charges.detention_days}}</span>&nbsp;&nbsp;Per day.
+                </h5>
+                <h3 style="text-align: center;border-top: 1px solid #333;border-bottom:1px solid #333;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                  Delivery Address 
+                </h3>
+               <p style="margin:2px 6px;;font-size:12px"><span style="color: gray;font-weight:600">{{lrDetail.delivery_address}}</span></p>
+              </td>
+  
+              <td style="border: 1px solid #333;text-align: center; vertical-align: text-top;" width="25%">
+                <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>CONSIGNEE COPY</b></h3>
+                <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>AT OWNER'S RISK</b></h3>
+                <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>INSURANCE</b></h3>
+                <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:600"><b>The customer stated that:</b></h5>
+                <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">He has insured the consingment</h5>
+                <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Company<span style="float:right"> 
+                   <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.insurance_company}}</span></span></h5>
+                <h5 style="margin:4px;text-align: left;font-size:12px;color: gray;font-weight:600">Policy no.<span style="float:right"> 
+                   <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.policy_number}}</span></span></h5>
+                <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Amount/Risk<span style="float:right"> 
+                   <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.amount}}</span>   </span></h5>                
+              </td>
+              <td style="padding:0px 4px; border-top:1px solid #333;border-bottom:1px solid #333;vertical-align: text-top;" width="18%">
+                <div style="text-align: center;font-size: 14px;">
+                  <b>CAUTION</b>
+                </div>
+                <p style="margin: 0px 2px;font-size: 12px;color: #47abc9;font-weight:600">
+                  " This consignment will not be  detained, delivered, re-routed or rebooked without consignee/Consignee’s bank written permission and will be delivered to destination. "
+                </p>
+              </td>
+              <td width="28%" style="border: 1px solid #333;vertical-align: text-top;padding: 0px 4px;">
+                <div style="text-align:center;line-height: 32px;font-size: 14px;font-weight: 400;">GSTIN payable by</div>
+                <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                margin-bottom: 10px;margin-top: 10px;">
+                  <span style="width:45%;float:left">Consignor</span>
+                  <span style="width:55%;float:left">
+                  <input *ngIf="lrDetail.gst_pay_by=='1'" type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                  <input *ngIf="lrDetail.gst_pay_by!='1'" type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                  </span>
+                </div>
+                <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                margin-bottom: 10px;">
+                  <span style="width:45%;float:left">Consignee</span> 
+                  <span style="width:55%;float:left">
+                  <input *ngIf="lrDetail.gst_pay_by=='2'" type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                  <input *ngIf="lrDetail.gst_pay_by!='2'" type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                  </span>
+                </div>
+                <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                margin-bottom: 10px;">
+                    <span style="width:45%;float:left">Transport</span>
+                    <span style="width:55%;float:left">
+                    <input *ngIf="lrDetail.gst_pay_by=='3'" type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    <input *ngIf="lrDetail.gst_pay_by!='3'" type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    </span>
+                </div>
+                </td>
+            </tr>
+            
+            </table>
+            <table cellspacing="0px" style="width:100%;border-collapse: collapse;border: 1px solid #333;border-bottom:none;border-top:none;">
+            <tr>
+              
+              <td colspan="3" style="padding: 0px;width: 72.99%;">
+                <table cellspacing="0px" style="width:100%;border-collapse: collapse;border-right: 0px;border-top: none;">
+                  <tr>
+                    <td style="width: 50%;height: 29px;text-align:center">
+                      <b>LR no.</b> 
+                    </td>
+                    <td style="text-align: center; height: 29px;text-align:center" width="100px">
+                      <b>Date</b> 
+                    </td>
+                    <td style="padding-left: 5px;height: 29px;text-align:center" colspan="2">
+                        <b>Transporter ID</b>
+                    </td>
+                  </tr>
+  
+                  <tr>
+                      <td style="    font-size: 12px;border:1px solid #333;border-right: none;border-left: none;width: 50%;height: 29px;text-align:center;color: gray;font-weight:600">                        
+                           <span>{{lrDetail.lr_reference_number}}</span>    
+                      </td>
+                      <td style="    font-size: 12px;border:1px solid #333;height: 29px;text-align:center;color: gray;font-weight:600" width="100px">
+                            <span>{{lrDetail.loading_date | date:'dd-MM-yyyy'}}</span> 
+                      </td>
+                      <td style="    font-size: 12px;border:1px solid #333;padding-left: 5px;height: 29px;text-align:center;color: gray;font-weight:600" colspan="2">
+                         <span>mylr-{{lrDetail.transporter_id}}</span>
+                      </td>
+                    </tr>
+  
+                  <tr>
+                    <td style="text-align: center;padding-top: 10px;vertical-align: middle;">
+                      <b>Consignor Name & Address</b>
+                      <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size: 12px;"><span style="padding-left:1em">{{lrDetail.consignor_name}}</span></p>
+                      <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size: 12px;"><span style="padding-left:1em">{{lrDetail.consignor_address}}</span></p>
+                    </td>
+                    <td colspan="3" style="padding-left: 4em;">
+                        <h3 style="text-align: center;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="display: block;padding-bottom: 6px;"><b>From</b></span>
+  
+                       <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                       margin: 0 auto;
+                       display: block;font-size: 12px;">{{lrDetail.station_source}}</span></h3>
+                        <h3 style="text-align: center;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="display: block;padding-bottom: 6px;"><b>To:</b></span>
+                         
+                            <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                            margin: 0 auto;
+                            display: block;font-size: 12px;">{{lrDetail.station_destination}}</span></h3>
+                    </td>
+                  </tr>
+  
+  
+                  <tr>
+                    <td style="height: 10px;" colspan="4"></td>
+                  </tr>
+  
+                  <tr>
+                    <td style="padding-top:0px;text-align: center;">
+                      <b>Consignee Name & Address</b>
+                      <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size:12px"><span>{{lrDetail.consignee_name}}</span></p>
+                      <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size:12px"><span>{{lrDetail.consignee_address}}</span></p>
+                    </td>
+                    <td colspan="3" style="padding-left: 4em;">
+                        <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Intime</b></span>
+                        <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                       width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{inTime}}</span></h3>
+                        <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Out time</b></span>  
+                          <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                         width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{outTime}}</span></h3>
+                        <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Date</b></span>
+                          <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                         width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{lrDetail.out_date | date:'dd-MM-yyyy'}}</span></h3>
+                    </td>
+                  </tr>
+  
+                  <tr>
+                    <td style="border:1px solid #333;border-top: none;border-right: none;border-left: none;"></td>
+                    <td style="padding-top: 20px;"></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+  
+                  <tr style="text-align: center">
+                    <td colspan="4">
+                    <table border="0px" width="100%" cellspacing="0" cellpadding="0">
+                      <tr>
+                    <td style="    height: 25px; border:1px solid #333;border-left: none;    border-top: none;    text-align: center;border-right:none">
+                      <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>Packages</b></h3>
+                    </td>
+                    <td style="    height: 25px;border:1px solid #333;    border-top: none;border-right:none">
+                      <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;    text-align: center;"><b>Goods Description</b></h3>
+                    </td>
+                    <td style="    height: 25px;border:1px solid #333;    border-top: none;border-right:none">
+                      <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;    text-align: center;"><b>Actual WT</b></h3>
+                    </td>
+                    <td style="    height: 25px; border:1px solid #333;border-top-color: #333;;border-top: none;text-align: center;border-right:none">
+                      <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>Charged WT</b></h3>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="    height: 25px; border:1px solid #333;border-right: none;border-top: none; border-left: none;    text-align: center;">
+                      <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.packages_of_goods}}</span>
+                    </td>
+                    <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                      <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.goods_description}}</span>
+                    </td>
+                    <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                      <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.actual_weight}}</span>
+                    </td>
+                    <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                      <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.charged_weight}}</span>
+                    </td>
+                    
+                  </tr>
+                  </table>
+                  </td>
+                  </tr>
+  
+       
+  
+                  <tr>
+                    <td style="padding-bottom: 15px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border:1px solid #fff;"></td>
+  
+  
+                  </tr>
+  
+                  <tr style="text-align: center;">
+                    <td colspan="4">
+  
+                      <table width="100%" cellspacing="0px" cellpadding="0px">
+                        <tr  style="text-align: center;">
+                          <td style="border: 1px solid;border-right: none;border-left: none;font-size: 14px;">
+                            <b>Dimension in Fts</b>
+                          </td>
+                          <td colspan="6">
+                            <table width="100%" cellspacing="0px" cellpadding="0px">
+                              <tr style="text-align: center;">
+                                <td style="width:20%;border:1px solid;border-right: none;height:25px;font-size:14px">
+                                 <b>Length</b>
+                                </td>
+                                <td style="width:20%;border:1px solid ;border-right: none;height:25px;font-size:14px">
+                                  <b>Width</b>
+                                </td>
+                                <td style="width:20%;border:1px solid;height:25px;font-size:14px">
+                                  <b>Height</b>
+                                </td>
+                                <td style="height:25px" width="170px"></td>
+                              </tr>
+                              <tr>
+                                <td style="border:1px solid;border-right:none;border-top:none;height:25px;text-align:center;font-size:12px">
+                                    <span style="color: gray;font-weight:600">{{lrDetail.length}}</span>
+                                </td>
+                                <td style="border:1px solid;border-top:none;border-right:none;height:25px;text-align:center;font-size:12px">
+                                    <span style="color: gray;font-weight:600">{{lrDetail.width}}</span>
+                                </td>
+                                <td style="border:1px solid;border-top:none;height:25px;text-align:center;font-size:12px">
+                                    <span style="color: gray;font-weight:600">{{lrDetail.height}}</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-top: 15px;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+  
+                  <tr style="text-align: center;">
+                    <td colspan="4">
+                      <table width="100%" cellspacing="0px" cellpadding="0px">
+                        <tr style="text-align: center;">
+                          <td style="width: 145px;;border: 1px solid #333;border-right: none;border-left: none;font-size:14px">
+                            <b>Freights</b>
+                          </td>
+                          <td colspan="6" style="border: 1px solid #fff;">
+                            <table width="100%" cellspacing="0px" cellpadding="0px">
+                              <tr style="text-align: center;">
+                                <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                  <b>Freight Type</b>                            
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                  <b>Freight</b>                            
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                  <b>Advance</b>                                                                
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                  <b>Balance</b>    
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none; height: 25px;font-size: 14px;">
+                                  <b>Topay</b>
+                                </td>
+                                <td style=" border:1px solid #333;border-right:none;height: 25px;font-size: 14px;">
+                                  <b>TBB AT</b>                                 
+                                </td>                              
+                              </tr>
+                              <tr>
+                                <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                    <span *ngIf="lrDetail.lr_charges.freight_type==1" style="color: gray;font-weight:600;font-size:12px">TBB</span>   
+                                    <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px">To Pay</span>   
+                                    <span *ngIf="lrDetail.lr_charges.freight_type==5" style="color: gray;font-weight:600;font-size:12px">Paid</span>   
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                    <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.freight}}</span>   
+                                    <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                    <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.advance}}</span>   
+                                    <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                    <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.balance}}</span> 
+                                    <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                    <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.to_pay}}</span>  
+                                    <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                </td>
+                                <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                    <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.tbb}}</span>
+                                    <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <!-- <tr>
+                          <td colspan="4" style="border: 0px; border-bottom:1px solid #333;padding:10px;"></td>
+                        </tr> -->
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="vertical-align: top;border:1px solid #333;border-top:none;    width: 28%;">
+                <table width="100%" cellspacing="0px">
+                  <tr>
+                    <td style="text-align:center; height: 29px;border-bottom: 1px solid;font-weight: 600">
+                      Vehicle No.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align:center; height: 29px;border-bottom: 1px solid;">
+                        <span style="color: gray;font-weight:600;display:block;text-align:center;font-size: 12px;">{{lrDetail.vehicle_number}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-left: 8px;height: 40px;">          
+                        <b>Consignor GSTN</b> 
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height:25px">
+                        <span style="color: gray;font-weight:600;display:block;text-align:center;font-size:12px">{{lrDetail.consignor_gstn}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td style="padding-left: 8px;height: 40px;">          
+                          <b>Consignee GSTN</b> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height:25px">
+                          <span style="color: gray;font-weight:600;display:block;text-align:center;;font-size:12px">{{lrDetail.consignee_gstn}}</span>
+                      </td>
+                    </tr>
+                  <tr>
+                    <td style="height: 49px;">
+                      <span style="width:50%;float:left">Invoice Date:</span>
+                      <span style="width:50%;float:left;color: gray;font-weight:600;font-size:12px">{{lrDetail.invoice_date | date:'dd-MM-yyyy'}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height: 50px;">
+                      <span style="width:50%;float:left">Invoice No:</span>
+                      <span style="width:50%;float:left;color: gray;font-weight:600;font-size:12px">{{lrDetail.invoice_number}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height:26px;text-align:center;font-size:14px;border-top:1px solid;border-bottom:1px solid">
+                     <b>Delivery contact no</b>                       
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height: 25px;text-align:center;border-bottom: 1px solid;">
+                        <span style="font-size:12px;color: gray;font-weight:600;font-size:12px">{{lrDetail.delivery_contact_number}}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="border-bottom: 1px solid;height:25px;text-align:center">
+                        <b>REMARK</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <span style="color: gray;font-weight:600;display:block;font-size:12px">{{lrDetail.remark}}</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+  
+  
+          </table>
+        </div>
+      
+  
+      
+        
+  
+        <div style="    line-height: 15px;">
+          <span style="font-size:14px;font-weight:600">Terms & Conditions</span>
+            <div style= "border-bottom: 1px solid #ddd;
+            padding-bottom: 3px;text-align: justify;line-height:14px">
+            <span style="font-size:12px">We store goods in our godown entirely at the cost and risk of the Consignee or Consignor. 2. This goods 
+    not is issued at owners risk. 3. we are not responsible for any damage or breakage due to any reason. 4.                    
+    The company doesnot take any responsibility for shortage/breakage/damage/leakage by sun, rain, weat                   
+    er, fire, theft, accident any of the cause which are beyound control.5. The customer should get insured                     
+    his goods agaisnt all risks.6. The goods will be delivered against all due and transit expenses. 7. Vehicle                   
+    shall be unloaded and loaded same day else the detaintion will be chared as per market rule.8. The                    
+    consignee is absolutly responsible for legal liabilities of any rational contorlled or prohibited goods smu                   
+    ggled, black market etc.                    
+    And that while sending and receiving goods all the formalities have been performed under Transport                    
+    acts and rules regulations.                   
+    </span>
+    </div>
+    <span style="font-size:12px;line-height:13px;display:block">
+      Cheque/DD to be issued in favour of <b>"{{lrDetail.transporter_details.company_name}}"</b><br/>                 
+      NEFT/RTGS: {{lrDetail.transporter_bank_details.bank_name}} A/C NO  {{lrDetail.transporter_bank_details.account_number}}  <br/>                
+      IFSC CODE-{{lrDetail.transporter_bank_details.ifsc_code}}-{{lrDetail.transporter_details.address}}  
+    </span>
+    <div style="width: 100%;float:left;text-align:center;padding-bottom: 1em;">
+      <span id="copy-btn" style="padding: 5px 10px; background: #ddd;font-weight: 600;-webkit-print-color-adjust: exact;    font-size: 15px;">Consignee Copy</span>
+     
+      <span style="float: left;position: absolute;right: 54px;">Generated By: <a href="http://mylr.in/" style="text-decoration:none" target="_blank">mylr.in</a></span>
+    </div>
+    <br><br><br>
+        </div>
+        <div *ngIf="lrDetail.lr_charges.freight_type==5" style="width: 96%;float: left;z-index: -1;position: absolute;text-align: center;display: flex;
+          flex-direction: column;top: 34%;">
+            <img style="position: relative;opacity: 0.4;align-self: center;width: 24%;" src="assets/images/paid-1.png">
+          </div>
+        
+      </section>
+      </div>
+      <div >
+          <section  [ngStyle]="{'display':driverDisplayHtml}" style="width:100%;-webkit-print-color-adjust: exact" id="driver"> 
+             
+              <span style="    -webkit-print-color-adjust: exact;
+              font-size: 16px;
+              background: #cfcfcf;
+              width: 100%;
+              display: block;
+              margin: 0 auto;
+              padding: 1px 0;
+              font-weight: 600;
+              margin-bottom: 0px;
+              text-align: center;
+              line-height: 23px;
+              letter-spacing: 1px;">LORRY RECIEPT</span>          
+            <div>
+              <table style="width: 100%;" cellspacing="0px">
+                <tr>
+                  <td width="17%"> 
+                    <!-- <img id="image" style="width: 100px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADhAAAA4QBAwW54QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAA5fSURBVHja7Z3fV1TXFcdRly+yfOOF5Vr6B4igiDAgGKNBDSKoSxEFTdKqaZt0NTTJqkqTDkSl/liiAgIKWEFAGR2NimKDVcHG+htrK9g2diWWRARffPNBd8++nBnvDPPr3nvuOWeG+/BdiwXD3DNnf+b82HuffaIAICrS9Pz584lEM4kKiEqJmonaibqJeogeEw0SvaQapL/roa9pp/9TSt8D32tiJPZVJBh7AlEmURnRX4j6icAk9dNnlNFnTrAA4G/w8URziUrot/WliQYPppe0DSW0TeMtAMwzfDJRBR2uQVIN0jYmWwCwMfoUomKiPomN7k99tO1TLAC0Gz6JyEn0OgwN763X9LMkWQAEN3wGUUcEGN2f8LNlWACMNPx8oq4INry38LPOH/UAkE6YROQYRYb3Fn72SaMOAPKhxxEVEb0YxcZ36QXti3GjAgDyQW3U4waWPIR9YotYAMiHG0tkJ3plGduvXtE+GhtRAJAPFEtdqJaRQxP2VWxEAEB95gOWUTUL+ywzbAEgjR9DfeTWkG9sSsA+HBNWANCATaNlQGZqNCvQZIbxo4kuWEZjLuzTaKkBIA2MIbphGcs0Yd/GSAkAadhkokeWkUwX9vFkqQCg33zL+HwhiJECADrnW8O+mOkgWigAdLVvLfjELgzHCwGA7vOtrZ4cW8QxIgAosTpfGpVwBYC6dy0Pn1wew0wuANDAjuXblzN2EGsqADSka0X15I4ijjUTALvVydLLbgoANJMnrOb9IaKbPzwGZ999qH9wA3bfuQpbrl+EX1w9A6s62yDzfKMi/Bl/h3/D1+Br8X/wf4fCcz1gYwoAzeELizSugaFB6PyuF7bdugxLL7ZAxtkGQ8L3wPfC98T3DqP0snEsASiS+QP/NPgMTj+6D5vIN3gh+UYbNbo/4XvjM/BZ+EzJIShiAgBN3X4h5xA/BG2995h80/WMDPhsbIPE2caTWAAgZd7+N2RILrx0grvhvYVtwLbIeu7AEAD0xI5UH+oWWZh91HVWuOG9hW3CtkkIwXwjAHTJNNyX3+2GOZIZXi1sG7ZRsmmhSxcA9KCmFB/iybMB+ORau7SG9xa2FdssEQQZegCQ4pTug/4fYDXZp4eL8V3CNmPbZTmVrAkAej5feMMvkcXVogtNYWd8l7Dtl+RZICZpAcApusG1Pd/CW+cOh63xXcLP0PrwjgwAOEMCgJZlEVqZ4/C96zDn67qwN74aAglGgte+ytX4AqBYZEMv/6cX3mqriRjjq6cDCdYExaEAIKwg06P+JzCntRLSI+jb770wFLw76AsIAC3FJiiI8wwWtNVC2vEqqYyWdbEZfv3tebDfuQJVD28qwp/xd/g3PVtEwX6C5EAAVIhq2Lr2Zkg5sgcyJPn2o1Pnw2tn4WDvHWh4dM+n8G/4Gq3OKXQWCQSgwicANMVbSBHGM733FePbWiukMX7p3St+De8tfO0cje8v0G08qE4lVwMwVxSVmY5aBYDZJ2ulAAC/1aEa3yX8H62xA4GjwFxfAAhJ866+3a0YP6VxL2ScMc+o6SdqIXXPdkj+9DOY9eHHMLNwAyQuX6cIf8bf4d+WVO6BiltdmgHA6UDrmkBgFLHEFwDdvBvybGgQMloqFADMWvyl7v8jJBHjJuYWQuKSgqDasPkrqDnqAHtlHWx1ODRBgAtDraFkQQvCbg8AaMl17lW3v+hqH/72mzD8p9WVw6z1vwrJ6Gpt2VUJtS0n3dpV1wS7Os6HBADuDrS2E5NKBFU5n6AGIJN3I74f+AlSm/a6AWC2+j9TDylbNms2vEvlDc0eAKCqm0/AlwcPQ33v3YAA4BZRT2aRoPSyTDUAZbwbsON6p9v4NgICk3m+rQZmvrdBt/H9AeDSjkNNUHPvOlMAUJhjKACAMjUA3A975JxqcAOQ2lrJwPjVEJ+dBzOy1xgCwHsK8Na26gao6fkbsykAhYmmIg6RqAHo5/nw/mcDYGssdwOQ5qg2BgCZPuKX5EHCohWGjO9aBAYCALW1BqeDO4YXgepsYwEp5/0KAPSCJTFbP/cC0FjwJ/H99RD3To5h46PeXr0RqhrbgkLwVd0Rw9tAtTrFbAknRtEbsbg+eNWZRk8AnPp3ALbyrRA3LwemZ+UxAQC17rM/BAWghiwMd3a063YEeQsPnwgAYGYUvRaN495/CNKa9nkAkH7qkO4Vf3zWCoibn8PM+KiZOYVQvLsq+FRw4LAuV7C/3YCAY2gFUfRuPG4PdfzjrofxFQB0bgGTi38HU+ctgWmZy5kC4IIAR4JA0wE6jH7+pzpmmco3+ccHSqPoBYncHrrtr38eAUDG2XpdHZaQm68AkPDuSuYAqNcEuDDE3QFuEfcfboXSikPwsX0nzM3foHgZWTmv8EAqZwCao+gtmdwe+sklpw8AtHfW7JYqYvwcBYAZWfmmARBUuYVKnIEFAHgqmTMA7dxjAK64v8cUcFr7GiCpqEgxvgJA9mpxABBhkIkFAHg0nXdMIIr3se9cZ/1IAE4d1NxZ0/PWugFIXLJGKAAYRWQBwBb+DqEeBOAxz4fOP149AgA9fgB0/LwZAcQCMIvROgCLVHAG4HEU7yyg9Ob9IwFwHNDcWXELl70BYLHYKQDzCVgAgJVKeGcHRfEOA6eoXMBuV7COXICp83PcAEzPWiUUAEwqYQEAlqvhHRaWAoDUY9pzAeNUACS8m2cBYAAA4VOA7eg+7QAsWOoGIN4ER9BomgKELwL1JITEZ690AzCVsSt4tC0CuW4Dc3xsA4cXgtpCwgkrCt4AgOuAxausbaDObSBXR9BaH44gZR3Qsl+bI+jTIg8ARE4D4e4I4uoK/k3nKZ8ApBwpV6J7IbuCmys9ABjeDeRbrmAdrmCuwaCt1y76AUB7ZvC0xSs9AIh7Zyl3ACIhGMQ1HHzy4V2/AKRqPBo2a/PnI0aB+IUruQKQVrGDGQCiwsFcE0LInhNSj+7zPw1o3Q1krfAxFfBZEM7a+BHTwpOiEkL4p4SdbfI/ChzTliFs22EfAQCmiJnuHs4phLSGvcwAEJkSJjwpdGR0UFt4eEbhBz4hMHMkSPmimOlJJmFJoWLSwp96pIWP8AxqPSaOuYGq6KDZa4Kk9b9kXoRaWFq4qIMh2c66gKOA1kzh2a1VELdgmU8IcHfAYouI08r0pQWQ4WB7jlGGgyHcj4Zt95EbaDQ+gBD4GwlcziI9HkOEZ1rmMojPWUWMz76AlQxHw8QcDvW7G6CjQNsBXaniM9Z+4BcCV+wAYcAoIq4T8Js9nFSyRkkvm7E4HxKy8mDaguXktbnKeiLxZxs1OarC7XCokOPhX3adDwiAkUMjKTtLfG4RtSp+8Qqw7dtuWuEKKY6Hy1Agwq/IYlFP0qg7ZrD58xEew+AiI0RuPiT/fpMp33rpCkSILBFz4HZX0FHAdnQvpBs0BMYOMICUsKJQCSVjPoGSVEKE6WW4dpietw6SflukpJzzqEUkW4kYcUWi2mqCQqA1Wii7ZCwSJaxM3KkA8QEPCI5XRoTxpSwTJ7pQ5PvnW0ODgIwE6SbOy6aLtH1z9wX5CkWKLhWLC8JFjoMhQaCsCQwsDEUp/XQdZDvr4anYK+eSpS0W/a8f/wfpzRUhQYC7AyN1BXgLcx1mN++De9//V95i0TKUi+/890NIDRAnYOIs4qw00saUxj3Q9uB2WJSLF35hRE2QaKEvt7GMowG2KbV52NtZceuqaOOHdmGELFfGbLlyThMEriii7mojLA1P2mBreXP+wX7tgmjjh35ljEyXRuFIoGU68EgqEVB2Hhd5mNb2Zp2yB3ZfvxR+l0bJdG0crglCXhh6pZehMZREUzO3jV/Xw2wsRN3q2Uasg+T8593wvDZOtosjcXcQ6hbRLwxkSFYOnzAYGfCbjieabT6OuaHmtVaJXu0bvzhStqtj0U8QqrMolEUjHkjFU8loSKxPgEUq1L4F/DndeRDSyN+wkCW+Fiua2oKEsPHgy4+DUt0a2hVRl0ej2ziU2AFvvX2sCk7KM+SzuTxa5uvjMYoYNJTMQWlNe8HedV4ZoSLu+ngKwCSiFzJCgJ2OSSXBMotMMTx55qbLZ5W6xzL2DbXZJMMAUAiKJP2Q7vQyzDHERFObjm2jlsXkIkctlF7rgCcDT0HmPkGbhWLbUAEYx/sYuZGUczx3gIdPWIwMCBRWNtt5/Rv4juxGwqEPqK3GMQOAQmAjehUmHeA+hoZnEfFAKp5KxhU61ifAIhVKpRIcLRqH5/E5LZWQSX6fS0aRDR3HYCsZUc71/V15j+fhJbSRLVS7hgwAhcD+PPw6ZLTJrsWmWgEYK+IQiaXQD3ugjUwDgEIQSzRgdbZ0QpvEarWnZgBUB0leWZ0u1byfqceWugAQmUZuKXCaN08AxhA1Wp0vXGiDMdwBUKWSX7CMIEwX1Cne3AGgEEQT3bCMwV3Y59FG7WcYAApBDNEjyyjchH0dw8J2TACgEEy2IOBm/Mms7MYMANVIYE0H5g77MSxtxhQA1ZrAWhias+CLZm0v5gCodgfWFpHtVm+8GbYyBQCVn6DE8hga9vCVGNnnCwPAy21sxQ70+fYzzbaP6QCoAkhWFFFbVC+Wh224AKAKJdutKSHokG/XGtINCwC8Mot6LGP7TOOy8bYHdwBUOYZFsmYbC8jeLQo1hy8iAPBKOXeMYuM7QkndjlgAvE4gdY0iw3cFO7EzqgDwOpDaEcGG7wh0UHPUA+BVn8ApulIJw8ocTn/n8y0AAoMwhdYs6gtDw/fRtk+RuY+lBsBHCbsKUcUsNRRhrPAuxWYBwD7QNJf6yLtFVDn3qrrdTdsy16yAjQVAYCAm0HhDGXWhmnn9TT99Rhl95oRw77+wB8APFBPpbWgF9F5EvByznX5b0eP2mA7XL6kG6e966Gva6f+U0vfA95oYiX31f4fIgcZmlA6oAAAAAElFTkSuQmCC" alt="3d-logo" /> -->
+                    <div style="width: 100px;" id="imageDiv2"></div>
+                  </td>
+                  <td style="text-align: center;">                    
+                    <h5 style="margin: 0px 15px;">Subject to <span id="juridi2"></span> Jurisdiction</h5>
+                    <h3 style="margin: 0px 15px;font-weight: 600;">{{lrDetail.transporter_details.company_name}}</h3>
+                    <h5 *ngIf="lrDetail.transporter_details.tagline != ''" style="color:red;margin: 0px 0px;line-height: 22px;">({{lrDetail.transporter_details.tagline}})</h5>
+                    <h5 style="margin: 0px 15px;">{{lrDetail.transporter_details.address}}</h5>
+                    <h5 style="margin: 0px 15px;">E-mail- {{lrDetail.transporter_details.email_id}}</h5>
+                  </td>
+                  <td style="text-align: right;width:10%">
+                      <h3 style="padding: 0 0px; font-size: 14px;line-height: 22px;margin: 0px !important;">Contacts:<span style="padding-left:20px;">{{lrDetail.transporter_details.contact_number}}</span></h3>
+                      <h3 style="padding: 0 0px; font-size: 14px;line-height: 22px;margin: 0px !important;">PAN:<span style="padding-left:20px;">{{lrDetail.transporter_details.pan_number}}</span></h3>
+                      <h3 style="padding: 0 0px;font-size: 14px;line-height: 22px;margin: 0px !important;">GSTIN:<span style="padding-left:20px;">{{lrDetail.transporter_details.gst_number}}</span></h3>
+                  </td>
+                </tr>
+  
+              </table>
+            </div>
+  <div>
+            <table cellspacing="0px" cellpadding="5px" style="width: 100%;border-collapse: collapse;border: 1px solid #333;border-right: none;border-bottom: none;">
+              <tr>
+                <td style="border: 1px solid #333; vertical-align: text-top; padding:0px 0px" width="30%">
+                  <h3 style="text-align:center;font-size:14px;font-weight:600"><b> Schedule of Demurrage charges.</b></h3>
+                  <h5 style="margin:2px 6px;font-weight:400;font-size: 13px;">
+                    Demurrage charges after days 
+                    <span style="color: gray;font-weight:600">{{lrDetail.lr_charges.detention_charges}}</span>
+                  </h5>
+                 
+                  <h5 style="margin:2px 6px;font-weight:400;font-size: 13px;">
+                    From Today @Rs.
+                   <span style="color: gray;font-weight:600">{{lrDetail.lr_charges.detention_days}}</span>&nbsp;&nbsp;Per day.
+                  </h5>
+                  <h3 style="text-align: center;border-top: 1px solid #333;border-bottom:1px solid #333;font-size: 14px;line-height: 22px;margin: 0px !important;">
+                    Delivery Address 
+                  </h3>
+                 <p style="margin:2px 6px;;font-size:12px"><span style="color: gray;font-weight:600">{{lrDetail.delivery_address}}</span></p>
+                </td>
+  
+                <td style="border: 1px solid #333;text-align: center; vertical-align: text-top;" width="25%">
+                  <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>CONSIGNEE COPY</b></h3>
+                  <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>AT OWNER'S RISK</b></h3>
+                  <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>INSURANCE</b></h3>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:600"><b>The customer stated that:</b></h5>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">He has insured the consingment</h5>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Company<span style="float:right"> 
+                     <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.insurance_company}}</span></span></h5>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;color: gray;font-weight:600">Policy no.<span style="float:right"> 
+                     <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.policy_number}}</span></span></h5>
+                  <h5 style="margin:4px;text-align: left;font-size:12px;font-weight:400">Amount/Risk<span style="float:right"> 
+                     <span style="font-size:12px;color: gray;font-weight:600">{{lrDetail.insurance.amount}}</span>   </span></h5>                
+                </td>
+                <td style="padding:0px 4px; border-top:1px solid #333;border-bottom:1px solid #333;vertical-align: text-top;" width="18%">
+                  <div style="text-align: center;font-size: 14px;">
+                    <b>CAUTION</b>
+                  </div>
+                  <p style="margin: 0px 2px;font-size: 12px;color: #47abc9;font-weight:600">
+                      " This consignment will not be  detained, delivered, re-routed or rebooked without consignee/Consignee’s bank written permission and will be delivered to destination. "
+                  </p>
+                </td>
+                <td width="28%" style="border: 1px solid #333;vertical-align: text-top;padding: 0px 4px;">
+                  <div style="text-align:center;line-height: 32px;font-size: 14px;font-weight: 400;">GSTIN payable by</div>
+                  <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                  margin-bottom: 10px;margin-top: 10px;">
+                    <span style="width:45%;float:left">Consignor</span>
+                    <span style="width:55%;float:left">
+                    <input *ngIf="lrDetail.gst_pay_by=='1'" type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    <input *ngIf="lrDetail.gst_pay_by!='1'" type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    </span>
+                  </div>
+                  <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                  margin-bottom: 10px;">
+                    <span style="width:45%;float:left">Consignee</span> 
+                    <span style="width:55%;float:left">
+                    <input *ngIf="lrDetail.gst_pay_by=='2'"  type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    <input *ngIf="lrDetail.gst_pay_by!='2'"  type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                    </span>
+                  </div>
+                  <div style="font-size: 14px;width:100%;float:left;vertical-align: middle;
+                  margin-bottom: 10px;">
+                      <span style="width:45%;float:left">Transport</span>
+                      <span style="width:55%;float:left">
+                      <input *ngIf="lrDetail.gst_pay_by=='3'" type="button" style="background-color: #052c7d;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                      <input *ngIf="lrDetail.gst_pay_by!='3'" type="button" style="background-color: transparant;-webkit-print-color-adjust: exact;margin-right: 0px;border: none;width: 21px;height: 21px;vertical-align: middle;margin-left: 15px;" />
+                      </span>
+                  </div>
+                  </td>
+              </tr>
+              
+              </table>
+              <table cellspacing="0px" style="width:100%;border-collapse: collapse;border: 1px solid #333;border-bottom:none;border-top:none;">
+              <tr>
+                
+                <td colspan="3" style="padding: 0px;width: 72.99%;">
+                  <table cellspacing="0px" style="width:100%;border-collapse: collapse;border-right: 0px;border-top: none;">
+                    <tr>
+                      <td style="width: 50%;height: 29px;text-align:center">
+                        <b>LR no.</b> 
+                      </td>
+                      <td style="text-align: center; height: 29px;text-align:center" width="100px">
+                        <b>Date</b> 
+                      </td>
+                      <td style="padding-left: 5px;height: 29px;text-align:center" colspan="2">
+                          <b>Transporter ID</b>
+                      </td>
+                    </tr>
+  
+                    <tr>
+                        <td style="    font-size: 12px;border:1px solid #333;border-right: none;border-left: none;width: 50%;height: 29px;text-align:center;color: gray;font-weight:600">                        
+                             <span>{{lrDetail.lr_reference_number}}</span>    
+                        </td>
+                        <td style="    font-size: 12px;border:1px solid #333;height: 29px;text-align:center;color: gray;font-weight:600" width="100px">
+                              <span>{{lrDetail.loading_date | date:'dd-MM-yyyy'}}</span> 
+                        </td>
+                        <td style="    font-size: 12px;border:1px solid #333;padding-left: 5px;height: 29px;text-align:center;color: gray;font-weight:600" colspan="2">
+                           <span>mylr-{{lrDetail.transporter_id}}</span>
+                        </td>
+                      </tr>
+  
+                    <tr>
+                      <td style="text-align: center;padding-top: 10px;vertical-align: middle;">
+                        <b>Consignor Name & Address</b>
+                        <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size: 12px;"><span style="padding-left:1em">{{lrDetail.consignor_name}}</span></p>
+                        <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size: 12px;"><span style="padding-left:1em">{{lrDetail.consignor_address}}</span></p>
+                      </td>
+                      <td colspan="3" style="padding-left: 4em;">
+                          <h3 style="text-align: center;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="display: block;padding-bottom: 6px;"><b>From</b></span>
+  
+                         <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                         margin: 0 auto;
+                         display: block;font-size: 12px;">{{lrDetail.station_source}}</span></h3>
+                          <h3 style="text-align: center;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="display: block;padding-bottom: 6px;"><b>To:</b></span>
+                           
+                              <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                              margin: 0 auto;
+                              display: block;font-size: 12px;">{{lrDetail.station_destination}}</span></h3>
+                      </td>
+                    </tr>
+  
+  
+                    <tr>
+                      <td style="height: 10px;" colspan="4"></td>
+                    </tr>
+  
+                    <tr>
+                      <td style="padding-top:0px;text-align: center;">
+                        <b>Consignee Name & Address</b>
+                        <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size:12px"><span>{{lrDetail.consignee_name}}</span></p>
+                        <p style="color: gray;font-weight:600;border-bottom: 1px solid #333;height: 22px;font-size:12px"><span>{{lrDetail.consignee_address}}</span></p>
+                      </td>
+                      <td colspan="3" style="padding-left: 4em;">
+                          <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Intime</b></span>
+                          <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                         width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{inTime}}</span></h3>
+                          <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Out time</b></span>  
+                            <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                           width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{outTime}}</span></h3>
+                          <h3 style="padding-bottom: 20px;font-size: 14px;line-height: 22px;margin: 0px !important;"><span style="float: left;width: 28%;"><b>Date</b></span>
+                            <span style="color: gray;font-weight:600; border: 1px solid #333;height: 22px;
+                           width: 60%;float: left;text-align:center;margin-bottom: 4px;    font-size: 12px;">{{lrDetail.out_date | date:'dd-MM-yyyy'}}</span></h3>
+                      </td>
+                    </tr>
+  
+                    <tr>
+                      <td style="border:1px solid #333;border-top: none;border-right: none;border-left: none;"></td>
+                      <td style="padding-top: 20px;"></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+  
+                    <tr style="text-align: center">
+                      <td colspan="4">
+                      <table border="0px" width="100%" cellspacing="0" cellpadding="0">
+                        <tr>
+                      <td style="    height: 25px; border:1px solid #333;border-left: none;    border-top: none;    text-align: center;border-right:none">
+                        <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>Packages</b></h3>
+                      </td>
+                      <td style="    height: 25px;border:1px solid #333;    border-top: none;border-right:none">
+                        <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;    text-align: center;"><b>Goods Description</b></h3>
+                      </td>
+                      <td style="    height: 25px;border:1px solid #333;    border-top: none;border-right:none">
+                        <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;    text-align: center;"><b>Actual WT</b></h3>
+                      </td>
+                      <td style="    height: 25px; border:1px solid #333;border-top-color: #333;;border-top: none;text-align: center;border-right:none">
+                        <h3 style="font-size: 14px;line-height: 22px;margin: 0px !important;"><b>Charged WT</b></h3>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="    height: 25px; border:1px solid #333;border-right: none;border-top: none; border-left: none;    text-align: center;">
+                        <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.packages_of_goods}}</span>
+                      </td>
+                      <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                        <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.goods_description}}</span>
+                      </td>
+                      <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                        <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.actual_weight}}</span>
+                      </td>
+                      <td style="    height: 25px; border:1px solid #333;border-right: none;    border-top: none;    text-align: center;">
+                        <span style="color: gray;font-weight:600;    font-size: 12px;">{{lrDetail.charged_weight}}</span>
+                      </td>
+                      
+                    </tr>
+                    </table>
+                    </td>
+                    </tr>
+  
+         
+  
+                    <tr>
+                      <td style="padding-bottom: 15px;"></td>
+                      <td></td>
+                      <td></td>
+                      <td style="border:1px solid #fff;"></td>
+  
+  
+                    </tr>
+  
+                    <tr style="text-align: center;">
+                      <td colspan="4">
+  
+                        <table width="100%" cellspacing="0px" cellpadding="0px">
+                          <tr  style="text-align: center;">
+                            <td style="border: 1px solid;border-right: none;border-left: none;font-size: 14px;">
+                              <b>Dimension in Fts</b>
+                            </td>
+                            <td colspan="6">
+                              <table width="100%" cellspacing="0px" cellpadding="0px">
+                                <tr style="text-align: center;">
+                                  <td style="width:20%;border:1px solid;border-right: none;height:25px;font-size:14px">
+                                   <b>Length</b>
+                                  </td>
+                                  <td style="width:20%;border:1px solid ;border-right: none;height:25px;font-size:14px">
+                                    <b>Width</b>
+                                  </td>
+                                  <td style="width:20%;border:1px solid;height:25px;font-size:14px">
+                                    <b>Height</b>
+                                  </td>
+                                  <td style="height:25px" width="170px"></td>
+                                </tr>
+                                <tr>
+                                  <td style="border:1px solid;border-right:none;border-top:none;height:25px;text-align:center;font-size:12px">
+                                      <span style="color: gray;font-weight:600">{{lrDetail.length}}</span>
+                                  </td>
+                                  <td style="border:1px solid;border-top:none;border-right:none;height:25px;text-align:center;font-size:12px">
+                                      <span style="color: gray;font-weight:600">{{lrDetail.width}}</span>
+                                  </td>
+                                  <td style="border:1px solid;border-top:none;height:25px;text-align:center;font-size:12px">
+                                      <span style="color: gray;font-weight:600">{{lrDetail.height}}</span>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-top: 15px;"></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+  
+                    <tr style="text-align: center;">
+                      <td colspan="4">
+                        <table width="100%" cellspacing="0px" cellpadding="0px">
+                          <tr style="text-align: center;">
+                            <td style="width: 145px;;border: 1px solid #333;border-right: none;border-left: none;font-size:14px">
+                              <b>Freights</b>
+                            </td>
+                            <td colspan="6" style="border: 1px solid #fff;">
+                              <table width="100%" cellspacing="0px" cellpadding="0px">
+                                <tr style="text-align: center;">
+                                  <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                    <b>Freight Type</b>                            
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                    <b>Freight</b>                            
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                    <b>Advance</b>                                                                
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;height: 25px;font-size: 14px;">
+                                    <b>Balance</b>    
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none; height: 25px;font-size: 14px;">
+                                    <b>Topay</b>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right:none;height: 25px;font-size: 14px;">
+                                    <b>TBB AT</b>                                 
+                                  </td>                              
+                                </tr>
+                                <tr>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==1" style="color: gray;font-weight:600;font-size:12px">TBB</span>   
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px">To Pay</span>   
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==5" style="color: gray;font-weight:600;font-size:12px">Paid</span>   
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.freight}}</span>   
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.advance}}</span>   
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.balance}}</span> 
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.to_pay}}</span>  
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                  <td style=" border:1px solid #333;border-right: none;border-top:none;height: 25px;text-align:center">
+                                      <span *ngIf="lrDetail.lr_charges.freight_type==2" style="color: gray;font-weight:600;font-size:12px"> {{lrDetail.lr_charges.tbb}}</span>
+                                      <span *ngIf="lrDetail.lr_charges.freight_type!=2" style="color: gray;font-weight:600;font-size:12px">0</span>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                          <!-- <tr>
+                            <td colspan="4" style="border: 0px; border-bottom:1px solid #333;padding:10px;"></td>
+                          </tr> -->
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td style="vertical-align: top;border:1px solid #333;border-top:none;    width: 28%;">
+                  <table width="100%" cellspacing="0px">
+                    <tr>
+                      <td style="text-align:center; height: 29px;border-bottom: 1px solid;font-weight: 600">
+                        Vehicle No.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align:center; height: 29px;border-bottom: 1px solid;">
+                          <span style="color: gray;font-weight:600;display:block;text-align:center;font-size: 12px;">{{lrDetail.vehicle_number}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left: 8px;height: 40px;">          
+                          <b>Consignor GSTN</b> 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height:25px">
+                          <span style="color: gray;font-weight:600;display:block;text-align:center;font-size:12px">{{lrDetail.consignor_gstn}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 8px;height: 40px;">          
+                            <b>Consignee GSTN</b> 
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="height:25px">
+                            <span style="color: gray;font-weight:600;display:block;text-align:center;;font-size:12px">{{lrDetail.consignee_gstn}}</span>
+                        </td>
+                      </tr>
+                    <tr>
+                      <td style="height: 49px;">
+                        <span style="width:50%;float:left">Invoice Date:</span>
+                        <span style="width:50%;float:left;color: gray;font-weight:600;font-size:12px">{{lrDetail.invoice_date | date:'dd-MM-yyyy'}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height: 50px;">
+                        <span style="width:50%;float:left">Invoice No:</span>
+                        <span style="width:50%;float:left;color: gray;font-weight:600;font-size:12px">{{lrDetail.invoice_number}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height:26px;text-align:center;font-size:14px;border-top:1px solid;border-bottom:1px solid">
+                       <b>Delivery contact no</b>                       
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="height: 25px;text-align:center;border-bottom: 1px solid;">
+                          <span style="font-size:12px;color: gray;font-weight:600;font-size:12px">{{lrDetail.delivery_contact_number}}</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="border-bottom: 1px solid;height:25px;text-align:center">
+                          <b>REMARK</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <span style="color: gray;font-weight:600;display:block;font-size:12px">{{lrDetail.remark}}</span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+  
+  
+            </table>
+          </div>
+        
+  
+        
+          
+    
+          <div style="    line-height: 15px;">
+            <span style="font-size:14px;font-weight:600">Terms & Conditions</span>
+            <div style= "border-bottom: 1px solid #ddd;
+            padding-bottom: 3px;text-align: justify;line-height:14px">
+            <span style="font-size:12px">We store goods in our godown entirely at the cost and risk of the Consignee or Consignor. 2. This goods 
+      not is issued at owners risk. 3. we are not responsible for any damage or breakage due to any reason. 4.                    
+      The company doesnot take any responsibility for shortage/breakage/damage/leakage by sun, rain, weat                   
+      er, fire, theft, accident any of the cause which are beyound control.5. The customer should get insured                     
+      his goods agaisnt all risks.6. The goods will be delivered against all due and transit expenses. 7. Vehicle                   
+      shall be unloaded and loaded same day else the detaintion will be chared as per market rule.8. The                    
+      consignee is absolutly responsible for legal liabilities of any rational contorlled or prohibited goods smu                   
+      ggled, black market etc.                    
+      And that while sending and receiving goods all the formalities have been performed under Transport                    
+      acts and rules regulations.                   
+            </span>
+            </div>
+      <span style="font-size:12px;display:block">
+        Cheque/DD to be issued in favour of <b>"{{lrDetail.transporter_details.company_name}}"</b><br/>                 
+        NEFT/RTGS: {{lrDetail.transporter_bank_details.bank_name}} A/C NO  {{lrDetail.transporter_bank_details.account_number}}  <br/>                
+        IFSC CODE-{{lrDetail.transporter_bank_details.ifsc_code}}-{{lrDetail.transporter_details.address}}  
+      </span>
+      <div style="width: 100%;float:left;text-align:center;padding-bottom: 1em;">
+        <span id="copy-btn" style="padding: 5px 10px; background: #ddd;font-weight: 600;-webkit-print-color-adjust: exact;    font-size: 15px;">Driver Copy</span>
+       
+        <span style="float: left;position: absolute;right: 54px;">Generated By: <a href="http://mylr.in/" style="text-decoration:none" target="_blank">mylr.in</a></span>
+      </div>
+      <br><br>
+          </div>
+          <div *ngIf="lrDetail.lr_charges.freight_type==5" style="width: 96%;float: left;z-index: -1;position: absolute;text-align: center;display: flex;
+            flex-direction: column;top: 34%;">
+              <img style="position: relative;opacity: 0.4;align-self: center;width: 24%;" src="assets/images/paid-1.png">
+            </div>
+          
+        </section>
+    
+        <div class="clearfix text-center" style="width:100%;float:left;    padding-top: 25px;">
+            <!-- <div style="width:100%;float:left">
+              <input type="radio" name="gender" value="Cosnignor" (change)="test1()"> Cosnignor<br>
+              <input type="radio" name="gender" value="Cosnignee" (change)="test2()"> Cosnignee<br>
+              <input type="radio" name="gender" value="Driver" (change)="test3()"> Driver
+            </div> -->
+              <button class="btn btn-primary mt-15" (click)="consignor_pop()">
+                  Consignor
+              </button>
+              <button class="btn btn-primary mt-15" (click)="consignee_pop()">
+                  Consignee
+              </button>
+              <button class="btn btn-primary mt-15" (click)="driver_pop()">
+                  Driver
+              </button>           
+          </div>
+        
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<div class="col-md-3 right_sidebar bdr-left">
+    <app-right-sidebar></app-right-sidebar>
+</div>
+
+<!-- Basic form layout section start -->
+
+
+<!-- <div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':display2}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+
+      <div class="modal-body">
+        <p>{{message}}</p>
+      </div>
+
+      <div class="modal-footer popup2">
+        <button type="button" [routerLink]="['/pages/login/']" class="btn btn-default" (click)="hidePop()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- PDF Form Start -->
+<div class="backdrop" [ngStyle]="{'display':displaypdf}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':displaypdf}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+      <div class="modal-body">
+        <form [formGroup]="pdfForm" name="pdfForm" (ngSubmit)="sharePdf()">
+            <div class="form-group">
+                <label>Enter Email I'd <span style="color: red;">*</span></label>
+                <input class="form-control" formControlName="email_id" type="text" required>
+                <div *ngIf="pdfForm.controls['email_id'].errors && ( !pdfForm.controls['email_id'].pristine || submitted || pdfForm.controls['email_id'].touched )" class="error-msg" style="color: red;">
+                    <div [hidden]="!pdfForm.controls['email_id'].errors.pattern">Email must be in valid form.</div>
+                    <div [hidden]="!pdfForm.controls['email_id'].errors.required">Email Id Is Required.</div>
+                    
+                </div>
+              </div>
+          <div class="form-group">
+            <label>Enter Mobile Number </label>
+            <input class="form-control"  minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "   formControlName="mobile_number"   type="text"  required>
+         
+          </div>
+          
+          <input type="submit" class="btn btn-default mt-0" value="Share" style="margin-top: 0px;">
+          <button type="button" class="btn btn-primary" (click)="hidePopup()">
+              Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PDF Send Successfully -->
+<div class="backdrop" [ngStyle]="{'display':displaymessage}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':displaymessage}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+      <div class="modal-body text-center">
+        <p class="text-center">{{message}} </p>
+        <button class="btn btn-primary mt-15" (click)="hidePopup()">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Consignor Copy -->
+<div class="backdrop" [ngStyle]="{'display':consignorDialog}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':consignorDialog}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+        <div class="modal-header popup1">
+            <button type="button" class="close  pull-right"  aria-label="Close" (click)="closeConsignor_pop()"><span aria-hidden="true">x</span></button>
+            <p class="text-center">You Want To </p>
+        </div>
+      <div class="modal-body text-center">        
+        <button class="btn btn-primary mt-15" (click)="printDetail()">
+          Preview
+        </button>
+        <button class="btn btn-primary mt-15" (click)="consignorGeneratePdf()">
+          Share PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Consignee Copy Send Successfully -->
+<div class="backdrop" [ngStyle]="{'display':consigneeDialog}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':consigneeDialog}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+      <div class="modal-header popup1">
+          <button type="button" class="close  pull-right"  aria-label="Close" (click)="closeConsignee_pop()"><span aria-hidden="true">x</span></button>
+          <p class="text-center">You Want To </p>
+      </div>
+      <div class="modal-body text-center">
+        <button class="btn btn-primary mt-15" (click)="printDetail1()">
+          Preview
+        </button>
+        <button class="btn btn-primary mt-15" (click)="consigneeGeneratePdf()">
+          Share PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Driver Copy Send Successfully -->
+<div class="backdrop" [ngStyle]="{'display':driverDialog}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':driverDialog}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+      <div class="modal-header popup1">
+          <button type="button" class="close  pull-right"  aria-label="Close" (click)="closeDriver_pop()"><span aria-hidden="true">x</span></button>
+          <p class="text-center">You Want To </p>
+      </div>
+      <div class="modal-body text-center">
+        <button class="btn btn-primary mt-15" (click)="printDetail2()">
+          Preview
+        </button>
+        <button class="btn btn-primary mt-15" (click)="driverGeneratePdf()">
+          Share PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

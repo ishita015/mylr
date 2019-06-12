@@ -1,0 +1,112 @@
+<style>
+    .scroll {
+    position: absolute;}
+    .inner{
+    position:relative;
+    bottom:0px;
+}
+.outer{
+    height: 445px;
+    overflow:hidden;
+}
+.advertise_1[_ngcontent-c4] {
+    padding-top: 6px;
+    color: #f0704c;
+    font-size: 21px;
+}
+    
+</style>
+
+
+<div class="image-loader" *ngIf="imageLoader" style="top: 27%;left: 0;">
+        <img src="assets/images/loader.gif" />
+    </div>
+<div class="adv-outer">
+    <marquee direction="up" style="height: 454px;" onmouseover="this.stop()" onmouseout="this.start()">
+        <span *ngFor = "let add of showAd" class="marquee-content" (click)="detail(add.ad_id)">
+            <span class="adv-file" style="    width: 30%;
+            float: left;"><img class="img-responsive" [src]="add.ad_files"></span>
+            <span class="adv-title" style="width: 67%;
+            float: left;">
+                <p style="font-size:13px">{{add.ad_title}}</p>
+                <p style="font-size:13px" class="detail">{{add.ad_details}}</p>
+                <span class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{add.ad_started}}</span>
+            </span>
+        </span>
+            <!-- <div onmouseover="this.stop()" class="scroll" style="z-index:-1"> -->
+            <!-- <ul class="addvertise" style="float: left;width: 100%;top: 13px;">
+                <li *ngFor = "let add of showAd">
+                    <div class="col-md-4"><img class="img-responsive" [src]="add.ad_files"></div>
+                    <div class="col-md-8 pd-0">
+                        <p>{{add.ad_title}}</p>
+                        <p>{{add.ad_details}}</p>
+                        <span><i class="fa fa-calendar" aria-hidden="true"></i> {{add.ad_started}}</span>
+                    </div>
+                </li>
+                
+            </ul> -->
+        <!-- </div> -->
+        </marquee>
+<!-- <div class="col-md-12 outer" >
+    <div class="inner" onmouseover="stop()">
+        <ul class="addvertise">
+            <li class="adertisement-list" *ngFor = "let add of showAd">    
+                <div (click)="detail(add.ad_id)">           
+                    <div class="col-md-4" style="padding-left:0"><img class="img-responsive advert-img" [src]="add.ad_files"></div>
+                    <div class="col-md-8 pd-0">
+                        <p class="advert-title">{{add.ad_title}}</p>
+                        <p class="advert-title">{{add.ad_details}}</p>
+                        <span><i class="fa fa-calendar" aria-hidden="true"></i> {{add.ad_started}}</span>
+                    </div>
+                </div> 
+            </li>
+        </ul>
+    </div>
+</div> -->
+
+</div>
+
+
+<div class="backdrop" [ngStyle]="{'display':display0}"></div>
+<div class="modal" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display0}">
+	<div class="modal-dialog  modal-dialog-centered modal-sm">
+		<div class="modal-content dialog ">
+			<div class="modal-header heading-none popup1">
+			 
+				 <button type="button" class="close  pull-right "  aria-label="Close" (click)="hidePopUp()"><span aria-hidden="true">x</span></button>
+				 <h5 class="text-center advertise_1" style="font-size: 15px;font-weight: bold;
+                 padding-top: 9px;">{{adDetail.ad_title}}</h5>
+				</div>
+			<div class="modal-body heading-mes">
+				<div class="form-group text-center">
+							
+					<span class="detail3"><img style="width: 51%;" [src]="adDetail.ad_files"></span>
+			</div>
+					<div class="form-group title">
+							<!-- <label for="uname" class="heading1" style="font-size: 15px;    padding-left: 10px;"><b>{{adDetail.ad_title}}</b></label> -->
+							<!-- <span class="detail1"></span> -->
+					</div>
+					<div class="form-group title">
+							<!-- <label for="uname" class="heading2" style="font-size: 15px;"><b>Advertisement Details:</b></label> -->
+							<span class="detail2">{{adDetail.ad_details}}</span>
+					</div>
+					
+					<!-- <div class="form-group">
+							<label for="uname"  class="heading4" style="font-size: 15px;">Contact Number:</label>
+							<span class="detail4">travels</span>
+					</div> -->
+					<!-- <div class="form-group">
+							<label for="uname"  class="heading5" style="font-size: 15px;">Advertisement Provider:</label>
+							<span class="detail5">travels</span>
+                    </div> -->
+				</div>
+			<div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+					<button type="button" class="btn btn-default mr-tp-0" (click)="hidePopUp()" >Close</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal! --> 
+
+<script>
+
+</script>

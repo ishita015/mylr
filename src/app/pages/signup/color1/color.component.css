@@ -1,0 +1,14 @@
+.color-container{width:60%; margin:20px auto}
+.color-scheme ul li{width:40px; height:40px; float:left;cursor: pointer; border-radius:50%; margin-left:5px; margin-right:5px}
+.color-scheme ul li:nth-child(1){background-color: #F86A31}
+
+.color-scheme ul li:nth-child(2){background-color: #D22393}
+
+.color-scheme ul li:nth-child(3){background-color: #694ABF}
+
+.color-scheme ul li:nth-child(4){background-color: #305C8D}
+
+.color-scheme ul li:nth-child(5){background-color: #387228}
+
+.color-scheme ul li:nth-child(6){background-color: #4B4B4B}
+.ul-color{    margin-left: auto; margin-right: auto; width: 320px }

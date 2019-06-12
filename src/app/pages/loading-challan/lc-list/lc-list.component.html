@@ -1,0 +1,98 @@
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="assets/images/loader.gif" />
+</div>
+
+<div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+      <app-login-leftbar></app-login-leftbar>
+    </div>
+
+  <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+    <div class="clearfix">
+        <div class="card">
+          <div class="clearfix card-strip">
+            <aside class="col-sm-6">
+                <h4 class="table_title mt-5">Loading Challan List</h4>
+            </aside>
+            <aside class="col-sm-6 text-right">
+                <a routerLink="/loading-challan/create" class="btn btn-info">Add Loading Challan</a>
+            </aside>
+        </div>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="bg-success white">
+                  <tr>
+                    <th>Loading Challan Id</th>
+                    <th>Loading Challan No</th>
+                    <th>Vehicle Number</th>
+                    <!-- <th>Ledger Number</th> -->
+                    <th>To Station</th>
+                    <th>Action Perform</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                   
+                    <td>
+                    <input  type="text" [(ngModel)]="filterArgs.loading_challan_id" class="form-control"  placeholder="Search" />
+                    </td>
+                    
+                    <td>
+                    <input  type="text" class="form-control" [(ngModel)]="filterArgs.lc_reference_number" placeholder="Search" />
+                    </td>
+                    <!-- <td>
+                    <input  type="text" class="form-control" [(ngModel)]="filterArgs.vehicle_number"  placeholder="Search" />
+                    </td> -->
+                    <td>
+                    <input  type="text" class="form-control" [(ngModel)]="filterArgs.vehicle_number"  placeholder="Search" />
+                    </td>
+                    <!-- <td>
+                        <input  type="text" class="form-control" [(ngModel)]="filterArgs.ledger_folio_number"  placeholder="Search" />
+                    </td> -->
+                    <td>
+                        <input  type="text" class="form-control" [(ngModel)]="filterArgs.from"  placeholder="Search" />
+                    </td>
+                    <td></td>    
+                      
+                </tr>
+               
+                <tr >
+                  <td *ngIf = "loadingChallanStatus==false" colspan="6" class="text-center">
+                    <b>{{loadingChallanMessage}}</b>
+                  </td>
+                </tr>
+                <ng-container *ngIf = "loadingChallanStatus==true">
+                    <tr *ngFor="let loadingChallanLists of LoadingChallanList |loadingChallanFilter : filterArgs| paginate: {itemsPerPage: 5, currentPage:page, id: '1'}; let i = index">
+                      <!-- <td class="align-middle">{{body?.body_id}}</td> -->
+                    <td class="align-middle">{{loadingChallanLists.loading_challan_id}}</td>
+                    <td class="align-middle">{{loadingChallanLists.lc_reference_number}}</td> 
+                    <td class="align-middle">{{loadingChallanLists.vehicle_number}}</td>
+                    <!-- <td class="align-middle">{{loadingChallanLists.contact_number}}</td> -->
+                    <!-- <td class="align-middle">{{loadingChallanLists.ledger_folio_number}}</td> -->
+                    <td class="align-middle">{{loadingChallanLists.from}}</td>
+                    
+                    <td class="align-middle text-center">
+                    <!-- routerLink="/transporter/update/'{{transporterList.transporter_id}}'" -->
+                  <a  [routerLink] = "['/loading-challan/detail',loadingChallanLists.loading_challan_id]" class=" mr-1 mb-1 ">
+                   <!-- <i class="fas fa-pencil-alt edit-icon"></i> -->
+                   <button type="button" class="btn btn-info btn-sm">
+                    Detail
+                 </button>
+                  </a>
+                  </td>
+                  </tr>
+                 </ng-container>
+                 
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="page = $event" id="1"
+                          maxSize="5"
+                          directionLinks="true"
+                          autoHide="true" style="float:right">
+              </pagination-controls>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,59 @@
+<div class="card p-3 relative form">
+    <h3 class="title_add_branch">Add Branch</h3>
+    
+      <form class="" [formGroup] = "updateForm" >
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">Branch Name:<span style="color:red"></span></label>
+            <input class="form-control site_input" formControlName="branch_name"   type="text" placeholder="branch name">
+          </div>
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">Branch Mail:<span style="color:red"></span></label>
+            <input class="form-control site_input" formControlName="branch_mail"   type="text" placeholder="branch mail">
+          </div>
+        </div> 
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">Branch Contact:<span style="color:red"></span></label>
+            <input class="form-control site_input" formControlName="branch_contact"  type="text" placeholder="branch contact">
+          </div>
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">Address:<span style="color:red"></span></label>
+            <ng4geo-autocomplete ></ng4geo-autocomplete>
+            <!-- autoCompleteCallback1 -->
+          </div>
+        </div>
+       
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">City:<span style="color:red"></span></label>
+            <input class="form-control site_input"  type="text" formControlName="city" placeholder="city">
+          </div>
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">State:<span style="color:red"></span></label>
+            <input class="form-control site_input"  type="text" formControlName="state" placeholder="state">
+          </div>
+        </div>
+        Contact Person Details
+        <div class="row form-group">
+          <div class="col-sm-4">
+            <label class="site_label" for="inputdefault">Name:<span style="color:red"></span></label>
+            <input class="form-control site_input"  type="text" formControlName="name" placeholder="name">
+          </div>
+          <div class="col-sm-4">
+            <label class="site_label" for="inputdefault">Mobile:<span style="color:red"></span></label>
+            <input class="form-control site_input"  type="text" formControlName="mobile" placeholder="mobile">
+          </div>
+          <div class="col-sm-4">
+            <label class="site_label" for="inputdefault">Email Id:<span style="color:red"></span></label>
+            <input class="form-control site_input"  type="text" formControlName="email_id" placeholder="email id">
+          </div>
+        </div>
+  
+       
+    <button type="button"  class="btn btn-default site_btn ">Save</button>
+  
+  </form>
+  
+  </div>
+  

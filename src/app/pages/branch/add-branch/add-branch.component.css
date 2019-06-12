@@ -1,0 +1,10 @@
+.error-msg{
+    color: red;
+}
+      /* -- Loader -- */
+.image-loader{position:absolute; z-index:2000; top:25%; text-align:center; width:100%}
+.image-loader img{height: 150px;}
+.card-strip{
+    padding:10px; border-bottom:1px solid #e4e4e4  
+}
+.card{border:1px solid #eee}

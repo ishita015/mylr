@@ -1,0 +1,139 @@
+.addvertise li
+{
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+.addvertise li span
+{
+    color: #c2c2c2;
+    font-weight: 500;
+    font-size: 12px;
+    width: 100%;
+    float: left;
+}
+.advert-img
+{
+    min-height: 63px;
+}
+.backdrop
+{
+    display: none;
+}
+.outer
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.advert-title
+{
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.advertise_1{
+    padding-top: 6px;
+    color: #f0704c;
+    font-size: 21px;
+
+}
+.heading1{
+    font-size: 15px;
+}
+.heading2{
+    font-size: 15px;
+}
+.heading3{
+    font-size: 15px;
+}
+.heading4{
+    font-size: 15px;
+}
+.heading5{
+    font-size: 15px;
+}
+.detail1{
+    padding-left: 10px;
+}
+.detail2{
+    padding-left: 10px;
+}
+.detail3{
+    padding-left: 10px;
+
+}
+.detail4{
+    padding-left: 10px;
+}
+.detail5{
+    padding-left: 10px;
+}
+.title{
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f5f5f5;
+    padding: 4px 0 8px;
+}
+
+.close {
+    padding: 7px;
+}
+.adertisement-list:hover
+{
+    cursor: pointer;
+}
+
+.adv-title
+{
+    /* width: 60%;
+    float: left; */
+    padding-left: 16px;
+}
+
+span.marquee-content {
+    display: table;
+    border-bottom: 1px solid #ddd;
+    padding: 11px 0;
+    width: 100%;
+    cursor: pointer;
+}
+span.adv-file {
+    display: table-cell;
+    vertical-align: top;
+    padding: 5px;
+}
+span.adv-title {
+    display: table-cell;
+    width: 68%;
+    float: left;
+    padding: 5px;
+}
+.adv-file img {
+    width: 90px;
+    height: 60px;
+}
+.adv-title .detail
+{
+    height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* word-wrap: break-word; */
+    white-space: nowrap;
+}
+.adv-title .date
+{
+    color: #c2c2c2;
+    font-weight: 500;
+}
+.adv-outer
+{
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    height: 446px;
+    margin-top: 9px;
+    overflow: hidden;
+    padding: 0 16px;
+}

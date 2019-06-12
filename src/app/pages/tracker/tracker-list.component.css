@@ -1,0 +1,15 @@
+.page-title
+{
+    font-size: 19px;
+    color: #918a8a;
+    line-height: 38px;        
+}
+.filter-btn
+{
+    float:  right;                  
+}
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn
+{
+    cursor: not-allowed;
+    POINTER-EVENTS: NONE;
+}

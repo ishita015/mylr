@@ -1,0 +1,503 @@
+
+
+
+<style>
+    @media print {
+        .bg-col td{
+        background-color: green !important;
+    }}
+    .form-heading
+    {
+      font-weight: 600;
+    }
+    .form-table h3{
+      font-size: 16px;
+    }
+    .form-table input
+    {
+      border-bottom: 1px solid;
+        border-left: 0;
+        border-top: 0;
+        border-right: 0;
+    }
+    .internal-inputs
+    {
+      border-bottom: 1px solid;
+        border-left: 0;
+        border-top: 0;
+        border-right: 0;
+    }
+    .form-table td
+    {
+      padding-bottom: 15px;
+    }
+    .eng-cha-input
+    {
+      border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 2px dotted;
+        width: 80%;
+    }
+    .form-inputs
+    {
+      border-bottom: 1px solid;
+    }
+    .internal-table td
+    {
+      padding-top: 16px;
+    }
+    .bottom-table td
+    {
+      border: 1px solid;
+    }
+    .error-msg
+    {
+      color: red;
+      font-size: 12px;
+    }
+    .feild-error
+    {
+      border-color: red !important;
+    }
+    /* input ["type=text"]
+    {
+      padding-left: 7px;
+    } */
+    sup{
+      color: red;
+      display: none;
+    }
+    label
+    {
+      margin-right: 7px;
+      color: #000;
+    }
+    span
+    {
+       color: #777676;
+    }
+    body{font-size:10pt}
+            .bdr-bottom{border:none; border-bottom: 1px solid #777}
+            .full-screen{width:100%; float:left} .fl-left{float:left}
+         
+       .w10{width:10%} .w20{width:20%} .w30{width:30%} .w40{width:40%} .w50{width:50%}
+            .w60{width:60%} .w70{width:70%} .w80{width:80%} .w90{width:90%} .w100{width:100%}
+    
+            .mt-10{margin-top:10px} .mt-20{margin-top:20px} .mt-30{margin-top:30px} 
+            .mt-40{margin-top:40px} .mt-50{margin-top:50px}
+    
+            .mtb-5{margin-top:5px; margin-bottom:5px} .mtb-10{margin-top:10px; margin-bottom:10px}
+            .mtb-30{margin-top:30px; margin-bottom:30px} .mtb-20{margin-top:20px; margin-bottom:20px}
+            .mtb-40{margin-top:40px; margin-bottom:40px} .mtb-50{margin-top:50px; margin-bottom:50px}
+        .ml-15{    margin: 0 15px;}
+        .mtb-15{margin-top:5px;margin-bottom: 15px}
+    </style>
+    
+    <div class="image-loader" *ngIf="imageLoader">
+        <img src="http://mylr.in/assets/img/loader-orange.gif" />
+    </div>
+      <div class="row pt-67"> 
+        <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+            <app-login-leftbar></app-login-leftbar>
+        </div>
+        <div class="col-md-10">
+          <form>
+          <div id="print-section" class="card p-30 p-3 relative mtb-30" style="float: left;">
+          <div>
+            <table style="width: 100%;">
+              <tr><td class="text-center form-heading" colspan="3" style="text-align:left">
+                  <span style="
+                  -webkit-print-color-adjust: exact;
+                  font-size: 16px;
+                  background: #cfcfcf;
+                  width: 100%;
+                  display: block;
+                  margin: 0 auto;
+                  padding: 1px 0;
+                  font-weight: 600;
+                  margin-bottom: 0px;
+                  /* text-align: center; */
+                  line-height: 23px;
+                  letter-spacing: 1px;
+                  padding-left: 41.5%;
+                  margin-bottom: 10px;
+                  ">LORRY HIRE SLIP </span>
+              </td></tr>
+              <tr style="border-bottom: 1px solid #ddd">
+                  <td width="15%">
+                      <span>
+                          <!-- <img style="height:100px;border-radius: 5px;" id="image" src={{transporter_detail.transport_logo}} alt="company-logo"/> -->
+                          <div style="width: 100px;" id="imageDiv"></div>
+                          </span>
+                  </td>
+                  <td valign="top" width="70%" align="center"> 
+                    <span style="line-height: 4px;" >
+                    <h3 style="color:gray">{{transporter_detail.company_name}}</h3>
+                    <p style="color:gray">{{transporter_detail.address}}</p>
+                    </span>
+                  </td>
+                  <td valign="top" style="padding-bottom: 15px;"  width="15%" align="right">
+                    <h4 style="margin: 0px 15px;color:gray">Contact:{{transporter_detail.contact_no}}</h4>
+                  </td>
+                 
+              </tr> 
+              <tr>
+                <td>
+                  <!-- <h4>{{transporter_detail.company_name}}</h4>
+                  <p class="ml-15">{{transporter_detail.address}}</p> -->
+                </td>	
+              </tr>
+            </table>
+        </div>
+        <div style="width:100%;float:left;padding-top: 2em; border-bottom:1px solid #ddd">
+        <div style="float: left;width: 65%;">
+          <div class="w20 ml-15" style="float: left;font-size: 16px;font-weight: 600;margin-bottom: 5px;">
+           LR No :
+          </div>
+          <div class="w20" style="width:20%;float: left">
+            <span style="color:gray">{{frDetail.lo_challan_id}}</span>   
+          </div>			
+        </div>
+        <div style="float: left;width: 35%">
+          <div class="w30 ml-15" style="float: left;font-size: 16px;font-weight: 600;margin: 0 15px;">
+            Date :
+          </div>
+          <div  style="float: left;width:58%">
+              <span style="color:gray">{{frDetail.fc_date | date:'dd-MM-yyyy'}}</span>            
+          </div>			
+        </div>
+        <div class="mtb-15" style="float: left;width: 65%;">
+          <div class="w20 ml-15" style="float: left;font-size: 16px;font-weight: 600;">
+            CHALLAN No :
+          </div>
+          <div class="w20" style="float: left;">
+              <span style="color:gray">{{frDetail.fc_reference_number}}</span> 
+          </div>
+        </div>
+        
+        <div class="mtb-15" style="float: left;width: 35%">
+          <div class="w30 ml-15" style="float: left;font-size: 16px;font-weight: 600;margin: 0 15px;">
+            Vehicle No :
+          </div>
+          <div class="w60" style="float: left;">
+              <span style="color:gray">{{frDetail.vehicle_number}}</span>            
+          </div>
+        </div>
+      </div>
+        <!-- <div>
+          <h3 style="background-color:#68A2B8;color:#333;text-align: center;">Loading Challan</h3>					
+        </div> -->
+    
+      <div style="float: left; width: 100%;padding-top: 1em;">    
+      <table class="form-table" style="width: 100%;">
+          <tr>
+              <td class="align-middle" style="padding-top: 9px;">
+                  <span class="ml-15">
+                      <label style="color: #000;font-weight: bold;">From</label> : <span style="color:gray">{{frDetail.from}}</span> 
+                  </span>
+              </td>
+          </tr>
+          <tr>
+            <td style="width: 62%;padding-top: 16px;">			
+                <label style="color: #000;font-weight: bold;"><span style="color: #000;" class="ml-15">To</span>:</label>
+                <span style="color:gray">{{frDetail.to}}</span>
+            </td>
+            <td class="align-middle" style="text-align:right;">
+                <span style=" font-weight: 600;color: #000;">Voucher Ref No:</span>
+                <span style="margin:2px;color:gray">{{frDetail.voucher_reference_number}}</span>
+            </td> 
+          </tr>
+          <tr>
+            <td colspan="2" style="padding-top: 9px;">
+              <span class="ml-15">
+                  <label style="color: #000;font-weight: bold;">Broker Name:</label> <span style="margin:2px;color:gray">{{frDetail.broker_name}}</span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding-top: 9px;">
+              <span class="ml-15" style="width:45%;float:left;display:inline-flex">
+                <label style="color: #000;font-weight: bold;margin-right: 7px;">Address:</label> <span style="color:gray">{{frDetail.broker_address}}</span>
+                    </span> 
+                    <span style="width:51%;float:left;display:inline-flex">
+                    <label style="color: #000;font-weight: bold;margin-right: 7px;">Contact:</label><span style="color:gray">  {{frDetail.broker_contact}}</span>
+                    </span> 
+                  </td>
+          </tr>
+            </table>
+      </div>
+    <br/>
+    
+      <div style="width: 99%;padding-top:1em;float: left;">
+    
+      <table cellpadding="5px" style="width: 100%;border-collapse: collapse">
+        
+          <tr>
+              <th class="text-center" >S.N</th>
+              <th class="text-center">Particular</th>
+              <th class="text-center">Packages</th>
+                  <th style="position:relative" class="text-center">Weight</th>
+             
+          </tr>
+          <!-- <tr style="text-align: center">
+              <td valign="middle" style="border: 1px solid black;padding:15px 15px">
+                
+              </td> 
+              <td valign="middle" style="border: 1px solid black;padding:15px 15px">
+                  <input type="text" [ngClass]="{'feild-error': (freightForm.controls['particular'].errors && ( !freightForm.controls['particular'].pristine || submitted || freightForm.controls['particular'].touched ))}"  formControlName="particular" style="border-bottom: 1px solid;">
+              </td> 
+              <td valign="middle" style="border: 1px solid black;padding:15px 15px">
+                  <input type="text" [ngClass]="{'feild-error': (freightForm.controls['packages'].errors && ( !freightForm.controls['packages'].pristine || submitted || freightForm.controls['packages'].touched ))}" formControlName="packages" style="border-bottom: 1px solid;">
+              </td> 
+              <td valign="middle" style="border: 1px solid black;padding:15px 15px;position:relative">
+                  <input type="text" [ngClass]="{'feild-error': (freightForm.controls['weight'].errors && ( !freightForm.controls['weight'].pristine || submitted || freightForm.controls['weight'].touched ))}" formControlName="weight" style="border-bottom: 1px solid;">
+                    <button class="add-row-btn" (click)="addRow()">+</button>
+              </td> 
+          </tr> -->
+          <tr style="text-align: center" *ngFor="let c of frDetail.freight_challan_details;let i = index" [attr.data-index]="i">
+              <td valign="middle" style="border: 1px solid black;color:gray">{{i+1}}   
+              </td> 
+              <td valign="middle" style="border: 1px solid black;">
+                    <span style="color:gray">{{c.particular}}</span>
+              </td> 
+              <td valign="middle" style="border: 1px solid black;">
+                  <span style="color:gray">{{c.packages}}</span>
+              </td> 
+              <td valign="middle" style="border: 1px solid black;position:relative">
+                  <span style="color:gray">{{c.weight}}</span>
+              </td>
+          </tr>
+          <!-- <tr>
+          <td class="text-center" colspan="7">
+            <span class="error-msg" [ngStyle]="{'display':displayError1}">Please Fill Atleast One Detail</span>
+          </td>	  
+        </tr> -->
+        </table>
+      </div><br/>
+    
+    
+    <!-- 	<div style="width: 100%; overflow-x: auto;"> -->
+      <div style="width: 100%;float: left;">
+      <table class="internal-table" style="width:100%;border-collapse: collapse;">
+          <tr>
+            <td style="padding-top:10px">
+            <label style="color: #000;font-weight: bold;margin-right: 7px;">Engine No:</label><span style="margin:2px;color:gray">{{frDetail.engine_number}}</span>
+            
+            </td> 	
+            <td style="padding-top:10px">
+            <label style="color: #000;font-weight: bold;margin-right: 7px;">Chassis No:</label><span style="margin:2px;color:gray">{{frDetail.chassis_number}}</span>
+            </td>	    
+          </tr>
+          <tr>
+            <td style="padding-top:10px" colspan="2"><label style="color: #000;font-weight: bold;margin-right: 7px;">Owner Name:</label> <span style="margin:2px;color:gray">{{frDetail.owner_name}}</span></td>
+          </tr>
+          <tr>
+            <td style="padding-top:10px" colspan="2"><label style="color: #000;font-weight: bold;margin-right: 7px;">Address:</label><span style="margin:2px;color:gray">{{frDetail.owner_address}}</span></td>
+          </tr>
+          <tr>
+            <td style="padding-top:10px"><label style="color: #000;font-weight: bold;margin-right: 7px;">Mobile No:</label><span style="margin:2px;color:gray">{{frDetail.owner_mobile}}</span></td>
+            <td style="padding-top:10px"><label style="color: #000;font-weight: bold;margin-right: 7px;">Pan Card no:</label> <span style="margin:2px;color:gray">{{frDetail.owner_pan_number}}</span></td>
+          </tr>
+          <tr>
+            <td style="padding-top:10px"><label style="color: #000;font-weight: bold;margin-right: 7px;">Driver Name:</label><span style="margin:2px;color:gray">{{frDetail.driver_name}}</span></td>
+            <td style="padding-top:10px"><label style="color: #000;font-weight: bold;margin-right: 7px;">S/o:</label><span style="margin:2px;color:gray">{{frDetail.driver_father_name}}</span></td>
+          </tr>
+          <tr>
+            <td style="padding-top:10px"><label style="color: #000;font-weight: bold;margin-right: 7px;">Address:</label><span style="margin:2px;color:gray">{{frDetail.driver_address}}</span></td>
+            <td style="padding-top:10px"><label style="color: #000;font-weight: bold;margin-right: 7px;">Contact:</label><span style="margin:2px;color:gray">{{frDetail.driver_contact}}</span></td>
+          </tr>
+          <tr>
+            <td style="padding-top:10px"><label style="color: #000;font-weight: bold;margin-right: 7px;">License No:</label><span style="margin:2px;color:gray">{{frDetail.driver_license_number}}</span></td>
+            <td style="padding-top:10px"></td>
+          </tr>		  
+        </table>
+        <div>
+        <table class="bottom-table" cellspacing="0" cellpadding="2" style="width:100%;margin-top: 21px;">
+          <tr class="text-center">
+            <td _ngcontent-c3="" _ngcontent-c9="" class="text-center" style="text-align: left;width: 60%;border: 1px solid;padding: 5px;height: 25px;" valign="top">
+              <p _ngcontent-c3="" style="
+              text-align: center;
+              font-size:  15px;
+              font-weight:  bold;
+              margin:  0 !important;
+              padding-top: 7px;
+              line-height:  18px;
+              ">Terms and conditions</p><p style="
+                font-size: 13px;
+                padding-top: 5px;
+                margin:  0 !important;
+              ">1. The summery is mentioned of goods/weight and number of packages is with respect to its loading challan. </p>
+              <p style="
+                font-size: 13px;
+                margin: 0 !important;
+              ">2. The rate mentioned of Per Metric Ton is as decided with Vehicle owner/Vehicle driver or Transport broker. </p>
+              <p style="
+                font-size: 13px;
+                margin: 0 !important;
+              ">3. The payment of freight can be paid by any conventional mode of payment. </p>
+              <p style="
+              font-size: 13px;
+              margin: 0 !important;
+            ">4. Proper proof of any other (Challan etc.) charges shall be submitted in original. </p>
+              <p style="
+                font-size: 13px;
+                margin: 0 !important;
+              ">5. No balance payment will be made in absence of original acknowledgement.</p><p style="
+                font-size: 13px;
+                margin: 0 !important;
+              ">6. Any other charges like- detention/Halting/demurrages or deductions like-late delivery etc. shall be paid or deducted as per local market norms or mutually agreed upon.</p>
+             
+            </td>
+            <td style="width: 25%;border:none">
+              <table class="inner-table" border="1px solid"  cellspacing="0" cellpadding="2" style="width: 95%;margin-left: 5%;text-align:left">
+                <tr>
+                  <td style="width: 45%;padding:5px ;font-size:13px;">Rate PMT Lorry Hired</td>
+                  <td style="padding:4px">
+                      <span style="color:gray">{{frDetail.freight_challan_charges.rate_pmt}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:5px ;font-size:12px;width: 45%;">Other Charges</td>
+                  <td style="padding:4px">
+                      <span style="color:gray">{{frDetail.freight_challan_charges.other_charges}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:5px ;font-size:13px;width: 45%;">Advance</td>
+                  <td style="padding:4px">
+                      <span style="color:gray">{{frDetail.freight_challan_charges.less_advance}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 44.8%;padding:5px ;font-size:13px">Balance</td>
+                  <td style="padding:4px">
+                      <span style="color:gray">{{frDetail.freight_challan_charges.balance}}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 44.8%;padding-top: 8px;padding-bottom:7px;font-size:13px;padding-left: 5px;">Total Freight</td>
+                  <td style="padding:4px">
+                      <span style="color:gray">{{frDetail.freight_challan_charges.total_freight}}</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr style="border:none">
+            <td style="border:none;padding-top: 12px;">
+              <label style="color: #000;font-weight: bold;margin-right: 7px;">Remarks:</label>
+              <span style="margin:2px;color:gray">{{frDetail.remark}}</span>
+            </td>	
+          </tr>
+          <tr style="border:none">
+              <td style="border:none;padding-top: 12px;">
+                <label style="color: #000;font-weight: bold;margin-right: 7px;">Payable at:</label>
+                <span style="margin:2px;color:gray">{{frDetail.freight_challan_charges.pay_at}}</span>
+              </td>	
+            </tr>
+            <!-- <tr style="border:none">
+                <td style="border:none;padding-top: 12px;">
+                  
+                </td>
+                <td style="border:none">
+                  <table cellspacing="0" border="1px solid" class="inner-table" style="margin-left:5.2%;margin-top: -5px;width:95%;border-top: none;">
+                    <tr>
+                      <td style="border-top: 0;width: 44.8%;padding-top: 8px;padding-bottom:7px;font-size:13px;padding-left: 5px;">Total Amount</td>
+                      <td style="border-top: 0;padding:4px">
+                          <span style="color:gray">{{total}}</span>
+                      </td>
+                    </tr>
+                  </table> 
+        
+                  </td>	
+              </tr> -->
+        </table>
+        
+      </div>
+        </div>
+        <div style="width:100%;float:left;text-align:center;padding-top: 12px;">
+            <span class="text-center" style="
+              padding: 5px 10px;
+              background: #ddd;
+              font-weight: 600;
+              -webkit-print-color-adjust: exact;
+              font-size: 14px;
+              ">Driver Copy</span>
+        </div>
+    
+        
+        <div>
+          <table style="width: 100%;float:left">
+                    <tr>
+                        <td style="padding-bottom: 15px;">
+            <h4>Signature- Owner/Agent/Broker</h4> 
+          </td>
+          <td style="padding-bottom: 15px;">
+            <h4 class="text-right" style="text-align:right;margin:0 10px;">For- 3D Logistic Solutions</h4>
+          </td>
+        </tr>
+      </table>
+        </div>
+      <!-- <button onclick="myFunction()">Print this page</button> -->      
+    </div>
+    </form>
+    <div class="clearfix text-center" style="padding-top:10px;float: left; width: 100%;padding-bottom: 1em;">
+        <!-- <input type="button" class="btn btn-success" value="Submit"> -->
+        <button type="submit" (click)="print()" class="btn btn-success mt-15">Preview</button>
+        <button class="btn btn-primary mt-15" (click)="generatePdf()">
+          Share PDF
+        </button>
+      </div>
+    </div>
+    </div>
+    
+    
+  <!-- PDF Form Start -->
+<div class="backdrop" [ngStyle]="{'display':displaypdf}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':displaypdf}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+      <div class="modal-body">
+        <form [formGroup]="pdfForm" name="pdfForm" (ngSubmit)="sharePdf()">
+          <div class="form-group">
+            <label>Enter Email I'd <span style="color: red;">*</span></label>
+            <input class="form-control" formControlName="email_id" type="text" required>
+            <div *ngIf="pdfForm.controls['email_id'].errors && ( !pdfForm.controls['email_id'].pristine || submitted || pdfForm.controls['email_id'].touched )" class="error-msg" style="color: red;">
+                <div [hidden]="!pdfForm.controls['email_id'].errors.pattern">Email must be in valid form.</div>
+                <div [hidden]="!pdfForm.controls['email_id'].errors.required">Email Is Required.</div>
+                
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Enter Mobile Number </label>
+            <input class="form-control"  minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 "   formControlName="mobile_number"   type="text" >
+            <div *ngIf="pdfForm.controls['mobile_number'].errors && ( !pdfForm.controls['mobile_number'].pristine || submitted ||pdfForm.controls['mobile_number'].touched )" class="error-msg" style="color: red;">
+              <div [hidden]="!pdfForm.controls.mobile_number.hasError('minlength')">Mobile Number must be 10 digits</div>
+            </div>
+          </div>
+          
+          <input type="submit" class="btn btn-default mt-0" value="Share" style="margin-top: 0px;">
+          <button class="btn btn-primary" (click)="hidePopup()">
+              Cancel
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF Send Successfully -->
+<div class="backdrop" [ngStyle]="{'display':displaymessage}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog" [ngStyle]="{'display':displaymessage}">
+  <div class="modal-dialog  modal-dialog-centered modal-sm">
+    <div class="modal-content dialog">
+      <div class="modal-body text-center">
+        <p class="text-center">{{message}}</p>
+        <button class="btn btn-primary mt-15" (click)="hidePopup()">
+            Ok
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

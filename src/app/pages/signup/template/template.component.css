@@ -1,0 +1,6 @@
+.item-inner{
+    height: 225px; width: 100%; box-shadow: 0px 0px 4px #ddd; margin:10px; text-align: center;
+    padding:2px
+}
+.owl-invoice .owl-nav{text-align: center}
+.owl-invoice .owl-nav .owl-prev, .owl-invoice .owl-nav .owl-next{font-size: 30px}

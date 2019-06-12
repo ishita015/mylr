@@ -1,0 +1,227 @@
+
+<header class="main_header_area "  >
+    <div  [ngClass]="isShow == true ? 'inner-header' : '' " >
+    <div class="container">
+    <div class="pull-left">
+    <!-- <h1 *ngIf="isShow == false">
+        <a href="#/home" class="logo-img">
+            <img src="assets/images/logo.png" />
+        </a>
+    </h1> -->
+    <h1 *ngIf="isShow == true">
+        <a href="#/dashboard" class="logo-img ">
+            <img src="assets/images/logo1.png" />
+        </a>
+    </h1>
+    </div>
+    <div class="pull-right">
+    <!-- <div class="header_c_text" *ngIf="isShow == false">
+        <h5>Call us</h5>
+        <h4>+91-96445-44464</h4>
+    </div> -->
+    <!-- <div class="header_c_text" *ngIf="isShow == false">
+        <h5>Working Hours</h5>
+        <h4>Mon - Fri : 10am to 5pm</h4>
+    </div> -->
+    <!-- <div class="header_c_text" *ngIf="isShow == false">
+        <h5>Email Us</h5>
+        <h4>
+            <a href="mailto:sales@mylr.com" class="__cf_email__">
+                sales@mylr.com
+            </a>
+        </h4>
+    </div> -->
+    <!-- <div class="header_c_text" *ngIf="isShow == false">
+    <a class="quote_btn" href="#/contact" style="top:10px">Request a Quote</a>
+    </div> -->
+    <div class="dropdown" style="margin-top:10px" *ngIf="isShow == true">
+        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="assets/images/transporter.png" style="width:40px; height:40px" />
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dLabel" style="left: -45px; padding:5px">
+          <li><a class="profile" routerLink="/profile">My Profile</a></li>
+          <li><a class="profile" (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    </div>
+    <div class="main_menu_area " data-spy="affix" data-offset-top="197" *ngIf="isShow == false">
+    <nav class="navbar navbar-default header-nav">
+    <div class="container" style="width:98%">
+    
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
+    </div>
+    
+    <div class="collapse test navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav" id="header-scroll">
+    <li>
+            <a *ngIf="isShow == false" href="#/home" class="logo-img border-none">
+                <img src="assets/images/logo.png" style="height: 50px;padding: 3px;">
+            </a>
+    </li>
+    <li class="active"><a routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+    <li><a routerLink="/about"><i class="fas fa-info-circle"></i> About Us</a></li>
+    <li><a routerLink="/contact"><i class="fa fa-phone" aria-hidden="true"></i> Contact Us</a></li>
+    <!-- <li><a routerLink="/branch/add-branch">BRANCH</a></li> -->
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="header-scroll">
+        <li *ngIf="isShow == false"><a href="#/signup/detail"><i class="fa fa-file-text" aria-hidden="true"></i> Request Lr</a></li>
+        <li *ngIf="isShow == false"><a href="#/signup/detail"><i class="fa fa-user-plus" aria-hidden="true"></i> Signup</a></li>
+        <li *ngIf="isShow == true"><a href="#/dashboard">Dashboard</a></li>
+        <li *ngIf="isShow == false"><a href="#/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+        <li (click)="logout()" *ngIf="isShow == true" ><a href="#" >Log out</a></li>
+    </ul>
+
+    </div>
+    </div>
+    </nav>
+    </div>
+    </header>
+
+
+
+
+    <style>
+       .container-fluid {margin-right: auto;margin-left: auto;padding-left: 0px !important;padding-right: 0px !important;}
+       .header{z-index: 1000}
+       .header.header--inner{background-color: #fff} 
+       .header.header--inner .logo-plain{display:none}
+       .header.header--inner .logo-colored, .header.header--inner .logo-colored .sticky_logo{display:block}
+       .header.header--inner .logo-colored img.sticky_logo{max-width:none;}
+       .heading_title{position: relative;padding-left: 40px;list-style: none;}
+       .heading_description{position: absolute;left: 0;}
+       .terms-adjust{padding:80px 0px 110px 0px; width:100%; float:left}
+      .termsController{color:#444}
+      .page-heading{margin-bottom: 1em;line-height: 25px;}
+      .bottom-indent{margin: 1em 0px;color:#72808e;}
+      .top{
+          background: url('assets/img/FAQ-banner.png') no-repeat 100% 90%;background-size: cover;
+          width:100%; float:left; height: 200px;position: relative; margin-top:40px;
+      }
+      .new-overlay{position: absolute; top:0; left:0;  width:100%; height: 200px; background: rgba(135, 161, 169, 0.09); z-index: 100 }
+   </style>
+   
+   <div class="termsController row">
+       <div class="top">
+               <div style="width:200px; margin:0px  auto">
+                       <h2 style="text-align:center; margin-top: 126px;
+                       color: #f06e4c; text-transform: uppercase">FAQ</h2>
+                     </div>
+                     <div class="new-overlay"></div>
+       </div>
+       <div class="terms-adjust">
+                        <div class="container">
+                                <div class="row row-centered">
+                                        <div class="col-centered col-lg-12 col-md-12">
+                                        <div class="text-center main-title service-items">
+                                            <h2 class="">Frequently Asked Questions</h2>
+                                            <p class="bottom-indent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius.</p>
+                                        </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="pt-50">
+                                <div class="container">
+                                <div class="row">
+                                <div class="col-lg-6 col-md-6">     
+                                        <ul class="accordion js-accordion">
+                                                <li class="accordion__item main-title service-items">
+                                                    <h4 class="page-heading">I haven't received my item. What can I do? </h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading ">Ipsum ac erat cursus rutrum parturient a a nostra?</h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?</h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">I haven't received my item. What can I do? </h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">Ipsum ac erat cursus rutrum parturient a a nostra?</h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?</h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis.</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                </div>
+                                <div class="row">
+                                <div class="col-lg-6 col-md-6"> 
+                                        <ul class="accordion js-accordion">
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">I haven't received my item. What can I do? </h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading ">Ipsum ac erat cursus rutrum parturient a a nostra?</h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?</h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">I haven't received my item. What can I do? </h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">Ipsum ac erat cursus rutrum parturient a a nostra?</h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Non vivamus enim himenaeos porta id morbi montes ut sem scelerisque in litora id scelerisque consectetur eget cras hac nascetur sociis in feugiat mi platea odio pretium ullamcorper.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion__item item-adjust">
+                                                    <h4 class="page-heading">Tellus ridiculus non tempus laoreet nec diam eleifend id ullamcorper?</h4>
+                                                    <div class="accordion__content">
+                                                        <p class="bottom-indent">Sed primis eu conubia erat ut nam vitae a habitant dui adipiscing a dignissim eu a ad venenatis.</p>
+                                                    </div>
+                                                </li>
+                                            </ul>   
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>  
+ 
+   </div>
+
+
+
+
+    
+      

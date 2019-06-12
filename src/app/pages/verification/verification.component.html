@@ -1,0 +1,66 @@
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+</div>
+<div class="row"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-left-sidebar></app-left-sidebar>
+    </div>
+    <div class="col-md-8 col-sm-8 col-xs-12 bdr-left-right">
+        <div class="col-md-12">
+        </div>
+        <div class="limiter">
+            <div class="backdrop" [ngStyle]="{'display':display2}"></div>
+            <div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+                <div class="modal-dialog  modal-dialog-centered modal-sm">
+                    <div class="modal-content dialog text-center">
+                        <!-- <div class="modal-header heading-none popup1">
+                        </div> -->
+                        <div class="modal-body heading-mes">
+                            <h4>{{ message }}</h4>
+                        </div>
+                        <div class="modal-footer footer-mes popup2 text-center"  id="loginScreen">
+                            <button type="button" class="btn btn-default" (click)="hidePop()" >Ok</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal! -->
+        
+            <div class="col-md-12 login100 mrg-none">
+                <div class="wrap-login100 p-t-85 p-b-20">
+                    <form class="login100-form validate-form">
+                      <span class="login100-form-title p-b-70 wel text-center">
+                          Login to My LR
+                      </span>
+                      <span class="login100-form-avatar">
+                          <img class="image_circle" src="assets/img/login/avatar-01.jpg" alt="AVATAR">
+                      </span>
+
+                      <label class="label_block login-lable">Username</label>
+                      <div  class="wrap-input100 login-inputs validate-input m-b-15" data-validate = "Enter username" >
+                          <input id="txtEmail" class="input100" type="email" name="email_id" placeholder="Enter Username"/>
+                      </div>
+
+                      <label class="label_block login-lable">Password</label>
+                      <div class="wrap-input100 validate-input m-b-15 login-inputs" data-validate="Enter password">
+                          <input class="input100" type="password" name="password" placeholder="Enter Password" />
+                      </div>
+                      <div class="container-login100-form-btn pd-top-2em">
+                          <a href="#loginScreen"> 
+                              <button type="submit" class="login100-form-btn left-align-bt">
+                                  Login
+                              </button>
+                          </a>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>		
+    </div>
+    <div class="col-md-2 right_sidebar bdr-left">
+      <app-right-sidebar></app-right-sidebar>
+    </div>
+</div>
+
+
+
+    

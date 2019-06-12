@@ -1,0 +1,21 @@
+export class lrList
+{
+    fr_challan_id:number;
+    vehicle_number:string;
+    transporter_id:string;
+    lr_id:string;
+    lr_reference_number:string;
+    created_at:string;
+    date:string;
+    consignor_name:string;
+    consignee_name:string;
+    from:string;
+    to:string;
+    status:any;
+    response:any;
+    message:any;
+    loading_date:any;
+    station_source:any;
+    station_destination:any;
+    page:any;
+} 

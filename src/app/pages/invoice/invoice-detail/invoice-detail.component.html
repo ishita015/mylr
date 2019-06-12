@@ -1,0 +1,261 @@
+<!-- <style>
+ .mydp
+{
+    border-bottom: 1px solid;
+    border: 0px ;
+}
+my-date-picker
+{
+    border-bottom: 1px solid;
+}
+</style> -->
+
+<div class="row pt-67"> 
+  <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+    <app-login-leftbar></app-login-leftbar>
+  </div>
+    
+<div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right invoice-form">
+    <div class="image-loader" *ngIf="imageLoader">
+        <img src="http://keraiz.com/mylr/loader.gif" />
+    </div>
+  <div id="print-section" class="card p-30 p-3 relative mtb-30" style="width:100%;float: left;">
+  <div style="width:100%;float:left;border-bottom: 1px solid #f7f7f7;padding-bottom:10px">
+    <div style="text-align:center; width:10%;float:left">
+      <img src={{transporter_detail.transport_logo}} alt="" class="img-responsive logo-img" style="width:100%">
+    </div>
+    <div style="width:76%;float:left">
+    <div style="text-align:center;width:100%;float:left;"> 
+        <span style="text-align:center;font-weight: 600;">TAX INVOICE </span>
+    </div>
+    <div style="text-align:center;width:100%;float:left;"> 
+        <span>{{transporter_detail.company_name}} </span>
+    </div>
+    <div style="text-align:center;width:100%;float:left;"> 
+        <span style="text-align:center;">{{transporter_detail.address}}</span> 
+    </div>
+    <div style="text-align:center;width:100%;float:left;"> 
+        <span style="text-align:center;">CONTACT: {{transporter_detail.contact_no}}</span> 
+    </div>
+    <div style="text-align:center;width:100%;float:left;"> 
+        <span style="text-align:center;">E-mail: {{transporter_detail.email_id}}</span> 
+    </div>
+    </div>
+</div>
+  
+  <div style="width:100%;float:left;padding-top:1em">
+      <div style="width:60%;float:left;">
+        <div style="width:100%;float:left">
+          <label for="" style="padding-left: 10px;padding-top: 20px;font-weight:600">Consignor</label>
+        </div>
+        <div style="width:100%;float:left;padding-bottom: 2px;padding-top: 2px;">
+          <span style="padding-left: 25px;width: 20%;float:left;font-weight:600">Name:</span>
+          <span>
+                {{invoiceDetail.consignor}} 
+          </span>
+
+        </div>
+        <div style="width:100%;float:left;padding-bottom: 2px;padding-top: 2px;">
+            <span style="padding-left: 25px;width: 20%;float:left;font-weight:600">Address:</span>
+            <span>{{invoiceDetail.address}}</span>
+        </div>
+        <div style="width:100%;float:left">
+            <span style="padding-left: 25px;width: 20%;float:left;font-weight:600">State:</span>
+            <span>{{invoiceDetail.state}}</span>
+        </div>
+        <div style="width:100%;float:left;padding-bottom: 2px;padding-top: 2px;">
+            <span style="padding-left: 25px;width: 20%;float:left;font-weight:600;">State Code:</span>
+            <span>{{invoiceDetail.state_code}}</span>
+        </div>
+        <div style="width:100%;float:left;padding-bottom: 2px;padding-top: 2px;">
+            <span style="padding-left: 25px;width: 20%;float:left;font-weight:600;">GST No.:</span>
+            <span>{{invoiceDetail.gst_number}}</span>
+        </div>
+      </div>
+      <div style="width:40%;float:left;">
+          <div style="text-align:center" style="width:100%;float:left">
+              <label for="" style="padding-left: 10px;padding-top: 20px;font-size: 22px;padding-bottom: 1em;font-weight:700">Invoice</label>
+          </div>
+          <div style="width:100%;float:left;padding-bottom: 2px;padding-top: 2px;">
+              <span style="padding-left: 25px;width: 40%;float:left;font-weight:600">Invoice Date:</span>
+              <span style="width: 50%;float: left;">
+                 {{invoiceDetail.invoice_date}}
+              </span>
+          </div>
+          <div style="width:100%;float:left;padding-bottom: 2px;">
+              <span style="padding-left: 25px;width:40%;float:left;font-weight:600">Due Date:</span>
+              <span style="width: 50%;float: left;">
+                    {{invoiceDetail.due_date}}
+              </span>
+          </div>
+          <div style="width:100%;float:left;padding-bottom: 2px;">
+              <span style="padding-left: 25px;width:40%;float:left;font-weight:600">Invoice#:</span>
+              <span style="width: 50%;float: left;">
+                    {{invoiceDetail.invoice_id}}
+              </span>
+          </div>
+          <!-- <div style="width:100%;float:left;padding-bottom: 2px;">
+              <span style="padding-left: 25px;width:40%;float:left;font-weight:600">GST No:</span>
+              <span style="width: 50%;float: left;">
+                    {{invoiceDetail.invoice_id}}
+              </span>
+          </div> -->
+          <div style="width:100%;float:left;">
+              <span style="padding-left: 25px;width:40%;float:left;font-weight:600">HSN Code:</span>
+              <span style="width: 50%;float: left;">
+                    {{invoiceDetail.hsn_code}}
+              </span>
+          </div>
+      </div>
+</div>
+<div style="width:100%;float:left;padding-top: 2em">
+<table class="order-table" cellspacing="0" cellpadding="2" border="1px solid black" style="width:100%;">
+  <tr>
+    <th colspan="2" style="text-align:center">Order Ref. No.</th>
+    <th style="text-align:center">Dated</th>
+    <!-- <th style="text-align:center;padding: 15px;"></th> -->
+    <th colspan="2" style="text-align:center">From</th>
+    <th colspan="2" style="text-align:center;padding: 12px;">To</th>
+    <th colspan="3" style="text-align:center;width: 100px;">Order By</th>
+
+  </tr>
+  <tr>
+    <td style="text-align:center" colspan="2">{{invoiceDetail.order_reference_number}}</td>      
+    <td style="text-align:center">
+        {{invoiceDetail.order_ref_date}}
+    </td>
+    <td style="text-align:center" colspan="2">{{invoiceDetail.from}}</td>     
+    <td style="text-align:center" colspan="2">
+        {{invoiceDetail.to}}
+    </td>
+    <td style="text-align:center" colspan="3">
+        {{invoiceDetail.order_by}}
+      </td>
+  </tr>
+  
+</table>
+</div>
+<div style="width:100%;float:left;padding-top: 2em">
+<label  style="width:100%;float:left;">Particulars</label>
+  <table class="particulars_detail" cellspacing="0" cellpadding="2px" border="1px solid black" style="width:100%;">
+    <tr>
+      <th style="text-align:center;width: 90px;">S.No</th>
+      <th style="text-align:center">Truck No.</th>
+      <th style="text-align:center;padding: 15px;width: 65px;">Wt(MT)</th>
+      <th style="text-align:center">Goods</th>
+      <th style="text-align:center;padding: 15px;width: 65px;">LR.No</th>
+      <th style="text-align:center;padding: 12px;">Rate(Per MT)</th>
+      <th style="text-align:center;position:relative">Amount</th>
+      <!-- <th style="text-align:center;padding: 15px;"></th>
+      <th style="text-align:center;padding: 15px;"></th> -->
+    </tr>
+    <tr *ngFor="let particulars of invoiceDetail.invoice_particulars;let i = index" [attr.data-index]="i">
+      <td valign="middle" style="text-align:center" class="text-center">{{i+1}}</td>
+      <td valign="middle" style="text-align:center">
+          {{particulars.truck_no}}
+      </td>
+      <td valign="middle" style="text-align:center">{{particulars.weight}}</td>
+      <td valign="middle" style="text-align:center">{{particulars.goods}}</td>
+      <td valign="middle" style="text-align:center">{{particulars.lr_number}}</td>
+      <td valign="middle" style="text-align:center">{{particulars.rate_pmt}}</td>
+      <td valign="middle" style="text-align:center">{{particulars.amount}}</td>
+  </tr>
+      <tr>
+          <td style="text-align:center" class="text-center" colspan="2"><span class="inner-part" style="font-weight:600;">Loading & Unloading</span></td>
+          <td colspan="4"></td>
+          <td class="text-center" style="text-align:center">{{invoiceDetail.invoice_charges.loading_unloading_charges}}</td>
+      </tr>
+      <tr>
+          <td style="text-align:center" class="text-center" colspan="2"><span class="inner-part" style="font-weight:600">Detaintion</span></td>
+          <td colspan="4"></td>
+          <td class="text-center" style="text-align:center">{{invoiceDetail.invoice_charges.detention_amount}}</td>
+      </tr>
+      <tr>
+          <td style="text-align:center" class="text-center" colspan="2"><span class="inner-part" style="font-weight:600">Total</span></td>
+          <td colspan="4"></td>
+          <td class="text-center" style="text-align:center">{{invoiceDetail.invoice_charges.detention_amount*1 + invoiceDetail.invoice_charges.loading_unloading_charges*1}}</td>
+      </tr>
+      <tr>
+          <td style="text-align:center" class="text-center" colspan="2"><span class="inner-part" style="font-weight:600">CGST 2.5%</span></td>
+          <td colspan="4"></td>
+          <td class="text-center" style="text-align:center">{{invoiceDetail.cgst}}</td>
+      </tr>
+      <tr>
+          <td style="text-align:center" class="text-center" colspan="2"><span class="inner-part" style="font-weight:600">SGST 2.5%</span></td>
+          <td colspan="4"></td>
+          <td class="text-center" style="text-align:center">{{invoiceDetail.sgst}}</td>
+      </tr>
+      <tr>
+          <td style="text-align:center" class="text-center" colspan="2"><span class="inner-part" style="font-weight:600">Total Tax</span></td>
+          <td colspan="4"></td>
+          <td class="text-center" style="text-align:center">{{invoiceDetail.invoice_charges.total_tax}}</td>		
+      </tr>
+      <tr>
+          <td style="text-align:center" class="text-center" colspan="2"><span class="inner-part" style="font-weight:600">Total value</span></td>
+          <td colspan="4"></td>
+          <td class="text-center" style="text-align:center">{{invoiceDetail.invoice_charges.total_value}}</td>		
+      </tr>
+      <tr>
+          <td class="text-center" style="text-align:center" colspan="2"><span class="inner-part" style="font-weight:600">Amount in Words</span></td>
+          <td colspan="4"></td>
+          <td class="text-center" style="text-align:center">{{total_amount}}</td>		
+      </tr>
+      <!-- <td><input type="text" name="usrname"  style="width: 100%;"></td> -->
+      <!-- <td><input type="text" name="usrname"  style="width: 100%;"></td>
+      <td><input type="text" name="usrname"  style="width: 100%;"></td>
+      <td><input type="text" name="usrname"  style="width: 100%;"></td>
+    </tr> -->
+    
+  </table>
+</div>
+<div style="width:100%;float:left;padding-top:3em">
+    <div class="fnt-14" style="width:40%;float:left;">
+          Signature Receiver	
+    </div>
+    <div class="fnt-14" style="width:60%;float:left;text-align:center;">
+          Signature with Stamp					
+    </div>
+</div>
+<div style="width:100%;float:left;border-top: 1px solid;border-bottom: 1px solid;">
+      Please Pay by Check/DD/RTGS/NEFT only (Details Below)		
+</div>
+<div style="width:100%;float:left;border-bottom: 1px solid;">
+      <div style="width:40%;float:left">
+          <span>Branch Offices:</span>	
+      </div>
+      <div style="width:60%;float:left;text-align:center">
+          Bank Account Details
+      </div>
+</div>
+<div style="width:100%;float:left">
+    <div style="width:50%;float:left;padding-top: 1em">
+        <span *ngFor="let branches of branchDetail" style="font-weight:600">{{branches.branch_name}},</span>
+        <div style="width:100%;float:left;color: #6f6f6f;font-weight:600;padding-top: 1em;">
+            <span style="font-size:13px">Service Tax Paid by Consignee</span><br>
+            <span style="font-size:13px">Subject to Indore Juridiction</span>
+        </div>
+    </div>
+    <div style="width:35%;float:right;padding-top: 1em;">
+        <div style="width:100%;float:left;text-align:right;font-weight:600">
+          {{transporter_detail.company_name}}
+        </div>
+      <div style="width:100%;float:left;text-align:right;font-weight:600">
+          <span style="font-size: 14px;margin-right:5px;">Acc No. - </span>  
+          <span> {{bankDetail.account_number}}</span>           
+      </div>
+      <div style="width:100%;float:left;text-align:right;font-weight:600">
+              <span style="font-size: 14px;margin-right:5px;">IFSC - </span>     
+              <span> {{bankDetail.ifsc_code}}</span>            
+      </div>  
+      <div style="width:100%;float:left;text-align:right;font-weight:600"> 
+              <span style="font-size: 14px;margin-right:5px;">PAN - </span>     
+              <span>{{transporter_detail.pan_number}}</span>
+      </div>
+    </div>
+</div>
+</div>
+<div class="clearfix text-center" style="padding-top:10px;float: left; width: 100%;">
+  <button (click)="print()" type="submit" class="btn btn-success mt-15">Preview</button>
+</div>
+</div>
+</div>

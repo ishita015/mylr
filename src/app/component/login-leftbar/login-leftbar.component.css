@@ -1,0 +1,28 @@
+.ul-sidebar {
+    background-color: transparent;
+    width: 95%;
+    height: 100%;
+    float: left;
+    margin-left: 0;
+    padding-left: 0;
+}
+.ul-sidebar li {
+    margin: 5px 0px;
+}
+.ul-sidebar li a {
+    background: #f3f3f3;
+    width: 100%;
+    display: block;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.ul-sidebar li:hover a, .ul-sidebar li:hover a:hover, .ul-sidebar li:hover a:focus {
+    color: #ee4f4c;
+}
+.ul-sidebar li.active a {
+    background: #ee4f4c;
+    color: #fff;
+}
+.ul-sidebar ul li a.active{ background: #ee4f4c;
+    color: #fff;}

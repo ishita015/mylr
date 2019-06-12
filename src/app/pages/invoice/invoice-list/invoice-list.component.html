@@ -1,0 +1,78 @@
+<div class="image-loader" *ngIf="imageLoader">
+    <img src="http://keraiz.com/mylr/loader.gif" />
+  </div>
+  <div class="row pt-67"> 
+    <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+        <app-login-leftbar></app-login-leftbar>
+    </div>
+    <div class="col-md-10">  
+      <div class="clearfix mtb-30">
+          <div class="card">
+              <div class="clearfix card-strip">
+                  <aside class="col-sm-6">
+                      <h4 class="table_title mt-5">Invoice List</h4>
+                  </aside>
+                  <aside class="col-sm-6 text-right">
+                      <a routerLink="/invoice/create" class="btn btn-info">Add Invoice</a>
+                  </aside>
+              </div>
+              <div class="table-responsive">
+                  <table class="table">
+                    <thead class="bg-success white">
+                      <tr>
+                        <th class="text-center" style="width:116px">Invoice Id</th>
+                        <th class="text-center" style="width:116px">Challan Id</th>
+                        <th class="text-center" style="width:116px">Cosignor</th>
+                        <th class="text-center" style="width:160px">Invoice Date</th>
+                        <th>Due Date</th>
+                        <th>Order By</th>
+                        <th>HSN Code</th>
+                        <th class="text-center">Detail</th>
+                      </tr>                    
+                    </thead>
+                    <tbody>
+                      <!-- <tr>
+                          | freightChallanListFilter:filtreArg
+                        <td class="text-center"><input class="fl-input" type="text" [(ngModel)]="filtreArg.fr_challan_id" style="width:90px" /></td>
+                        <td class="text-center"><input class="fl-input" type="text" [(ngModel)]="filtreArg.challan_no" style="width:90px" /></td>
+                        <td class="text-center"><input class="fl-input" type="text" [(ngModel)]="filtreArg.fc_date" style="width:110px" /></td>
+                        <td><input class="fl-input" type="text" [(ngModel)]="filtreArg.broker_name" style="width:60px" /></td>
+                        <td><input class="fl-input" type="text" [(ngModel)]="filtreArg.owner_name" style="width:60px" /></td>
+                        <td><input class="fl-input" type="text" [(ngModel)]="filtreArg.driver_name" style="width:60px" /></td>
+                        <td></td>
+                      </tr> -->
+                      <ng-container *ngIf="isHide==false">
+                      <tr *ngFor="let invoiceLists of invoiceList | paginate: {itemsPerPage: 5, currentPage:page, id: '1'}">
+                        <td class="align-middle text-center">{{invoiceLists.invoice_id}}</td>
+                        <td class="align-middle text-center"> {{invoiceLists.lo_challan_id}}</td>
+                        <td class="align-middle text-center"> {{invoiceLists.consignor}}</td>
+                        <td class="text-center"> {{invoiceLists.invoice_date}}</td>
+                        <td>{{invoiceLists.due_date}}</td>
+                        <td>{{invoiceLists.order_by}}</td>
+                        <td>{{invoiceLists.hsn_code}}</td>
+                        <td class="align-middle text-center">
+                            <!-- routerLink="/transporter/update/'{{transporterList.transporter_id}}'" -->
+                            <span style="outline: 0;"  [routerLink] = "['/invoice/invoice-detail/',invoiceLists.invoice_id]" class=" mr-1 mb-1 ">
+                              <i class="fa fa-eye edit-icon"></i>
+                            </span>
+                        </td>
+                      </tr>
+                      </ng-container>
+                      <tr *ngIf="isHide==true">
+                        <td class="text-center" colspan="8">{{message}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="col-sm-12 text-right">
+                  <pagination-controls class="pagination_list_breed_category" (pageChange)="page = $event" id="1"
+                  maxSize="5"
+                  directionLinks="true"
+                  autoHide="true">
+                  </pagination-controls>
+                  </div>
+                </div>
+          </div>
+        </div>
+    </div>
+  
+    </div>

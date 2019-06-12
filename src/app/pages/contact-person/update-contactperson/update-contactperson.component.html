@@ -1,0 +1,67 @@
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" id="test" tabindex="-1" aria-hidden="true" role="dialog"  [ngStyle]="{'display':display2}">
+    <div class="modal-dialog  modal-dialog-centered modal-sm">
+        <div class="modal-content dialog">
+            <div class="modal-header popup1">
+                    <p>{{_Array3.message}}</p>
+            </div>
+            
+            <div class="modal-footer popup2">
+              
+                <button type="button" [routerLink] = "['/contact-person/list-contactperson/', updatecontactperson.branch_id]" class="btn btn-default" (click)="hidePopup()" >Ok</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal! -->
+<div class="image-loader" *ngIf="imageLoader" style="top:14%">
+  <img src="http://keraiz.com/mylr/loader.gif" />
+</div>
+<div class="row pt-67"> 
+  <div class="col-md-2 col-sm-2 col-xs-12 bdr-right" style="padding-right: 0px;">
+      <app-login-leftbar></app-login-leftbar>
+  </div>
+    
+  <div class="col-md-10 col-sm-10 col-xs-12 bdr-left-right">
+<div class="card p-3 relative form">
+    
+    <h4 class="title_add_branch">Updtate Contact Person </h4>
+    <hr>
+    
+      <form class="" [formGroup]= "updateForm" (ngSubmit)="onSubmit(updateForm)" >
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">Contact Person Name:<span style="color:red"></span></label>
+            <input class="form-control site_input"  formControlName="contact_person_name" [(ngModel)]="updatecontactperson.name" type="text" placeholder="contact person name">
+            <div *ngIf="updateForm.controls['contact_person_name'].errors && ( !updateForm.controls['contact_person_name'].pristine || submitted ||updateForm.controls['contact_person_name'].touched )" class="error-msg">
+              <div [hidden]="!updateForm.controls['contact_person_name'].errors.required">Contact Person Name is required.</div>
+            </div>  
+          
+          </div>
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">Contact Person Mobile:<span style="color:red"></span></label>
+            <input class="form-control site_input" minlength="10" onkeypress="if(this.value.length==10) return false;return event.charCode >= 48 && event.charCode <= 57 ||event.charCode == '.' || event.charCode == 250 " formControlName="contact_person_mobile"  type="text"  [(ngModel)]="updatecontactperson.mobile"   type="text" placeholder="contact person mobile" required>
+            <div *ngIf="updateForm.controls['contact_person_mobile'].errors && ( !updateForm.controls['contact_person_mobile'].pristine || submitted ||updateForm.controls['contact_person_mobile'].touched )" class="error-msg">
+              <div [hidden]="!contact_person_mobile.hasError('minlength')">Mobile no. must be 10 digits</div>
+            </div>
+          </div>
+        </div> 
+        <div class="row form-group">
+          <div class="col-sm-6">
+            <label class="site_label" for="inputdefault">Contact Person Email:<span style="color:red"></span></label>
+            <input id="txtEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control site_input"  [(ngModel)]="updatecontactperson.contact_person_email"  type="email" formControlName="contact_person_email" placeholder="contact person email" required>
+            <div *ngIf="updateForm.controls['contact_person_email'].errors && ( !updateForm.controls['contact_person_email'].pristine || submitted || updateForm.controls['contact_person_email'].touched )" class="error-msg">
+              <div [hidden]="!userForm.controls['contact_person_email'].errors">Must Enter Valid Email</div>        
+          </div>
+          </div>
+        </div>
+       
+        <button type="submit"  class="btn btn-default site_btn" style="margin-top:0px;">Save</button>
+        
+        <a [routerLink] = "['/contact-person/list-contactperson/',updatecontactperson.branch_id]" class="btn site_btn btn-danger">Cancel</a>
+        <!-- [routerLink] = "['/loading-challan/detail',loadingChallanLists.loading_challan_id]" -->
+      </form>
+  
+  </div>
+  </div>
+  </div>
+  
